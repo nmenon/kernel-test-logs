@@ -1,4 +1,8 @@
 #!/bin/bash
+export HOME=/home/nmenon
+source ~/.bash_aliases
+shopt -s expand_aliases
+
 DIR=`realpath $1`
 if [ ! -d "$DIR" ]; then
 	echo "$DIR ($1) is not a directory?"
