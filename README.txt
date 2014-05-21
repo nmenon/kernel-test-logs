@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20140520
-Tue May 20 15:39:32 CDT 2014
+Automated logs for TAG=next-20140521
+Wed May 21 06:17:03 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: DRA7xx-EVM:  Boot PASS: dra7.txt
@@ -13,11 +13,11 @@ multi_v7_defconfig
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
  5: am43xx-epos:  Boot PASS: am43xx-epos.txt
  6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
- 7: BeagleBoard-XM:  Boot PASS: beagleboard.txt
+ 7: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
  8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
  9: beaglebone-black:  Boot PASS: beaglebone-black.txt
 10: beaglebone:  Boot FAIL: beaglebone.txt
-11: craneboard:  Boot FAIL: craneboard.txt
+11: craneboard:  Boot PASS: craneboard.txt
 12: DRA7xx-EVM:  Boot PASS: dra7.txt
 13: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
 14:       n900:  Boot FAIL: n900.txt
