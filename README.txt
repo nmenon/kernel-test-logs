@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20140618
-Wed Jun 18 05:38:50 CDT 2014
+Automated logs for TAG=next-20140619
+Thu Jun 19 05:36:54 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
 TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
