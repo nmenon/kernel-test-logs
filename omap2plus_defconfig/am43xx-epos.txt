@@ -1,0 +1,238 @@
+- 06:34:03 [INFO] Starting target session
+- 06:34:03 [INFO] Connected to am43xx-epos via serial 
+- 06:34:03 [INFO] Host: 
+- 06:34:05 [ERROR] On command:  waiting for (?-mix:login:) >>> error: execution expired
+- 06:34:05 [INFO] Target: 
+
+link up on port 0, speed 100, full duplex
+Using cpsw device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.227
+Filename 'vatf_am43xx-epos/d2a7b6b0cc8b23ec1c7906967790b979'.
+Load address: 0x80200000
+Loading: *
+TFTP error: 'File not found' (1)
+Not retrying...
+U-Boot# 
+- 06:34:05 [INFO] Host: 
+- 06:34:10 [ERROR] On command:  waiting for (?-mix:root@.+[@:#]+) >>> error: execution expired
+- 06:34:10 [INFO] Target: 
+
+link up on port 0, speed 100, full duplex
+Using cpsw device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.227
+Filename 'vatf_am43xx-epos/d2a7b6b0cc8b23ec1c7906967790b979'.
+Load address: 0x80200000
+Loading: *
+TFTP error: 'File not found' (1)
+Not retrying...
+U-Boot# 
+- 06:34:40 [INFO] Disconnected serial from am43xx-epos
+- 06:34:40 [INFO] Connected to am43xx-epos via serial 
+- 06:34:40 [INFO] Host: 
+- 06:34:41 [INFO] Target: 
+Net:   <ethaddr> not set. Validating first E-fuse MAC
+cpsw
+Hit any key to stop autoboot:  3  0 
+U-Boot# 
+- 06:34:41 [INFO] Host: 
+- 06:34:41 [INFO] Target: 
+
+U-Boot# 
+- 06:34:41 [INFO] Host: version
+- 06:34:42 [INFO] Target: 
+version
+
+U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:09:07)
+arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
+GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
+U-Boot# 
+- 06:34:42 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait '
+- 06:34:42 [INFO] Target: 
+setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait '
+U-Boot# 
+- 06:34:42 [INFO] Host: setenv bootcmd  ''
+- 06:34:43 [INFO] Target: 
+setenv bootcmd  ''
+U-Boot# 
+- 06:34:43 [INFO] Host: setenv autoload 'no'
+- 06:34:43 [INFO] Target: 
+setenv autoload 'no'
+U-Boot# 
+- 06:34:43 [INFO] Host: setenv serverip '192.168.0.1'
+- 06:34:44 [INFO] Target: 
+setenv serverip '192.168.0.1'
+U-Boot# 
+- 06:34:44 [INFO] Host: printenv
+- 06:34:44 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=am43xx
+board_name=AM43EPOS
+board_rev=1.1D
+boot_targets=usb mmc0 nand 
+bootargs=console=ttyO0,115200n8 earlyprintk rootwait 
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootenv=uEnv.txt
+bootfile=zImage
+bootpart=0:2
+console=ttyO0,115200n8
+cpu=armv7
+eth1addr=34:b1:f7:31:60:cb
+ethact=cpsw
+ethaddr=34:b1:f7:31:60:c9
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+findfdt=if test $board_name = AM43EPOS; then setenv fdtfile am43x-epos-evm.dtb; fi; if test $board_name = AM43__GP; then setenv fdtfile am437x-gp-evm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree; fi; 
+importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+loadaddr=0x80200000
+loadbootenv=load mmc ${mmcdev} ${loadaddr} ${bootenv}
+loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk0p2 rw
+mmcrootfstype=ext4 rootwait
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:256k(SPL),256k(SPL.backup1),256k(SPL.backup2),256k(SPL.backup3),1m(u-boot),512k(u-boot-spl-os),256k(u-boot-env),256k(u-boot-env.backup1),5m(kernel),-(rootfs)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} u-boot-spl-os; nand read ${loadaddr} kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=9,2048
+nandrootfstype=ubifs rootwait=1
+netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp
+netboot=echo Booting from network ...; setenv autoload no; dhcp; tftp ${loadaddr} ${bootfile}; tftp ${fdtaddr} ${fdtfile}; run netargs; bootz ${loadaddr} - ${fdtaddr}
+nfsopts=nolock
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramroot=/dev/ram0 rw ramdisk_size=65536 initrd=${rdaddr},64M
+ramrootfstype=ext2
+rdaddr=0x81000000
+rootpart=2
+rootpath=/export/rootfs
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+serverip=192.168.0.1
+soc=am33xx
+static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:09:07)
+
+Environment size: 3658/131067 bytes
+U-Boot# 
+- 06:34:44 [INFO] Host: printenv
+- 06:34:45 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=am43xx
+board_name=AM43EPOS
+board_rev=1.1D
+boot_targets=usb mmc0 nand 
+bootargs=console=ttyO0,115200n8 earlyprintk rootwait 
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootenv=uEnv.txt
+bootfile=zImage
+bootpart=0:2
+console=ttyO0,115200n8
+cpu=armv7
+eth1addr=34:b1:f7:31:60:cb
+ethact=cpsw
+ethaddr=34:b1:f7:31:60:c9
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+findfdt=if test $board_name = AM43EPOS; then setenv fdtfile am43x-epos-evm.dtb; fi; if test $board_name = AM43__GP; then setenv fdtfile am437x-gp-evm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree; fi; 
+importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+loadaddr=0x80200000
+loadbootenv=load mmc ${mmcdev} ${loadaddr} ${bootenv}
+loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk0p2 rw
+mmcrootfstype=ext4 rootwait
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:256k(SPL),256k(SPL.backup1),256k(SPL.backup2),256k(SPL.backup3),1m(u-boot),512k(u-boot-spl-os),256k(u-boot-env),256k(u-boot-env.backup1),5m(kernel),-(rootfs)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} u-boot-spl-os; nand read ${loadaddr} kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=9,2048
+nandrootfstype=ubifs rootwait=1
+netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp
+netboot=echo Booting from network ...; setenv autoload no; dhcp; tftp ${loadaddr} ${bootfile}; tftp ${fdtaddr} ${fdtfile}; run netargs; bootz ${loadaddr} - ${fdtaddr}
+nfsopts=nolock
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramroot=/dev/ram0 rw ramdisk_size=65536 initrd=${rdaddr},64M
+ramrootfstype=ext2
+rdaddr=0x81000000
+rootpart=2
+rootpath=/export/rootfs
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+serverip=192.168.0.1
+soc=am33xx
+static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:09:07)
+
+Environment size: 3658/131067 bytes
+U-Boot# 
+- 06:34:45 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
+- 06:34:45 [INFO] Target: 
+setenv bootargs ''${bootargs}' ip=dhcp '
+U-Boot# 
+- 06:34:45 [INFO] Host: setenv ipaddr dhcp
+- 06:34:46 [INFO] Target: 
+setenv ipaddr dhcp
+U-Boot# 
+- 06:34:46 [INFO] Host: dhcp
+- 06:34:47 [INFO] Target: 
+dhcp
+link up on port 0, speed 100, full duplex
+BOOTP broadcast 1
+DHCP client bound to address 192.168.0.227
+U-Boot# 
+- 06:34:47 [INFO] Host: setenv serverip '192.168.0.1'
+- 06:34:48 [INFO] Target: 
+setenv serverip '192.168.0.1'
+U-Boot# 
+- 06:34:48 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_am43xx-epos/49260c6823f5a92158ea8aa5b2361f68
+- 06:34:48 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_am43xx-epos/49260c6823f5a92158ea8aa5b2361f68
+link up on port 0, speed 100, full duplex
+Using cpsw device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.227
+Filename 'vatf_am43xx-epos/49260c6823f5a92158ea8aa5b2361f68'.
+Load address: 0x80200000
+Loading: *
+TFTP error: 'File not found' (1)
+Not retrying...
+U-Boot# 
+FOR DEBUG:URL:http://gtsystest.telogy.design.ti.com/vatf/tigtfarm02/tigtfarm02_vatf@am43xx-epos/tigtfarm0206_20_2014_06_34_02/files/session_iteration_1/test_1/dut1_1_log.txt

@@ -1,11 +1,55 @@
-Automated logs for TAG=next-20140619
-Thu Jun 19 05:36:54 CDT 2014
+Automated logs for TAG=next-20140620
+Fri Jun 20 06:30:22 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
-TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
+ 1: DRA7xx-EVM:  Boot FAIL: dra7.txt
+ 2:      j6eco:  Boot FAIL: j6eco.txt
+ 3: OMAP5432uEVM:  Boot FAIL: uevm.txt
+TOTAL = 3 boards, Booted Boards = 0, No Boot boards = 3
 ====defconfig=multi_v7_defconfig===
 multi_v7_defconfig
-TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
+ 1: am335x-evm:  Boot FAIL: am335x-evm.txt
+ 2:  am335x-sk: No Image built - Missing platform support?: 
+ 3: am3517-evm:  Boot PASS: am3517-evm.txt
+ 4:  am37x-evm:  Boot PASS: am37x-evm.txt
+ 5: am43xx-epos: No Image built - Missing platform support?: 
+ 6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
+ 7: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
+ 8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
+ 9: beaglebone-black: No Image built - Missing platform support?: 
+10: beaglebone:  Boot FAIL: beaglebone.txt
+11: craneboard:  Boot PASS: craneboard.txt
+12: DRA7xx-EVM:  Boot FAIL: dra7.txt
+13:      j6eco:  Boot FAIL: j6eco.txt
+14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
+15:       n900:  Boot FAIL: n900.txt
+16: pandaboard-es:  Boot PASS: pandaboard-es.txt
+17: pandaboard-vanilla:  Boot PASS: pandaboard-vanilla.txt
+18:    sdp3430:  Boot PASS: sdp3430.txt
+19:    sdp4430:  Boot PASS: sdp4430.txt
+20: OMAP5432uEVM:  Boot FAIL: uevm.txt
+TOTAL = 20 boards, Booted Boards = 10, No Boot boards = 10
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
-TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
+ 1: am335x-evm: No Image built - Missing platform support?: 
+ 2:  am335x-sk: No Image built - Missing platform support?: 
+ 3: am3517-evm:  Boot PASS: am3517-evm.txt
+ 4:  am37x-evm:  Boot PASS: am37x-evm.txt
+ 5: am43xx-epos: No Image built - Missing platform support?: 
+ 6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
+ 7: BeagleBoard-XM:  Boot PASS: beagleboard.txt
+ 8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
+ 9: beaglebone-black: No Image built - Missing platform support?: 
+10: beaglebone:  Boot PASS: beaglebone.txt
+11: craneboard:  Boot PASS: craneboard.txt
+12: DRA7xx-EVM:  Boot PASS: dra7.txt
+13:      j6eco:  Boot PASS: j6eco.txt
+14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
+15:       n900:  Boot PASS: n900.txt
+16: pandaboard-es:  Boot PASS: pandaboard-es.txt
+17: pandaboard-vanilla:  Boot PASS: pandaboard-vanilla.txt
+18:    sdp2430:  Boot PASS: sdp2430.txt
+19:    sdp3430:  Boot PASS: sdp3430.txt
+20:    sdp4430:  Boot PASS: sdp4430.txt
+21: OMAP5432uEVM:  Boot FAIL: uevm.txt
+TOTAL = 21 boards, Booted Boards = 16, No Boot boards = 5
