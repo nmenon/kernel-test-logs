@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20140624
-Tue Jun 24 14:13:17 CDT 2014
+Automated logs for TAG=next-20140625
+Wed Jun 25 06:29:35 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra7xx-evm:  Boot FAIL: dra7xx-evm.txt
@@ -35,7 +35,7 @@ omap2plus_defconfig
  2:  am335x-sk:  Boot PASS: am335x-sk.txt
  3: am3517-evm:  Boot PASS: am3517-evm.txt
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
- 5: am43xx-epos:  Boot FAIL: am43xx-epos.txt
+ 5: am43xx-epos:  Boot PASS: am43xx-epos.txt
  6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
  7: BeagleBoard-XM:  Boot PASS: beagleboard.txt
  8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
@@ -44,7 +44,7 @@ omap2plus_defconfig
 11: craneboard:  Boot PASS: craneboard.txt
 12: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
 13:      j6eco:  Boot PASS: j6eco.txt
-14: OMAP3430-Labrador(LDP):  Boot FAIL: ldp.txt
+14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
 15:       n900:  Boot PASS: n900.txt
 16:  omap5-evm:  Boot PASS: omap5-evm.txt
 17: pandaboard-es:  Boot PASS: pandaboard-es.txt
@@ -52,4 +52,4 @@ omap2plus_defconfig
 19:    sdp2430:  Boot PASS: sdp2430.txt
 20:    sdp3430:  Boot PASS: sdp3430.txt
 21:    sdp4430:  Boot PASS: sdp4430.txt
-TOTAL = 21 boards, Booted Boards = 18, No Boot boards = 3
+TOTAL = 21 boards, Booted Boards = 20, No Boot boards = 1
