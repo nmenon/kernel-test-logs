@@ -1,0 +1,464 @@
+- 04:08:08 [INFO] Starting target session
+- 04:08:09 [INFO] Connected to omap5-evm via serial 
+- 04:08:09 [INFO] Host: 
+- 04:08:11 [ERROR] On command:  waiting for (?-mix:login:) >>> error: execution expired
+- 04:08:11 [INFO] Target: 
+
+- 04:08:11 [INFO] Host: 
+- 04:08:16 [ERROR] On command:  waiting for (?-mix:[\w\d]+@.+[@:#]+) >>> error: execution expired
+- 04:08:16 [INFO] Target: 
+
+- 04:08:18 [INFO] Disconnected serial from omap5-evm
+- 04:08:18 [INFO] Connected to omap5-evm via serial 
+- 04:08:18 [INFO] Host: 
+- 04:08:18 [INFO] Target: 
+ 0 
+U-Boot# 
+- 04:08:18 [INFO] Host: 
+- 04:08:19 [INFO] Target: 
+
+U-Boot# 
+- 04:08:19 [INFO] Host: version
+- 04:08:19 [INFO] Target: 
+version
+
+U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
+GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
+U-Boot# 
+- 04:08:19 [INFO] Host: setenv bootargs 'console=ttyO2,115200n8 earlyprintk rootwait '
+- 04:08:20 [INFO] Target: 
+setenv bootargs 'console=ttyO2,115200n8 earlyprintk rootwait '
+U-Boot# 
+- 04:08:20 [INFO] Host: setenv bootcmd  ''
+- 04:08:20 [INFO] Target: 
+setenv bootcmd  ''
+U-Boot# 
+- 04:08:20 [INFO] Host: setenv autoload 'no'
+- 04:08:21 [INFO] Target: 
+setenv autoload 'no'
+U-Boot# 
+- 04:08:21 [INFO] Host: setenv serverip '192.168.0.1'
+- 04:08:21 [INFO] Target: 
+setenv serverip '192.168.0.1'
+U-Boot# 
+- 04:08:21 [INFO] Host: printenv
+- 04:08:22 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=omap5_uevm
+board_name=omap5_uevm
+boot_targets=usb mmc0  
+bootargs=console=ttyO2,115200n8 earlyprintk rootwait 
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO2,115200n8
+cpu=armv7
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+loadaddr=0x80200000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,CONFIG_SYS_NAND_PAGE_SIZE
+nandrootfstype=ubifs rootwait=1
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${usbroot} rootfstype=${usbrootfstype}
+usbethaddr=02:21:03:ff:09:60
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+vram=16M 
+
+Environment size: 3178/131067 bytes
+U-Boot# 
+- 04:08:22 [INFO] Host: usb start
+- 04:08:24 [INFO] Target: 
+usb start
+(Re)start USB...
+USB0:   USB EHCI 1.00
+scanning bus 0 for devices... 3 USB Device(s) found
+       scanning usb for storage devices... 0 Storage Device(s) found
+       scanning usb for ethernet devices... 1 Ethernet Device(s) found
+U-Boot# 
+- 04:08:24 [INFO] Host: printenv
+- 04:08:25 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=omap5_uevm
+board_name=omap5_uevm
+boot_targets=usb mmc0  
+bootargs=console=ttyO2,115200n8 earlyprintk rootwait 
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO2,115200n8
+cpu=armv7
+ethact=sms0
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+loadaddr=0x80200000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,CONFIG_SYS_NAND_PAGE_SIZE
+nandrootfstype=ubifs rootwait=1
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${usbroot} rootfstype=${usbrootfstype}
+usbethaddr=02:21:03:ff:09:60
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+vram=16M 
+
+Environment size: 3192/131067 bytes
+U-Boot# 
+- 04:08:25 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
+- 04:08:25 [INFO] Target: 
+setenv bootargs ''${bootargs}' ip=dhcp '
+U-Boot# 
+- 04:08:25 [INFO] Host: setenv ipaddr dhcp
+- 04:08:26 [INFO] Target: 
+setenv ipaddr dhcp
+U-Boot# 
+- 04:08:26 [INFO] Host: dhcp
+- 04:08:29 [INFO] Target: 
+dhcp
+Waiting for Ethernet connection... done.
+BOOTP broadcast 1
+DHCP client bound to address 192.168.0.127
+U-Boot# 
+- 04:08:29 [INFO] Host: setenv serverip '192.168.0.1'
+- 04:08:29 [INFO] Target: 
+setenv serverip '192.168.0.1'
+U-Boot# 
+- 04:08:29 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_omap5-evm/d277bc2b74f8c6337ae63206a1898ca1
+- 04:08:33 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_omap5-evm/d277bc2b74f8c6337ae63206a1898ca1
+Waiting for Ethernet connection... done.
+Using sms0 device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.127
+Filename 'vatf_omap5-evm/d277bc2b74f8c6337ae63206a1898ca1'.
+Load address: 0x80200000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ##########
+	 2.8 MiB/s
+done
+Bytes transferred = 4906672 (4adeb0 hex)
+U-Boot# 
+- 04:08:33 [INFO] Host: tftp ${fdtaddr} 192.168.0.1:vatf_omap5-evm/50e17fb2021cede1fa25efa237720011
+- 04:08:35 [INFO] Target: 
+tftp ${fdtaddr} 192.168.0.1:vatf_omap5-evm/50e17fb2021cede1fa25efa237720011
+Waiting for Ethernet connection... done.
+Using sms0 device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.127
+Filename 'vatf_omap5-evm/50e17fb2021cede1fa25efa237720011'.
+Load address: 0x80f80000
+Loading: *####
+	 2.5 MiB/s
+done
+Bytes transferred = 47783 (baa7 hex)
+U-Boot# 
+- 04:08:35 [INFO] Host: ls mmc 0:1
+- 04:08:35 [INFO] Target: 
+ls mmc 0:1
+    57496   mlo 
+     1164   readme 
+   289952   u-boot.img 
+      601   uenv.txt 
+
+4 file(s), 0 dir(s)
+
+U-Boot# 
+- 04:08:35 [INFO] Host: ls mmc 0:2
+- 04:08:36 [INFO] Target: 
+ls mmc 0:2
+<DIR>       4096 .
+<DIR>       4096 ..
+<DIR>       4096 bin
+<DIR>       4096 boot
+<DIR>       4096 dev
+<DIR>       4096 etc
+<DIR>       4096 home
+<DIR>       4096 lib
+<DIR>       4096 media
+<DIR>       4096 mnt
+<DIR>       4096 opt
+<DIR>       4096 proc
+<SYM>          8 run
+<DIR>       4096 sbin
+<DIR>       4096 srv
+<DIR>       4096 sys
+<SYM>          8 tmp
+<DIR>       4096 usr
+<DIR>       4096 var
+<DIR>       4096 www
+<DIR>       4096 Settings
+<DIR>       4096 test
+U-Boot# 
+- 04:08:36 [INFO] Host: part uuid mmc 0:2
+- 04:08:36 [INFO] Target: 
+part uuid mmc 0:2
+00000000-02
+U-Boot# 
+- 04:08:36 [INFO] Host: printenv
+- 04:08:37 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=omap5_uevm
+board_name=omap5_uevm
+boot_targets=usb mmc0  
+bootargs=console=ttyO2,115200n8 earlyprintk rootwait ip=dhcp
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO2,115200n8
+cpu=armv7
+dnsip=192.0.2.2
+ethact=sms0
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+fileaddr=80f80000
+filesize=baa7
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+gatewayip=192.168.0.1
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+ipaddr=192.168.0.127
+loadaddr=0x80200000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,CONFIG_SYS_NAND_PAGE_SIZE
+nandrootfstype=ubifs rootwait=1
+netmask=255.255.255.0
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${usbroot} rootfstype=${usbrootfstype}
+usbethaddr=02:21:03:ff:09:60
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+vram=16M 
+
+Environment size: 3324/131067 bytes
+U-Boot# 
+- 04:08:37 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 04:08:37 [INFO] Target: 
+setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+U-Boot# 
+- 04:08:37 [INFO] Host: printenv
+- 04:08:38 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=omap5_uevm
+board_name=omap5_uevm
+boot_targets=usb mmc0  
+bootargs=console=ttyO2,115200n8 earlyprintk rootwait ip=dhcp root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO2,115200n8
+cpu=armv7
+dnsip=192.0.2.2
+ethact=sms0
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+fileaddr=80f80000
+filesize=baa7
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+gatewayip=192.168.0.1
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+ipaddr=192.168.0.127
+loadaddr=0x80200000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,CONFIG_SYS_NAND_PAGE_SIZE
+nandrootfstype=ubifs rootwait=1
+netmask=255.255.255.0
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${usbroot} rootfstype=${usbrootfstype}
+usbethaddr=02:21:03:ff:09:60
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+vram=16M 
+
+Environment size: 3378/131067 bytes
+U-Boot# 
+- 04:08:38 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
+- 04:08:38 [INFO] Target: 
+setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
+U-Boot# 
+- 04:08:38 [INFO] Host: bdinfo
+- 04:08:39 [INFO] Target: 
+bdinfo
+arch_number = 0x00000EC1
+boot_params = 0x80000100
+DRAM bank   = 0x00000000
+-> start    = 0x80000000
+-> size     = 0x7F000000
+eth0name    = sms0
+ethaddr     = (not set)
+current eth = sms0
+ip_addr     = 192.168.0.127
+baudrate    = 115200 bps
+TLB addr    = 0xFEFF0000
+relocaddr   = 0xFEF64000
+reloc off   = 0x7E764000
+irq_sp      = 0xFEB43F38
+sp start    = 0xFEB43F28
+U-Boot# 
+- 04:08:39 [INFO] Host: boot
+- 04:11:09 [ERROR] On command: boot waiting for (?-mix:login:) >>> error: execution expired
+- 04:11:09 [INFO] Target: 
+boot
+
+## Checking Image at 80200000 ...
+Unknown image format!
+Kernel image @ 0x80200000 [ 0x000000 - 0x4adeb0 ]
+## Flattened Device Tree blob at 80f80000
+   Booting using the fdt blob at 0x80f80000
+   Loading Device Tree to 9fff1000, end 9ffffaa6 ... OK
+
+Starting kernel ...
+
+
+Kernel hung.. retry! 1 Sun Jul 6 03:12:22 CDT 2014
+GIVEN UP RETRIES
