@@ -1,11 +1,11 @@
-Automated logs for TAG=next-20140702
-Wed Jul  2 06:18:17 CDT 2014
+Automated logs for TAG=next-20140707
+Mon Jul  7 06:20:12 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
- 1: dra7xx-evm:  Boot FAIL: dra7xx-evm.txt
- 2:      j6eco:  Boot FAIL: j6eco.txt
+ 1: dra72x-evm:  Boot PASS: dra72x-evm.txt
+ 2: dra7xx-evm:  Boot FAIL: dra7xx-evm.txt
  3:  omap5-evm:  Boot FAIL: omap5-evm.txt
-TOTAL = 3 boards, Booted Boards = 0, No Boot boards = 3
+TOTAL = 3 boards, Booted Boards = 1, No Boot boards = 2
 ====defconfig=multi_v7_defconfig===
 multi_v7_defconfig
  1: am335x-evm:  Boot FAIL: am335x-evm.txt
@@ -14,21 +14,24 @@ multi_v7_defconfig
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
  5: am43xx-epos:  Boot PASS: am43xx-epos.txt
  6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
- 7: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
- 8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
- 9: beaglebone-black:  Boot PASS: beaglebone-black.txt
-10: beaglebone:  Boot FAIL: beaglebone.txt
-11: craneboard:  Boot FAIL: craneboard.txt
-12: dra7xx-evm:  Boot FAIL: dra7xx-evm.txt
-13:      j6eco:  Boot PASS: j6eco.txt
-14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
-15:       n900:  Boot FAIL: n900.txt
-16:  omap5-evm:  Boot FAIL: omap5-evm.txt
-17: pandaboard-es:  Boot PASS: pandaboard-es.txt
-18: pandaboard-vanilla:  Boot PASS: pandaboard-vanilla.txt
-19:    sdp3430:  Boot PASS: sdp3430.txt
-20:    sdp4430:  Boot PASS: sdp4430.txt
-TOTAL = 20 boards, Booted Boards = 13, No Boot boards = 7
+ 7: beaglebone-black:  Boot PASS: beaglebone-black.txt
+ 8: beaglebone:  Boot FAIL: beaglebone.txt
+ 9: dra72x-evm:  Boot PASS: dra72x-evm.txt
+10: dra7xx-evm:  Boot FAIL: dra7xx-evm.txt
+11:  omap5-evm:  Boot FAIL: omap5-evm.txt
+TOTAL = 11 boards, Booted Boards = 7, No Boot boards = 4
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
-TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
+ 1: am335x-evm:  Boot FAIL: am335x-evm.txt
+ 2:  am335x-sk:  Boot PASS: am335x-sk.txt
+ 3: am3517-evm:  Boot PASS: am3517-evm.txt
+ 4:  am37x-evm:  Boot PASS: am37x-evm.txt
+ 5: am43xx-epos:  Boot PASS: am43xx-epos.txt
+ 6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
+ 7: beaglebone-black:  Boot PASS: beaglebone-black.txt
+ 8: beaglebone:  Boot PASS: beaglebone.txt
+ 9: dra72x-evm:  Boot PASS: dra72x-evm.txt
+10: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
+11:  omap5-evm:  Boot PASS: omap5-evm.txt
+12:    sdp2430:  Boot PASS: sdp2430.txt
+TOTAL = 12 boards, Booted Boards = 11, No Boot boards = 1
