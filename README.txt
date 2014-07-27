@@ -1,5 +1,5 @@
 Automated logs for TAG=v3.16-rc6
-Tue Jul 22 17:11:23 CDT 2014
+Sun Jul 27 03:27:51 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -32,7 +32,7 @@ TOTAL = 20 boards, Booted Boards = 11, No Boot boards = 9
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1: am335x-evm:  Boot FAIL: am335x-evm.txt
- 2:  am335x-sk:  Boot PASS: am335x-sk.txt
+ 2:  am335x-sk:  Boot FAIL: am335x-sk.txt
  3: am3517-evm:  Boot PASS: am3517-evm.txt
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
  5: am43xx-epos:  Boot PASS: am43xx-epos.txt
@@ -49,7 +49,7 @@ omap2plus_defconfig
 16:  omap5-evm:  Boot PASS: omap5-evm.txt
 17: pandaboard-es:  Boot FAIL: pandaboard-es.txt
 18: pandaboard-vanilla:  Boot FAIL: pandaboard-vanilla.txt
-19:    sdp2430: No Image built - Missing platform support?: 
+19:    sdp2430:  Boot PASS: sdp2430.txt
 20:    sdp3430:  Boot PASS: sdp3430.txt
 21:    sdp4430:  Boot PASS: sdp4430.txt
 TOTAL = 21 boards, Booted Boards = 13, No Boot boards = 8
