@@ -1,0 +1,1242 @@
+- 06:32:46 [INFO] Starting target session
+- 06:32:47 [INFO] Connected to omap5-evm via serial 
+- 06:32:47 [INFO] Host: 
+- 06:32:49 [ERROR] On command:  waiting for (?-mix:login:) >>> error: execution expired
+- 06:32:49 [INFO] Target: 
+
+- 06:32:49 [INFO] Host: 
+- 06:32:54 [ERROR] On command:  waiting for (?-mix:[\w\d]+@.+[@:#]+) >>> error: execution expired
+- 06:32:54 [INFO] Target: 
+
+- 06:32:56 [INFO] Disconnected serial from omap5-evm
+- 06:32:56 [INFO] Connected to omap5-evm via serial 
+- 06:32:56 [INFO] Host: 
+- 06:32:56 [INFO] Target: 
+ 0 
+U-Boot# 
+- 06:32:56 [INFO] Host: 
+- 06:32:57 [INFO] Target: 
+
+U-Boot# 
+- 06:32:57 [INFO] Host: version
+- 06:32:57 [INFO] Target: 
+version
+
+U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
+GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
+U-Boot# 
+- 06:32:57 [INFO] Host: setenv bootargs 'console=ttyO2,115200n8 earlyprintk rootwait '
+- 06:32:58 [INFO] Target: 
+setenv bootargs 'console=ttyO2,115200n8 earlyprintk rootwait '
+U-Boot# 
+- 06:32:58 [INFO] Host: setenv bootcmd  ''
+- 06:32:58 [INFO] Target: 
+setenv bootcmd  ''
+U-Boot# 
+- 06:32:58 [INFO] Host: setenv autoload 'no'
+- 06:32:59 [INFO] Target: 
+setenv autoload 'no'
+U-Boot# 
+- 06:32:59 [INFO] Host: setenv serverip '192.168.0.1'
+- 06:32:59 [INFO] Target: 
+setenv serverip '192.168.0.1'
+U-Boot# 
+- 06:32:59 [INFO] Host: printenv
+- 06:33:00 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=omap5_uevm
+board_name=omap5_uevm
+boot_targets=usb mmc0  
+bootargs=console=ttyO2,115200n8 earlyprintk rootwait 
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO2,115200n8
+cpu=armv7
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+loadaddr=0x80200000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,CONFIG_SYS_NAND_PAGE_SIZE
+nandrootfstype=ubifs rootwait=1
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${usbroot} rootfstype=${usbrootfstype}
+usbethaddr=02:21:03:ff:09:60
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+vram=16M 
+
+Environment size: 3178/131067 bytes
+U-Boot# 
+- 06:33:00 [INFO] Host: usb start
+- 06:33:02 [INFO] Target: 
+usb start
+(Re)start USB...
+USB0:   USB EHCI 1.00
+scanning bus 0 for devices... 3 USB Device(s) found
+       scanning usb for storage devices... 0 Storage Device(s) found
+       scanning usb for ethernet devices... 1 Ethernet Device(s) found
+U-Boot# 
+- 06:33:02 [INFO] Host: printenv
+- 06:33:03 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=omap5_uevm
+board_name=omap5_uevm
+boot_targets=usb mmc0  
+bootargs=console=ttyO2,115200n8 earlyprintk rootwait 
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO2,115200n8
+cpu=armv7
+ethact=sms0
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+loadaddr=0x80200000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,CONFIG_SYS_NAND_PAGE_SIZE
+nandrootfstype=ubifs rootwait=1
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${usbroot} rootfstype=${usbrootfstype}
+usbethaddr=02:21:03:ff:09:60
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+vram=16M 
+
+Environment size: 3192/131067 bytes
+U-Boot# 
+- 06:33:03 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
+- 06:33:03 [INFO] Target: 
+setenv bootargs ''${bootargs}' ip=dhcp '
+U-Boot# 
+- 06:33:03 [INFO] Host: setenv ipaddr dhcp
+- 06:33:04 [INFO] Target: 
+setenv ipaddr dhcp
+U-Boot# 
+- 06:33:04 [INFO] Host: dhcp
+- 06:33:07 [INFO] Target: 
+dhcp
+Waiting for Ethernet connection... done.
+BOOTP broadcast 1
+DHCP client bound to address 192.168.0.150
+U-Boot# 
+- 06:33:07 [INFO] Host: setenv serverip '192.168.0.1'
+- 06:33:07 [INFO] Target: 
+setenv serverip '192.168.0.1'
+U-Boot# 
+- 06:33:07 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_omap5-evm/04a643a0c97cf1ec68c636eb6335d9ff
+- 06:33:11 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_omap5-evm/04a643a0c97cf1ec68c636eb6335d9ff
+Waiting for Ethernet connection... done.
+Using sms0 device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.150
+Filename 'vatf_omap5-evm/04a643a0c97cf1ec68c636eb6335d9ff'.
+Load address: 0x80200000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ######################################
+	 2.8 MiB/s
+done
+Bytes transferred = 4366416 (42a050 hex)
+U-Boot# 
+- 06:33:11 [INFO] Host: tftp ${fdtaddr} 192.168.0.1:vatf_omap5-evm/37393166125e140deea2774555523ae6
+- 06:33:13 [INFO] Target: 
+tftp ${fdtaddr} 192.168.0.1:vatf_omap5-evm/37393166125e140deea2774555523ae6
+Waiting for Ethernet connection... done.
+Using sms0 device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.150
+Filename 'vatf_omap5-evm/37393166125e140deea2774555523ae6'.
+Load address: 0x80f80000
+Loading: *####
+	 2.6 MiB/s
+done
+Bytes transferred = 49643 (c1eb hex)
+U-Boot# 
+- 06:33:13 [INFO] Host: ls mmc 0:1
+- 06:33:13 [INFO] Target: 
+ls mmc 0:1
+    57496   mlo 
+     1164   readme 
+   289952   u-boot.img 
+      601   uenv.txt 
+
+4 file(s), 0 dir(s)
+
+U-Boot# 
+- 06:33:13 [INFO] Host: ls mmc 0:2
+- 06:33:14 [INFO] Target: 
+ls mmc 0:2
+<DIR>       4096 .
+<DIR>       4096 ..
+<DIR>       4096 bin
+<DIR>       4096 boot
+<DIR>       4096 dev
+<DIR>       4096 etc
+<DIR>       4096 home
+<DIR>       4096 lib
+<DIR>       4096 media
+<DIR>       4096 mnt
+<DIR>       4096 opt
+<DIR>       4096 proc
+<SYM>          8 run
+<DIR>       4096 sbin
+<DIR>       4096 srv
+<DIR>       4096 sys
+<SYM>          8 tmp
+<DIR>       4096 usr
+<DIR>       4096 var
+<DIR>       4096 www
+<DIR>       4096 Settings
+<DIR>       4096 test
+U-Boot# 
+- 06:33:14 [INFO] Host: part uuid mmc 0:2
+- 06:33:14 [INFO] Target: 
+part uuid mmc 0:2
+00000000-02
+U-Boot# 
+- 06:33:14 [INFO] Host: printenv
+- 06:33:15 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=omap5_uevm
+board_name=omap5_uevm
+boot_targets=usb mmc0  
+bootargs=console=ttyO2,115200n8 earlyprintk rootwait ip=dhcp
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO2,115200n8
+cpu=armv7
+dnsip=192.0.2.2
+ethact=sms0
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+fileaddr=80f80000
+filesize=c1eb
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+gatewayip=192.168.0.1
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+ipaddr=192.168.0.150
+loadaddr=0x80200000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,CONFIG_SYS_NAND_PAGE_SIZE
+nandrootfstype=ubifs rootwait=1
+netmask=255.255.255.0
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${usbroot} rootfstype=${usbrootfstype}
+usbethaddr=02:21:03:ff:09:60
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+vram=16M 
+
+Environment size: 3324/131067 bytes
+U-Boot# 
+- 06:33:15 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 06:33:15 [INFO] Target: 
+setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+U-Boot# 
+- 06:33:15 [INFO] Host: printenv
+- 06:33:16 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=omap5_uevm
+board_name=omap5_uevm
+boot_targets=usb mmc0  
+bootargs=console=ttyO2,115200n8 earlyprintk rootwait ip=dhcp root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait
+bootcmd=
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO2,115200n8
+cpu=armv7
+dnsip=192.0.2.2
+ethact=sms0
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
+fdtfile=undefined
+fileaddr=80f80000
+filesize=c1eb
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+gatewayip=192.168.0.1
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+ipaddr=192.168.0.150
+loadaddr=0x80200000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,CONFIG_SYS_NAND_PAGE_SIZE
+nandrootfstype=ubifs rootwait=1
+netmask=255.255.255.0
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${usbroot} rootfstype=${usbrootfstype}
+usbethaddr=02:21:03:ff:09:60
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2013.10-g78d8ebd (Mar 06 2014 - 13:52:32)
+vram=16M 
+
+Environment size: 3378/131067 bytes
+U-Boot# 
+- 06:33:16 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
+- 06:33:16 [INFO] Target: 
+setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
+U-Boot# 
+- 06:33:16 [INFO] Host: bdinfo
+- 06:33:17 [INFO] Target: 
+bdinfo
+arch_number = 0x00000EC1
+boot_params = 0x80000100
+DRAM bank   = 0x00000000
+-> start    = 0x80000000
+-> size     = 0x7F000000
+eth0name    = sms0
+ethaddr     = (not set)
+current eth = sms0
+ip_addr     = 192.168.0.150
+baudrate    = 115200 bps
+TLB addr    = 0xFEFF0000
+relocaddr   = 0xFEF64000
+reloc off   = 0x7E764000
+irq_sp      = 0xFEB43F38
+sp start    = 0xFEB43F28
+U-Boot# 
+- 06:33:17 [INFO] Host: boot
+- 06:33:41 [INFO] Target: 
+boot
+
+## Checking Image at 80200000 ...
+Unknown image format!
+Kernel image @ 0x80200000 [ 0x000000 - 0x42a050 ]
+## Flattened Device Tree blob at 80f80000
+   Booting using the fdt blob at 0x80f80000
+   Loading Device Tree to 9fff0000, end 9ffff1ea ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 3.16.0-rc7-next-20140729-00002-g2466f0a (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Wed Jul 30 05:29:50 CDT 2014
+[    0.000000] CPU: ARMv7 Processor [412fc0f2] revision 2 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[    0.000000] Machine model: TI OMAP5 uEVM board
+[    0.000000] cma: Reserved 16 MiB at ae800000
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] OMAP5432 ES2.0
+[    0.000000] PERCPU: Embedded 9 pages/cpu @ed7ae000 s14336 r8192 d14336 u36864
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 518416
+[    0.000000] Kernel command line: console=ttyO2,115200n8 earlyprintk rootwait ip=dhcp root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 2028640K/2079744K available (5682K kernel code, 653K rwdata, 2200K rodata, 406K init, 8210K bss, 51104K reserved, 1301504K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xffe00000   (2048 kB)
+[    0.000000]     vmalloc : 0xf0000000 - 0xff000000   ( 240 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xef800000   ( 760 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc07bacf8   (7884 kB)
+[    0.000000]       .init : 0xc07bb000 - 0xc0820800   ( 406 kB)
+[    0.000000]       .data : 0xc0822000 - 0xc08c5670   ( 654 kB)
+[    0.000000]        .bss : 0xc08c5670 - 0xc10ca158   (8211 kB)
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] OMAP clockevent source: timer1 at 32768 Hz
+[    0.000000] sched_clock: 32 bits at 32kHz, resolution 30517ns, wraps every 65536000000000ns
+[    0.000000] OMAP clocksource: 32k_counter at 32768 Hz
+[    0.000366] Architected cp15 timer(s) running at 6.14MHz (virt).
+[    0.000371] sched_clock: 56 bits at 6MHz, resolution 162ns, wraps every 2796202663936ns
+[    0.000382] Switching to timer-based delay loop, resolution 162ns
+[    0.001310] Console: colour dummy device 80x30
+[    0.001342] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.001349] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.001356] ... MAX_LOCK_DEPTH:          48
+[    0.001362] ... MAX_LOCKDEP_KEYS:        8191
+[    0.001368] ... CLASSHASH_SIZE:          4096
+[    0.001374] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.001380] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.001386] ... CHAINHASH_SIZE:          32768
+[    0.001392]  memory used by lock dependency info: 5167 kB
+[    0.001398]  per task-struct memory footprint: 1152 bytes
+[    0.001428] Calibrating delay loop (skipped), value calculated using timer frequency.. 12.28 BogoMIPS (lpj=61440)
+[    0.001441] pid_max: default: 32768 minimum: 301
+[    0.001739] Security Framework initialized
+[    0.001839] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.001850] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.003484] CPU: Testing write buffer coherency: ok
+[    0.004219] /cpus/cpu@0 missing clock-frequency property
+[    0.004238] /cpus/cpu@1 missing clock-frequency property
+[    0.004249] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.004305] Setting up static identity map for 0x80562368 - 0x805623d8
+[    0.008101] CPU1: Booted secondary processor
+[    0.008134] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.008566] Brought up 2 CPUs
+[    0.008580] SMP: Total of 2 processors activated.
+[    0.008587] CPU: All CPU(s) started in SVC mode.
+[    0.010616] devtmpfs: initialized
+[    0.020036] VFP support v0.3: implementor 41 architecture 4 part 30 variant f rev 0
+[    0.021320] omap_hwmod: l3_main_3 using broken dt data from ocp
+[    0.022483] omap_hwmod: l3_main_2 using broken dt data from ocp
+[    0.037932] ------------[ cut here ]------------
+[    0.037948] WARNING: CPU: 0 PID: 1 at arch/arm/mach-omap2/omap_hwmod.c:2538 _init+0x1c0/0x3e0()
+[    0.037956] omap_hwmod: dss_rfbi: doesn't have mpu register target base
+[    0.037962] Modules linked in:
+[    0.037977] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 3.16.0-rc7-next-20140729-00002-g2466f0a #1
+[    0.038002] [<c0014d40>] (unwind_backtrace) from [<c0011978>] (show_stack+0x10/0x14)
+[    0.038020] [<c0011978>] (show_stack) from [<c055a000>] (dump_stack+0x78/0x94)
+[    0.038035] [<c055a000>] (dump_stack) from [<c0040824>] (warn_slowpath_common+0x6c/0x8c)
+[    0.038048] [<c0040824>] (warn_slowpath_common) from [<c00408d8>] (warn_slowpath_fmt+0x30/0x40)
+[    0.038061] [<c00408d8>] (warn_slowpath_fmt) from [<c07c80d8>] (_init+0x1c0/0x3e0)
+[    0.038077] [<c07c80d8>] (_init) from [<c002844c>] (omap_hwmod_for_each+0x34/0x5c)
+[    0.038090] [<c002844c>] (omap_hwmod_for_each) from [<c07c884c>] (__omap_hwmod_setup_all+0x24/0x40)
+[    0.038103] [<c07c884c>] (__omap_hwmod_setup_all) from [<c0008984>] (do_one_initcall+0x80/0x1c8)
+[    0.038118] [<c0008984>] (do_one_initcall) from [<c07bbcb0>] (kernel_init_freeable+0xfc/0x1cc)
+[    0.038138] [<c07bbcb0>] (kernel_init_freeable) from [<c0554c1c>] (kernel_init+0x8/0xe4)
+[    0.038152] [<c0554c1c>] (kernel_init) from [<c000e628>] (ret_from_fork+0x14/0x2c)
+[    0.038194] ---[ end trace d3ef943e39abf46f ]---
+[    0.091639] omap_hwmod: dss_dispc: cannot be enabled for reset (3)
+[    0.094203] omap_hwmod: dss_dsi1: cannot be enabled for reset (3)
+[    0.096758] omap_hwmod: dss_dsi2: cannot be enabled for reset (3)
+[    0.099326] omap_hwmod: dss_hdmi: cannot be enabled for reset (3)
+[    0.139052] pinctrl core: initialized pinctrl subsystem
+[    0.140926] regulator-dummy: no parameters
+[    0.178381] NET: Registered protocol family 16
+[    0.182364] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.183844] cpuidle: using governor ladder
+[    0.183861] cpuidle: using governor menu
+[    0.202472] OMAP GPIO hardware version 0.1
+[    0.211955] platform 50000000.gpmc: Cannot lookup hwmod 'gpmc'
+[    0.212135] omap-gpmc 50000000.gpmc: _od_fail_runtime_resume: FIXME: missing hwmod/omap_dev info
+[    0.212151] omap-gpmc 50000000.gpmc: GPMC revision 6.0
+[    0.212227] gpmc_mem_init: disabling cs 0 mapped at 0x0-0x10000000
+[    0.235193] No ATAGs?
+[    0.235258] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.235268] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.237162] OMAP DMA hardware revision 0.0
+[    0.283306] edma-dma-engine edma-dma-engine.0: Can't allocate PaRAM dummy slot
+[    0.283346] edma-dma-engine: probe of edma-dma-engine.0 failed with error -5
+[    0.309912] omap-dma-engine 4a056000.dma-controller: OMAP DMA engine driver
+[    0.311055] vmmcsd_fixed: 3000 mV 
+[    0.314436] SCSI subsystem initialized
+[    0.315030] usbcore: registered new interface driver usbfs
+[    0.315161] usbcore: registered new interface driver hub
+[    0.315519] usbcore: registered new device driver usb
+[    0.315910] hsusb2_phy supply vcc not found, using dummy regulator
+[    0.316409] hsusb3_phy supply vcc not found, using dummy regulator
+[    0.317069] omap_i2c 48070000.i2c: could not find pctldev for node /ocp/pinmux@4a002840/pinmux_i2c1_pins, deferring probe
+[    0.317092] platform 48070000.i2c: Driver omap_i2c requests probe deferral
+[    0.317945] omap_i2c 48072000.i2c: bus 1 rev0.12 at 100 kHz
+[    0.318721] omap_i2c 48060000.i2c: bus 2 rev0.12 at 100 kHz
+[    0.319348] omap_i2c 4807a000.i2c: bus 3 rev0.12 at 100 kHz
+[    0.319416] omap_i2c 4807c000.i2c: could not find pctldev for node /ocp/pinmux@4a002840/pinmux_i2c5_pins, deferring probe
+[    0.319437] platform 4807c000.i2c: Driver omap_i2c requests probe deferral
+[    0.324959] Switched to clocksource arch_sys_counter
+[    0.425618] NET: Registered protocol family 2
+[    0.426819] TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.427013] TCP bind hash table entries: 8192 (order: 6, 294912 bytes)
+[    0.429309] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.429426] TCP: reno registered
+[    0.429447] UDP hash table entries: 512 (order: 3, 40960 bytes)
+[    0.429755] UDP-Lite hash table entries: 512 (order: 3, 40960 bytes)
+[    0.430698] NET: Registered protocol family 1
+[    0.431463] RPC: Registered named UNIX socket transport module.
+[    0.431473] RPC: Registered udp transport module.
+[    0.431481] RPC: Registered tcp transport module.
+[    0.431489] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.432296] hw perfevents: enabled with armv7_cortex_a15 PMU driver, 7 counters available
+[    0.436238] futex hash table entries: 512 (order: 3, 32768 bytes)
+[    0.439192] VFS: Disk quotas dquot_6.5.2
+[    0.439294] Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.440839] NFS: Registering the id_resolver key type
+[    0.441045] Key type id_resolver registered
+[    0.441054] Key type id_legacy registered
+[    0.441152] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
+[    0.441540] msgmni has been set to 1452
+[    0.444172] bounce: pool size: 64 pages
+[    0.444221] io scheduler noop registered
+[    0.444235] io scheduler deadline registered
+[    0.444296] io scheduler cfq registered (default)
+[    0.449657] pinctrl-single 4a002840.pinmux: 219 pins at pa fc002840 size 438
+[    0.450020] pinctrl-single 4ae0c840.pinmux: 28 pins at pa fce0c840 size 56
+[    0.451885] pbias_mmc_omap5: 1800 <--> 3000 mV at 3000 mV 
+[    0.453060] abb_mpu: 1060 <--> 1250 mV 
+[    0.453646] abb_mm: 1025 <--> 1120 mV 
+[    0.454840] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.459041] omap_uart 4806a000.serial: no wakeirq for uart0
+[    0.459339] 4806a000.serial: ttyO0 at MMIO 0x4806a000 (irq = 104, base_baud = 3000000) is a OMAP UART0
+[    0.460473] omap_uart 4806c000.serial: no wakeirq for uart0
+[    0.460649] 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 105, base_baud = 3000000) is a OMAP UART1
+[    0.461452] omap_uart 48020000.serial: no wakeirq for uart0
+[    0.461626] 48020000.serial: ttyO2 at MMIO 0x48020000 (irq = 106, base_baud = 3000000) is a OMAP UART2
+[    1.434090] console [ttyO2] enabled
+[    1.438755] omap_uart 4806e000.serial: no wakeirq for uart0
+[    1.444770] 4806e000.serial: ttyO3 at MMIO 0x4806e000 (irq = 102, base_baud = 3000000) is a OMAP UART3
+[    1.455357] omap_uart 48066000.serial: no wakeirq for uart0
+[    1.461350] 48066000.serial: ttyO4 at MMIO 0x48066000 (irq = 137, base_baud = 3000000) is a OMAP UART4
+[    1.471842] omap_uart 48068000.serial: no wakeirq for uart0
+[    1.477873] 48068000.serial: ttyO5 at MMIO 0x48068000 (irq = 138, base_baud = 3000000) is a OMAP UART5
+[    1.505305] brd: module loaded
+[    1.518171] loop: module loaded
+[    1.523803] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    1.535811] usbcore: registered new interface driver asix
+[    1.541559] usbcore: registered new interface driver ax88179_178a
+[    1.548059] usbcore: registered new interface driver cdc_ether
+[    1.554309] usbcore: registered new interface driver smsc95xx
+[    1.560409] usbcore: registered new interface driver net1080
+[    1.566442] usbcore: registered new interface driver cdc_subset
+[    1.572748] usbcore: registered new interface driver zaurus
+[    1.578721] usbcore: registered new interface driver cdc_ncm
+[    1.585346] usbcore: registered new interface driver cdc_wdm
+[    1.591400] usbcore: registered new interface driver usb-storage
+[    1.597831] usbcore: registered new interface driver usbtest
+[    1.605248] mousedev: PS/2 mouse device common for all mice
+[    1.613140] i2c /dev entries driver
+[    1.618646] Driver for 1-wire Dallas network protocol.
+[    1.627006] omap_wdt: OMAP Watchdog Timer Rev 0x01: initial timeout 60 sec
+[    1.635883] omap_hsmmc 4809c000.mmc: unable to get vmmc regulator -517
+[    1.642913] platform 4809c000.mmc: Driver omap_hsmmc requests probe deferral
+[    1.682940] 480ad000.mmc supply vmmc not found, using dummy regulator
+[    1.690298] omap_hsmmc 480ad000.mmc: could not set regulator OCR (-22)
+[    1.734106] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.740751] usbcore: registered new interface driver usbhid
+[    1.746631] usbhid: USB HID core driver
+[    1.752611] oprofile: using timer interrupt.
+[    1.757464] TCP: cubic registered
+[    1.760940] Initializing XFRM netlink socket
+[    1.765484] NET: Registered protocol family 17
+[    1.770222] mmc0: BKOPS_EN bit is not set
+[    1.770254] NET: Registered protocol family 15
+[    1.770458] Key type dns_resolver registered
+[    1.770605] omap_vc_init_channel: No PMIC info for vdd_core
+[    1.770608] omap_vp_init: No PMIC info for vdd_core
+[    1.770617] omap_vc_init_channel: No PMIC info for vdd_mm
+[    1.770620] omap_vp_init: No PMIC info for vdd_mm
+[    1.770629] omap_vc_init_channel: No PMIC info for vdd_mpu
+[    1.770631] omap_vp_init: No PMIC info for vdd_mpu
+[    1.771276] ThumbEE CPU extension supported.
+[    1.771299] Registering SWP/SWPB emulation handler
+[    1.771307] SmartReflex Class3 initialized
+[    1.834173] mmc0: new high speed MMC card at address 0001
+[    1.841181] mmcblk0: mmc0:0001 SEM04G 3.68 GiB 
+[    1.846200] mmcblk0boot0: mmc0:0001 SEM04G partition 1 2.00 MiB
+[    1.847363] palmas 0-0048: Irq flag is 0x00000000
+[    1.857917] mmcblk0boot1: mmc0:0001 SEM04G partition 2 2.00 MiB
+[    1.867519]  mmcblk0: p1
+[    1.874010]  mmcblk0boot1: unknown partition table
+[    1.881135]  mmcblk0boot0: unknown partition table
+[    1.886872] palmas 0-0048: Muxing GPIO 2, PWM 0, LED 0
+[    1.937058] smps123: 600 <--> 1500 mV at 1060 mV 
+[    1.944083] smps45: 600 <--> 1310 mV at 1030 mV 
+[    1.951686] smps6: 1200 mV 
+[    1.956462] smps7: 1800 mV 
+[    1.961425] smps8: 600 <--> 1310 mV at 1040 mV 
+[    1.968437] smps9: 2100 mV 
+[    1.972820] smps10_out2: 5000 mV 
+[    1.977555] smps10_out1: 5000 mV 
+[    1.981941] ldo1: 1500 <--> 1800 mV 
+[    1.987455] ldo2: 2800 mV 
+[    1.992407] ldo3: 1500 mV 
+[    1.996571] ldo4: 1500 <--> 1800 mV 
+[    2.002396] ldo5: 1800 mV 
+[    2.008880] ldo6: 1200 mV 
+[    2.013572] ldo7: 2000 mV 
+[    2.018499] ldo8: 3000 mV 
+[    2.023497] ldo9: 1800 <--> 3000 mV at 3000 mV 
+[    2.030257] ldoln: 1800 mV 
+[    2.035595] ldousb: 3250 mV 
+[    2.039576] REGEN1: no parameters
+[    2.043572] REGEN2: no parameters
+[    2.047739] regen3: no parameters
+[    2.051934] SYSEN1: no parameters
+[    2.055860] SYSEN2: no parameters
+[    2.060643] twl6040 0-004b: clk32k is not handled
+[    2.069428] omap_i2c 48070000.i2c: bus 0 rev0.12 at 400 kHz
+[    2.077585] omap_i2c 4807c000.i2c: bus 4 rev0.12 at 400 kHz
+[    2.124071] drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
+[    2.130644] sr_init: No PMIC hook to init smartreflex
+[    2.136179] sr_init: platform driver register failed for SR
+[    2.190275] mmc2: host does not support reading read-only switch. assuming write-enable.
+[    2.201377] mmc2: new high speed SDHC card at address 1234
+[    2.207967] mmcblk1: mmc2:1234 SA04G 3.63 GiB 
+[    2.215119]  mmcblk1: p1 p2 p3
+[   14.283168] ldo8: disabling
+[   14.287081] ldo3: disabling
+[   15.004767] EXT4-fs (mmcblk1p2): mounted filesystem with ordered data mode. Opts: (null)
+[   15.013325] VFS: Mounted root (ext4 filesystem) on device 179:26.
+[   15.029844] devtmpfs: mounted
+[   15.033318] Freeing unused kernel memory: 404K (c07bb000 - c0820000)
+
+INIT: version 2.88 booting
+
+Error opening /dev/fb0: No such file or directory
+Starting udev
+[   15.567448] udevd[884]: starting version 182
+[   16.630043] random: nonblocking pool is initialized
+[   17.626388] EXT4-fs (mmcblk0p1): mounted filesystem without journal. Opts: (null)
+[   18.254908] EXT4-fs (mmcblk1p3): mounted filesystem with ordered data mode. Opts: (null)
+[   18.288523] FAT-fs (mmcblk1p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+Starting Bootlog daemon: bootlogd: cannot allocate pseudo tty: No such file or directory
+bootlogd.
+[   18.480166] EXT4-fs (mmcblk1p2): re-mounted. Opts: data=ordered
+ALSA: Restoring mixer settings...
+Configuring network interfaces... /usr/sbin/alsactl: load_state:1696: No soundcards found...
+ifconfig: SIOCGIFFLAGS: No such device
+done.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Mon Jul 14 20:32:00 UTC 2014
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+
+INIT: Entering runlevel: 5
+
+Starting system message bus: dbus.
+Starting Dropbear SSH server: dropbear.
+Starting telnet daemon.
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting syslogd/klogd: done
+Starting thttpd.
+Starting Lighttpd Web Server: 2014-07-14 20:32:00: (log.c.166) server started 
+lighttpd.
+/
+Starting Matrix GUI application.
+***************************************************************
+***************************************************************
+NOTICE: This file system contains the followin GPLv3 packages:
+	binutils-symlinks
+	binutils
+	gdbserver
+	parted
+
+If you do not wish to distribute GPLv3 components please remove
+the above packages prior to distribution.  This can be done using
+the opkg remove command.  i.e.:
+    opkg remove <package>
+Where <package> is the name printed in the list above
+
+NOTE: If the package is a dependency of another package you
+      will be notified of the dependent packages.  You should
+      use the --force-removal-of-dependent-packages option to
+      also remove the dependent packages as well
+***************************************************************
+***************************************************************
+Stopping Bootlog daemon: bootlogd.
+
+ _____                    _____           _         _   
+|  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_ 
+|     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+|__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|  
+              |___|                    |___|            
+
+Arago Project http://arago-project.org omap5-evm ttyO2
+
+Arago 2013.12 omap5-evm ttyO2
+
+omap5-evm login: 
+- 06:33:41 [INFO] Host: root
+- 06:33:42 [INFO] Target: 
+root
+root@omap5-evm:~# 
+- 06:33:42 [INFO] Host: uname -a
+- 06:33:42 [INFO] Target: 
+uname -a
+Linux omap5-evm 3.16.0-rc7-next-20140729-00002-g2466f0a #1 SMP Wed Jul 30 05:29:50 CDT 2014 armv7l GNU/Linux
+root@omap5-evm:~# 
+- 06:33:42 [INFO] Host: cat /proc/cmdline
+- 06:33:43 [INFO] Target: 
+cat /proc/cmdline
+console=ttyO2,115200n8 earlyprintk rootwait ip=dhcp root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait
+root@omap5-evm:~# 
+- 06:33:43 [INFO] Host: uname -a
+- 06:33:43 [INFO] Target: 
+uname -a
+Linux omap5-evm 3.16.0-rc7-next-20140729-00002-g2466f0a #1 SMP Wed Jul 30 05:29:50 CDT 2014 armv7l GNU/Linux
+root@omap5-evm:~# 
+- 06:33:43 [INFO] Host: cat /proc/mtd
+- 06:33:44 [INFO] Target: 
+cat /proc/mtd
+dev:    size   erasesize  name
+root@omap5-evm:~# 
+- 06:33:48 [INFO] Host: export IPERFHOST=192.168.0.1
+- 06:33:49 [INFO] Target: 
+export IPERFHOST=192.168.0.1
+root@omap5-evm:~# 
+- 06:33:49 [INFO] Host: export NFS_SERVER=192.168.0.1
+- 06:33:49 [INFO] Target: 
+export NFS_SERVER=192.168.0.1
+root@omap5-evm:~# 
+- 06:33:49 [INFO] Host: export NFS_ROOT_PATH=/home/tigtfarm06/NFS_exports/linux/omap5-evm
+- 06:33:50 [INFO] Target: 
+export NFS_ROOT_PATH=/home/tigtfarm06/NFS_exports/linux/omap5- 
+evm
+root@omap5-evm:~# 
+- 06:33:50 [INFO] Host: mkdir -p -m 777 /test
+- 06:33:50 [INFO] Target: 
+mkdir -p -m 777 /test
+root@omap5-evm:~# 
+- 06:33:50 [INFO] Host: cd /test
+- 06:33:51 [INFO] Target: 
+cd /test
+root@omap5-evm:/test# 
+- 06:33:51 [INFO] Host: cat > test.sh << EOF
+- 06:33:51 [INFO] Target: 
+cat > test.sh << EOF
+> 
+- 06:33:51 [INFO] Host: failtest() {
+
+- 06:33:52 [INFO] Target: 
+failtest() {
+> 
+- 06:33:52 [INFO] Host:   echo 1 >&3
+
+- 06:33:52 [INFO] Target: 
+  echo 1 >&3
+> 
+- 06:33:52 [INFO] Host: }
+
+- 06:33:53 [INFO] Target: 
+}
+> 
+- 06:33:53 [INFO] Host: timeout=600
+
+- 06:33:53 [INFO] Target: 
+timeout=600
+> 
+- 06:33:53 [INFO] Host: 
+
+- 06:33:54 [INFO] Target: 
+
+> 
+- 06:33:54 [INFO] Host: # Start of user's script logic
+
+- 06:33:54 [INFO] Target: 
+# Start of user's script logic
+> 
+- 06:33:54 [INFO] Host: 
+
+- 06:33:55 [INFO] Target: 
+
+> 
+- 06:33:55 [INFO] Host: 
+
+- 06:33:55 [INFO] Target: 
+
+> 
+- 06:33:55 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
+
+- 06:33:56 [INFO] Target: 
+mount -t proc proc /proc 2>/dev/null;
+> 
+- 06:33:56 [INFO] Host: 
+
+- 06:33:56 [INFO] Target: 
+
+> 
+- 06:33:56 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
+
+- 06:33:57 [INFO] Target: 
+mount -t sysfs sys /sys 2>/dev/null;
+> 
+- 06:33:57 [INFO] Host: 
+
+- 06:33:57 [INFO] Target: 
+
+> 
+- 06:33:57 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
+
+- 06:33:58 [INFO] Target: 
+mount -t debugfs none /sys/kernel/debug 2>/dev/null;
+> 
+- 06:33:58 [INFO] Host: 
+
+- 06:33:58 [INFO] Target: 
+
+> 
+- 06:33:58 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
+
+- 06:33:59 [INFO] Target: 
+echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
+> 
+- 06:33:59 [INFO] Host: 
+
+- 06:33:59 [INFO] Target: 
+
+> 
+- 06:33:59 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
+
+- 06:34:00 [INFO] Target: 
+echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
+> 
+- 06:34:00 [INFO] Host: 
+
+- 06:34:00 [INFO] Target: 
+
+> 
+- 06:34:00 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
+
+- 06:34:01 [INFO] Target: 
+echo 'interrupts:';cat /proc/interrupts; echo '=======';
+> 
+- 06:34:01 [INFO] Host: 
+
+- 06:34:01 [INFO] Target: 
+
+> 
+- 06:34:01 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
+
+- 06:34:02 [INFO] Target: 
+echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
+> 
+- 06:34:02 [INFO] Host: 
+
+- 06:34:02 [INFO] Target: 
+
+> 
+- 06:34:02 [INFO] Host: echo 'Orphan Clks:';ls /sys/kernel/debug/clk/orphans/; echo '=======';
+
+- 06:34:03 [INFO] Target: 
+echo 'Orphan Clks:';ls /sys/kernel/debug/clk/orphans/; echo '=======';
+> 
+- 06:34:03 [INFO] Host: 
+
+- 06:34:03 [INFO] Target: 
+
+> 
+- 06:34:03 [INFO] Host: echo 'H''ello World' 'B''oard Booted';
+
+- 06:34:04 [INFO] Target: 
+echo 'H''ello World' 'B''oard Booted';
+> 
+- 06:34:04 [INFO] Host: 
+
+- 06:34:04 [INFO] Target: 
+
+> 
+- 06:34:04 [INFO] Host: EOF
+- 06:34:05 [INFO] Target: 
+EOF
+root@omap5-evm:/test# 
+- 06:34:05 [INFO] Host: cd /test
+- 06:34:05 [INFO] Target: 
+cd /test
+root@omap5-evm:/test# 
+- 06:34:05 [INFO] Host: chmod +x test.sh
+- 06:34:06 [INFO] Target: 
+chmod +x test.sh
+root@omap5-evm:/test# 
+- 06:34:06 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
+- 06:34:06 [INFO] Target: 
+./test.sh 2> stderr.log > stdout.log 3> result.log
+root@omap5-evm:/test# 
+- 06:34:06 [INFO] Host: echo $?
+- 06:34:07 [INFO] Target: 
+echo $?
+0
+root@omap5-evm:/test# 
+- 06:34:07 [INFO] Host: cd /test
+- 06:34:07 [INFO] Target: 
+cd /test
+root@omap5-evm:/test# 
+- 06:34:07 [INFO] Host: cat stdout.log
+- 06:34:09 [INFO] Target: 
+cat stdout.log
+cpuinfo:
+processor	: 0
+model name	: ARMv7 Processor rev 2 (v7l)
+Features	: half thumb fastmult vfp edsp thumbee neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x2
+CPU part	: 0xc0f
+CPU revision	: 2
+
+processor	: 1
+model name	: ARMv7 Processor rev 2 (v7l)
+Features	: half thumb fastmult vfp edsp thumbee neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae evtstrm 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x2
+CPU part	: 0xc0f
+CPU revision	: 2
+
+Hardware	: Generic OMAP5 (Flattened Device Tree)
+Revision	: 0000
+Serial		: 0000000000000000
+=======
+soc info:
+==> /sys/devices/soc0/family <==
+OMAP5
+
+==> /sys/devices/soc0/machine <==
+OMAP5432
+
+==> /sys/devices/soc0/power <==
+
+==> /sys/devices/soc0/revision <==
+ES2.0
+
+==> /sys/devices/soc0/subsystem <==
+
+==> /sys/devices/soc0/type <==
+GP
+
+==> /sys/devices/soc0/uevent <==
+=======
+interrupts:
+           CPU0       CPU1       
+ 27:       1482       1157       GIC  27  arch_timer
+ 39:          1          0       GIC  39  palmas
+ 41:          0          0       GIC  41  l3-dbg-irq
+ 42:          0          0       GIC  42  l3-app-irq
+ 44:          0          0       GIC  44  DMA
+ 45:       3490          0       GIC  45  omap-dma-engine
+ 52:          0          0       GIC  52  gpmc
+ 69:          0          0       GIC  69  gp_timer
+ 88:        543          0       GIC  88  48070000.i2c
+ 89:          0          0       GIC  89  48072000.i2c
+ 92:          0          0       GIC  92  4807c000.i2c
+ 93:          0          0       GIC  93  48060000.i2c
+ 94:          0          0       GIC  94  4807a000.i2c
+106:       3485          0       GIC 106  OMAP UART2
+115:       4869          0       GIC 115  mmc2
+118:        832          0       GIC 118  mmc0
+126:         13          0       GIC 126  mmc1
+151:          0          0       GIC 151  twl6040
+158:          1          0       GIC 158  talert
+451:          0          0    palmas  21  palmas_usb_id
+453:          0          0    palmas  23  palmas_usb_vbus
+455:          0          0   twl6040   5  twl6040_irq_ready
+456:          0          0   twl6040   0  twl6040_irq_th
+IPI0:          0          1  CPU wakeup interrupts
+IPI1:          0          0  Timer broadcast interrupts
+IPI2:       1922       2064  Rescheduling interrupts
+IPI3:          0          0  Function call interrupts
+IPI4:         79         87  Single function call interrupts
+IPI5:          0          0  CPU stop interrupts
+IPI6:          0          0  IRQ work interrupts
+IPI7:          0          0  completion interrupts
+Err:          0
+=======
+Clk_summary:
+   clock                         enable_cnt  prepare_cnt        rate   accuracy
+--------------------------------------------------------------------------------
+ dummy_ck                                 0            0           0          0
+ xclk60mhsp2_ck                           0            0    60000000          0
+ xclk60mhsp1_ck                           0            0    60000000          0
+ virt_38400000_ck                         0            0    38400000          0
+ virt_27000000_ck                         0            0    27000000          0
+ virt_26000000_ck                         0            0    26000000          0
+ virt_19200000_ck                         1            1    19200000          0
+    sys_clkin                             5           12    19200000          0
+       timer9_gfclk_mux                   0            1    19200000          0
+       timer4_gfclk_mux                   0            1    19200000          0
+       timer3_gfclk_mux                   0            1    19200000          0
+       timer2_gfclk_mux                   0            1    19200000          0
+       timer11_gfclk_mux                  0            1    19200000          0
+       timer10_gfclk_mux                  0            1    19200000          0
+       sata_ref_clk                       0            0    19200000          0
+       dpll_usb_ck                        1            2   960000000          0
+          dpll_usb_m2_ck                  0            1   480000000          0
+             usb_host_hs_hsic480m_p3_clk           0            0   480000000          0
+             usb_host_hs_hsic480m_p2_clk           0            0   480000000          0
+             usb_host_hs_hsic480m_p1_clk           0            0   480000000          0
+             l3init_60m_fclk              0            1    60000000          0
+                usb_tll_hs_usb_ch2_clk           0            0    60000000          0
+                usb_tll_hs_usb_ch1_clk           0            0    60000000          0
+                usb_tll_hs_usb_ch0_clk           0            0    60000000          0
+                usb_host_hs_utmi_p3_clk           0            0    60000000          0
+                utmi_p2_gfclk             0            0    60000000          0
+                   usb_host_hs_utmi_p2_clk           0            0    60000000          0
+                utmi_p1_gfclk             0            0    60000000          0
+                   usb_host_hs_utmi_p1_clk           0            0    60000000          0
+                usb_host_hs_hsic60m_p3_clk           0            0    60000000          0
+                usb_host_hs_hsic60m_p2_clk           0            0    60000000          0
+                usb_host_hs_hsic60m_p1_clk           0            0    60000000          0
+          dpll_usb_clkdcoldo              1            1   960000000          0
+             usb_otg_ss_refclk960m           1            3   960000000          0
+       dpll_unipro2_ck                    0            0    19200000          0
+          dpll_unipro2_m2_ck              0            0    19200000          0
+          dpll_unipro2_clkdcoldo           0            0    19200000          0
+       dpll_unipro1_ck                    0            0    19200000          0
+          dpll_unipro1_m2_ck              0            0    19200000          0
+             lli_txphy_ls_clk             0            0    19200000          0
+          dpll_unipro1_clkdcoldo           0            0    19200000          0
+             lli_txphy_clk                0            0    19200000          0
+       dpll_per_ck                        1            1   384000000          0
+          dpll_per_m2_ck                  0            0    96000000          0
+             func_24m_clk                 0            0    24000000          0
+          dpll_per_x2_ck                  1            2   768000000          0
+             dpll_per_m3x2_ck             0            0   256000000          0
+             dpll_per_m2x2_ck             1            4   192000000          0
+                mmc2_fclk_mux             0            1   192000000          0
+                   mmc2_fclk              0            1    96000000          0
+                mmc1_fclk_mux             0            1   192000000          0
+                   mmc1_fclk              0            1    96000000          0
+                hsi_fclk                  0            0   192000000          0
+                func_96m_fclk             0            6    96000000          0
+                   iss_ctrlclk            0            0    96000000          0
+                func_48m_fclk             6           14    48000000          0
+                   dss_48mhz_clk           0            2    48000000          0
+                func_12m_fclk             0            0    12000000          0
+             dpll_per_h14x2_ck            0            0   384000000          0
+             dpll_per_h12x2_ck            0            1   192000000          0
+                dss_dss_clk               0            4   192000000          0
+             dpll_per_h11x2_ck            0            0   256000000          0
+                fdif_fclk                 0            0   256000000          0
+                func_128m_clk             0            0   128000000          0
+       auxclk4_src_ck                     0            0    19200000          0
+          auxclk4_ck                      0            0     9600000          0
+       auxclk3_src_ck                     0            0    19200000          0
+          auxclk3_ck                      0            0    19200000          0
+             auxclkreq3_ck                0            0    19200000          0
+       auxclk2_src_ck                     0            0    19200000          0
+          auxclk2_ck                      0            0    19200000          0
+             auxclkreq2_ck                0            0    19200000          0
+       auxclk1_src_ck                     0            0    19200000          0
+          auxclk1_ck                      0            0    19200000          0
+             auxclkreq1_ck                0            0    19200000          0
+       auxclk0_src_ck                     0            0    19200000          0
+          auxclk0_ck                      0            0    19200000          0
+             auxclkreq0_ck                0            0    19200000          0
+       dpll_mpu_ck                        1            1  1000000000          0
+          dpll_mpu_m2_ck                  1            1  1000000000          0
+       dpll_core_ck                       1            1  1063680000          0
+          dpll_core_m2_ck                 0            0   531840000          0
+          dpll_core_x2_ck                 3            4  2127360000          0
+             dpll_core_m3x2_ck            0            0   425472000          0
+             dpll_core_h24x2_ck           0            0   354560000          0
+             dpll_core_h23x2_ck           0            0   303908572          0
+             dpll_core_h22x2_ck           0            1   425472000          0
+             dpll_core_h14x2_ck           0            0    33767620          0
+                gpu_hyd_gclk_mux           0            0    33767620          0
+                gpu_core_gclk_mux           0            0    33767620          0
+             dpll_core_h13x2_ck           1            2    34312259          0
+             dpll_core_h12x2_ck           1            2   531840000          0
+                l3_iclk_div              22           23   531840000          0
+                   l4_root_clk_div          44           50   531840000          0
+                   gpu_l3_iclk            0            0   531840000          0
+                mpu_dpll_hs_clk_div           0            0   531840000          0
+                iva_dpll_hs_clk_div           0            1   531840000          0
+                   dpll_iva_ck            0            1   531840000          0
+                      dpll_iva_x2_ck           0            1   531840000          0
+                         dpll_iva_h12x2_ck           0            0   531840000          0
+                         dpll_iva_h11x2_ck           0            1   531840000          0
+             dpll_core_h11x2_ck           4            4   265920000          0
+             dpll_core_h21x2_ck           0            0   354560000          0
+                c2c_fclk                  0            0   354560000          0
+                   c2c_iclk               0            0   177280000          0
+       wkupaon_iclk_mux                   7            8    19200000          0
+          l3instr_ts_gclk_div             0            0    19200000          0
+       dss_syc_gfclk_div                  0            5    19200000          0
+          dss_sys_clk                     0            5    19200000          0
+          timer8_gfclk_mux                0            1    19200000          0
+          timer7_gfclk_mux                0            1    19200000          0
+          timer6_gfclk_mux                0            1    19200000          0
+          timer5_gfclk_mux                0            1    19200000          0
+       custefuse_sys_gfclk_div            0            0     9600000          0
+       abe_dpll_bypass_clk_mux            0            0    19200000          0
+ virt_16800000_ck                         0            0    16800000          0
+ virt_13000000_ck                         0            0    13000000          0
+ virt_12000000_ck                         0            0    12000000          0
+ sys_32k_ck                               3           15       32768          0
+    usb_phy_cm_clk32k                     1            2       32768          0
+    mmc1_32khz_clk                        0            1       32768          0
+    gpio8_dbclk                           0            1       32768          0
+    gpio7_dbclk                           0            1       32768          0
+    gpio6_dbclk                           0            1       32768          0
+    gpio5_dbclk                           0            1       32768          0
+    gpio4_dbclk                           0            1       32768          0
+    gpio3_dbclk                           0            1       32768          0
+    gpio2_dbclk                           0            1       32768          0
+    dss_32khz_clk                         0            1       32768          0
+    abe_dpll_clk_mux                      1            1       32768          0
+       dpll_abe_ck                        1            1    98304000          0
+          dpll_abe_x2_ck                  1            1   196608000          0
+             dpll_abe_m3x2_ck             0            0    98304000          0
+                usb_dpll_hs_clk_div           0            0    32768000          0
+                per_dpll_hs_clk_div           0            0    49152000          0
+             dpll_abe_m2x2_ck             1            2   196608000          0
+                abe_lp_clk_div            0            0    12288000          0
+                abe_clk                   1            1   196608000          0
+                   aess_fclk              1            1   196608000          0
+                      abe_iclk           11           11    98304000          0
+                abe_24m_fclk              0            4    24576000          0
+                   mcbsp3_sync_mux_ck           0            2    24576000          0
+                      mcbsp3_gfclk           0            1    24576000          0
+                   mcbsp2_sync_mux_ck           0            2    24576000          0
+                      mcbsp2_gfclk           0            1    24576000          0
+                   mcbsp1_sync_mux_ck           0            2    24576000          0
+                      mcbsp1_gfclk           0            1    24576000          0
+                   mcasp_sync_mux_ck           0            0    24576000          0
+                      mcasp_gfclk           0            0    24576000          0
+                   dmic_sync_mux_ck           0            1    24576000          0
+                      dmic_gfclk           0            1    24576000          0
+    gpio1_dbclk                           0            1       32768          0
+    timer1_gfclk_mux                      1            1       32768          0
+ slimbus_src_clk                          0            0    12000000          0
+    slimbus_clk                           0            0    12000000          0
+       slimbus1_slimbus_clk               0            0    12000000          0
+ secure_32k_clk_src_ck                    0            0       32768          0
+ pad_clks_src_ck                          0            1    12000000          0
+    pad_clks_ck                           0            4    12000000          0
+=======
+Orphan Clks:
+=======
+Hello World Board Booted
+root@omap5-evm:/test# 
+- 06:34:09 [INFO] Host: cat stderr.log
+- 06:34:09 [INFO] Target: 
+cat stderr.log
+ls: /sys/kernel/debug/clk/orphans/: No such file or directory
+root@omap5-evm:/test# 
+- 06:34:09 [INFO] Host: cat result.log
+- 06:34:11 [ERROR] On command: cat result.log waiting for (?m-ix:^1[\0\n\r]+) >>> error: execution expired
+- 06:34:11 [INFO] Target: 
+cat result.log
+root@omap5-evm:/test# 
+- 06:34:11 [INFO] Host: cd /test
+- 06:34:12 [INFO] Target: 
+cd /test
+root@omap5-evm:/test# 
