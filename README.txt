@@ -1,5 +1,5 @@
 Automated logs for TAG=v3.16-rc7
-Mon Jul 28 03:29:29 CDT 2014
+Sun Aug  3 03:34:04 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -31,7 +31,7 @@ multi_v7_defconfig
 TOTAL = 20 boards, Booted Boards = 12, No Boot boards = 8
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
- 1: am335x-evm:  Boot PASS: am335x-evm.txt
+ 1: am335x-evm:  Boot FAIL: am335x-evm.txt
  2:  am335x-sk:  Boot PASS: am335x-sk.txt
  3: am3517-evm:  Boot PASS: am3517-evm.txt
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
@@ -41,7 +41,7 @@ omap2plus_defconfig
  8: beagleboard-vanilla:  Boot FAIL: beagleboard-vanilla.txt
  9: beaglebone-black:  Boot PASS: beaglebone-black.txt
 10: beaglebone:  Boot PASS: beaglebone.txt
-11: craneboard:  Boot FAIL: craneboard.txt
+11: craneboard:  Boot PASS: craneboard.txt
 12: dra72x-evm:  Boot FAIL: dra72x-evm.txt
 13: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
 14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
