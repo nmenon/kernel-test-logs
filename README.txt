@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20140805
-Tue Aug  5 06:52:32 CDT 2014
+Automated logs for TAG=next-20140806
+Wed Aug  6 06:45:14 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -26,9 +26,9 @@ multi_v7_defconfig
 16:  omap5-evm:  Boot FAIL: omap5-evm.txt
 17: pandaboard-es:  Boot FAIL: pandaboard-es.txt
 18: pandaboard-vanilla:  Boot FAIL: pandaboard-vanilla.txt
-19:    sdp3430:  Boot FAIL: sdp3430.txt
+19:    sdp3430:  Boot PASS: sdp3430.txt
 20:    sdp4430:  Boot PASS: sdp4430.txt
-TOTAL = 20 boards, Booted Boards = 10, No Boot boards = 10
+TOTAL = 20 boards, Booted Boards = 11, No Boot boards = 9
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1: am335x-evm:  Boot FAIL: am335x-evm.txt
@@ -39,15 +39,17 @@ omap2plus_defconfig
  6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
  7: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
  8: beagleboard-vanilla:  Boot FAIL: beagleboard-vanilla.txt
- 9: beaglebone:  Boot PASS: beaglebone.txt
-10: craneboard:  Boot PASS: craneboard.txt
-11: dra72x-evm:  Boot FAIL: dra72x-evm.txt
-12: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
-13: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
-14:       n900:  Boot PASS: n900.txt
-15: pandaboard-es:  Boot FAIL: pandaboard-es.txt
-16: pandaboard-vanilla: No Image built - Missing platform support?: 
-17:    sdp2430:  Boot PASS: sdp2430.txt
-18:    sdp3430:  Boot PASS: sdp3430.txt
-19:    sdp4430:  Boot PASS: sdp4430.txt
-TOTAL = 19 boards, Booted Boards = 13, No Boot boards = 6
+ 9: beaglebone-black:  Boot FAIL: beaglebone-black.txt
+10: beaglebone:  Boot PASS: beaglebone.txt
+11: craneboard:  Boot PASS: craneboard.txt
+12: dra72x-evm:  Boot FAIL: dra72x-evm.txt
+13: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
+14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
+15:       n900:  Boot PASS: n900.txt
+16:  omap5-evm:  Boot PASS: omap5-evm.txt
+17: pandaboard-es:  Boot FAIL: pandaboard-es.txt
+18: pandaboard-vanilla:  Boot FAIL: pandaboard-vanilla.txt
+19:    sdp2430:  Boot PASS: sdp2430.txt
+20:    sdp3430:  Boot PASS: sdp3430.txt
+21:    sdp4430:  Boot PASS: sdp4430.txt
+TOTAL = 21 boards, Booted Boards = 14, No Boot boards = 7
