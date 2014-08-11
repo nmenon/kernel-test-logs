@@ -1,5 +1,5 @@
 Automated logs for TAG=v3.16
-Sun Aug 10 03:32:54 CDT 2014
+Mon Aug 11 03:23:59 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -26,9 +26,9 @@ multi_v7_defconfig
 16:  omap5-evm:  Boot FAIL: omap5-evm.txt
 17: pandaboard-es:  Boot FAIL: pandaboard-es.txt
 18: pandaboard-vanilla:  Boot FAIL: pandaboard-vanilla.txt
-19:    sdp3430:  Boot PASS: sdp3430.txt
+19:    sdp3430:  Boot FAIL: sdp3430.txt
 20:    sdp4430:  Boot PASS: sdp4430.txt
-TOTAL = 20 boards, Booted Boards = 12, No Boot boards = 8
+TOTAL = 20 boards, Booted Boards = 11, No Boot boards = 9
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1: am335x-evm:  Boot PASS: am335x-evm.txt
