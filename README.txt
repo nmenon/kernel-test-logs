@@ -1,11 +1,11 @@
-Automated logs for TAG=next-20140811
-Mon Aug 11 06:36:37 CDT 2014
+Automated logs for TAG=next-20140812
+Tue Aug 12 06:33:54 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
  2: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
- 3:  omap5-evm:  Boot PASS: omap5-evm.txt
-TOTAL = 3 boards, Booted Boards = 2, No Boot boards = 1
+ 3:  omap5-evm:  Boot FAIL: omap5-evm.txt
+TOTAL = 3 boards, Booted Boards = 1, No Boot boards = 2
 ====defconfig=multi_v7_defconfig===
 multi_v7_defconfig
  1: am335x-evm:  Boot PASS: am335x-evm.txt
