@@ -1,278 +1,267 @@
-- 06:30:02 [INFO] Starting target session
-- 06:30:02 [INFO] Connected to dra7xx-evm via serial 
-- 06:30:02 [INFO] Host: #check prompt
-- 06:30:04 [ERROR] On command: #check prompt waiting for (?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
-- 06:30:04 [INFO] Target: 
-#check prompt
-root@dra7xx-evm:/test# 
-- 06:30:04 [INFO] Host: #check prompt
-- 06:30:05 [INFO] Target: 
-#check prompt
-root@dra7xx-evm:/test# 
-- 06:30:05 [INFO] Host: sync;poweroff
-- 06:30:19 [INFO] Target: 
-sync;poweroff
+- 06:34:38 [INFO] Starting target session
+- 06:34:39 [INFO] Connected to dra7xx-evm via serial 
+- 06:34:39 [INFO] Host: #check prompt
+- 06:34:41 [ERROR] On command: #check prompt waiting for (?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
+- 06:34:41 [INFO] Target: 
+check prompt
+Password: 
+- 06:34:41 [INFO] Host: #check prompt
+- 06:34:43 [ERROR] On command: #check prompt waiting for (?-mix:root@.+[@:#]+) >>> error: execution expired
+- 06:34:43 [INFO] Target: 
 
 
-Broadcast message from root@dra7xx-evm (ttyO0) (Fri Apr 25 04:56:07 2014):
-
-
-
-The system is going down for system halt NOW!
-
-
-INIT: Sw
-INIT: Sending processes the TERM signal
-
-root@dra7xx-evm:/test# 
-INIT: Sending procesStopping telnet daemon.
-Stopping system message bus: dbus.
-Error opening /dev/fb0: No such file or directory
-Stopping syslogd/klogd: stopped syslogd (pid 1482)
-stopped klogd (pid 1485)
-done
-Stopping thttpd.
-ALSA: Storing mixer settings...
-/usr/sbin/alsactl: save_state:1590: No soundcards found...
-Deconfiguring network interfaces... ifdown: interface eth0 not configured
-done.
-Sending all processes the TERM signal...
-Sending all processes the KILL signal...
-Unmounting remote filesystems...
-Deactivating swap...
-Unmounting local filesystems...
-[ 7782.288573] reboot: System halted
-
-- 06:30:19 [INFO] Disconnected serial from dra7xx-evm
-- 06:30:40 [INFO] Connected to dra7xx-evm via serial 
-- 06:30:40 [INFO] Host: 
-- 06:30:41 [ERROR] On command:  waiting for (?-mix:U-Boot#) >>> error: execution expired
-- 06:30:41 [INFO] Target: 
+- 06:34:43 [INFO] Disconnected serial from dra7xx-evm
+- 06:35:04 [INFO] Connected to dra7xx-evm via serial 
+- 06:35:04 [INFO] Host: 
+- 06:35:04 [INFO] Target: 
  0 
 U-Boot# 
-- 06:30:41 [INFO] Host: 
-- 06:30:41 [INFO] Target: 
-
-U-Boot# 
-- 06:30:41 [INFO] Host: version
-- 06:30:42 [INFO] Target: 
+- 06:35:04 [INFO] Host: version
+- 06:35:05 [INFO] Target: 
 version
 
-U-Boot 2014.07 (Jul 14 2014 - 13:25:06)
+U-Boot 2013.10-ge2176ac (Jan 15 2014 - 15:54:20)
 arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
 GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
 U-Boot# 
-- 06:30:42 [INFO] Host: bdi
-- 06:30:42 [INFO] Target: 
+- 06:35:05 [INFO] Host: bdi
+- 06:35:05 [INFO] Target: 
 bdi
-arch_number = 0x00000000
+arch_number = 0x0111631E
 boot_params = 0x80000100
 DRAM bank   = 0x00000000
 -> start    = 0x80000000
--> size     = 0x60000000
+-> size     = 0x5F000000
 eth0name    = cpsw
-ethaddr     = c4:ed:ba:c2:1b:54
+ethaddr     = c4:ed:ba:be:4f:36
 current eth = cpsw
 ip_addr     = <NULL>
 baudrate    = 115200 bps
-TLB addr    = 0xDFFF0000
-relocaddr   = 0xDFF5E000
-reloc off   = 0x5F75E000
-irq_sp      = 0xDEF3DEE0
-sp start    = 0xDEF3DED0
+TLB addr    = 0xDEFF0000
+relocaddr   = 0xDEF54000
+reloc off   = 0x5E754000
+irq_sp      = 0xDEE33F38
+sp start    = 0xDEE33F28
 U-Boot# 
-- 06:30:42 [INFO] Host: printenv
-- 06:30:43 [INFO] Target: 
+- 06:35:05 [INFO] Host: printenv
+- 06:35:06 [INFO] Target: 
 printenv
 arch=arm
 baudrate=115200
 board=dra7xx
 board_name=dra7xx
-bootcmd=run findfdt; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; setenv mmcroot /dev/mmcblk0p2 rw; run mmcboot;
-bootdelay=1
+boot_targets=usb mmc0 nand 
+bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
 bootdir=/boot
 bootfile=zImage
-bootm_size=0x10000000
 bootpart=0:2
 bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
 console=ttyO0,115200n8
 cpu=armv7
-eth1addr=c4:ed:ba:c2:1b:55
+eth1addr=c4:ed:ba:be:4f:37
 ethact=cpsw
-ethaddr=c4:ed:ba:c2:1b:54
-fdt_addr_r=0x88000000
-fdtaddr=0x88000000
+ethaddr=c4:ed:ba:be:4f:36
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
 fdtfile=undefined
-findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $board_name = dra7xx; then setenv fdtfile dra7-evm.dtb; fi;if test $board_name = dra72x; then setenv fdtfile dra72-evm.dtb; fi;if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+findfdt=if test $board_name = dra7xx; then setenv fdtfile dra7-evm.dtb; fi;if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
 importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
-kernel_addr_r=0x82000000
-loadaddr=0x82000000
+loadaddr=0x80200000
 loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
 loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
-loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
 loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
 mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
 mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
 mmcdev=0
 mmcroot=/dev/mmcblk1p2 rw
 mmcrootfstype=ext4 rootwait
-partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
-ramdisk_addr_r=0x88080000
-rdaddr=0x88080000
-scsidevs=0
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:128k(SPL),128k(SPL.backup1),128k(SPL.backup2),640k(SPL.backup3),1m(u-boot),512k(u-boot-spl-os),256k(u-boot-env),256k(u-boot-env.backup1),5m(kernel),-(rootfs)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} u-boot-spl-os; nand read ${loadaddr} kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=9,2048
+nandrootfstype=ubifs rootwait=1
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=1
 soc=omap5
 stderr=serial
 stdin=serial
 stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${mmcroot} rootfstype=${mmcrootfstype}
 usbtty=cdc_acm
 vendor=ti
-ver=U-Boot 2014.07 (Jul 14 2014 - 13:25:06)
+ver=U-Boot 2013.10-ge2176ac (Jan 15 2014 - 15:54:20)
 vram=16M
 
-Environment size: 2085/131067 bytes
+Environment size: 3188/131067 bytes
 U-Boot# 
-- 06:30:43 [INFO] Host: setenv autoload 'no'
-- 06:30:43 [INFO] Target: 
+- 06:35:06 [INFO] Host: setenv autoload 'no'
+- 06:35:06 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 06:30:43 [INFO] Host: usb start
-- 06:30:46 [INFO] Target: 
+- 06:35:06 [INFO] Host: usb start
+- 06:35:08 [INFO] Target: 
 usb start
 (Re)start USB...
 USB0:   Register 2000140 NbrPorts 2
 Starting the controller
 USB XHCI 1.00
 scanning bus 0 for devices... 2 USB Device(s) found
-       scanning usb for storage devices... 1 Storage Device(s) found
+       scanning usb for storage devices... Device NOT ready
+   Request Sense returned 02 3A 00
+2 Storage Device(s) found
 U-Boot# 
-- 06:30:46 [INFO] Host: dhcp
-- 06:30:47 [INFO] Target: 
+- 06:35:08 [INFO] Host: dhcp
+- 06:35:09 [INFO] Target: 
 dhcp
-cpsw Waiting for PHY auto negotiation to complete. done
 link up on port 0, speed 1000, full duplex
 BOOTP broadcast 1
-DHCP client bound to address 192.168.0.205
+DHCP client bound to address 192.168.0.133
 U-Boot# 
-- 06:30:47 [INFO] Host: setenv serverip 192.168.0.1
-- 06:30:48 [INFO] Target: 
+- 06:35:09 [INFO] Host: setenv serverip 192.168.0.1
+- 06:35:10 [INFO] Target: 
 setenv serverip 192.168.0.1
 U-Boot# 
-- 06:30:48 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3'
-- 06:30:48 [INFO] Target: 
+- 06:35:10 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3'
+- 06:35:10 [INFO] Target: 
 setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3'
 U-Boot# 
-- 06:30:48 [INFO] Host: printenv
-- 06:30:49 [INFO] Target: 
+- 06:35:10 [INFO] Host: printenv
+- 06:35:11 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
 baudrate=115200
 board=dra7xx
 board_name=dra7xx
+boot_targets=usb mmc0 nand 
 bootargs=console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3
-bootcmd=run findfdt; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; setenv mmcroot /dev/mmcblk0p2 rw; run mmcboot;
-bootdelay=1
+bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
+bootcmd_mmc0=setenv devnum 0; setenv rootpart 2; run mmc_boot;
+bootcmd_nand=run nandboot;
+bootcmd_usb=setenv devnum 0; run usb_boot;
+bootdelay=3
 bootdir=/boot
 bootfile=zImage
-bootm_size=0x10000000
 bootpart=0:2
 bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
 console=ttyO0,115200n8
 cpu=armv7
 dnsip=192.0.2.2
 dnsip2=192.0.2.3
-eth1addr=c4:ed:ba:c2:1b:55
+eth1addr=c4:ed:ba:be:4f:37
 ethact=cpsw
-ethaddr=c4:ed:ba:c2:1b:54
-fdt_addr_r=0x88000000
-fdtaddr=0x88000000
+ethaddr=c4:ed:ba:be:4f:36
+fdt_high=0xa0000000
+fdtaddr=0x80F80000
 fdtfile=undefined
-findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $board_name = dra7xx; then setenv fdtfile dra7-evm.dtb; fi;if test $board_name = dra72x; then setenv fdtfile dra72-evm.dtb; fi;if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+findfdt=if test $board_name = dra7xx; then setenv fdtfile dra7-evm.dtb; fi;if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
 gatewayip=192.168.0.1
 importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
-ipaddr=192.168.0.205
-kernel_addr_r=0x82000000
-loadaddr=0x82000000
+ipaddr=192.168.0.133
+loadaddr=0x80200000
 loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
 loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
-loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
 loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmc_boot=setenv devtype mmc; if mmc dev ${devnum}; then run mmcargs;run scan_boot; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; run mmcboot;fi
 mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
 mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
 mmcdev=0
 mmcroot=/dev/mmcblk1p2 rw
 mmcrootfstype=ext4 rootwait
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:128k(SPL),128k(SPL.backup1),128k(SPL.backup2),640k(SPL.backup3),1m(u-boot),512k(u-boot-spl-os),256k(u-boot-env),256k(u-boot-env.backup1),5m(kernel),-(rootfs)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} u-boot-spl-os; nand read ${loadaddr} kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=9,2048
+nandrootfstype=ubifs rootwait=1
 netmask=255.255.255.0
-partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
-ramdisk_addr_r=0x88080000
-rdaddr=0x88080000
-scsidevs=0
+rdaddr=0x81000000
+rootpart=2
+scan_boot=echo Scanning ${devtype} ${devnum}...; for prefix in ${bootdir}; do for script in ${bootfile}; do run script_boot; done; done;
+script_boot=if load ${devtype} ${devnum}:${rootpart} ${loadaddr} ${bootdir}/${bootfile}; then run findfdt; load ${devtype} ${devnum}:${rootpart} ${fdtaddr} ${bootdir}/${fdtfile};fi;
+scsidevs=1
 serverip=192.168.0.1
 soc=omap5
 stderr=serial
 stdin=serial
 stdout=serial
+usb_boot=setenv devtype usb; run usb_init; if usb dev 0; then run usbargs;run scan_boot; bootz ${loadaddr} - ${fdtaddr}; fi
+usb_init=usb start 0;
+usbargs=setenv bootargs console=${console} ${optargs} vram=${vram}root=${mmcroot} rootfstype=${mmcrootfstype}
 usbtty=cdc_acm
 vendor=ti
-ver=U-Boot 2014.07 (Jul 14 2014 - 13:25:06)
+ver=U-Boot 2013.10-ge2176ac (Jan 15 2014 - 15:54:20)
 vram=16M
 
-Environment size: 2332/131067 bytes
+Environment size: 3435/131067 bytes
 U-Boot# 
-- 06:30:49 [INFO] Host: setenv bootcmd 'tftp ${loadaddr} 192.168.0.1:vatf_dra7xx-evm/3d53efe777aebeebc8e7bd8077fbc49a; tftp ${fdtaddr} 192.168.0.1:vatf_dra7xx-evm/e3edc8e84e748bef8f395b8088ca7f17; if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi' 
-- 06:30:49 [INFO] Target: 
-setenv bootcmd 'tftp ${loadaddr} 192.168.0.1:vatf_dra7xx-evm/3d53efe777aebeebc8e7bd8077fbc49a; tftp ${fdtaddr} 192.168.0.1:vatf_dra7xx-evm/e3edc8e84e748bef8f395b8088ca7f17; if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi' 
+- 06:35:11 [INFO] Host: setenv bootcmd 'tftp ${loadaddr} 192.168.0.1:vatf_dra7xx-evm/ddfd7979d8608ff2a2639abf73187707; tftp ${fdtaddr} 192.168.0.1:vatf_dra7xx-evm/e3edc8e84e748bef8f395b8088ca7f17; if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi' 
+- 06:35:11 [INFO] Target: 
+setenv bootcmd 'tftp ${loadaddr} 192.168.0.1:vatf_dra7xx-evm/ddfd7979d8608ff2a2639abf73187707; tftp ${fdtaddr} 192.168.0.1:vatf_dra7xx-evm/e3edc8e84e748bef8f395b8088ca7f17; if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi' 
 U-Boot# 
-- 06:30:49 [INFO] Host: boot
-- 06:31:16 [INFO] Target: 
+- 06:35:11 [INFO] Host: boot
+- 06:35:45 [INFO] Target: 
 boot
 link up on port 0, speed 1000, full duplex
 Using cpsw device
-TFTP from server 192.168.0.1; our IP address is 192.168.0.205
-Filename 'vatf_dra7xx-evm/3d53efe777aebeebc8e7bd8077fbc49a'.
-Load address: 0x82000000
+TFTP from server 192.168.0.1; our IP address is 192.168.0.133
+Filename 'vatf_dra7xx-evm/ddfd7979d8608ff2a2639abf73187707'.
+Load address: 0x80200000
 Loading: *#################################################################
 	 #################################################################
 	 #################################################################
 	 #################################################################
 	 ######################################
-	 15.4 MiB/s
+	 9.2 MiB/s
 done
-Bytes transferred = 4370008 (42ae58 hex)
+Bytes transferred = 4370152 (42aee8 hex)
 link up on port 0, speed 1000, full duplex
 Using cpsw device
-TFTP from server 192.168.0.1; our IP address is 192.168.0.205
+TFTP from server 192.168.0.1; our IP address is 192.168.0.133
 Filename 'vatf_dra7xx-evm/e3edc8e84e748bef8f395b8088ca7f17'.
-Load address: 0x88000000
+Load address: 0x80f80000
 Loading: *#####
-	 12.6 MiB/s
+	 7.9 MiB/s
 done
 Bytes transferred = 65871 (1014f hex)
 
-## Checking Image at 82000000 ...
+## Checking Image at 80200000 ...
 Unknown image format!
-Kernel image @ 0x82000000 [ 0x000000 - 0x42ae58 ]
-## Flattened Device Tree blob at 88000000
-   Booting using the fdt blob at 0x88000000
-   Loading Device Tree to 8ffec000, end 8ffff14e ... OK
+Kernel image @ 0x80200000 [ 0x000000 - 0x42aee8 ]
+## Flattened Device Tree blob at 80f80000
+   Booting using the fdt blob at 0x80f80000
+   Loading Device Tree to 9ffec000, end 9ffff14e ... OK
 
 Starting kernel ...
 
 [    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Linux version 3.16.0-next-20140814-00002-g86230cf (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Thu Aug 14 05:33:52 CDT 2014
+[    0.000000] Linux version 3.16.0-next-20140815-00002-g32ef868 (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Fri Aug 15 05:29:38 CDT 2014
 [    0.000000] CPU: ARMv7 Processor [412fc0f2] revision 2 (ARMv7), cr=10c5387d
 [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
 [    0.000000] Machine model: TI DRA742
 [    0.000000] cma: Reserved 16 MiB at ae800000
 [    0.000000] Memory policy: Data cache writealloc
 [    0.000000] DRA752 ES1.0
-[    0.000000] PERCPU: Embedded 9 pages/cpu @edb8a000 s14336 r8192 d14336 u36864
-[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 391440
+[    0.000000] PERCPU: Embedded 9 pages/cpu @edbaa000 s14336 r8192 d14336 u36864
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 387344
 [    0.000000] Kernel command line: console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3
 [    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
 [    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
 [    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
-[    0.000000] Memory: 1524648K/1571840K available (5703K kernel code, 653K rwdata, 2208K rodata, 406K init, 8211K bss, 47192K reserved, 793600K highmem)
+[    0.000000] Memory: 1508392K/1555456K available (5703K kernel code, 653K rwdata, 2208K rodata, 406K init, 8211K bss, 47064K reserved, 777216K highmem)
 [    0.000000] Virtual kernel memory layout:
 [    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
 [    0.000000]     fixmap  : 0xffc00000 - 0xffe00000   (2048 kB)
@@ -280,7 +269,7 @@ Starting kernel ...
 [    0.000000]     lowmem  : 0xc0000000 - 0xef800000   ( 760 MB)
 [    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
 [    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
-[    0.000000]       .text : 0xc0008000 - 0xc07c1f2c   (7912 kB)
+[    0.000000]       .text : 0xc0008000 - 0xc07c1f34   (7912 kB)
 [    0.000000]       .init : 0xc07c2000 - 0xc0827800   ( 406 kB)
 [    0.000000]       .data : 0xc0828000 - 0xc08cb5c8   ( 654 kB)
 [    0.000000]        .bss : 0xc08cb5c8 - 0xc10d01d8   (8212 kB)
@@ -288,699 +277,684 @@ Starting kernel ...
 [    0.000000] NR_IRQS:16 nr_irqs:16 16
 [    0.000000] omap3_noncore_dpll_set_rate: dpll_gpu_ck: final rate 22574257 does not match desired rate 22579200
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047edd0>] (atl_clk_set_rate+0x10/0x2c)
-[    0.000000] [<c047edd0>] (atl_clk_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047ede4>] (atl_clk_set_rate+0x10/0x2c)
+[    0.000000] [<c047ede4>] (atl_clk_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047edd0>] (atl_clk_set_rate+0x10/0x2c)
-[    0.000000] [<c047edd0>] (atl_clk_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047ede4>] (atl_clk_set_rate+0x10/0x2c)
+[    0.000000] [<c047ede4>] (atl_clk_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047edd0>] (atl_clk_set_rate+0x10/0x2c)
-[    0.000000] [<c047edd0>] (atl_clk_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047ede4>] (atl_clk_set_rate+0x10/0x2c)
+[    0.000000] [<c047ede4>] (atl_clk_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047edd0>] (atl_clk_set_rate+0x10/0x2c)
-[    0.000000] [<c047edd0>] (atl_clk_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047ede4>] (atl_clk_set_rate+0x10/0x2c)
+[    0.000000] [<c047ede4>] (atl_clk_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] Division by zero in kernel.
-[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
+[    0.000000] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
 [    0.000000] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.000000] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.000000] [<c055f3f4>] (dump_stack) from [<c02e17ec>] (Ldiv0+0x8/0x10)
-[    0.000000] [<c02e17ec>] (Ldiv0) from [<c047e0a8>] (ti_clk_divider_set_rate+0x14/0x14c)
-[    0.000000] [<c047e0a8>] (ti_clk_divider_set_rate) from [<c047b7b8>] (clk_change_rate+0x138/0x180)
-[    0.000000] [<c047b7b8>] (clk_change_rate) from [<c047b788>] (clk_change_rate+0x108/0x180)
+[    0.000000] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.000000] [<c055f454>] (dump_stack) from [<c02e180c>] (Ldiv0+0x8/0x10)
+[    0.000000] [<c02e180c>] (Ldiv0) from [<c047e0bc>] (ti_clk_divider_set_rate+0x14/0x14c)
+[    0.000000] [<c047e0bc>] (ti_clk_divider_set_rate) from [<c047b7cc>] (clk_change_rate+0x138/0x180)
+[    0.000000] [<c047b7cc>] (clk_change_rate) from [<c047b79c>] (clk_change_rate+0x108/0x180)
 [    0.000000] OMAP clockevent source: timer1 at 32768 Hz
-[    0.000000] sched_clock: 32 bits at 32kHz, resolution 30517ns, wraps every 65536000000000ns
-[    0.000000] OMAP clocksource: 32k_counter at 32768 Hz
+[    0.000030] sched_clock: 32 bits at 32kHz, resolution 30517ns, wraps every 65536000000000ns
+[    0.000030] OMAP clocksource: 32k_counter at 32768 Hz
 [    0.000457] Architected cp15 timer(s) running at 6.14MHz (virt).
 [    0.000493] sched_clock: 56 bits at 6MHz, resolution 162ns, wraps every 2796202663936ns
 [    0.000504] Switching to timer-based delay loop, resolution 162ns
-[    0.001555] Console: colour dummy device 80x30
-[    0.001587] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
-[    0.001594] ... MAX_LOCKDEP_SUBCLASSES:  8
-[    0.001600] ... MAX_LOCK_DEPTH:          48
-[    0.001607] ... MAX_LOCKDEP_KEYS:        8191
-[    0.001613] ... CLASSHASH_SIZE:          4096
-[    0.001619] ... MAX_LOCKDEP_ENTRIES:     32768
-[    0.001625] ... MAX_LOCKDEP_CHAINS:      65536
-[    0.001632] ... CHAINHASH_SIZE:          32768
-[    0.001638]  memory used by lock dependency info: 5167 kB
-[    0.001644]  per task-struct memory footprint: 1152 bytes
-[    0.001675] Calibrating delay loop (skipped), value calculated using timer frequency.. 12.28 BogoMIPS (lpj=61440)
-[    0.001688] pid_max: default: 32768 minimum: 301
-[    0.002002] Security Framework initialized
-[    0.002096] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
-[    0.002108] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
-[    0.003776] CPU: Testing write buffer coherency: ok
-[    0.004573] /cpus/cpu@0 missing clock-frequency property
-[    0.004606] /cpus/cpu@1 missing clock-frequency property
-[    0.004617] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
-[    0.004666] Setting up static identity map for 0x805677d8 - 0x80567848
-[    0.008511] CPU1: Booted secondary processor
-[    0.008547] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
-[    0.008971] Brought up 2 CPUs
-[    0.008984] SMP: Total of 2 processors activated.
-[    0.008991] CPU: All CPU(s) started in SVC mode.
-[    0.010968] devtmpfs: initialized
-[    0.012307] VFP support v0.3: implementor 41 architecture 4 part 30 variant f rev 0
-[    0.012396] omap_hwmod: l3_main_2 using broken dt data from ocp
-[    0.030674] ------------[ cut here ]------------
-[    0.030689] WARNING: CPU: 0 PID: 1 at arch/arm/mach-omap2/omap_hwmod.c:2538 _init+0x1c0/0x3e0()
-[    0.030696] omap_hwmod: gmac: doesn't have mpu register target base
-[    0.030703] Modules linked in:
-[    0.030716] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 3.16.0-next-20140814-00002-g86230cf #1
-[    0.030736] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.030755] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.030770] [<c055f3f4>] (dump_stack) from [<c0041098>] (warn_slowpath_common+0x6c/0x8c)
-[    0.030783] [<c0041098>] (warn_slowpath_common) from [<c004114c>] (warn_slowpath_fmt+0x30/0x40)
-[    0.030796] [<c004114c>] (warn_slowpath_fmt) from [<c07cf1b8>] (_init+0x1c0/0x3e0)
-[    0.030812] [<c07cf1b8>] (_init) from [<c0028a60>] (omap_hwmod_for_each+0x34/0x5c)
-[    0.030825] [<c0028a60>] (omap_hwmod_for_each) from [<c07cf92c>] (__omap_hwmod_setup_all+0x24/0x40)
-[    0.030838] [<c07cf92c>] (__omap_hwmod_setup_all) from [<c00089a4>] (do_one_initcall+0x80/0x1d4)
-[    0.030851] [<c00089a4>] (do_one_initcall) from [<c07c2cbc>] (kernel_init_freeable+0x108/0x1d8)
-[    0.030863] [<c07c2cbc>] (kernel_init_freeable) from [<c0559fb8>] (kernel_init+0x8/0xe4)
-[    0.030876] [<c0559fb8>] (kernel_init) from [<c000e648>] (ret_from_fork+0x14/0x2c)
-[    0.030915] ---[ end trace 700b8ad1bc7bfb40 ]---
-[    0.091066] ------------[ cut here ]------------
-[    0.091079] WARNING: CPU: 0 PID: 1 at arch/arm/mach-omap2/omap_hwmod.c:2538 _init+0x1c0/0x3e0()
-[    0.091086] omap_hwmod: rtcss: doesn't have mpu register target base
-[    0.091092] Modules linked in:
-[    0.091105] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W      3.16.0-next-20140814-00002-g86230cf #1
-[    0.091122] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
-[    0.091137] [<c0011a08>] (show_stack) from [<c055f3f4>] (dump_stack+0x78/0x94)
-[    0.091151] [<c055f3f4>] (dump_stack) from [<c0041098>] (warn_slowpath_common+0x6c/0x8c)
-[    0.091164] [<c0041098>] (warn_slowpath_common) from [<c004114c>] (warn_slowpath_fmt+0x30/0x40)
-[    0.091177] [<c004114c>] (warn_slowpath_fmt) from [<c07cf1b8>] (_init+0x1c0/0x3e0)
-[    0.091191] [<c07cf1b8>] (_init) from [<c0028a60>] (omap_hwmod_for_each+0x34/0x5c)
-[    0.091204] [<c0028a60>] (omap_hwmod_for_each) from [<c07cf92c>] (__omap_hwmod_setup_all+0x24/0x40)
-[    0.091216] [<c07cf92c>] (__omap_hwmod_setup_all) from [<c00089a4>] (do_one_initcall+0x80/0x1d4)
-[    0.091229] [<c00089a4>] (do_one_initcall) from [<c07c2cbc>] (kernel_init_freeable+0x108/0x1d8)
-[    0.091242] [<c07c2cbc>] (kernel_init_freeable) from [<c0559fb8>] (kernel_init+0x8/0xe4)
-[    0.091254] [<c0559fb8>] (kernel_init) from [<c000e648>] (ret_from_fork+0x14/0x2c)
-[    0.091262] ---[ end trace 700b8ad1bc7bfb41 ]---
-[    0.133635] omap_hwmod: dss_core: _wait_target_disable failed
-[    0.133649] omap_hwmod: dss_core: cannot be enabled for reset (3)
-[    0.136133] omap_hwmod: dss_dispc: cannot be enabled for reset (3)
-[    0.138625] omap_hwmod: dss_hdmi: cannot be enabled for reset (3)
-[    0.209593] omap_hwmod: pcie1: _wait_target_disable failed
-[    0.215813] omap_hwmod: pcie2: _wait_target_disable failed
-[    0.218887] pinctrl core: initialized pinctrl subsystem
-[    0.220745] regulator-dummy: no parameters
-[    0.268720] NET: Registered protocol family 16
-[    0.272808] DMA: preallocated 256 KiB pool for atomic coherent allocations
-[    0.274293] cpuidle: using governor ladder
-[    0.274312] cpuidle: using governor menu
-[    0.277007] omap_l3_noc 44000000.ocp: L3 debug error: target 2 mod:1 (unclearable)
-[    0.277100] omap_l3_noc 44000000.ocp: L3 application error: target 2 mod:1 (unclearable)
-[    0.282540] OMAP GPIO hardware version 0.1
-[    0.298550] platform 4e000000.dmm: Cannot lookup hwmod 'dmm'
-[    0.307741] omap-gpmc 50000000.gpmc: could not find pctldev for node /ocp/pinmux@4a003400/nand_flash_x16, deferring probe
-[    0.307764] platform 50000000.gpmc: Driver omap-gpmc requests probe deferral
-[    0.308982] No ATAGs?
-[    0.309043] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
-[    0.309052] hw-breakpoint: maximum watchpoint size is 8 bytes.
-[    0.311168] OMAP DMA hardware revision 0.0
-[    0.363222] edma-dma-engine edma-dma-engine.0: Can't allocate PaRAM dummy slot
-[    0.363263] edma-dma-engine: probe of edma-dma-engine.0 failed with error -22
-[    0.390143] omap-dma-engine 4a056000.dma-controller: OMAP DMA engine driver
-[    0.391133] mmc2_3v3: 3300 mV 
-[    0.394035] SCSI subsystem initialized
-[    0.394605] usbcore: registered new interface driver usbfs
-[    0.394735] usbcore: registered new interface driver hub
-[    0.394951] usbcore: registered new device driver usb
-[    0.395690] omap_i2c 48070000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c1_pins, deferring probe
-[    0.395713] platform 48070000.i2c: Driver omap_i2c requests probe deferral
-[    0.395763] omap_i2c 48072000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c2_pins, deferring probe
-[    0.395782] platform 48072000.i2c: Driver omap_i2c requests probe deferral
-[    0.395830] omap_i2c 48060000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c3_pins, deferring probe
-[    0.395849] platform 48060000.i2c: Driver omap_i2c requests probe deferral
-[    0.399333] Switched to clocksource arch_sys_counter
-[    0.507578] NET: Registered protocol family 2
-[    0.508905] TCP established hash table entries: 8192 (order: 3, 32768 bytes)
-[    0.509100] TCP bind hash table entries: 8192 (order: 6, 294912 bytes)
-[    0.511416] TCP: Hash tables configured (established 8192 bind 8192)
-[    0.511535] TCP: reno registered
-[    0.511556] UDP hash table entries: 512 (order: 3, 40960 bytes)
-[    0.511867] UDP-Lite hash table entries: 512 (order: 3, 40960 bytes)
-[    0.512831] NET: Registered protocol family 1
-[    0.513725] RPC: Registered named UNIX socket transport module.
-[    0.513735] RPC: Registered udp transport module.
-[    0.513743] RPC: Registered tcp transport module.
-[    0.513751] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[    0.518207] futex hash table entries: 512 (order: 3, 32768 bytes)
-[    0.520786] VFS: Disk quotas dquot_6.5.2
-[    0.520887] Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
-[    0.522395] NFS: Registering the id_resolver key type
-[    0.522607] Key type id_resolver registered
-[    0.522616] Key type id_legacy registered
-[    0.522711] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
-[    0.523099] msgmni has been set to 1459
-[    0.525094] bounce: pool size: 64 pages
-[    0.525143] io scheduler noop registered
-[    0.525161] io scheduler deadline registered
-[    0.525223] io scheduler cfq registered (default)
-[    0.528389] platform 4a084000.phy: Driver omap-usb2 requests probe deferral
-[    0.528597] platform 4a085000.phy: Driver omap-usb2 requests probe deferral
-[    0.532048] pinctrl-single 4a003400.pinmux: 281 pins at pa fc003400 size 1124
-[    0.533795] pbias_mmc_omap5: 1800 <--> 3000 mV at 3000 mV 
-[    0.534792] abb_mpu: 1060 <--> 1210 mV 
-[    0.535433] abb_ivahd: 1055 <--> 1250 mV 
-[    0.536009] abb_dspeve: 1055 <--> 1250 mV 
-[    0.536620] abb_gpu: 1090 <--> 1280 mV 
-[    0.539168] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
-[    0.543320] omap_uart 4806a000.serial: no wakeirq for uart0
-[    0.543615] 4806a000.serial: ttyO0 at MMIO 0x4806a000 (irq = 294, base_baud = 3000000) is a OMAP UART0
-[    4.915979] console [ttyO0] enabled
-[    4.921088] omap_uart 4806c000.serial: no wakeirq for uart0
-[    4.927088] 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 295, base_baud = 3000000) is a OMAP UART1
-[    4.937698] omap_uart 48020000.serial: no wakeirq for uart0
-[    4.943791] 48020000.serial: ttyO2 at MMIO 0x48020000 (irq = 296, base_baud = 3000000) is a OMAP UART2
-[    4.971277] brd: module loaded
-[    4.984142] loop: module loaded
-[    4.989600] mtdoops: mtd device (mtddev=name/number) must be supplied
-[    5.000586] usbcore: registered new interface driver asix
-[    5.006343] usbcore: registered new interface driver ax88179_178a
-[    5.012828] usbcore: registered new interface driver cdc_ether
-[    5.019065] usbcore: registered new interface driver smsc95xx
-[    5.025182] usbcore: registered new interface driver net1080
-[    5.031221] usbcore: registered new interface driver cdc_subset
-[    5.037512] usbcore: registered new interface driver zaurus
-[    5.043517] usbcore: registered new interface driver cdc_ncm
-[    5.050082] usbcore: registered new interface driver cdc_wdm
-[    5.056150] usbcore: registered new interface driver usb-storage
-[    5.062600] usbcore: registered new interface driver usbtest
-[    5.070341] mousedev: PS/2 mouse device common for all mice
-[    5.077976] i2c /dev entries driver
-[    5.081696] Driver for 1-wire Dallas network protocol.
-[    5.089409] omap_hsmmc 4809c000.mmc: unable to get vmmc regulator -517
-[    5.096422] platform 4809c000.mmc: Driver omap_hsmmc requests probe deferral
-[    5.139730] ledtrig-cpu: registered to indicate activity on CPUs
-[    5.146392] usbcore: registered new interface driver usbhid
-[    5.152230] usbhid: USB HID core driver
-[    5.157325] oprofile: no performance counters
-[    5.162530] oprofile: using timer interrupt.
-[    5.167350] TCP: cubic registered
-[    5.170832] Initializing XFRM netlink socket
-[    5.175363] NET: Registered protocol family 17
-[    5.180074] NET: Registered protocol family 15
-[    5.182695] mmc0: BKOPS_EN bit is not set
-[    5.185241] mmc0: new high speed MMC card at address 0001
-[    5.186741] mmcblk0: mmc0:0001 MMC04G 3.52 GiB 
-[    5.189243] mmcblk0boot0: mmc0:0001 MMC04G partition 1 16.0 MiB
-[    5.189464] mmcblk0boot1: mmc0:0001 MMC04G partition 2 16.0 MiB
-[    5.193170]  mmcblk0: p1
-[    5.196470]  mmcblk0boot1: unknown partition table
-[    5.198835]  mmcblk0boot0: unknown partition table
-[    5.224537] Key type dns_resolver registered
-[    5.229125] omap_voltage_late_init: Voltage driver support not added
-[    5.235787] sr_dev_init: Unable to get voltage domain pointer for VDD core
-[    5.242990] sr_dev_init: Unable to get voltage domain pointer for VDD mpu
-[    5.250700] ThumbEE CPU extension supported.
-[    5.255192] Registering SWP/SWPB emulation handler
-[    5.260224] SmartReflex Class3 initialized
-[    5.267443] omap-gpmc 50000000.gpmc: GPMC revision 6.0
-[    5.274023] nand: No NAND device found
-[    5.277943] nand device scan failed, may be bus-width mismatch
-[    5.288707] palmas 0-0058: IRQ missing: skipping irq request
-[    5.295693] palmas 0-0058: Muxing GPIO 2e, PWM 0, LED 0
-[    5.304724] smps123: 850 <--> 1250 mV at 1060 mV 
-[    5.312010] smps45: 850 <--> 1150 mV at 1060 mV 
-[    5.319120] smps6: 850 <--> 1650 mV at 1060 mV 
-[    5.326073] smps7: 850 <--> 1030 mV at 1030 mV 
-[    5.333107] smps8: 850 <--> 1250 mV at 1060 mV 
-[    5.340020] smps9: 1800 mV 
-[    5.344813] ldo1: 1800 <--> 3300 mV at 3300 mV 
-[    5.351746] ldo2: 3300 mV 
-[    5.356773] ldo3: 1800 mV 
-[    5.360950] LDO4: at 1800 mV 
-[    5.365029] LDO5: no parameters
-[    5.369322] LDO6: no parameters
-[    5.373538] LDO7: no parameters
-[    5.377734] LDO8: no parameters
-[    5.382875] ldo9: 1050 mV 
-[    5.387940] ldoln: 1800 mV 
-[    5.393085] ldousb: 3300 mV 
-[    5.397198] REGEN1: no parameters
-[    5.401130] REGEN2: no parameters
-[    5.405028] REGEN3: no parameters
-[    5.408910] SYSEN1: no parameters
-[    5.412812] SYSEN2: no parameters
-[    5.416526] omap_i2c 48070000.i2c: bus 0 rev0.12 at 400 kHz
-[    5.423799] omap_i2c 48072000.i2c: bus 1 rev0.12 at 400 kHz
-[    5.431006] omap_i2c 48060000.i2c: bus 2 rev0.12 at 3400 kHz
-[    5.480756] drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
-[    5.487329] sr_init: No PMIC hook to init smartreflex
-[    5.492840] sr_init: platform driver register failed for SR
-[    5.610904] mmc1: host does not support reading read-only switch. assuming write-enable.
-[    5.622975] mmc1: new high speed SD card at address e624
-[    5.629423] mmcblk1: mmc1:e624 SU02G 1.84 GiB 
-[    5.636457]  mmcblk1: p1 p2 p3
-[   17.649767] ldousb: disabling
-[   17.653505] ldo9: disabling
-[   17.657052] ldo2: disabling
-[   17.660582] smps8: disabling
-[   17.664181] smps6: disabling
-[   17.667815] smps45: disabling
-[   17.687160] kjournald starting.  Commit interval 5 seconds
-[   17.702213] EXT3-fs (mmcblk1p2): using internal journal
-[   17.707680] EXT3-fs (mmcblk1p2): mounted filesystem with ordered data mode
-[   17.714962] VFS: Mounted root (ext3 filesystem) on device 179:26.
-[   17.726546] devtmpfs: mounted
-[   17.730034] Freeing unused kernel memory: 404K (c07c2000 - c0827000)
+[    0.001545] Console: colour dummy device 80x30
+[    0.001577] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.001585] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.001591] ... MAX_LOCK_DEPTH:          48
+[    0.001598] ... MAX_LOCKDEP_KEYS:        8191
+[    0.001604] ... CLASSHASH_SIZE:          4096
+[    0.001611] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.001617] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.001623] ... CHAINHASH_SIZE:          32768
+[    0.001630]  memory used by lock dependency info: 5167 kB
+[    0.001636]  per task-struct memory footprint: 1152 bytes
+[    0.001667] Calibrating delay loop (skipped), value calculated using timer frequency.. 12.28 BogoMIPS (lpj=61440)
+[    0.001681] pid_max: default: 32768 minimum: 301
+[    0.001996] Security Framework initialized
+[    0.002092] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.002103] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.003766] CPU: Testing write buffer coherency: ok
+[    0.004558] /cpus/cpu@0 missing clock-frequency property
+[    0.004593] /cpus/cpu@1 missing clock-frequency property
+[    0.004604] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.004654] Setting up static identity map for 0x80567818 - 0x80567888
+[    0.008493] CPU1: Booted secondary processor
+[    0.008528] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.008954] Brought up 2 CPUs
+[    0.008967] SMP: Total of 2 processors activated.
+[    0.008975] CPU: All CPU(s) started in SVC mode.
+[    0.010970] devtmpfs: initialized
+[    0.012313] VFP support v0.3: implementor 41 architecture 4 part 30 variant f rev 0
+[    0.012402] omap_hwmod: l3_main_2 using broken dt data from ocp
+[    0.030767] ------------[ cut here ]------------
+[    0.030781] WARNING: CPU: 0 PID: 1 at arch/arm/mach-omap2/omap_hwmod.c:2538 _init+0x1c0/0x3e0()
+[    0.030789] omap_hwmod: gmac: doesn't have mpu register target base
+[    0.030795] Modules linked in:
+[    0.030809] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 3.16.0-next-20140815-00002-g32ef868 #1
+[    0.030829] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
+[    0.030846] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.030861] [<c055f454>] (dump_stack) from [<c0041098>] (warn_slowpath_common+0x6c/0x8c)
+[    0.030874] [<c0041098>] (warn_slowpath_common) from [<c004114c>] (warn_slowpath_fmt+0x30/0x40)
+[    0.030887] [<c004114c>] (warn_slowpath_fmt) from [<c07cf1b8>] (_init+0x1c0/0x3e0)
+[    0.030904] [<c07cf1b8>] (_init) from [<c0028a60>] (omap_hwmod_for_each+0x34/0x5c)
+[    0.030918] [<c0028a60>] (omap_hwmod_for_each) from [<c07cf92c>] (__omap_hwmod_setup_all+0x24/0x40)
+[    0.030930] [<c07cf92c>] (__omap_hwmod_setup_all) from [<c00089a4>] (do_one_initcall+0x80/0x1d4)
+[    0.030943] [<c00089a4>] (do_one_initcall) from [<c07c2cbc>] (kernel_init_freeable+0x108/0x1d8)
+[    0.030955] [<c07c2cbc>] (kernel_init_freeable) from [<c055a018>] (kernel_init+0x8/0xe4)
+[    0.030968] [<c055a018>] (kernel_init) from [<c000e648>] (ret_from_fork+0x14/0x2c)
+[    0.031008] ---[ end trace 5c0784ceefcce441 ]---
+[    0.091375] ------------[ cut here ]------------
+[    0.091389] WARNING: CPU: 0 PID: 1 at arch/arm/mach-omap2/omap_hwmod.c:2538 _init+0x1c0/0x3e0()
+[    0.091396] omap_hwmod: rtcss: doesn't have mpu register target base
+[    0.091402] Modules linked in:
+[    0.091415] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W      3.16.0-next-20140815-00002-g32ef868 #1
+[    0.091431] [<c0015230>] (unwind_backtrace) from [<c0011a08>] (show_stack+0x10/0x14)
+[    0.091447] [<c0011a08>] (show_stack) from [<c055f454>] (dump_stack+0x78/0x94)
+[    0.091460] [<c055f454>] (dump_stack) from [<c0041098>] (warn_slowpath_common+0x6c/0x8c)
+[    0.091472] [<c0041098>] (warn_slowpath_common) from [<c004114c>] (warn_slowpath_fmt+0x30/0x40)
+[    0.091485] [<c004114c>] (warn_slowpath_fmt) from [<c07cf1b8>] (_init+0x1c0/0x3e0)
+[    0.091498] [<c07cf1b8>] (_init) from [<c0028a60>] (omap_hwmod_for_each+0x34/0x5c)
+[    0.091511] [<c0028a60>] (omap_hwmod_for_each) from [<c07cf92c>] (__omap_hwmod_setup_all+0x24/0x40)
+[    0.091523] [<c07cf92c>] (__omap_hwmod_setup_all) from [<c00089a4>] (do_one_initcall+0x80/0x1d4)
+[    0.091535] [<c00089a4>] (do_one_initcall) from [<c07c2cbc>] (kernel_init_freeable+0x108/0x1d8)
+[    0.091547] [<c07c2cbc>] (kernel_init_freeable) from [<c055a018>] (kernel_init+0x8/0xe4)
+[    0.091560] [<c055a018>] (kernel_init) from [<c000e648>] (ret_from_fork+0x14/0x2c)
+[    0.091567] ---[ end trace 5c0784ceefcce442 ]---
+[    0.134374] omap_hwmod: dss_core: _wait_target_disable failed
+[    0.134387] omap_hwmod: dss_core: cannot be enabled for reset (3)
+[    0.136958] omap_hwmod: dss_dispc: cannot be enabled for reset (3)
+[    0.139529] omap_hwmod: dss_hdmi: cannot be enabled for reset (3)
+[    0.212062] omap_hwmod: pcie1: _wait_target_disable failed
+[    0.218457] omap_hwmod: pcie2: _wait_target_disable failed
+[    0.221541] pinctrl core: initialized pinctrl subsystem
+[    0.223389] regulator-dummy: no parameters
+[    0.271600] NET: Registered protocol family 16
+[    0.275629] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.277142] cpuidle: using governor ladder
+[    0.277161] cpuidle: using governor menu
+[    0.279942] omap_l3_noc 44000000.ocp: L3 debug error: target 2 mod:1 (unclearable)
+[    0.280064] omap_l3_noc 44000000.ocp: L3 application error: target 2 mod:1 (unclearable)
+[    0.285562] OMAP GPIO hardware version 0.1
+[    0.301570] platform 4e000000.dmm: Cannot lookup hwmod 'dmm'
+[    0.310792] omap-gpmc 50000000.gpmc: could not find pctldev for node /ocp/pinmux@4a003400/nand_flash_x16, deferring probe
+[    0.310815] platform 50000000.gpmc: Driver omap-gpmc requests probe deferral
+[    0.312035] No ATAGs?
+[    0.312096] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.312105] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.314230] OMAP DMA hardware revision 0.0
+[    0.355213] edma-dma-engine edma-dma-engine.0: Can't allocate PaRAM dummy slot
+[    0.355256] edma-dma-engine: probe of edma-dma-engine.0 failed with error -22
+[    0.382138] omap-dma-engine 4a056000.dma-controller: OMAP DMA engine driver
+[    0.383091] mmc2_3v3: 3300 mV 
+[    0.385897] SCSI subsystem initialized
+[    0.386472] usbcore: registered new interface driver usbfs
+[    0.386603] usbcore: registered new interface driver hub
+[    0.386858] usbcore: registered new device driver usb
+[    0.387602] omap_i2c 48070000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c1_pins, deferring probe
+[    0.387624] platform 48070000.i2c: Driver omap_i2c requests probe deferral
+[    0.387676] omap_i2c 48072000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c2_pins, deferring probe
+[    0.387695] platform 48072000.i2c: Driver omap_i2c requests probe deferral
+[    0.387744] omap_i2c 48060000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c3_pins, deferring probe
+[    0.387762] platform 48060000.i2c: Driver omap_i2c requests probe deferral
+[    0.390820] Switched to clocksource arch_sys_counter
+[    0.496216] NET: Registered protocol family 2
+[    0.497551] TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.497745] TCP bind hash table entries: 8192 (order: 6, 294912 bytes)
+[    0.500034] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.500151] TCP: reno registered
+[    0.500171] UDP hash table entries: 512 (order: 3, 40960 bytes)
+[    0.500482] UDP-Lite hash table entries: 512 (order: 3, 40960 bytes)
+[    0.501483] NET: Registered protocol family 1
+[    0.502187] RPC: Registered named UNIX socket transport module.
+[    0.502198] RPC: Registered udp transport module.
+[    0.502206] RPC: Registered tcp transport module.
+[    0.502215] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.506691] futex hash table entries: 512 (order: 3, 32768 bytes)
+[    0.509755] VFS: Disk quotas dquot_6.5.2
+[    0.509843] Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.511358] NFS: Registering the id_resolver key type
+[    0.511582] Key type id_resolver registered
+[    0.511591] Key type id_legacy registered
+[    0.511693] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
+[    0.512074] msgmni has been set to 1460
+[    0.513893] bounce: pool size: 64 pages
+[    0.513942] io scheduler noop registered
+[    0.513959] io scheduler deadline registered
+[    0.514021] io scheduler cfq registered (default)
+[    0.517211] platform 4a084000.phy: Driver omap-usb2 requests probe deferral
+[    0.517420] platform 4a085000.phy: Driver omap-usb2 requests probe deferral
+[    0.520593] pinctrl-single 4a003400.pinmux: 281 pins at pa fc003400 size 1124
+[    0.522372] pbias_mmc_omap5: 1800 <--> 3000 mV at 3000 mV 
+[    0.523384] abb_mpu: 1060 <--> 1210 mV 
+[    0.523984] abb_ivahd: 1055 <--> 1250 mV 
+[    0.524602] abb_dspeve: 1055 <--> 1250 mV 
+[    0.525197] abb_gpu: 1090 <--> 1280 mV 
+[    0.526380] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.530561] omap_uart 4806a000.serial: no wakeirq for uart0
+[    0.530910] 4806a000.serial: ttyO0 at MMIO 0x4806a000 (irq = 294, base_baud = 3000000) is a OMAP UART0
+[    4.900010] console [ttyO0] enabled
+[    4.905075] omap_uart 4806c000.serial: no wakeirq for uart0
+[    4.911132] 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 295, base_baud = 3000000) is a OMAP UART1
+[    4.921944] omap_uart 48020000.serial: no wakeirq for uart0
+[    4.927947] 48020000.serial: ttyO2 at MMIO 0x48020000 (irq = 296, base_baud = 3000000) is a OMAP UART2
+[    4.954963] brd: module loaded
+[    4.967807] loop: module loaded
+[    4.973299] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    4.984278] usbcore: registered new interface driver asix
+[    4.990024] usbcore: registered new interface driver ax88179_178a
+[    4.996519] usbcore: registered new interface driver cdc_ether
+[    5.002797] usbcore: registered new interface driver smsc95xx
+[    5.008905] usbcore: registered new interface driver net1080
+[    5.014937] usbcore: registered new interface driver cdc_subset
+[    5.021231] usbcore: registered new interface driver zaurus
+[    5.027212] usbcore: registered new interface driver cdc_ncm
+[    5.033777] usbcore: registered new interface driver cdc_wdm
+[    5.039833] usbcore: registered new interface driver usb-storage
+[    5.046275] usbcore: registered new interface driver usbtest
+[    5.053622] mousedev: PS/2 mouse device common for all mice
+[    5.061209] i2c /dev entries driver
+[    5.064911] Driver for 1-wire Dallas network protocol.
+[    5.072637] omap_hsmmc 4809c000.mmc: unable to get vmmc regulator -517
+[    5.079649] platform 4809c000.mmc: Driver omap_hsmmc requests probe deferral
+[    5.121209] ledtrig-cpu: registered to indicate activity on CPUs
+[    5.127834] usbcore: registered new interface driver usbhid
+[    5.133680] usbhid: USB HID core driver
+[    5.138802] oprofile: no performance counters
+[    5.144016] oprofile: using timer interrupt.
+[    5.148833] TCP: cubic registered
+[    5.152310] Initializing XFRM netlink socket
+[    5.156828] NET: Registered protocol family 17
+[    5.161527] NET: Registered protocol family 15
+[    5.166344] Key type dns_resolver registered
+[    5.170940] omap_voltage_late_init: Voltage driver support not added
+[    5.177591] sr_dev_init: Unable to get voltage domain pointer for VDD core
+[    5.184788] sr_dev_init: Unable to get voltage domain pointer for VDD mpu
+[    5.192502] ThumbEE CPU extension supported.
+[    5.196984] Registering SWP/SWPB emulation handler
+[    5.202014] SmartReflex Class3 initialized
+[    5.208965] omap-gpmc 50000000.gpmc: GPMC revision 6.0
+[    5.215534] nand: No NAND device found
+[    5.219449] nand device scan failed, may be bus-width mismatch
+[    5.230042] palmas 0-0058: IRQ missing: skipping irq request
+[    5.236960] palmas 0-0058: Muxing GPIO 2e, PWM 0, LED 0
+[    5.246039] smps123: 850 <--> 1250 mV at 1060 mV 
+[    5.253431] smps45: 850 <--> 1150 mV at 1060 mV 
+[    5.260525] smps6: 850 <--> 1650 mV at 1060 mV 
+[    5.267418] smps7: 850 <--> 1030 mV at 1030 mV 
+[    5.274498] smps8: 850 <--> 1250 mV at 1060 mV 
+[    5.281369] smps9: 1800 mV 
+[    5.286223] ldo1: 1800 <--> 3300 mV at 3300 mV 
+[    5.293196] ldo2: 3300 mV 
+[    5.298304] ldo3: 1800 mV 
+[    5.302481] LDO4: at 1800 mV 
+[    5.306570] LDO5: no parameters
+[    5.310884] LDO6: no parameters
+[    5.315165] LDO7: no parameters
+[    5.319437] LDO8: no parameters
+[    5.324584] ldo9: 1050 mV 
+[    5.329642] ldoln: 1800 mV 
+[    5.334811] ldousb: 3300 mV 
+[    5.338880] REGEN1: no parameters
+[    5.342827] REGEN2: no parameters
+[    5.346708] REGEN3: no parameters
+[    5.350594] SYSEN1: no parameters
+[    5.354477] SYSEN2: no parameters
+[    5.358187] omap_i2c 48070000.i2c: bus 0 rev0.12 at 400 kHz
+[    5.365499] omap_i2c 48072000.i2c: bus 1 rev0.12 at 400 kHz
+[    5.372448] omap_i2c 48060000.i2c: bus 2 rev0.12 at 3400 kHz
+[    5.374207] mmc0: BKOPS_EN bit is not set
+[    5.376760] mmc0: new high speed MMC card at address 0001
+[    5.380937] mmcblk0: mmc0:0001 MMC04G 3.52 GiB 
+[    5.381201] mmcblk0boot0: mmc0:0001 MMC04G partition 1 16.0 MiB
+[    5.381458] mmcblk0boot1: mmc0:0001 MMC04G partition 2 16.0 MiB
+[    5.385547]  mmcblk0: p1
+[    5.388878]  mmcblk0boot1: unknown partition table
+[    5.391355]  mmcblk0boot0: unknown partition table
+[    5.462053] drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
+[    5.468626] sr_init: No PMIC hook to init smartreflex
+[    5.474131] sr_init: platform driver register failed for SR
+[    5.548781] mmc1: host does not support reading read-only switch. assuming write-enable.
+[    5.559248] mmc1: new high speed SDHC card at address 0007
+[    5.565837] mmcblk1: mmc1:0007 SD4GB 3.70 GiB 
+[    5.572975]  mmcblk1: p1 p2 p3
+[   17.631292] ldousb: disabling
+[   17.634981] ldo9: disabling
+[   17.638499] ldo2: disabling
+[   17.642066] smps8: disabling
+[   17.645656] smps6: disabling
+[   17.649250] smps45: disabling
+[   20.854212] kjournald starting.  Commit interval 5 seconds
+[   21.196486] EXT3-fs (mmcblk1p2): using internal journal
+[   21.206676] EXT3-fs (mmcblk1p2): recovery complete
+[   21.211694] EXT3-fs (mmcblk1p2): mounted filesystem with ordered data mode
+[   21.218942] VFS: Mounted root (ext3 filesystem) on device 179:26.
+[   21.229030] devtmpfs: mounted
+[   21.232517] Freeing unused kernel memory: 404K (c07c2000 - c0827000)
 
 INIT: version 2.88 booting
 
 Error opening /dev/fb0: No such file or directory
 Starting udev
-[   18.331137] udevd[826]: starting version 182
-[   19.689911] random: nonblocking pool is initialized
-udevd[1055]: failed to execute '/etc/udev/scripts/mount.sh' '/etc/udev/scripts/mount.sh': No such file or directory
-
-
-udevd[1054]: failed to execute '/etc/udev/scripts/mount.sh' '/etc/udev/scripts/mount.sh': No such file or directory
-
-
-udevd[1056]: failed to execute '/etc/udev/scripts/mount.sh' '/etc/udev/scripts/mount.sh': No such file or directory
-
-
-udevd[1057]: failed to execute '/etc/udev/scripts/mount.sh' '/etc/udev/scripts/mount.sh': No such file or directory
-
-
-depmod: ERROR: could not open directory /lib/modules/3.16.0-next-20140814-00002-g86230cf: No such file or directory
-depmod: WARNING: -e needs -E or -F
-depmod: ERROR: could not open directory /lib/modules/3.16.0-next-20140814-00002-g86230cf: No such file or directory
-depmod: FATAL: could not search modules: No such file or directory
+[   21.815891] udevd[829]: starting version 182
+[   22.824848] random: nonblocking pool is initialized
+[   23.869047] FAT-fs (mmcblk1p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
 Starting Bootlog daemon: bootlogd: cannot allocate pseudo tty: No such file or directory
 bootlogd.
-Populating dev cache
 ALSA: Restoring mixer settings...
-/usr/sbin/alsactl: load_state:1729: No soundcards found...
-Configuring network interfaces... ifconfig: SIOCGIFFLAGS: No such device
+Configuring network interfaces... /usr/sbin/alsactl: load_state:1696: No soundcards found...
+ifconfig: SIOCGIFFLAGS: No such device
 done.
 hwclock: can't open '/dev/misc/rtc': No such file or directory
-Sat Jul 19 04:54:00 UTC 2014
+Sat Jan 18 07:39:00 UTC 2014
 hwclock: can't open '/dev/misc/rtc': No such file or directory
 
 INIT: Entering runlevel: 5
@@ -988,17 +962,12 @@ INIT: Entering runlevel: 5
 Starting system message bus: dbus.
 Starting Dropbear SSH server: dropbear.
 Starting telnet daemon.
-Starting tiipclad daemon
-Spawned daemon: /usr/bin/lad_dra7xx
-
-.
 hwclock: can't open '/dev/misc/rtc': No such file or directory
 Starting syslogd/klogd: done
 Starting thttpd.
-Starting Lighttpd Web Server: 2014-07-19 04:54:00: (log.c.166) server started 
+Starting Lighttpd Web Server: 2014-01-18 07:39:00: (log.c.166) server started 
 lighttpd.
 /
-Removing stale PID file /var/run/matrix-gui-2.0.pid.
 Starting Matrix GUI application.
 ***************************************************************
 ***************************************************************
@@ -1022,233 +991,222 @@ NOTE: If the package is a dependency of another package you
 ***************************************************************
 Stopping Bootlog daemon: bootlogd.
 
-
  _____                    _____           _         _   
-
 |  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_ 
-
 |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
-
 |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|  
-
               |___|                    |___|            
 
+Arago Project http://arago-project.org dra7xx-evm ttyO0
 
-
-Arago Project http://arago-project.org dra7xx-evm /dev/ttyO0
-
-
-
-Arago 2014.05 dra7xx-evm /dev/ttyO0
-
-
+Arago 2013.12 dra7xx-evm ttyO0
 
 dra7xx-evm login: 
-- 06:31:16 [INFO] Host: root
-- 06:31:17 [INFO] Target: 
+- 06:35:45 [INFO] Host: root
+- 06:35:45 [INFO] Target: 
 root
 root@dra7xx-evm:~# 
-- 06:31:17 [INFO] Host: uname -a
-- 06:31:17 [INFO] Target: 
+- 06:35:45 [INFO] Host: uname -a
+- 06:35:46 [INFO] Target: 
 uname -a
-Linux dra7xx-evm 3.16.0-next-20140814-00002-g86230cf #1 SMP Thu Aug 14 05:33:52 CDT 2014 armv7l GNU/Linux
+Linux dra7xx-evm 3.16.0-next-20140815-00002-g32ef868 #1 SMP Fri Aug 15 05:29:38 CDT 2014 armv7l GNU/Linux
 root@dra7xx-evm:~# 
-- 06:31:17 [INFO] Host: cat /proc/cmdline
-- 06:31:18 [INFO] Target: 
+- 06:35:46 [INFO] Host: cat /proc/cmdline
+- 06:35:46 [INFO] Target: 
 cat /proc/cmdline
 console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3
 root@dra7xx-evm:~# 
-- 06:31:18 [INFO] Host: uname -a
-- 06:31:18 [INFO] Target: 
+- 06:35:46 [INFO] Host: uname -a
+- 06:35:47 [INFO] Target: 
 uname -a
-Linux dra7xx-evm 3.16.0-next-20140814-00002-g86230cf #1 SMP Thu Aug 14 05:33:52 CDT 2014 armv7l GNU/Linux
+Linux dra7xx-evm 3.16.0-next-20140815-00002-g32ef868 #1 SMP Fri Aug 15 05:29:38 CDT 2014 armv7l GNU/Linux
 root@dra7xx-evm:~# 
-- 06:31:18 [INFO] Host: cat /proc/mtd
-- 06:31:19 [INFO] Target: 
+- 06:35:47 [INFO] Host: cat /proc/mtd
+- 06:35:47 [INFO] Target: 
 cat /proc/mtd
 dev:    size   erasesize  name
 root@dra7xx-evm:~# 
-- 06:31:23 [INFO] Host: export IPERFHOST=192.168.0.1
-- 06:31:23 [INFO] Target: 
+- 06:35:52 [INFO] Host: export IPERFHOST=192.168.0.1
+- 06:35:52 [INFO] Target: 
 export IPERFHOST=192.168.0.1
 root@dra7xx-evm:~# 
-- 06:31:23 [INFO] Host: export NFS_SERVER=192.168.0.1
-- 06:31:24 [INFO] Target: 
+- 06:35:52 [INFO] Host: export NFS_SERVER=192.168.0.1
+- 06:35:53 [INFO] Target: 
 export NFS_SERVER=192.168.0.1
 root@dra7xx-evm:~# 
-- 06:31:24 [INFO] Host: export NFS_ROOT_PATH=/home/tigtfarm01/NFS_exports/dra7xx
-- 06:31:24 [INFO] Target: 
-export NFS_ROOT_PATH=/home/tigtfarm01/NFS_exports/dra7xx
+- 06:35:53 [INFO] Host: export NFS_ROOT_PATH=/home/tigtfarm02/NFS_exports/dra7xx
+- 06:35:53 [INFO] Target: 
+export NFS_ROOT_PATH=/home/tigtfarm02/NFS_exports/dra7xx
 root@dra7xx-evm:~# 
-- 06:31:24 [INFO] Host: mkdir -p -m 777 /test
-- 06:31:25 [INFO] Target: 
+- 06:35:53 [INFO] Host: mkdir -p -m 777 /test
+- 06:35:54 [INFO] Target: 
 mkdir -p -m 777 /test
 root@dra7xx-evm:~# 
-- 06:31:25 [INFO] Host: cd /test
-- 06:31:25 [INFO] Target: 
+- 06:35:54 [INFO] Host: cd /test
+- 06:35:54 [INFO] Target: 
 cd /test
 root@dra7xx-evm:/test# 
-- 06:31:25 [INFO] Host: cat > test.sh << EOF
-- 06:31:26 [INFO] Target: 
+- 06:35:54 [INFO] Host: cat > test.sh << EOF
+- 06:35:55 [INFO] Target: 
 cat > test.sh << EOF
 > 
-- 06:31:26 [INFO] Host: failtest() {
+- 06:35:55 [INFO] Host: failtest() {
 
-- 06:31:26 [INFO] Target: 
+- 06:35:55 [INFO] Target: 
 failtest() {
 > 
-- 06:31:26 [INFO] Host:   echo 1 >&3
+- 06:35:55 [INFO] Host:   echo 1 >&3
 
-- 06:31:27 [INFO] Target: 
+- 06:35:56 [INFO] Target: 
   echo 1 >&3
 > 
-- 06:31:27 [INFO] Host: }
+- 06:35:56 [INFO] Host: }
 
-- 06:31:27 [INFO] Target: 
+- 06:35:56 [INFO] Target: 
 }
 > 
-- 06:31:27 [INFO] Host: timeout=600
+- 06:35:56 [INFO] Host: timeout=600
 
-- 06:31:28 [INFO] Target: 
+- 06:35:57 [INFO] Target: 
 timeout=600
 > 
-- 06:31:28 [INFO] Host: 
+- 06:35:57 [INFO] Host: 
 
-- 06:31:28 [INFO] Target: 
+- 06:35:57 [INFO] Target: 
 
 > 
-- 06:31:28 [INFO] Host: # Start of user's script logic
+- 06:35:57 [INFO] Host: # Start of user's script logic
 
-- 06:31:29 [INFO] Target: 
+- 06:35:58 [INFO] Target: 
 # Start of user's script logic
 > 
-- 06:31:29 [INFO] Host: 
+- 06:35:58 [INFO] Host: 
 
-- 06:31:29 [INFO] Target: 
-
-> 
-- 06:31:29 [INFO] Host: 
-
-- 06:31:30 [INFO] Target: 
+- 06:35:58 [INFO] Target: 
 
 > 
-- 06:31:30 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
+- 06:35:58 [INFO] Host: 
 
-- 06:31:30 [INFO] Target: 
+- 06:35:59 [INFO] Target: 
+
+> 
+- 06:35:59 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
+
+- 06:35:59 [INFO] Target: 
 mount -t proc proc /proc 2>/dev/null;
 > 
-- 06:31:30 [INFO] Host: 
+- 06:35:59 [INFO] Host: 
 
-- 06:31:31 [INFO] Target: 
+- 06:36:00 [INFO] Target: 
 
 > 
-- 06:31:31 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
+- 06:36:00 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
 
-- 06:31:31 [INFO] Target: 
+- 06:36:00 [INFO] Target: 
 mount -t sysfs sys /sys 2>/dev/null;
 > 
-- 06:31:31 [INFO] Host: 
+- 06:36:00 [INFO] Host: 
 
-- 06:31:32 [INFO] Target: 
+- 06:36:01 [INFO] Target: 
 
 > 
-- 06:31:32 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
+- 06:36:01 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
 
-- 06:31:32 [INFO] Target: 
+- 06:36:01 [INFO] Target: 
 mount -t debugfs none /sys/kernel/debug 2>/dev/null;
 > 
-- 06:31:32 [INFO] Host: 
+- 06:36:01 [INFO] Host: 
 
-- 06:31:33 [INFO] Target: 
+- 06:36:02 [INFO] Target: 
 
 > 
-- 06:31:33 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
+- 06:36:02 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
 
-- 06:31:33 [INFO] Target: 
+- 06:36:02 [INFO] Target: 
 echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
 > 
-- 06:31:33 [INFO] Host: 
+- 06:36:02 [INFO] Host: 
 
-- 06:31:34 [INFO] Target: 
+- 06:36:03 [INFO] Target: 
 
 > 
-- 06:31:34 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
+- 06:36:03 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
 
-- 06:31:34 [INFO] Target: 
+- 06:36:03 [INFO] Target: 
 echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
 > 
-- 06:31:34 [INFO] Host: 
+- 06:36:03 [INFO] Host: 
 
-- 06:31:35 [INFO] Target: 
+- 06:36:04 [INFO] Target: 
 
 > 
-- 06:31:35 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
+- 06:36:04 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
 
-- 06:31:35 [INFO] Target: 
+- 06:36:04 [INFO] Target: 
 echo 'interrupts:';cat /proc/interrupts; echo '=======';
 > 
-- 06:31:35 [INFO] Host: 
+- 06:36:04 [INFO] Host: 
 
-- 06:31:36 [INFO] Target: 
+- 06:36:05 [INFO] Target: 
 
 > 
-- 06:31:36 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
+- 06:36:05 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
 
-- 06:31:36 [INFO] Target: 
+- 06:36:05 [INFO] Target: 
 echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
 > 
-- 06:31:36 [INFO] Host: 
+- 06:36:05 [INFO] Host: 
 
-- 06:31:37 [INFO] Target: 
+- 06:36:06 [INFO] Target: 
 
 > 
-- 06:31:37 [INFO] Host: echo 'Orphan Clks:';ls /sys/kernel/debug/clk/orphans/; echo '=======';
+- 06:36:06 [INFO] Host: echo 'Orphan Clks:';ls /sys/kernel/debug/clk/orphans/; echo '=======';
 
-- 06:31:37 [INFO] Target: 
+- 06:36:06 [INFO] Target: 
 echo 'Orphan Clks:';ls /sys/kernel/debug/clk/orphans/; echo '=======';
 > 
-- 06:31:37 [INFO] Host: 
+- 06:36:06 [INFO] Host: 
 
-- 06:31:38 [INFO] Target: 
+- 06:36:07 [INFO] Target: 
 
 > 
-- 06:31:38 [INFO] Host: echo 'H''ello World' 'B''oard Booted';
+- 06:36:07 [INFO] Host: echo 'H''ello World' 'B''oard Booted';
 
-- 06:31:38 [INFO] Target: 
+- 06:36:07 [INFO] Target: 
 echo 'H''ello World' 'B''oard Booted';
 > 
-- 06:31:38 [INFO] Host: 
+- 06:36:07 [INFO] Host: 
 
-- 06:31:39 [INFO] Target: 
+- 06:36:08 [INFO] Target: 
 
 > 
-- 06:31:39 [INFO] Host: EOF
-- 06:31:39 [INFO] Target: 
+- 06:36:08 [INFO] Host: EOF
+- 06:36:08 [INFO] Target: 
 EOF
 root@dra7xx-evm:/test# 
-- 06:31:39 [INFO] Host: cd /test
-- 06:31:40 [INFO] Target: 
+- 06:36:08 [INFO] Host: cd /test
+- 06:36:09 [INFO] Target: 
 cd /test
 root@dra7xx-evm:/test# 
-- 06:31:40 [INFO] Host: chmod +x test.sh
-- 06:31:40 [INFO] Target: 
+- 06:36:09 [INFO] Host: chmod +x test.sh
+- 06:36:09 [INFO] Target: 
 chmod +x test.sh
 root@dra7xx-evm:/test# 
-- 06:31:40 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
-- 06:31:41 [INFO] Target: 
+- 06:36:09 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
+- 06:36:10 [INFO] Target: 
 ./test.sh 2> stderr.log > stdout.log 3> result.log
 root@dra7xx-evm:/test# 
-- 06:31:41 [INFO] Host: echo $?
-- 06:31:41 [INFO] Target: 
+- 06:36:10 [INFO] Host: echo $?
+- 06:36:10 [INFO] Target: 
 echo $?
 0
 root@dra7xx-evm:/test# 
-- 06:31:41 [INFO] Host: cd /test
-- 06:31:42 [INFO] Target: 
+- 06:36:10 [INFO] Host: cd /test
+- 06:36:11 [INFO] Target: 
 cd /test
 root@dra7xx-evm:/test# 
-- 06:31:42 [INFO] Host: cat stdout.log
-- 06:31:44 [INFO] Target: 
+- 06:36:11 [INFO] Host: cat stdout.log
+- 06:36:13 [INFO] Target: 
 cat stdout.log
 cpuinfo:
 processor	: 0
@@ -1295,22 +1253,22 @@ GP
 interrupts:
            CPU0       CPU1       
  16:          0          0       GIC 191  gp_timer
- 19:       1468       1585       GIC  27  arch_timer
+ 19:       1508       1509       GIC  27  arch_timer
  22:          1          0       GIC 190  l3-dbg-irq
  23:          1          0       GIC  42  l3-app-irq
- 27:       3803          0       GIC 186  omap-dma-engine
-294:       3575          0       GIC 175  OMAP UART0
-309:        372          0       GIC 155  48070000.i2c
+ 27:       3899          0       GIC 186  omap-dma-engine
+294:       3510          0       GIC 175  OMAP UART0
+309:        370          0       GIC 155  48070000.i2c
 310:          0          0       GIC 154  48072000.i2c
 311:          0          0       GIC 153  48060000.i2c
-312:       5933          0       GIC 152  mmc1
-313:        962          0       GIC 151  mmc0
+312:       5717          0       GIC 152  mmc1
+313:        826          0       GIC 151  mmc0
 321:          0          0       GIC 143  gpmc
 IPI0:          0          1  CPU wakeup interrupts
 IPI1:          0          0  Timer broadcast interrupts
-IPI2:       2147       2471  Rescheduling interrupts
+IPI2:       1675       2569  Rescheduling interrupts
 IPI3:          0          0  Function call interrupts
-IPI4:        264         97  Single function call interrupts
+IPI4:        130         79  Single function call interrupts
 IPI5:          0          0  CPU stop interrupts
 IPI6:          0          0  IRQ work interrupts
 IPI7:          0          0  completion interrupts
@@ -1575,17 +1533,17 @@ Orphan Clks:
 =======
 Hello World Board Booted
 root@dra7xx-evm:/test# 
-- 06:31:44 [INFO] Host: cat stderr.log
-- 06:31:45 [INFO] Target: 
+- 06:36:13 [INFO] Host: cat stderr.log
+- 06:36:14 [INFO] Target: 
 cat stderr.log
 ls: /sys/kernel/debug/clk/orphans/: No such file or directory
 root@dra7xx-evm:/test# 
-- 06:31:45 [INFO] Host: cat result.log
-- 06:31:47 [ERROR] On command: cat result.log waiting for (?m-ix:^1[\0\n\r]+) >>> error: execution expired
-- 06:31:47 [INFO] Target: 
+- 06:36:14 [INFO] Host: cat result.log
+- 06:36:16 [ERROR] On command: cat result.log waiting for (?m-ix:^1[\0\n\r]+) >>> error: execution expired
+- 06:36:16 [INFO] Target: 
 cat result.log
 root@dra7xx-evm:/test# 
-- 06:31:47 [INFO] Host: cd /test
-- 06:31:47 [INFO] Target: 
+- 06:36:16 [INFO] Host: cd /test
+- 06:36:16 [INFO] Target: 
 cd /test
 root@dra7xx-evm:/test# 
