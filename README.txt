@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20140911
-Thu Sep 11 06:36:49 CDT 2014
+Automated logs for TAG=next-20140915
+Mon Sep 15 06:47:49 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
