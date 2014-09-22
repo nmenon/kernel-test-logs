@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20140919
-Fri Sep 19 06:40:21 CDT 2014
+Automated logs for TAG=next-20140922
+Mon Sep 22 06:43:21 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -12,7 +12,7 @@ multi_v7_defconfig
  2:  am335x-sk:  Boot PASS: am335x-sk.txt
  3: am3517-evm:  Boot PASS: am3517-evm.txt
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
- 5: am43xx-epos:  Boot FAIL: am43xx-epos.txt
+ 5: am43xx-epos:  Boot PASS: am43xx-epos.txt
  6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
  7: BeagleBoard-XM:  Boot PASS: beagleboard.txt
  8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
@@ -20,21 +20,21 @@ multi_v7_defconfig
 10: beaglebone:  Boot FAIL: beaglebone.txt
 11: craneboard:  Boot PASS: craneboard.txt
 12: dra72x-evm:  Boot FAIL: dra72x-evm.txt
-13: dra7xx-evm:  Boot FAIL: dra7xx-evm.txt
+13: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
 14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
 15:       n900:  Boot FAIL: n900.txt
 16:  omap5-evm:  Boot PASS: omap5-evm.txt
 17: pandaboard-es:  Boot PASS: pandaboard-es.txt
 18: pandaboard-vanilla:  Boot PASS: pandaboard-vanilla.txt
 19:    sdp3430:  Boot PASS: sdp3430.txt
-TOTAL = 19 boards, Booted Boards = 14, No Boot boards = 5
+TOTAL = 19 boards, Booted Boards = 16, No Boot boards = 3
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1: am335x-evm:  Boot PASS: am335x-evm.txt
  2:  am335x-sk:  Boot PASS: am335x-sk.txt
  3: am3517-evm:  Boot PASS: am3517-evm.txt
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
- 5: am43xx-epos:  Boot FAIL: am43xx-epos.txt
+ 5: am43xx-epos:  Boot PASS: am43xx-epos.txt
  6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
  7: BeagleBoard-XM:  Boot PASS: beagleboard.txt
  8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
@@ -42,7 +42,7 @@ omap2plus_defconfig
 10: beaglebone:  Boot PASS: beaglebone.txt
 11: craneboard:  Boot PASS: craneboard.txt
 12: dra72x-evm:  Boot FAIL: dra72x-evm.txt
-13: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
+13: dra7xx-evm:  Boot FAIL: dra7xx-evm.txt
 14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
 15:       n900:  Boot PASS: n900.txt
 16:  omap5-evm:  Boot PASS: omap5-evm.txt
