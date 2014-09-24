@@ -1,36 +1,41 @@
-- 06:46:46 [INFO] Starting target session
-- 06:46:46 [INFO] Connected to dra7xx-evm via serial 
-- 06:46:46 [INFO] Host: #check prompt
-- 06:46:48 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
-- 06:46:48 [INFO] Target: 
-#check prompt
+- 06:38:34 [INFO] Starting target session
+- 06:38:34 [INFO] Connected to dra7xx-evm via serial 
+- 06:38:34 [INFO] Host: #check prompt
+- 06:38:36 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
+- 06:38:36 [INFO] Target: 
+- 06:38:36 [INFO] Host: #check prompt
+- 06:38:38 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:[\w\d]+@.+[@:#]+) >>> error: execution expired
+- 06:38:38 [INFO] Target: 
+- 06:38:38 [INFO] Disconnected serial from dra7xx-evm
+- 06:38:59 [INFO] Connected to dra7xx-evm via serial 
+- 06:38:59 [INFO] Host: 
+- 06:38:59 [INFO] Target: 
+NAND:  0 MiB
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+SATA link 0 timeout.
+AHCI 0001.0300 32 slots 1 ports 3 Gbps 0x1 impl SATA mode
+flags: 64bit ncq stag pm led clo only pmp pio slum part ccc apst 
+scanning bus for devices...
+Found 0 device(s).
+SCSI:  Net:   cpsw
+Hit any key to stop autoboot:  3  0 
 U-Boot# 
-- 06:46:48 [INFO] Host: #check prompt
-- 06:46:50 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:[\w\d]+@.+[@:#]+) >>> error: execution expired
-- 06:46:50 [INFO] Target: 
-#check prompt
-U-Boot# 
-- 06:46:50 [INFO] Disconnected serial from dra7xx-evm
-- 06:47:11 [INFO] Connected to dra7xx-evm via serial 
-- 06:47:11 [INFO] Host: 
-- 06:47:11 [INFO] Target: 
-U-Boot# 
-- 06:47:11 [INFO] Host: version
-- 06:47:12 [INFO] Target: 
+- 06:38:59 [INFO] Host: version
+- 06:39:00 [INFO] Target: 
 version
 U-Boot 2014.07-00069-g00ddc45 (Sep 18 2014 - 13:50:02)
 arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
 GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
 U-Boot# 
-- 06:47:12 [INFO] Host: bdi
-- 06:47:12 [INFO] Target: 
+- 06:39:00 [INFO] Host: bdi
+- 06:39:00 [INFO] Target: 
 arch_number = 0x00000000
 boot_params = 0x80000100
 DRAM bank   = 0x00000000
 -> start    = 0x80000000
 -> size     = 0x60000000
 eth0name    = cpsw
-ethaddr     = 7c:66:9d:f1:c0:ce
+ethaddr     = 7c:66:9d:eb:fd:0e
 current eth = cpsw
 ip_addr     = <NULL>
 baudrate    = 115200 bps
@@ -40,15 +45,15 @@ reloc off   = 0x5EF44000
 irq_sp      = 0xDE723EE0
 sp start    = 0xDE723ED0
 U-Boot# 
-- 06:47:12 [INFO] Host: printenv
-- 06:47:13 [INFO] Target: 
+- 06:39:00 [INFO] Host: printenv
+- 06:39:01 [INFO] Target: 
 printenv
 arch=arm
 baudrate=115200
 board=dra7xx
 board_name=dra7xx
 bootcmd=run findfdt; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; setenv mmcroot /dev/mmcblk0p2 rw; run mmcboot;run nandboot; 
-bootdelay=1
+bootdelay=3
 bootdir=/boot
 bootfile=zImage
 bootm_size=0x10000000
@@ -60,9 +65,9 @@ dfu_alt_info_emmc=MLO raw 0x100 0x100 mmcpart 0;u-boot.img raw 0x300 0x1000 mmcp
 dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;spl-os-args fat 0 1;spl-os-image fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1
 dfu_alt_info_ram=kernel ram 0x80200000 0x4000000;fdt ram 0x80f80000 0x80000;ramdisk ram 0x81000000 0x4000000
 dfu_bufsiz=0x10000
-eth1addr=7c:66:9d:f1:c0:cf
+eth1addr=7c:66:9d:eb:fd:0f
 ethact=cpsw
-ethaddr=7c:66:9d:f1:c0:ce
+ethaddr=7c:66:9d:eb:fd:0e
 fdt_addr_r=0x88000000
 fdtaddr=0x88000000
 fdtfile=undefined
@@ -83,8 +88,9 @@ mtdids=nand0=nand.0
 mtdparts=mtdparts=nand.0:128k(NAND.SPL),128k(NAND.SPL.backup1),128k(NAND.SPL.backup2),128k(NAND.SPL.backup3),256k(NAND.u-boot-spl-os),1m(NAND.u-boot),128k(NAND.u-boot-env),128k(NAND.u-boot-env.backup1),8m(NAND.kernel),-(NAND.file-system)
 nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
 nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
-nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,4096
 nandrootfstype=ubifs rootwait=1
+optargs=video=HDMI-A-1:D
 partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
 ramdisk_addr_r=0x88080000
 rdaddr=0x88080000
@@ -97,14 +103,14 @@ usbtty=cdc_acm
 vendor=ti
 ver=U-Boot 2014.07-00069-g00ddc45 (Sep 18 2014 - 13:50:02)
 vram=16M
-Environment size: 3087/131067 bytes
+Environment size: 3114/131067 bytes
 U-Boot# 
-- 06:47:13 [INFO] Host: setenv autoload 'no'
-- 06:47:13 [INFO] Target: 
+- 06:39:01 [INFO] Host: setenv autoload 'no'
+- 06:39:01 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 06:47:13 [INFO] Host: usb start
-- 06:47:15 [INFO] Target: 
+- 06:39:01 [INFO] Host: usb start
+- 06:39:03 [INFO] Target: 
 usb start
 (Re)start USB...
 USB0:   Register 2000140 NbrPorts 2
@@ -113,14 +119,409 @@ USB XHCI 1.00
 scanning bus 0 for devices... 1 USB Device(s) found
        scanning usb for storage devices... 0 Storage Device(s) found
 U-Boot# 
-- 06:47:15 [INFO] Host: dhcp
-- 06:47:35 [ERROR] On command: dhcp waiting for dhcp.+?(?-mix:U-Boot#) >>> error: execution expired
-- 06:47:35 [INFO] Target: 
+- 06:39:03 [INFO] Host: dhcp
+- 06:39:05 [INFO] Target: 
 dhcp
-cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !
+link up on port 0, speed 1000, full duplex
 BOOTP broadcast 1
-cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !
-cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !
-BOOTP broadcast 2
-cpsw Waiting for PHY auto negotiation to complete......... TIMEOUT !
-cpsw Waiting for PHY auto negotiation to complete..
+DHCP client bound to address 192.168.0.253
+U-Boot# 
+- 06:39:05 [INFO] Host: setenv serverip 192.168.0.1
+- 06:39:05 [INFO] Target: 
+setenv serverip 192.168.0.1
+U-Boot# 
+- 06:39:05 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3'
+- 06:39:06 [INFO] Target: 
+setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3'
+U-Boot# 
+- 06:39:06 [INFO] Host: printenv
+- 06:39:06 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=dra7xx
+board_name=dra7xx
+bootargs=console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3
+bootcmd=run findfdt; run mmcboot;setenv mmcdev 1; setenv bootpart 1:2; setenv mmcroot /dev/mmcblk0p2 rw; run mmcboot;run nandboot; 
+bootdelay=3
+bootdir=/boot
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO0,115200n8
+cpu=armv7
+dfu_alt_info_emmc=MLO raw 0x100 0x100 mmcpart 0;u-boot.img raw 0x300 0x1000 mmcpart 0
+dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;spl-os-args fat 0 1;spl-os-image fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1
+dfu_alt_info_ram=kernel ram 0x80200000 0x4000000;fdt ram 0x80f80000 0x80000;ramdisk ram 0x81000000 0x4000000
+dfu_bufsiz=0x10000
+dnsip=192.0.2.2
+dnsip2=192.0.2.3
+eth1addr=7c:66:9d:eb:fd:0f
+ethact=cpsw
+ethaddr=7c:66:9d:eb:fd:0e
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtfile=undefined
+findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi; if test $board_name = dra7xx; then setenv fdtfile dra7-evm.dtb; fi;if test $board_name = dra72x; then setenv fdtfile dra72-evm.dtb; fi;if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+gatewayip=192.168.0.1
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+ipaddr=192.168.0.253
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} uEnv.txt
+loadbootscript=fatload mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile};
+loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+mmcargs=setenv bootargs console=${console} ${optargs} vram=${vram} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk1p2 rw
+mmcrootfstype=ext4 rootwait
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:128k(NAND.SPL),128k(NAND.SPL.backup1),128k(NAND.SPL.backup2),128k(NAND.SPL.backup3),256k(NAND.u-boot-spl-os),1m(NAND.u-boot),128k(NAND.u-boot-env),128k(NAND.u-boot-env.backup1),8m(NAND.kernel),-(NAND.file-system)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,4096
+nandrootfstype=ubifs rootwait=1
+netmask=255.255.255.0
+optargs=video=HDMI-A-1:D
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+ramdisk_addr_r=0x88080000
+rdaddr=0x88080000
+scsidevs=0
+serverip=192.168.0.1
+soc=omap5
+stderr=serial
+stdin=serial
+stdout=serial
+usbtty=cdc_acm
+vendor=ti
+ver=U-Boot 2014.07-00069-g00ddc45 (Sep 18 2014 - 13:50:02)
+vram=16M
+Environment size: 3361/131067 bytes
+U-Boot# 
+- 06:39:06 [INFO] Host: setenv bootcmd 'tftp ${loadaddr} 192.168.0.1:vatf_dra7xx-evm1/146ca142303c0081766ca3121e7f62e4; tftp ${fdtaddr} 192.168.0.1:vatf_dra7xx-evm1/b1a2bd41aed255986ac3de5d5234c6be; if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi' 
+- 06:39:07 [INFO] Target: 
+setenv bootcmd 'tftp ${loadaddr} 192.168.0.1:vatf_dra7xx-evm1/146ca142303c0081766ca3121e7f62e4; tftp ${fdtaddr} 192.168.0.1:vatf_dra7xx-evm1/b1a2bd41aed255986ac3de5d5234c6be; if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi' 
+U-Boot# 
+- 06:39:07 [INFO] Host: boot
+- 06:41:37 [ERROR] On command: boot waiting for boot.+?(?-mix:login:) >>> error: execution expired
+- 06:41:37 [INFO] Target: 
+boot
+link up on port 0, speed 1000, full duplex
+Using cpsw device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.253
+Filename 'vatf_dra7xx-evm1/146ca142303c0081766ca3121e7f62e4'.
+Load address: 0x82000000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ########################################
+	 11.3 MiB/s
+done
+Bytes transferred = 4399064 (431fd8 hex)
+link up on port 0, speed 1000, full duplex
+Using cpsw device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.253
+Filename 'vatf_dra7xx-evm1/b1a2bd41aed255986ac3de5d5234c6be'.
+Load address: 0x88000000
+Loading: *#####
+	 9 MiB/s
+done
+Bytes transferred = 66183 (10287 hex)
+## Checking Image at 82000000 ...
+Unknown image format!
+Kernel image @ 0x82000000 [ 0x000000 - 0x431fd8 ]
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Device Tree to 8ffec000, end 8ffff286 ... OK
+Starting kernel ...
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 3.17.0-rc6-next-20140924-00002-g2e8bb93 (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Wed Sep 24 05:34:01 CDT 2014
+[    0.000000] CPU: ARMv7 Processor [412fc0f2] revision 2 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[    0.000000] Machine model: TI DRA742
+[    0.000000] cma: Reserved 16 MiB at de800000
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] DRA752 ES1.1
+[    0.000000] PERCPU: Embedded 11 pages/cpu @eeb8e000 s14336 r8192 d22528 u45056
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 391440
+[    0.000000] Kernel command line: console=ttyO0,115200n8 earlyprintk rootwait ip=dhcp root=/dev/mmcblk1p2 rw rootfstype=ext3
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 1524600K/1571840K available (5740K kernel code, 656K rwdata, 2220K rodata, 406K init, 8212K bss, 47240K reserved, 777216K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xffe00000   (2048 kB)
+[    0.000000]     vmalloc : 0xf0000000 - 0xff000000   ( 240 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xef800000   ( 760 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc07ce358   (7961 kB)
+[    0.000000]       .init : 0xc07cf000 - 0xc0834800   ( 406 kB)
+[    0.000000]       .data : 0xc0836000 - 0xc08da310   ( 657 kB)
+[    0.000000]        .bss : 0xc08da310 - 0xc10df4e8   (8213 kB)
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] omap3_noncore_dpll_set_rate: dpll_gpu_ck: final rate 22574257 does not match desired rate 22579200
+[    0.000000] OMAP clockevent source: timer1 at 32768 Hz
+[    0.000000] sched_clock: 32 bits at 32kHz, resolution 30517ns, wraps every 65536000000000ns
+[    0.000030] OMAP clocksource: 32k_counter at 32768 Hz
+[    0.000457] Architected cp15 timer(s) running at 6.14MHz (virt).
+[    0.000492] sched_clock: 56 bits at 6MHz, resolution 162ns, wraps every 2796202663936ns
+[    0.000504] Switching to timer-based delay loop, resolution 162ns
+[    0.001604] Console: colour dummy device 80x30
+[    0.001637] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.001644] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.001650] ... MAX_LOCK_DEPTH:          48
+[    0.001657] ... MAX_LOCKDEP_KEYS:        8191
+[    0.001662] ... CLASSHASH_SIZE:          4096
+[    0.001668] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.001674] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.001680] ... CHAINHASH_SIZE:          32768
+[    0.001686]  memory used by lock dependency info: 5167 kB
+[    0.001692]  per task-struct memory footprint: 1152 bytes
+[    0.001710] Calibrating delay loop (skipped), value calculated using timer frequency.. 12.28 BogoMIPS (lpj=61440)
+[    0.001724] pid_max: default: 32768 minimum: 301
+[    0.001986] Security Framework initialized
+[    0.002099] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.002110] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.003784] CPU: Testing write buffer coherency: ok
+[    0.004547] /cpus/cpu@0 missing clock-frequency property
+[    0.004581] /cpus/cpu@1 missing clock-frequency property
+[    0.004592] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.004639] Setting up static identity map for 0x80570798 - 0x80570808
+[    0.008326] CPU1: Booted secondary processor
+[    0.008362] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+[    0.008786] Brought up 2 CPUs
+[    0.008800] SMP: Total of 2 processors activated.
+[    0.008806] CPU: All CPU(s) started in SVC mode.
+[    0.010780] devtmpfs: initialized
+[    0.012108] VFP support v0.3: implementor 41 architecture 4 part 30 variant f rev 0
+[    0.012196] omap_hwmod: l3_main_2 using broken dt data from ocp
+[    0.030446] ------------[ cut here ]------------
+[    0.030462] WARNING: CPU: 0 PID: 1 at arch/arm/mach-omap2/omap_hwmod.c:2542 _init+0x1c0/0x3e0()
+[    0.030469] omap_hwmod: gmac: doesn't have mpu register target base
+[    0.030475] Modules linked in:
+[    0.030489] CPU: 0 PID: 1 Comm: swapper/0 Not tainted 3.17.0-rc6-next-20140924-00002-g2e8bb93 #1
+[    0.030509] [<c0015280>] (unwind_backtrace) from [<c0011a68>] (show_stack+0x10/0x14)
+[    0.030538] [<c0011a68>] (show_stack) from [<c0568270>] (dump_stack+0x78/0x94)
+[    0.030553] [<c0568270>] (dump_stack) from [<c0040f64>] (warn_slowpath_common+0x6c/0x8c)
+[    0.030566] [<c0040f64>] (warn_slowpath_common) from [<c0041018>] (warn_slowpath_fmt+0x30/0x40)
+[    0.030579] [<c0041018>] (warn_slowpath_fmt) from [<c07dc22c>] (_init+0x1c0/0x3e0)
+[    0.030594] [<c07dc22c>] (_init) from [<c0028848>] (omap_hwmod_for_each+0x34/0x5c)
+[    0.030608] [<c0028848>] (omap_hwmod_for_each) from [<c07dc9b4>] (__omap_hwmod_setup_all+0x24/0x40)
+[    0.030620] [<c07dc9b4>] (__omap_hwmod_setup_all) from [<c0008a44>] (do_one_initcall+0x80/0x1d4)
+[    0.030633] [<c0008a44>] (do_one_initcall) from [<c07cfd48>] (kernel_init_freeable+0x108/0x1d8)
+[    0.030653] [<c07cfd48>] (kernel_init_freeable) from [<c0562ca4>] (kernel_init+0x8/0xe4)
+[    0.030666] [<c0562ca4>] (kernel_init) from [<c000e6e8>] (ret_from_fork+0x14/0x2c)
+[    0.030706] ---[ end trace a192648b8eac7ca4 ]---
+[    0.090909] ------------[ cut here ]------------
+[    0.090924] WARNING: CPU: 0 PID: 1 at arch/arm/mach-omap2/omap_hwmod.c:2542 _init+0x1c0/0x3e0()
+[    0.090931] omap_hwmod: rtcss: doesn't have mpu register target base
+[    0.090937] Modules linked in:
+[    0.090949] CPU: 0 PID: 1 Comm: swapper/0 Tainted: G        W      3.17.0-rc6-next-20140924-00002-g2e8bb93 #1
+[    0.090965] [<c0015280>] (unwind_backtrace) from [<c0011a68>] (show_stack+0x10/0x14)
+[    0.090979] [<c0011a68>] (show_stack) from [<c0568270>] (dump_stack+0x78/0x94)
+[    0.090991] [<c0568270>] (dump_stack) from [<c0040f64>] (warn_slowpath_common+0x6c/0x8c)
+[    0.091002] [<c0040f64>] (warn_slowpath_common) from [<c0041018>] (warn_slowpath_fmt+0x30/0x40)
+[    0.091014] [<c0041018>] (warn_slowpath_fmt) from [<c07dc22c>] (_init+0x1c0/0x3e0)
+[    0.091028] [<c07dc22c>] (_init) from [<c0028848>] (omap_hwmod_for_each+0x34/0x5c)
+[    0.091041] [<c0028848>] (omap_hwmod_for_each) from [<c07dc9b4>] (__omap_hwmod_setup_all+0x24/0x40)
+[    0.091054] [<c07dc9b4>] (__omap_hwmod_setup_all) from [<c0008a44>] (do_one_initcall+0x80/0x1d4)
+[    0.091066] [<c0008a44>] (do_one_initcall) from [<c07cfd48>] (kernel_init_freeable+0x108/0x1d8)
+[    0.091080] [<c07cfd48>] (kernel_init_freeable) from [<c0562ca4>] (kernel_init+0x8/0xe4)
+[    0.091093] [<c0562ca4>] (kernel_init) from [<c000e6e8>] (ret_from_fork+0x14/0x2c)
+[    0.091100] ---[ end trace a192648b8eac7ca5 ]---
+[    0.133532] omap_hwmod: dss_core: _wait_target_disable failed
+[    0.133546] omap_hwmod: dss_core: cannot be enabled for reset (3)
+[    0.136037] omap_hwmod: dss_dispc: cannot be enabled for reset (3)
+[    0.138533] omap_hwmod: dss_hdmi: cannot be enabled for reset (3)
+[    0.207577] omap_hwmod: pcie1: _wait_target_disable failed
+[    0.213796] omap_hwmod: pcie2: _wait_target_disable failed
+[    0.220313] omap_hwmod: usb_otg_ss1: _wait_target_disable failed
+[    0.223004] pinctrl core: initialized pinctrl subsystem
+[    0.224849] regulator-dummy: no parameters
+[    0.273823] NET: Registered protocol family 16
+[    0.277240] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.278749] cpuidle: using governor ladder
+[    0.278765] cpuidle: using governor menu
+[    0.286986] OMAP GPIO hardware version 0.1
+[    0.303084] platform 4e000000.dmm: Cannot lookup hwmod 'dmm'
+[    0.312390] omap-gpmc 50000000.gpmc: could not find pctldev for node /ocp/pinmux@4a003400/nand_flash_x16, deferring probe
+[    0.312412] platform 50000000.gpmc: Driver omap-gpmc requests probe deferral
+[    0.313858] No ATAGs?
+[    0.313915] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.313923] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.316036] OMAP DMA hardware revision 0.0
+[    0.366021] edma-dma-engine edma-dma-engine.0: Can't allocate PaRAM dummy slot
+[    0.366062] edma-dma-engine: probe of edma-dma-engine.0 failed with error -22
+[    0.392898] omap-dma-engine 4a056000.dma-controller: OMAP DMA engine driver
+[    0.393859] mmc2_3v3: 3300 mV 
+[    0.394536] vtt_fixed: 1350 mV 
+[    0.397334] SCSI subsystem initialized
+[    0.397889] usbcore: registered new interface driver usbfs
+[    0.398017] usbcore: registered new interface driver hub
+[    0.398226] usbcore: registered new device driver usb
+[    0.398925] omap_i2c 48070000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c1_pins, deferring probe
+[    0.398947] platform 48070000.i2c: Driver omap_i2c requests probe deferral
+[    0.398998] omap_i2c 48072000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c2_pins, deferring probe
+[    0.399017] platform 48072000.i2c: Driver omap_i2c requests probe deferral
+[    0.399066] omap_i2c 48060000.i2c: could not find pctldev for node /ocp/pinmux@4a003400/pinmux_i2c3_pins, deferring probe
+[    0.399084] platform 48060000.i2c: Driver omap_i2c requests probe deferral
+[    0.402078] Switched to clocksource arch_sys_counter
+[    0.503925] NET: Registered protocol family 2
+[    0.505054] TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.505249] TCP bind hash table entries: 8192 (order: 6, 294912 bytes)
+[    0.507546] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.507661] TCP: reno registered
+[    0.507681] UDP hash table entries: 512 (order: 3, 40960 bytes)
+[    0.507988] UDP-Lite hash table entries: 512 (order: 3, 40960 bytes)
+[    0.508966] NET: Registered protocol family 1
+[    0.509699] RPC: Registered named UNIX socket transport module.
+[    0.509710] RPC: Registered udp transport module.
+[    0.509718] RPC: Registered tcp transport module.
+[    0.509726] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.514266] futex hash table entries: 512 (order: 3, 32768 bytes)
+[    0.516983] VFS: Disk quotas dquot_6.5.2
+[    0.517078] Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.518526] NFS: Registering the id_resolver key type
+[    0.518724] Key type id_resolver registered
+[    0.518734] Key type id_legacy registered
+[    0.518851] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
+[    0.519134] msgmni has been set to 1459
+[    0.520898] bounce: pool size: 64 pages
+[    0.520944] io scheduler noop registered
+[    0.520957] io scheduler deadline registered
+[    0.521005] io scheduler cfq registered (default)
+[    0.524475] platform 4a084000.phy: Driver omap-usb2 requests probe deferral
+[    0.524692] platform 4a085000.phy: Driver omap-usb2 requests probe deferral
+[    0.528014] pinctrl-single 4a003400.pinmux: 281 pins at pa fc003400 size 1124
+[    0.529757] pbias_mmc_omap5: 1800 <--> 3000 mV at 3000 mV 
+[    0.530791] abb_mpu: 1060 <--> 1210 mV 
+[    0.531409] abb_ivahd: 1055 <--> 1250 mV 
+[    0.532085] abb_dspeve: 1055 <--> 1250 mV 
+[    0.532680] abb_gpu: 1090 <--> 1280 mV 
+[    0.533980] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.538063] omap_uart 4806a000.serial: no wakeirq for uart0
+[    0.538365] omap_uart 4806a000.serial: ttyO0 at MMIO 0x4806a000 (irq = 294, base_baud = 3000000) is a OMAP UART0
+[    1.629033] console [ttyO0] enabled
+[    1.633894] omap_uart 4806c000.serial: no wakeirq for uart0
+[    1.639929] omap_uart 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 295, base_baud = 3000000) is a OMAP UART1
+[    1.651576] omap_uart 48020000.serial: no wakeirq for uart0
+[    1.657626] omap_uart 48020000.serial: ttyO2 at MMIO 0x48020000 (irq = 296, base_baud = 3000000) is a OMAP UART2
+[    1.686014] brd: module loaded
+[    1.698733] loop: module loaded
+[    1.704226] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    1.715272] usbcore: registered new interface driver asix
+[    1.721028] usbcore: registered new interface driver ax88179_178a
+[    1.727528] usbcore: registered new interface driver cdc_ether
+[    1.733781] usbcore: registered new interface driver smsc95xx
+[    1.739885] usbcore: registered new interface driver net1080
+[    1.745913] usbcore: registered new interface driver cdc_subset
+[    1.752211] usbcore: registered new interface driver zaurus
+[    1.758189] usbcore: registered new interface driver cdc_ncm
+[    1.764771] usbcore: registered new interface driver cdc_wdm
+[    1.770825] usbcore: registered new interface driver usb-storage
+[    1.777262] usbcore: registered new interface driver usbtest
+[    1.784586] mousedev: PS/2 mouse device common for all mice
+[    1.792291] i2c /dev entries driver
+[    1.795998] Driver for 1-wire Dallas network protocol.
+[    1.803703] omap_hsmmc 4809c000.mmc: unable to get vmmc regulator -517
+[    1.810721] platform 4809c000.mmc: Driver omap_hsmmc requests probe deferral
+[    1.852751] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.859450] usbcore: registered new interface driver usbhid
+[    1.865312] usbhid: USB HID core driver
+[    1.870580] oprofile: no performance counters
+[    1.875859] oprofile: using timer interrupt.
+[    1.880738] TCP: cubic registered
+[    1.884253] Initializing XFRM netlink socket
+[    1.888801] NET: Registered protocol family 17
+[    1.893512] NET: Registered protocol family 15
+[    1.898362] Key type dns_resolver registered
+[    1.902965] omap_voltage_late_init: Voltage driver support not added
+[    1.909625] sr_dev_init: Unable to get voltage domain pointer for VDD core
+[    1.916828] sr_dev_init: Unable to get voltage domain pointer for VDD mpu
+[    1.924584] ThumbEE CPU extension supported.
+[    1.929079] Registering SWP/SWPB emulation handler
+[    1.934118] SmartReflex Class3 initialized
+[    1.940859] omap-gpmc 50000000.gpmc: GPMC revision 6.0
+[    1.946288] mmc0: BKOPS_EN bit is not set
+[    1.947460] nand: No NAND device found
+[    1.947466] omap2-nand omap2-nand.0: scan failed, may be bus-width mismatch
+[    1.952716] palmas 0-0058: IRQ missing: skipping irq request
+[    1.967935] palmas 0-0058: Muxing GPIO 2e, PWM 0, LED 0
+[    1.971196] mmc0: new high speed MMC card at address 0001
+[    1.979279] mmcblk0: mmc0:0001 MMC08G 7.25 GiB 
+[    1.984388] mmcblk0boot0: mmc0:0001 MMC08G partition 1 8.00 MiB
+[    1.990817] mmcblk0boot1: mmc0:0001 MMC08G partition 2 8.00 MiB
+[    1.999858] smps123: 850 <--> 1250 mV at 990 mV 
+[    2.005797]  mmcblk0: p1
+[    2.011192] smps45: 850 <--> 1150 mV at 960 mV 
+[    2.018996] smps6: 850 <--> 1650 mV at 980 mV 
+[    2.025773] smps7: 850 <--> 1030 mV at 990 mV 
+[    2.032798] smps8: 850 <--> 1250 mV at 950 mV 
+[    2.039572] smps9: 1800 mV 
+[    2.044447] ldo1: 1800 <--> 3300 mV at 3300 mV 
+[    2.051428] ldo2: 3300 mV 
+[    2.056442] ldo3: 1800 mV 
+[    2.060631] LDO4: at 1800 mV 
+[    2.064816] LDO5: no parameters
+[    2.069087] LDO6: no parameters
+[    2.073315] LDO7: no parameters
+[    2.077567] LDO8: no parameters
+[    2.082821] ldo9: 1050 mV 
+[    2.087846] ldoln: 1800 mV 
+[    2.093025] ldousb: 3300 mV 
+[    2.097067] REGEN1: no parameters
+[    2.100944] REGEN2: no parameters
+[    2.104889] REGEN3: no parameters
+[    2.108759] SYSEN1: no parameters
+[    2.112694] SYSEN2: no parameters
+[    2.116387] omap_i2c 48070000.i2c: bus 0 rev0.12 at 400 kHz
+[    2.123841] omap_i2c 48072000.i2c: bus 1 rev0.12 at 400 kHz
+[    2.130861] omap_i2c 48060000.i2c: bus 2 rev0.12 at 400 kHz
+[    2.183312] drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
+[    2.189879] sr_init: No PMIC hook to init smartreflex
+[    2.195383] sr_init: platform driver register failed for SR
+[    2.229072] mmc1: host does not support reading read-only switch. assuming write-enable.
+[    2.239367] mmc1: new high speed SDHC card at address 0001
+[    2.246205] mmcblk1: mmc1:0001 00000 3.79 GiB 
+[    2.252317]  mmcblk1: p1 p2
+[   14.352550] ldousb: disabling
+[   14.356279] ldo9: disabling
+[   14.359856] ldo2: disabling
+[   14.363418] smps8: disabling
+[   14.367014] smps6: disabling
+[   14.370610] smps45: disabling
+[   14.377854] EXT3-fs (mmcblk1p2): error: couldn't mount because of unsupported optional features (240)
+[   14.388177] List of all partitions:
+[   14.391890] b300         7602176 mmcblk0  driver: mmcblk
+[   14.397490]   b301         7601152 mmcblk0p1 f8fd06ed-01
+[   14.403076] b310            8192 mmcblk0boot1  (driver?)
+[   14.408646] b308            8192 mmcblk0boot0  (driver?)
+[   14.414234] b318         3977216 mmcblk1  driver: mmcblk
+[   14.419808]   b319          499937 mmcblk1p1 00000000-01
+[   14.425383]   b31a         3476340 mmcblk1p2 00000000-02
+[   14.430943] No filesystem could mount root, tried:  ext3
+[   14.436544] Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(179,26)
+[   14.445550] CPU0: stopping
+[   14.448381] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W      3.17.0-rc6-next-20140924-00002-g2e8bb93 #1
+[   14.458755] [<c0015280>] (unwind_backtrace) from [<c0011a68>] (show_stack+0x10/0x14)
+[   14.466857] [<c0011a68>] (show_stack) from [<c0568270>] (dump_stack+0x78/0x94)
+[   14.474418] [<c0568270>] (dump_stack) from [<c0013964>] (handle_IPI+0x19c/0x258)
+[   14.482154] [<c0013964>] (handle_IPI) from [<c00087b4>] (gic_handle_irq+0x58/0x60)
+[   14.490077] [<c00087b4>] (gic_handle_irq) from [<c056e8e4>] (__irq_svc+0x44/0x5c)
+[   14.497896] Exception stack(0xc0837f68 to 0xc0837fb0)
+[   14.503177] 7f60:                   00000001 00000001 00000000 c0841db0 00000000 00000000
+[   14.511730] 7f80: c083e9dc 00000000 ffffffed c083e978 c08d8088 c08330f0 00000000 c0837fb0
+[   14.520279] 7fa0: c007f9e0 c000f1ec 20000013 ffffffff
+[   14.525569] [<c056e8e4>] (__irq_svc) from [<c000f1ec>] (arch_cpu_idle+0x20/0x3c)
+[   14.533314] [<c000f1ec>] (arch_cpu_idle) from [<c0074b60>] (cpu_startup_entry+0x25c/0x358)
+[   14.541961] [<c0074b60>] (cpu_startup_entry) from [<c07cfbd0>] (start_kernel+0x348/0x3b8)
+[   14.550512] [<c07cfbd0>] (start_kernel) from [<80008074>] (0x80008074)
+[   14.557367] ---[ end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(179,26)
