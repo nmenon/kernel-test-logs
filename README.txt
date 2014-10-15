@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20141014
-Tue Oct 14 06:35:23 CDT 2014
+Automated logs for TAG=next-20141015
+Wed Oct 15 06:32:10 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -24,10 +24,10 @@ multi_v7_defconfig
 14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
 15:       n900:  Boot FAIL: n900.txt
 16:  omap5-evm:  Boot PASS: omap5-evm.txt
-17: pandaboard-es:  Boot FAIL: pandaboard-es.txt
+17: pandaboard-es:  Boot PASS: pandaboard-es.txt
 18: pandaboard-vanilla:  Boot PASS: pandaboard-vanilla.txt
 19:    sdp3430:  Boot PASS: sdp3430.txt
-TOTAL = 19 boards, Booted Boards = 14, No Boot boards = 5
+TOTAL = 19 boards, Booted Boards = 15, No Boot boards = 4
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1: am335x-evm:  Boot PASS: am335x-evm.txt
@@ -46,8 +46,7 @@ omap2plus_defconfig
 14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
 15:       n900:  Boot PASS: n900.txt
 16:  omap5-evm:  Boot PASS: omap5-evm.txt
-17: pandaboard-es:  Boot PASS: pandaboard-es.txt
-18: pandaboard-vanilla:  Boot PASS: pandaboard-vanilla.txt
-19:    sdp2430:  Boot PASS: sdp2430.txt
-20:    sdp3430:  Boot PASS: sdp3430.txt
-TOTAL = 20 boards, Booted Boards = 18, No Boot boards = 2
+17: pandaboard-vanilla:  Boot PASS: pandaboard-vanilla.txt
+18:    sdp2430:  Boot PASS: sdp2430.txt
+19:    sdp3430:  Boot PASS: sdp3430.txt
+TOTAL = 19 boards, Booted Boards = 17, No Boot boards = 2
