@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20141021
-Tue Oct 21 06:45:35 CDT 2014
+Automated logs for TAG=next-20141023
+Thu Oct 23 06:42:48 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -13,12 +13,12 @@ multi_v7_defconfig
  3: am3517-evm:  Boot PASS: am3517-evm.txt
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
  5: am43xx-epos:  Boot PASS: am43xx-epos.txt
- 6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
- 7: BeagleBoard-XM:  Boot PASS: beagleboard.txt
+ 6: am43xx-gpevm:  Boot FAIL: am43xx-gpevm.txt
+ 7: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
  8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
  9: beaglebone-black:  Boot PASS: beaglebone-black.txt
 10: beaglebone:  Boot FAIL: beaglebone.txt
-11: craneboard:  Boot FAIL: craneboard.txt
+11: craneboard:  Boot PASS: craneboard.txt
 12: dra72x-evm:  Boot FAIL: dra72x-evm.txt
 13: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
 14: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
@@ -27,7 +27,7 @@ multi_v7_defconfig
 17: pandaboard-es:  Boot PASS: pandaboard-es.txt
 18: pandaboard-vanilla:  Boot PASS: pandaboard-vanilla.txt
 19:    sdp3430:  Boot PASS: sdp3430.txt
-TOTAL = 19 boards, Booted Boards = 15, No Boot boards = 4
+TOTAL = 19 boards, Booted Boards = 14, No Boot boards = 5
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1: am335x-evm:  Boot PASS: am335x-evm.txt
@@ -35,8 +35,8 @@ omap2plus_defconfig
  3: am3517-evm:  Boot PASS: am3517-evm.txt
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
  5: am43xx-epos:  Boot PASS: am43xx-epos.txt
- 6: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
- 7: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
+ 6: am43xx-gpevm:  Boot FAIL: am43xx-gpevm.txt
+ 7: BeagleBoard-XM:  Boot PASS: beagleboard.txt
  8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
  9: beaglebone-black:  Boot PASS: beaglebone-black.txt
 10: beaglebone:  Boot PASS: beaglebone.txt
