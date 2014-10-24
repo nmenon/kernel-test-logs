@@ -1,5 +1,5 @@
 Automated logs for TAG=next-20141023
-Thu Oct 23 06:42:48 CDT 2014
+Fri Oct 24 06:39:19 CDT 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -14,8 +14,8 @@ multi_v7_defconfig
  4:  am37x-evm:  Boot PASS: am37x-evm.txt
  5: am43xx-epos:  Boot PASS: am43xx-epos.txt
  6: am43xx-gpevm:  Boot FAIL: am43xx-gpevm.txt
- 7: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
- 8: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
+ 7: BeagleBoard-XM:  Boot PASS: beagleboard.txt
+ 8: beagleboard-vanilla:  Boot FAIL: beagleboard-vanilla.txt
  9: beaglebone-black:  Boot PASS: beaglebone-black.txt
 10: beaglebone:  Boot FAIL: beaglebone.txt
 11: craneboard:  Boot PASS: craneboard.txt
