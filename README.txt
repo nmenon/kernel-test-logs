@@ -1,5 +1,5 @@
-Automated logs for TAG=v3.18-rc5
-Mon Nov 17 02:36:38 CST 2014
+Automated logs for TAG=v3.18-rc6
+Mon Nov 24 02:36:43 CST 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot FAIL: dra72x-evm.txt
@@ -25,7 +25,7 @@ omap2plus_defconfig
  1: am335x-evm:  Boot PASS: am335x-evm.txt
  2:  am335x-sk:  Boot PASS: am335x-sk.txt
  3: am3517-evm:  Boot PASS: am3517-evm.txt
- 4:  am37x-evm:  Boot FAIL: am37x-evm.txt
+ 4:  am37x-evm:  Boot PASS: am37x-evm.txt
  5:  am437x-sk:  Boot PASS: am437x-sk.txt
  6: am43xx-epos:  Boot PASS: am43xx-epos.txt
  7: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
@@ -34,4 +34,4 @@ omap2plus_defconfig
 10: dra72x-evm:  Boot FAIL: dra72x-evm.txt
 11: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
 12:  omap5-evm:  Boot PASS: omap5-evm.txt
-TOTAL = 12 boards, Booted Boards = 10, No Boot boards = 2
+TOTAL = 12 boards, Booted Boards = 11, No Boot boards = 1
