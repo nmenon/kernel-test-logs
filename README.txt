@@ -1,5 +1,5 @@
 Automated logs for TAG=next-20141124
-Mon Nov 24 06:20:41 CST 2014
+Tue Nov 25 06:08:09 CST 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: dra72x-evm:  Boot PASS: dra72x-evm.txt
