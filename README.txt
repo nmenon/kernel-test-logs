@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20141204
-Fri Dec  5 07:13:41 CST 2014
+Automated logs for TAG=next-20141205
+Sat Dec  6 06:22:00 CST 2014
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1: am57xx-evm:  Boot PASS: am57xx-evm.txt
@@ -15,33 +15,33 @@ multi_v7_defconfig
  4:  am37x-evm:  Boot FAIL: am37x-evm.txt
  5:  am437x-sk:  Boot FAIL: am437x-sk.txt
  6: am43xx-epos:  Boot PASS: am43xx-epos.txt
- 7: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
+ 7: am43xx-gpevm:  Boot FAIL: am43xx-gpevm.txt
  8: am57xx-evm:  Boot PASS: am57xx-evm.txt
- 9: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
-10: beagleboard-vanilla:  Boot FAIL: beagleboard-vanilla.txt
+ 9: BeagleBoard-XM:  Boot PASS: beagleboard.txt
+10: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
 11: beaglebone-black:  Boot PASS: beaglebone-black.txt
 12: beaglebone:  Boot FAIL: beaglebone.txt
 13: craneboard:  Boot FAIL: craneboard.txt
 14: dra72x-evm:  Boot PASS: dra72x-evm.txt
 15: dra7xx-evm:  Boot PASS: dra7xx-evm.txt
-16: OMAP3430-Labrador(LDP):  Boot PASS: ldp.txt
+16: OMAP3430-Labrador(LDP):  Boot FAIL: ldp.txt
 17:       n900:  Boot FAIL: n900.txt
 18:  omap5-evm:  Boot PASS: omap5-evm.txt
 19: pandaboard-es:  Boot FAIL: pandaboard-es.txt
 20: pandaboard-vanilla:  Boot FAIL: pandaboard-vanilla.txt
-21:    sdp3430:  Boot PASS: sdp3430.txt
-TOTAL = 21 boards, Booted Boards = 12, No Boot boards = 9
+21:    sdp3430:  Boot FAIL: sdp3430.txt
+TOTAL = 21 boards, Booted Boards = 11, No Boot boards = 10
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1: am335x-evm:  Boot PASS: am335x-evm.txt
  2:  am335x-sk:  Boot PASS: am335x-sk.txt
  3: am3517-evm:  Boot PASS: am3517-evm.txt
  4:  am37x-evm:  Boot FAIL: am37x-evm.txt
- 5:  am437x-sk:  Boot FAIL: am437x-sk.txt
+ 5:  am437x-sk:  Boot PASS: am437x-sk.txt
  6: am43xx-epos:  Boot PASS: am43xx-epos.txt
  7: am43xx-gpevm:  Boot PASS: am43xx-gpevm.txt
  8: am57xx-evm:  Boot PASS: am57xx-evm.txt
- 9: BeagleBoard-XM:  Boot FAIL: beagleboard.txt
+ 9: BeagleBoard-XM:  Boot PASS: beagleboard.txt
 10: beagleboard-vanilla:  Boot PASS: beagleboard-vanilla.txt
 11: beaglebone-black:  Boot PASS: beaglebone-black.txt
 12: beaglebone:  Boot PASS: beaglebone.txt
@@ -55,4 +55,4 @@ omap2plus_defconfig
 20: pandaboard-vanilla:  Boot FAIL: pandaboard-vanilla.txt
 21:    sdp2430:  Boot FAIL: sdp2430.txt
 22:    sdp3430:  Boot PASS: sdp3430.txt
-TOTAL = 22 boards, Booted Boards = 15, No Boot boards = 7
+TOTAL = 22 boards, Booted Boards = 17, No Boot boards = 5
