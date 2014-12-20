@@ -1,39 +1,91 @@
-- 07:20:35 [INFO] Starting target session
-- 07:20:35 [INFO] Connected to beagleboard via serial 
-- 07:20:35 [INFO] Host: #check prompt
-- 07:20:38 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
-- 07:20:38 [INFO] Target: 
+- 20:22:42 [INFO] Starting target session
+- 20:22:42 [INFO] Connected to beagleboard via serial 
+- 20:22:42 [INFO] Host: #check prompt
+- 20:22:45 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
+- 20:22:45 [INFO] Target: 
 #check prompt
 root@beagleboard:/test# 
-- 07:20:38 [INFO] Host: #check prompt
-- 07:20:39 [INFO] Target: 
+- 20:22:45 [INFO] Host: #check prompt
+- 20:22:45 [INFO] Target: 
 #check prompt
 root@beagleboard:/test# 
-- 07:20:39 [INFO] Host: sync;poweroff
-- 07:20:53 [INFO] Target: 
+- 20:22:45 [INFO] Host: sync;poweroff
+- 20:23:02 [INFO] Target: 
 sync;poweroff
-Broadcast message from root@beagleboard (ttyO2) (Thu Aug 28 01:48:03 2Br=]jj(*uj(*UI55jR$z
-INIT: Sending processes tStopping syslogd/klogd: stopped syslogd (pid 1303)
-stopped klogd (pid 1307)
+Broadcast message from root@beagleboard (ttyO2) (Sun Apr 13 02:05:17 2014):
+The system is going down for system halt NOW!
+INIT: Switching to runlevel: 0
+:root@beagleboard:/test# 
+INIT: Sending processes the TERM signal
+INIT: Sending processes the KILL sStopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 466)
+dropbear.
+Stopping telnet daemon.
+Stopping system message bus: dbus.
+Error opening /dev/fb0: No such file or directory
+Stopping syslogd/klogd: stopped syslogd (pid 478)
+stopped klogd (pid 481)
 done
+Stopping thttpd.
+ALSA: Storing mixer settings...
+/usr/sbin/alsactl: save_state:1590: No soundcards found...
 Deconfiguring network interfaces... ifdown: interface eth0 not configured
-ifdown: interface usb0 not configured
 done.
+Stopping Lighttpd Web Server: stopped /usr/sbin/lighttpd (pid 494)
+lighttpd.
+Stopping Matrix GUI applicationstart-stop-daemon: warning: killing process 505: No such process
+***************************************************************
+***************************************************************
+NOTICE: This file system contains the followin GPLv3 packages:
+	binutils-symlinks
+	binutils
+	gdbserver
+If you do not wish to distribute GPLv3 components please remove
+the above packages prior to distribution.  This can be done using
+the opkg remove command.  i.e.:
+    opkg remove <package>
+Where <package> is the name printed in the list above
+NOTE: If the package is a dependency of another package you
+      will be notified of the dependent packages.  You should
+      use the --force-removal-of-dependent-packages option to
+      also remove the dependent packages as well
+***************************************************************
+***************************************************************
 Sending all processes the TERM signal...
 Sending all processes the KILL signal...
 Unmounting remote filesystems...
 Deactivating swap...
 Unmounting local filesystems...
-[ 1244.515808] reboot: System halted
-- 07:20:53 [INFO] Disconnected serial from beagleboard
-- 07:20:54 [INFO] Connected to beagleboard via serial 
-- 07:20:54 [INFO] Host: 
-- 07:20:54 [ERROR] On command:  waiting for (?-mix:U-Boot#) >>> error: execution expired
-- 07:20:54 [INFO] Target: 
+[ 2699.547180] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
+[ 2701.776397] reboot: Power down
+[ 2701.779663] ------------[ cut here ]------------
+[ 2701.784576] WARNING: CPU: 0 PID: 630 at kernel/locking/lockdep.c:2744 lockdep_trace_alloc+0xec/0x10c()
+[ 2701.794372] DEBUG_LOCKS_WARN_ON(irqs_disabled_flags(flags))
+[ 2701.800079] Modules linked in:
+[ 2701.803497] CPU: 0 PID: 630 Comm: halt Not tainted 3.18.0-next-20141219-00002-g253a3ff #1
+[ 2701.812133] Hardware name: Generic OMAP36xx (Flattened Device Tree)
+[ 2701.818786] [<c0015388>] (unwind_backtrace) from [<c0011a14>] (show_stack+0x10/0x14)
+[ 2701.826965] [<c0011a14>] (show_stack) from [<c05d548c>] (dump_stack+0x78/0x94)
+[ 2701.834594] [<c05d548c>] (dump_stack) from [<c003dd78>] (warn_slowpath_common+0x7c/0xb4)
+[ 2701.843139] [<c003dd78>] (warn_slowpath_common) from [<c003de44>] (warn_slowpath_fmt+0x30/0x40)
+[ 2701.852294] [<c003de44>] (warn_slowpath_fmt) from [<c0083f28>] (lockdep_trace_alloc+0xec/0x10c)
+[ 2701.861511] [<c0083f28>] (lockdep_trace_alloc) from [<c013bb1c>] (__kmalloc_track_caller+0x40/0x258)
+[ 2701.871154] [<c013bb1c>] (__kmalloc_track_caller) from [<c011591c>] (kmemdup+0x1c/0x38)
+[ 2701.879608] [<c011591c>] (kmemdup) from [<c03b9674>] (regmap_bulk_write+0x74/0x19c)
+[ 2701.887695] [<c03b9674>] (regmap_bulk_write) from [<c03c4744>] (twl_i2c_write+0x4c/0x88)
+[ 2701.896240] [<c03c4744>] (twl_i2c_write) from [<c03c6c98>] (twl4030_power_off+0x3c/0x158)
+[ 2701.904876] [<c03c6c98>] (twl4030_power_off) from [<c000f230>] (machine_power_off+0x24/0x2c)
+[ 2701.913787] [<c000f230>] (machine_power_off) from [<c005af58>] (SyS_reboot+0x114/0x1f0)
+[ 2701.922241] [<c005af58>] (SyS_reboot) from [<c000e5e0>] (ret_fast_syscall+0x0/0x48)
+[ 2701.930328] ---[ end trace 1396d84469f7bd5d ]---
+- 20:23:02 [INFO] Disconnected serial from beagleboard
+- 20:23:03 [INFO] Connected to beagleboard via serial 
+- 20:23:03 [INFO] Host: 
+- 20:23:03 [ERROR] On command:  waiting for (?-mix:U-Boot#) >>> error: execution expired
+- 20:23:03 [INFO] Target: 
 U-Boot SPL 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
-- 07:20:54 [INFO] Host: 
-- 07:20:55 [ERROR] On command:  waiting for (?-mix:U-Boot#) >>> error: execution expired
-- 07:20:55 [INFO] Target: 
+- 20:23:03 [INFO] Host: 
+- 20:23:04 [ERROR] On command:  waiting for (?-mix:U-Boot#) >>> error: execution expired
+- 20:23:04 [INFO] Target: 
 SPL: Please implement spl_start_uboot() for your board
 SPL: Direct Linux boot not active!
 reading u-boot.img
@@ -52,37 +104,37 @@ Die ID #723000029ff8000001578ca00e02e00b
 Net:   usb_ether
 Error: usb_ether address not set.
 Hit any key to stop autoboot:  1 
-- 07:20:55 [INFO] Host: 
-- 07:20:55 [INFO] Target: 
+- 20:23:04 [INFO] Host: 
+- 20:23:04 [INFO] Target: 
 U-Boot# 
-- 07:20:55 [INFO] Host: 
-- 07:20:56 [INFO] Target: 
+- 20:23:04 [INFO] Host: 
+- 20:23:05 [INFO] Target: 
 U-Boot# 
-- 07:20:56 [INFO] Host: version
-- 07:20:56 [INFO] Target: 
+- 20:23:05 [INFO] Host: version
+- 20:23:05 [INFO] Target: 
 version
 U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 arm-linux-gnueabi-gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
 GNU ld (GNU Binutils for Ubuntu) 2.22
 U-Boot# 
-- 07:20:56 [INFO] Host: setenv bootargs 'console=ttyO2,115200n8  earlyprintk rootwait '
-- 07:20:57 [INFO] Target: 
+- 20:23:05 [INFO] Host: setenv bootargs 'console=ttyO2,115200n8  earlyprintk rootwait '
+- 20:23:06 [INFO] Target: 
 setenv bootargs 'console=ttyO2,115200n8  earlyprintk rootwait '
 U-Boot# 
-- 07:20:57 [INFO] Host: setenv bootcmd  ''
-- 07:20:57 [INFO] Target: 
+- 20:23:06 [INFO] Host: setenv bootcmd  ''
+- 20:23:06 [INFO] Target: 
 setenv bootcmd  ''
 U-Boot# 
-- 07:20:57 [INFO] Host: setenv autoload 'no'
-- 07:20:58 [INFO] Target: 
+- 20:23:06 [INFO] Host: setenv autoload 'no'
+- 20:23:07 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 07:20:58 [INFO] Host: setenv serverip '192.168.0.1'
-- 07:20:58 [INFO] Target: 
+- 20:23:07 [INFO] Host: setenv serverip '192.168.0.1'
+- 20:23:07 [INFO] Target: 
 setenv serverip '192.168.0.1'
 U-Boot# 
-- 07:20:58 [INFO] Host: printenv
-- 07:20:59 [INFO] Target: 
+- 20:23:07 [INFO] Host: printenv
+- 20:23:08 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -149,16 +201,16 @@ ver=U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 vram=12M
 Environment size: 3237/131068 bytes
 U-Boot# 
-- 07:20:59 [INFO] Host: dcache off
-- 07:20:59 [INFO] Target: 
+- 20:23:08 [INFO] Host: dcache off
+- 20:23:08 [INFO] Target: 
 dcache off
 U-Boot# 
-- 07:20:59 [INFO] Host: setenv usbethaddr b0:ee:aa:12:34:56
-- 07:21:00 [INFO] Target: 
+- 20:23:08 [INFO] Host: setenv usbethaddr b0:ee:aa:12:34:56
+- 20:23:09 [INFO] Target: 
 setenv usbethaddr b0:ee:aa:12:34:56
 U-Boot# 
-- 07:21:00 [INFO] Host: usb start
-- 07:21:04 [INFO] Target: 
+- 20:23:09 [INFO] Host: usb start
+- 20:23:13 [INFO] Target: 
 usb start
 (Re)start USB...
 USB0:   USB EHCI 1.00
@@ -166,8 +218,8 @@ scanning bus 0 for devices... 3 USB Device(s) found
        scanning usb for storage devices... 0 Storage Device(s) found
        scanning usb for ethernet devices... 1 Ethernet Device(s) found
 U-Boot# 
-- 07:21:04 [INFO] Host: printenv
-- 07:21:05 [INFO] Target: 
+- 20:23:13 [INFO] Host: printenv
+- 20:23:14 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -234,43 +286,43 @@ ver=U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 vram=12M
 Environment size: 3237/131068 bytes
 U-Boot# 
-- 07:21:05 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
-- 07:21:05 [INFO] Target: 
+- 20:23:14 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
+- 20:23:14 [INFO] Target: 
 setenv bootargs ''${bootargs}' ip=dhcp '
 U-Boot# 
-- 07:21:05 [INFO] Host: setenv serverip '192.168.0.1'
-- 07:21:06 [INFO] Target: 
+- 20:23:14 [INFO] Host: setenv serverip '192.168.0.1'
+- 20:23:15 [INFO] Target: 
 setenv serverip '192.168.0.1'
 U-Boot# 
-- 07:21:06 [INFO] Host: setenv ipaddr dhcp
-- 07:21:06 [INFO] Target: 
+- 20:23:15 [INFO] Host: setenv ipaddr dhcp
+- 20:23:15 [INFO] Target: 
 setenv ipaddr dhcp
 U-Boot# 
-- 07:21:06 [INFO] Host: setenv autoload 'no'
-- 07:21:07 [INFO] Target: 
+- 20:23:15 [INFO] Host: setenv autoload 'no'
+- 20:23:16 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 07:21:07 [INFO] Host: dhcp
-- 07:21:10 [INFO] Target: 
+- 20:23:16 [INFO] Host: dhcp
+- 20:23:19 [INFO] Target: 
 dhcp
 ERROR: Need valid 'usbnet_devaddr' to be set
 at drivers/usb/gadget/ether.c:2357/usb_eth_init()
 Waiting for Ethernet connection... done.
 BOOTP broadcast 1
 BOOTP broadcast 2
-DHCP client bound to address 192.168.0.103 (1047 ms)
+DHCP client bound to address 192.168.0.103 (1056 ms)
 U-Boot# 
-- 07:21:10 [INFO] Host: setenv serverip '192.168.0.1'
-- 07:21:10 [INFO] Target: 
+- 20:23:19 [INFO] Host: setenv serverip '192.168.0.1'
+- 20:23:19 [INFO] Target: 
 setenv serverip '192.168.0.1'
 U-Boot# 
-- 07:21:10 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_beagleboard1/cc4c342b73edbe46d65f4b5edcfc886a
-- 07:21:16 [INFO] Target: 
-tftp ${loadaddr} 192.168.0.1:vatf_beagleboard1/cc4c342b73edbe46d65f4b5edcfc886a
+- 20:23:19 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_beagleboard1/8e99096fc16ffd5d9a339fb05512f13f
+- 20:23:25 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_beagleboard1/8e99096fc16ffd5d9a339fb05512f13f
 Waiting for Ethernet connection... done.
 Using sms0 device
 TFTP from server 192.168.0.1; our IP address is 192.168.0.103
-Filename 'vatf_beagleboard1/cc4c342b73edbe46d65f4b5edcfc886a'.
+Filename 'vatf_beagleboard1/8e99096fc16ffd5d9a339fb05512f13f'.
 Load address: 0x80200000
 Loading: *#################################################################
 	 #################################################################
@@ -280,10 +332,10 @@ Loading: *#################################################################
 	 #################################################################
 	 1.4 MiB/s
 done
-Bytes transferred = 5713960 (573028 hex)
+Bytes transferred = 5713648 (572ef0 hex)
 U-Boot# 
-- 07:21:16 [INFO] Host: tftp ${fdtaddr} 192.168.0.1:vatf_beagleboard1/99169ff9a0b7ee4c0fbc81cc9eddec2f
-- 07:21:18 [INFO] Target: 
+- 20:23:25 [INFO] Host: tftp ${fdtaddr} 192.168.0.1:vatf_beagleboard1/99169ff9a0b7ee4c0fbc81cc9eddec2f
+- 20:23:27 [INFO] Target: 
 tftp ${fdtaddr} 192.168.0.1:vatf_beagleboard1/99169ff9a0b7ee4c0fbc81cc9eddec2f
 Waiting for Ethernet connection... done.
 Using sms0 device
@@ -295,16 +347,16 @@ Loading: *#####
 done
 Bytes transferred = 62706 (f4f2 hex)
 U-Boot# 
-- 07:21:18 [INFO] Host: ls mmc 0:1
-- 07:21:19 [INFO] Target: 
+- 20:23:27 [INFO] Host: ls mmc 0:1
+- 20:23:28 [INFO] Target: 
 ls mmc 0:1
     50708   mlo 
    393400   u-boot.img 
         4   ws-calibrate.rules 
 3 file(s), 0 dir(s)
 U-Boot# 
-- 07:21:19 [INFO] Host: ls mmc 0:2
-- 07:21:19 [INFO] Target: 
+- 20:23:28 [INFO] Host: ls mmc 0:2
+- 20:23:28 [INFO] Target: 
 ls mmc 0:2
 <DIR>       4096 .
 <DIR>       4096 ..
@@ -329,13 +381,13 @@ ls mmc 0:2
 <DIR>       4096 Settings
 <DIR>       4096 test
 U-Boot# 
-- 07:21:19 [INFO] Host: part uuid mmc 0:2
-- 07:21:20 [INFO] Target: 
+- 20:23:28 [INFO] Host: part uuid mmc 0:2
+- 20:23:29 [INFO] Target: 
 part uuid mmc 0:2
 00000000-02
 U-Boot# 
-- 07:21:20 [INFO] Host: printenv
-- 07:21:20 [INFO] Target: 
+- 20:23:29 [INFO] Host: printenv
+- 20:23:29 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -408,12 +460,12 @@ ver=U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 vram=12M
 Environment size: 3366/131068 bytes
 U-Boot# 
-- 07:21:20 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
-- 07:21:21 [INFO] Target: 
+- 20:23:29 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 20:23:30 [INFO] Target: 
 setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
 U-Boot# 
-- 07:21:21 [INFO] Host: printenv
-- 07:21:21 [INFO] Target: 
+- 20:23:30 [INFO] Host: printenv
+- 20:23:30 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -486,12 +538,12 @@ ver=U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 vram=12M
 Environment size: 3421/131068 bytes
 U-Boot# 
-- 07:21:21 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
-- 07:21:22 [INFO] Target: 
+- 20:23:30 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
+- 20:23:31 [INFO] Target: 
 setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
 U-Boot# 
-- 07:21:22 [INFO] Host: bdinfo
-- 07:21:22 [INFO] Target: 
+- 20:23:31 [INFO] Host: bdinfo
+- 20:23:31 [INFO] Target: 
 bdinfo
 arch_number = 0x0000060A
 boot_params = 0x80000100
@@ -514,29 +566,29 @@ reloc off   = 0x1FE4C000
 irq_sp      = 0x9EF2BEE0
 sp start    = 0x9EF2BED0
 U-Boot# 
-- 07:21:22 [INFO] Host: mmc rescan
-- 07:21:23 [INFO] Target: 
+- 20:23:31 [INFO] Host: mmc rescan
+- 20:23:32 [INFO] Target: 
 mmc rescan
 U-Boot# 
-- 07:21:23 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
-- 07:21:23 [INFO] Target: 
+- 20:23:32 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 20:23:32 [INFO] Target: 
 fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
 writing ws-calibrate.rules
 4 bytes written
 U-Boot# 
-- 07:21:23 [INFO] Host: boot
-- 07:23:53 [ERROR] On command: boot waiting for boot.+?(?-mix:login:) >>> error: execution expired
-- 07:23:53 [INFO] Target: 
+- 20:23:32 [INFO] Host: boot
+- 20:26:02 [ERROR] On command: boot waiting for boot.+?(?-mix:login:) >>> error: execution expired
+- 20:26:02 [INFO] Target: 
 boot
 ## Checking Image at 80200000 ...
 Unknown image format!
-Kernel image @ 0x80200000 [ 0x000000 - 0x573028 ]
+Kernel image @ 0x80200000 [ 0x000000 - 0x572ef0 ]
 ## Flattened Device Tree blob at 80f80000
    Booting using the fdt blob at 0x80f80000
    Loading Device Tree to 87fed000, end 87fff4f1 ... OK
 Starting kernel ...
 [    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Linux version 3.18.0-next-20141217-00002-gf7be838 (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Wed Dec 17 06:18:15 CST 2014
+[    0.000000] Linux version 3.18.0-next-20141219-00002-g253a3ff (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Fri Dec 19 19:20:38 CST 2014
 [    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
 [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
 [    0.000000] Machine model: TI OMAP3 BeagleBoard xM
@@ -560,8 +612,8 @@ Starting kernel ...
 [    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
 [    0.000000]       .text : 0xc0208000 - 0xc0c51088   (10533 kB)
 [    0.000000]       .init : 0xc0c52000 - 0xc0d12000   ( 768 kB)
-[    0.000000]       .data : 0xc0d12000 - 0xc0e014a0   ( 958 kB)
-[    0.000000]        .bss : 0xc0e014a0 - 0xc0e4df20   ( 307 kB)
+[    0.000000]       .data : 0xc0d12000 - 0xc0e014e0   ( 958 kB)
+[    0.000000]        .bss : 0xc0e014e0 - 0xc0e4df60   ( 307 kB)
 [    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
 [    0.000000] Hierarchical RCU implementation.
 [    0.000000] 	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=1.
@@ -579,1085 +631,175 @@ Starting kernel ...
 [    0.029266] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
 [    0.030151] CPU: Testing write buffer coherency: ok
 [    0.030487] CPU0: thread -1, cpu 0, socket -1, mpidr 0
-[    0.030578] Setting up static identity map for 0x80913640 - 0x809136d8
+[    0.030578] Setting up static identity map for 0x80913718 - 0x809137b0
 [    0.035064] Brought up 1 CPUs
 [    0.035095] CPU: All CPU(s) started in SVC mode.
 [    0.035797] devtmpfs: initialized
 [    0.036834] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
-[    0.057464] omap_hwmod: mcbsp2_sidetone using broken dt data from mcbsp
-[    0.058074] omap_hwmod: mcbsp3_sidetone using broken dt data from mcbsp
+[    0.057434] omap_hwmod: mcbsp2_sidetone using broken dt data from mcbsp
+[    0.058044] omap_hwmod: mcbsp3_sidetone using broken dt data from mcbsp
 [    0.090911] omap_hwmod: mcbsp2: cannot be enabled for reset (3)
-[    0.139526] pinctrl core: initialized pinctrl subsystem
-[    0.170013] NET: Registered protocol family 16
-[    0.173553] DMA: preallocated 256 KiB pool for atomic coherent allocations
-[    0.176116] cpuidle: using governor ladder
-[    0.176147] cpuidle: using governor menu
-[    0.182708] Reprogramming SDRC clock to 400000000 Hz
-[    0.188690] omap_gpio 48310000.gpio: could not find pctldev for node /ocp/pinmux@48002a00/pinmux_gpio1_pins, deferring probe
-[    0.188720] platform 48310000.gpio: Driver omap_gpio requests probe deferral
-[    0.189758] OMAP GPIO hardware version 2.5
-[    0.194732] irq: no irq domain found for /ocp/pinmux@48002030 !
-[    0.207489] omap-gpmc 6e000000.gpmc: GPMC revision 5.0
-[    0.208892] platform 48058000.ssi-controller: Cannot lookup hwmod 'ssi'
-[    0.212219] of_amba_device_create(): amba_device_add() failed (-19) for /etb@5401b000
-[    0.212341] of_amba_device_create(): amba_device_add() failed (-19) for /etm@54010000
-[    0.214447] No ATAGs?
-[    0.214477] hw-breakpoint: debug architecture 0x4 unsupported.
-[    0.216735] OMAP DMA hardware revision 5.0
-[    0.221191] Serial: AMBA PL011 UART driver
-[    0.259246] omap-dma-engine 48056000.dma-controller: OMAP DMA engine driver
-[    0.260070] platform hsusb2_power_reg: Driver reg-fixed-voltage requests probe deferral
-[    0.264251] vgaarb: loaded
-[    0.265258] SCSI subsystem initialized
-[    0.266113] usbcore: registered new interface driver usbfs
-[    0.266204] usbcore: registered new interface driver hub
-[    0.266265] usbcore: registered new device driver usb
-[    0.266906] platform hsusb2_phy: Driver usb_phy_generic requests probe deferral
-[    0.269073] omap_i2c 48070000.i2c: bus 0 rev4.4 at 2600 kHz
-[    0.269714] omap_i2c 48072000.i2c: bus 1 rev4.4 at 400 kHz
-[    0.270324] omap_i2c 48060000.i2c: bus 2 rev4.4 at 100 kHz
-[    0.271270] Linux video capture interface: v2.00
-[    0.271362] pps_core: LinuxPPS API ver. 1 registered
-[    0.271362] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
-[    0.271423] PTP clock support registered
-[    0.271759] EDAC MC: Ver: 3.0.0
-[    0.272949] Advanced Linux Sound Architecture Driver Initialized.
-[    0.274658] Switched to clocksource 32k_counter
-[    0.291168] NET: Registered protocol family 2
-[    0.292053] TCP established hash table entries: 4096 (order: 2, 16384 bytes)
-[    0.292114] TCP bind hash table entries: 4096 (order: 3, 32768 bytes)
-[    0.292205] TCP: Hash tables configured (established 4096 bind 4096)
-[    0.292297] TCP: reno registered
-[    0.292297] UDP hash table entries: 256 (order: 1, 8192 bytes)
-[    0.292327] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
-[    0.292572] NET: Registered protocol family 1
-[    0.292968] RPC: Registered named UNIX socket transport module.
-[    0.292999] RPC: Registered udp transport module.
-[    0.292999] RPC: Registered tcp transport module.
-[    0.292999] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[    0.295989] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
-[    0.299591] futex hash table entries: 256 (order: 2, 16384 bytes)
-[    0.317474] squashfs: version 4.0 (2009/01/31) Phillip Lougher
-[    0.318664] NFS: Registering the id_resolver key type
-[    0.318756] Key type id_resolver registered
-[    0.318756] Key type id_legacy registered
-[    0.318878] ntfs: driver 2.1.31 [Flags: R/O].
-[    0.320892] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
-[    0.320922] io scheduler noop registered
-[    0.320953] io scheduler deadline registered
-[    0.321228] io scheduler cfq registered (default)
-[    0.326477] pinctrl-single 48002030.pinmux: 284 pins at pa fa002030 size 568
-[    0.326782] pinctrl-single 48002a00.pinmux: 46 pins at pa fa002a00 size 92
-[    0.327484] pinctrl-single 480025a0.pinmux: 46 pins at pa fa0025a0 size 92
-[    0.425628] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
-[    0.429443] msm_serial: driver initialized
-[    0.430450] omap_uart 4806a000.serial: no wakeirq for uart0
-[    0.430664] omap_uart 4806a000.serial: ttyO0 at MMIO 0x4806a000 (irq = 192, base_baud = 3000000) is a OMAP UART0
-[    0.431335] omap_uart 4806c000.serial: no wakeirq for uart0
-[    0.431488] omap_uart 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 193, base_baud = 3000000) is a OMAP UART1
-[    0.432342] omap_uart 49020000.serial: ttyO2 at MMIO 0x49020000 (irq = 194, base_baud = 3000000) is a OMAP UART2
-[    1.187469] console [ttyO2] enabled
-[    1.191925] omap_uart 49042000.serial: no wakeirq for uart0
-[    1.197967] omap_uart 49042000.serial: ttyO3 at MMIO 0x49042000 (irq = 231, base_baud = 3000000) is a OMAP UART3
-[    1.209197] STMicroelectronics ASC driver initialized
-[    1.216247] [drm] Initialized drm 1.1.0 20060810
-[    1.230407] loop: module loaded
-[    1.264373] twl 0-0048: PIH (irq 268) chaining IRQs 269..277
-[    1.270477] twl 0-0048: power (irq 274) chaining IRQs 277..284
-[    1.320220] twl4030_gpio twl4030-gpio: gpio (irq 269) chaining IRQs 285..302
-[    1.432769] CAN device driver interface
-[    1.439117] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.2.15-k
-[    1.446563] igb: Copyright (c) 2007-2014 Intel Corporation.
-[    1.455841] pegasus: v0.9.3 (2013/04/25), Pegasus/Pegasus II USB Ethernet driver
-[    1.463714] usbcore: registered new interface driver pegasus
-[    1.469787] usbcore: registered new interface driver asix
-[    1.475555] usbcore: registered new interface driver ax88179_178a
-[    1.482055] usbcore: registered new interface driver cdc_ether
-[    1.488281] usbcore: registered new interface driver smsc75xx
-[    1.494445] usbcore: registered new interface driver smsc95xx
-[    1.500549] usbcore: registered new interface driver net1080
-[    1.506591] usbcore: registered new interface driver cdc_subset
-[    1.512878] usbcore: registered new interface driver zaurus
-[    1.518890] usbcore: registered new interface driver cdc_ncm
-[    1.525543] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-[    1.532440] ehci-pci: EHCI PCI platform driver
-[    1.537231] ehci-platform: EHCI generic platform driver
-[    1.543121] ehci-omap: OMAP-EHCI Host Controller driver
-[    1.549041] ehci-omap 48064800.ehci: Can't get PHY device for port 1: -19
-[    1.556365] ehci-orion: EHCI orion driver
-[    1.560913] SPEAr-ehci: EHCI SPEAr driver
-[    1.565460] ehci-st: EHCI STMicroelectronics driver
-[    1.570861] tegra-ehci: Tegra EHCI driver
-[    1.575408] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
-[    1.581970] ohci-pci: OHCI PCI platform driver
-[    1.586761] ohci-platform: OHCI generic platform driver
-[    1.592559] ohci-omap3: OHCI OMAP3 driver
-[    1.597198] ohci-omap3 48064400.ohci: OHCI Host Controller
-[    1.603057] ohci-omap3 48064400.ohci: new USB bus registered, assigned bus number 1
-[    1.611541] ohci-omap3 48064400.ohci: irq 265, io mem 0x48064400
-[    1.691040] hub 1-0:1.0: USB hub found
-[    1.695129] hub 1-0:1.0: 3 ports detected
-[    1.700317] SPEAr-ohci: OHCI SPEAr driver
-[    1.705047] ohci-st: OHCI STMicroelectronics driver
-[    1.711273] usbcore: registered new interface driver usb-storage
-[    1.720764] mousedev: PS/2 mouse device common for all mice
-[    1.732177] twl_rtc 48070000.i2c:twl@48:rtc: Power up reset detected.
-[    1.739135] twl_rtc 48070000.i2c:twl@48:rtc: Enabling TWL-RTC
-[    1.749633] twl_rtc 48070000.i2c:twl@48:rtc: rtc core: registered 48070000.i2c:twl@48 as rtc0
-[    1.760589] i2c /dev entries driver
-[    1.767852] usbcore: registered new interface driver uvcvideo
-[    1.773956] USB Video Class driver (1.1.1)
-[    1.778289] gspca_main: v2.14.0 registered
-[    1.789733] Driver 'mmcblk' needs updating - please use bus_type methods
-[    1.796997] sdhci: Secure Digital Host Controller Interface driver
-[    1.803527] sdhci: Copyright(c) Pierre Ossman
-[    1.845764] Synopsys Designware Multimedia Card Interface Driver
-[    1.853973] sdhci-pltfm: SDHCI platform and OF driver helper
-[    1.863250] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
-[    1.871368] platform pwmleds: Driver leds_pwm requests probe deferral
-[    1.878387] ledtrig-cpu: registered to indicate activity on CPUs
-[    1.885131] usbcore: registered new interface driver usbhid
-[    1.890991] usbhid: USB HID core driver
-[    1.900421] usbcore: registered new interface driver snd-usb-audio
-[    1.911987] TCP: cubic registered
-[    1.915557] NET: Registered protocol family 17
-[    1.920288] can: controller area network core (rev 20120528 abi 9)
-[    1.926910] NET: Registered protocol family 29
-[    1.931610] can: raw protocol (rev 20120528)
-[    1.936126] can: broadcast manager protocol (rev 20120528 t)
-[    1.942108] can: netlink gateway (rev 20130117) max_hops=1
-[    1.948577] Key type dns_resolver registered
-[    1.953460] omap2_set_init_voltage: unable to find boot up OPP for vdd_mpu_iva
-[    1.961090] omap2_set_init_voltage: unable to set vdd_mpu_iva
-[    1.967132] omap2_set_init_voltage: unable to find boot up OPP for vdd_core
-[    1.974456] omap2_set_init_voltage: unable to set vdd_core
-[    1.982238] cpu cpu0: failed to set clock rate: -22
-[    1.991851] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    1.999999] ThumbEE CPU extension supported.
-[    2.004516] Registering SWP/SWPB emulation handler
-[    2.016235] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
-[    2.024383] platform pwmleds: Driver leds_pwm requests probe deferral
-[    2.033264] input: gpio_keys as /devices/platform/gpio_keys/input/input0
-[    2.042480] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
-[    2.050628] platform pwmleds: Driver leds_pwm requests probe deferral
-[    2.061157] twl_rtc 48070000.i2c:twl@48:rtc: setting system clock to 2000-01-01 00:00:00 UTC (946684800)
-[    2.580169] cpu cpu0: failed to set clock rate: -22
-[    2.585357] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    2.890167] cpu cpu0: failed to set clock rate: -22
-[    2.895324] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    3.200073] cpu cpu0: failed to set clock rate: -22
-[    3.205261] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    3.510284] cpu cpu0: failed to set clock rate: -22
-[    3.515441] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    3.624908] mmc0: card never left busy state
-[    3.629394] mmc0: error -110 whilst initialising SD card
-[    4.095489] cpu cpu0: failed to set clock rate: -22
-[    4.100616] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    4.465484] cpu cpu0: failed to set clock rate: -22
-[    4.470611] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    4.780212] cpu cpu0: failed to set clock rate: -22
-[    4.785369] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    5.100463] cpu cpu0: failed to set clock rate: -22
-[    5.105590] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    5.520233] cpu cpu0: failed to set clock rate: -22
-[    5.525390] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    5.955261] cpu cpu0: failed to set clock rate: -22
-[    5.960388] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    6.520111] cpu cpu0: failed to set clock rate: -22
-[    6.525268] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    6.865478] cpu cpu0: failed to set clock rate: -22
-[    6.870635] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    7.235290] cpu cpu0: failed to set clock rate: -22
-[    7.240417] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    8.075500] cpu cpu0: failed to set clock rate: -22
-[    8.080627] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    8.445495] cpu cpu0: failed to set clock rate: -22
-[    8.450622] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    9.120452] cpu cpu0: failed to set clock rate: -22
-[    9.125579] cpufreq: __target_index: Failed to change cpu frequency: -22
-[    9.520111] cpu cpu0: failed to set clock rate: -22
-[    9.525238] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   10.125457] cpu cpu0: failed to set clock rate: -22
-[   10.130584] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   10.495452] cpu cpu0: failed to set clock rate: -22
-[   10.500579] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   10.855224] cpu cpu0: failed to set clock rate: -22
-[   10.860382] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   11.520111] cpu cpu0: failed to set clock rate: -22
-[   11.525238] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   11.950225] cpu cpu0: failed to set clock rate: -22
-[   11.955352] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   12.520294] cpu cpu0: failed to set clock rate: -22
-[   12.525421] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   12.895263] cpu cpu0: failed to set clock rate: -22
-[   12.900390] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   13.520111] cpu cpu0: failed to set clock rate: -22
-[   13.525238] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   13.990234] cpu cpu0: failed to set clock rate: -22
-[   13.995361] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   14.145141] hsusb2_vbus: disabling
-[   14.149810] VPLL2: disabling
-[   14.154052] VUSB3V1: disabling
-[   14.160491] VDAC: disabling
-[   14.165130] VAUX3: disabling
-[   14.169647] ALSA device list:
-[   14.172821]   No soundcards found.
-[   14.177459] Waiting for root device PARTUUID=00000000-02...
-[   14.350494] cpu cpu0: failed to set clock rate: -22
-[   14.355651] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   14.705474] cpu cpu0: failed to set clock rate: -22
-[   14.710601] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   15.020446] cpu cpu0: failed to set clock rate: -22
-[   15.025573] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   15.335662] cpu cpu0: failed to set clock rate: -22
-[   15.340789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   15.650665] cpu cpu0: failed to set clock rate: -22
-[   15.655792] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   15.965393] cpu cpu0: failed to set clock rate: -22
-[   15.970520] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   16.280273] cpu cpu0: failed to set clock rate: -22
-[   16.285430] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   16.595581] cpu cpu0: failed to set clock rate: -22
-[   16.600708] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   16.910400] cpu cpu0: failed to set clock rate: -22
-[   16.915527] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   17.225463] cpu cpu0: failed to set clock rate: -22
-[   17.230590] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   17.540649] cpu cpu0: failed to set clock rate: -22
-[   17.545776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   17.855590] cpu cpu0: failed to set clock rate: -22
-[   17.860717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   18.170654] cpu cpu0: failed to set clock rate: -22
-[   18.175781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   18.485656] cpu cpu0: failed to set clock rate: -22
-[   18.490783] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   18.800659] cpu cpu0: failed to set clock rate: -22
-[   18.805786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   19.115661] cpu cpu0: failed to set clock rate: -22
-[   19.120788] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   19.430664] cpu cpu0: failed to set clock rate: -22
-[   19.435791] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   19.745574] cpu cpu0: failed to set clock rate: -22
-[   19.750701] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   20.060638] cpu cpu0: failed to set clock rate: -22
-[   20.065765] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   20.375640] cpu cpu0: failed to set clock rate: -22
-[   20.380767] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   20.690643] cpu cpu0: failed to set clock rate: -22
-[   20.695770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   21.005615] cpu cpu0: failed to set clock rate: -22
-[   21.010742] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   21.320648] cpu cpu0: failed to set clock rate: -22
-[   21.325775] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   21.635650] cpu cpu0: failed to set clock rate: -22
-[   21.640777] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   21.950592] cpu cpu0: failed to set clock rate: -22
-[   21.955718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   22.265594] cpu cpu0: failed to set clock rate: -22
-[   22.270721] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   22.580657] cpu cpu0: failed to set clock rate: -22
-[   22.585784] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   22.895416] cpu cpu0: failed to set clock rate: -22
-[   22.900543] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   23.210662] cpu cpu0: failed to set clock rate: -22
-[   23.215789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   23.520294] cpu cpu0: failed to set clock rate: -22
-[   23.525451] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   23.845428] cpu cpu0: failed to set clock rate: -22
-[   23.850555] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   24.160583] cpu cpu0: failed to set clock rate: -22
-[   24.165710] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   24.475585] cpu cpu0: failed to set clock rate: -22
-[   24.480712] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   24.790649] cpu cpu0: failed to set clock rate: -22
-[   24.795776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   25.105621] cpu cpu0: failed to set clock rate: -22
-[   25.110748] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   25.420654] cpu cpu0: failed to set clock rate: -22
-[   25.425781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   25.735656] cpu cpu0: failed to set clock rate: -22
-[   25.740783] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   26.050628] cpu cpu0: failed to set clock rate: -22
-[   26.055755] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   26.365600] cpu cpu0: failed to set clock rate: -22
-[   26.370727] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   26.680603] cpu cpu0: failed to set clock rate: -22
-[   26.685729] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   26.995239] cpu cpu0: failed to set clock rate: -22
-[   27.000396] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   27.310638] cpu cpu0: failed to set clock rate: -22
-[   27.315765] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   27.620239] cpu cpu0: failed to set clock rate: -22
-[   27.625396] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   27.945312] cpu cpu0: failed to set clock rate: -22
-[   27.950439] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   28.260650] cpu cpu0: failed to set clock rate: -22
-[   28.265777] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   28.575653] cpu cpu0: failed to set clock rate: -22
-[   28.580780] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   28.890655] cpu cpu0: failed to set clock rate: -22
-[   28.895782] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   29.205657] cpu cpu0: failed to set clock rate: -22
-[   29.210784] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   29.520233] cpu cpu0: failed to set clock rate: -22
-[   29.525360] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   29.835235] cpu cpu0: failed to set clock rate: -22
-[   29.840362] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   30.150482] cpu cpu0: failed to set clock rate: -22
-[   30.155609] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   30.465637] cpu cpu0: failed to set clock rate: -22
-[   30.470764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   30.780639] cpu cpu0: failed to set clock rate: -22
-[   30.785766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   31.095428] cpu cpu0: failed to set clock rate: -22
-[   31.100555] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   31.410644] cpu cpu0: failed to set clock rate: -22
-[   31.415771] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   31.725585] cpu cpu0: failed to set clock rate: -22
-[   31.730712] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   32.040618] cpu cpu0: failed to set clock rate: -22
-[   32.045745] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   32.355651] cpu cpu0: failed to set clock rate: -22
-[   32.360778] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   32.670654] cpu cpu0: failed to set clock rate: -22
-[   32.675781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   32.985351] cpu cpu0: failed to set clock rate: -22
-[   32.990478] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   33.300659] cpu cpu0: failed to set clock rate: -22
-[   33.305786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   33.615661] cpu cpu0: failed to set clock rate: -22
-[   33.620788] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   33.930664] cpu cpu0: failed to set clock rate: -22
-[   33.935791] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   34.245635] cpu cpu0: failed to set clock rate: -22
-[   34.250762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   34.560638] cpu cpu0: failed to set clock rate: -22
-[   34.565765] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   34.875579] cpu cpu0: failed to set clock rate: -22
-[   34.880706] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   35.190582] cpu cpu0: failed to set clock rate: -22
-[   35.195709] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   35.505645] cpu cpu0: failed to set clock rate: -22
-[   35.510772] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   35.820648] cpu cpu0: failed to set clock rate: -22
-[   35.825775] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   36.135589] cpu cpu0: failed to set clock rate: -22
-[   36.140716] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   36.450653] cpu cpu0: failed to set clock rate: -22
-[   36.455780] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   36.765655] cpu cpu0: failed to set clock rate: -22
-[   36.770782] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   37.080627] cpu cpu0: failed to set clock rate: -22
-[   37.085754] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   37.395660] cpu cpu0: failed to set clock rate: -22
-[   37.400787] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   37.710662] cpu cpu0: failed to set clock rate: -22
-[   37.715789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   38.025451] cpu cpu0: failed to set clock rate: -22
-[   38.030578] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   38.340637] cpu cpu0: failed to set clock rate: -22
-[   38.345764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   38.655639] cpu cpu0: failed to set clock rate: -22
-[   38.660766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   38.970581] cpu cpu0: failed to set clock rate: -22
-[   38.975708] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   39.285583] cpu cpu0: failed to set clock rate: -22
-[   39.290710] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   39.600646] cpu cpu0: failed to set clock rate: -22
-[   39.605773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   39.915649] cpu cpu0: failed to set clock rate: -22
-[   39.920776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   40.230590] cpu cpu0: failed to set clock rate: -22
-[   40.235717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   40.545654] cpu cpu0: failed to set clock rate: -22
-[   40.550781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   40.860656] cpu cpu0: failed to set clock rate: -22
-[   40.865783] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   41.175659] cpu cpu0: failed to set clock rate: -22
-[   41.180786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   41.490661] cpu cpu0: failed to set clock rate: -22
-[   41.495788] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   41.805664] cpu cpu0: failed to set clock rate: -22
-[   41.810791] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   42.120574] cpu cpu0: failed to set clock rate: -22
-[   42.125701] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   42.435638] cpu cpu0: failed to set clock rate: -22
-[   42.440765] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   42.750579] cpu cpu0: failed to set clock rate: -22
-[   42.755706] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   43.065368] cpu cpu0: failed to set clock rate: -22
-[   43.070495] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   43.380584] cpu cpu0: failed to set clock rate: -22
-[   43.385711] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   43.695648] cpu cpu0: failed to set clock rate: -22
-[   43.700775] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   44.010620] cpu cpu0: failed to set clock rate: -22
-[   44.015747] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   44.325592] cpu cpu0: failed to set clock rate: -22
-[   44.330718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   44.640655] cpu cpu0: failed to set clock rate: -22
-[   44.645782] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   44.955413] cpu cpu0: failed to set clock rate: -22
-[   44.960540] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   45.270477] cpu cpu0: failed to set clock rate: -22
-[   45.275604] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   45.585662] cpu cpu0: failed to set clock rate: -22
-[   45.590789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   45.900421] cpu cpu0: failed to set clock rate: -22
-[   45.905548] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   46.215576] cpu cpu0: failed to set clock rate: -22
-[   46.220703] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   46.530639] cpu cpu0: failed to set clock rate: -22
-[   46.535766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   46.845642] cpu cpu0: failed to set clock rate: -22
-[   46.850769] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   47.160400] cpu cpu0: failed to set clock rate: -22
-[   47.165527] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   47.475646] cpu cpu0: failed to set clock rate: -22
-[   47.480773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   47.790649] cpu cpu0: failed to set clock rate: -22
-[   47.795776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   48.105590] cpu cpu0: failed to set clock rate: -22
-[   48.110717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   48.420593] cpu cpu0: failed to set clock rate: -22
-[   48.425720] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   48.735656] cpu cpu0: failed to set clock rate: -22
-[   48.740783] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   49.050262] cpu cpu0: failed to set clock rate: -22
-[   49.055419] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   49.365600] cpu cpu0: failed to set clock rate: -22
-[   49.370727] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   49.680664] cpu cpu0: failed to set clock rate: -22
-[   49.685791] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   49.995269] cpu cpu0: failed to set clock rate: -22
-[   50.000396] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   50.305267] cpu cpu0: failed to set clock rate: -22
-[   50.310424] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   50.630432] cpu cpu0: failed to set clock rate: -22
-[   50.635559] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   50.945404] cpu cpu0: failed to set clock rate: -22
-[   50.950531] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   51.260467] cpu cpu0: failed to set clock rate: -22
-[   51.265594] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   51.575653] cpu cpu0: failed to set clock rate: -22
-[   51.580780] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   51.890655] cpu cpu0: failed to set clock rate: -22
-[   51.895782] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   52.205596] cpu cpu0: failed to set clock rate: -22
-[   52.210723] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   52.520294] cpu cpu0: failed to set clock rate: -22
-[   52.525421] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   52.835662] cpu cpu0: failed to set clock rate: -22
-[   52.840789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   53.150421] cpu cpu0: failed to set clock rate: -22
-[   53.155548] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   53.465637] cpu cpu0: failed to set clock rate: -22
-[   53.470764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   53.780639] cpu cpu0: failed to set clock rate: -22
-[   53.785766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   54.095581] cpu cpu0: failed to set clock rate: -22
-[   54.100708] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   54.410583] cpu cpu0: failed to set clock rate: -22
-[   54.415710] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   54.725646] cpu cpu0: failed to set clock rate: -22
-[   54.730773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   55.040618] cpu cpu0: failed to set clock rate: -22
-[   55.045745] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   55.355590] cpu cpu0: failed to set clock rate: -22
-[   55.360717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   55.670654] cpu cpu0: failed to set clock rate: -22
-[   55.675781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   55.980285] cpu cpu0: failed to set clock rate: -22
-[   55.985443] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   56.290588] cpu cpu0: failed to set clock rate: -22
-[   56.295715] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   56.620635] cpu cpu0: failed to set clock rate: -22
-[   56.625762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   56.935638] cpu cpu0: failed to set clock rate: -22
-[   56.940765] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   57.250579] cpu cpu0: failed to set clock rate: -22
-[   57.255706] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   57.565643] cpu cpu0: failed to set clock rate: -22
-[   57.570770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   57.880645] cpu cpu0: failed to set clock rate: -22
-[   57.885772] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   58.195587] cpu cpu0: failed to set clock rate: -22
-[   58.200714] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   58.510650] cpu cpu0: failed to set clock rate: -22
-[   58.515777] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   58.825653] cpu cpu0: failed to set clock rate: -22
-[   58.830780] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   59.140289] cpu cpu0: failed to set clock rate: -22
-[   59.145446] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   59.455657] cpu cpu0: failed to set clock rate: -22
-[   59.460784] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   59.770660] cpu cpu0: failed to set clock rate: -22
-[   59.775787] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   60.085662] cpu cpu0: failed to set clock rate: -22
-[   60.090789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   60.400665] cpu cpu0: failed to set clock rate: -22
-[   60.405792] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   60.715637] cpu cpu0: failed to set clock rate: -22
-[   60.720764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   61.030609] cpu cpu0: failed to set clock rate: -22
-[   61.035736] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   61.345642] cpu cpu0: failed to set clock rate: -22
-[   61.350769] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   61.660644] cpu cpu0: failed to set clock rate: -22
-[   61.665771] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   61.975341] cpu cpu0: failed to set clock rate: -22
-[   61.980468] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   62.290649] cpu cpu0: failed to set clock rate: -22
-[   62.295776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   62.605651] cpu cpu0: failed to set clock rate: -22
-[   62.610778] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   62.920349] cpu cpu0: failed to set clock rate: -22
-[   62.925476] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   63.235656] cpu cpu0: failed to set clock rate: -22
-[   63.240783] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   63.550659] cpu cpu0: failed to set clock rate: -22
-[   63.555786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   63.865600] cpu cpu0: failed to set clock rate: -22
-[   63.870727] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   64.180664] cpu cpu0: failed to set clock rate: -22
-[   64.185791] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   64.495635] cpu cpu0: failed to set clock rate: -22
-[   64.500762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   64.810577] cpu cpu0: failed to set clock rate: -22
-[   64.815704] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   65.125640] cpu cpu0: failed to set clock rate: -22
-[   65.130767] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   65.440643] cpu cpu0: failed to set clock rate: -22
-[   65.445770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   65.750213] cpu cpu0: failed to set clock rate: -22
-[   65.755371] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   66.075408] cpu cpu0: failed to set clock rate: -22
-[   66.080535] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   66.390655] cpu cpu0: failed to set clock rate: -22
-[   66.395782] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   66.705596] cpu cpu0: failed to set clock rate: -22
-[   66.710723] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   67.020629] cpu cpu0: failed to set clock rate: -22
-[   67.025756] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   67.335662] cpu cpu0: failed to set clock rate: -22
-[   67.340789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   67.650604] cpu cpu0: failed to set clock rate: -22
-[   67.655731] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   67.965332] cpu cpu0: failed to set clock rate: -22
-[   67.970458] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   68.280639] cpu cpu0: failed to set clock rate: -22
-[   68.285766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   68.595581] cpu cpu0: failed to set clock rate: -22
-[   68.600708] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   68.910339] cpu cpu0: failed to set clock rate: -22
-[   68.915466] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   69.225646] cpu cpu0: failed to set clock rate: -22
-[   69.230773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   69.540649] cpu cpu0: failed to set clock rate: -22
-[   69.545776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   69.855590] cpu cpu0: failed to set clock rate: -22
-[   69.860717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   70.170654] cpu cpu0: failed to set clock rate: -22
-[   70.175781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   70.485595] cpu cpu0: failed to set clock rate: -22
-[   70.490722] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   70.800598] cpu cpu0: failed to set clock rate: -22
-[   70.805725] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   71.115661] cpu cpu0: failed to set clock rate: -22
-[   71.120788] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   71.430603] cpu cpu0: failed to set clock rate: -22
-[   71.435729] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   71.745574] cpu cpu0: failed to set clock rate: -22
-[   71.750701] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   72.060607] cpu cpu0: failed to set clock rate: -22
-[   72.065734] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   72.375579] cpu cpu0: failed to set clock rate: -22
-[   72.380706] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   72.690582] cpu cpu0: failed to set clock rate: -22
-[   72.695709] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   73.005615] cpu cpu0: failed to set clock rate: -22
-[   73.010742] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   73.320587] cpu cpu0: failed to set clock rate: -22
-[   73.325714] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   73.635589] cpu cpu0: failed to set clock rate: -22
-[   73.640716] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   73.950408] cpu cpu0: failed to set clock rate: -22
-[   73.955535] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   74.265594] cpu cpu0: failed to set clock rate: -22
-[   74.270721] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   74.580596] cpu cpu0: failed to set clock rate: -22
-[   74.585723] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   74.895416] cpu cpu0: failed to set clock rate: -22
-[   74.900543] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   75.210601] cpu cpu0: failed to set clock rate: -22
-[   75.215728] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   75.520233] cpu cpu0: failed to set clock rate: -22
-[   75.525360] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   75.845428] cpu cpu0: failed to set clock rate: -22
-[   75.850555] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   76.160583] cpu cpu0: failed to set clock rate: -22
-[   76.165710] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   76.475585] cpu cpu0: failed to set clock rate: -22
-[   76.480712] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   76.790649] cpu cpu0: failed to set clock rate: -22
-[   76.795776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   77.105590] cpu cpu0: failed to set clock rate: -22
-[   77.110717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   77.420593] cpu cpu0: failed to set clock rate: -22
-[   77.425720] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   77.735656] cpu cpu0: failed to set clock rate: -22
-[   77.740783] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   78.050262] cpu cpu0: failed to set clock rate: -22
-[   78.055389] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   78.365600] cpu cpu0: failed to set clock rate: -22
-[   78.370727] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   78.680664] cpu cpu0: failed to set clock rate: -22
-[   78.685791] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   78.990234] cpu cpu0: failed to set clock rate: -22
-[   78.995391] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   79.315368] cpu cpu0: failed to set clock rate: -22
-[   79.320495] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   79.630645] cpu cpu0: failed to set clock rate: -22
-[   79.635772] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   79.945343] cpu cpu0: failed to set clock rate: -22
-[   79.950469] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   80.260650] cpu cpu0: failed to set clock rate: -22
-[   80.265777] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   80.575653] cpu cpu0: failed to set clock rate: -22
-[   80.580780] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   80.890594] cpu cpu0: failed to set clock rate: -22
-[   80.895721] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   81.205657] cpu cpu0: failed to set clock rate: -22
-[   81.210784] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   81.520477] cpu cpu0: failed to set clock rate: -22
-[   81.525604] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   81.835601] cpu cpu0: failed to set clock rate: -22
-[   81.840728] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   82.150665] cpu cpu0: failed to set clock rate: -22
-[   82.155792] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   82.465637] cpu cpu0: failed to set clock rate: -22
-[   82.470764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   82.780578] cpu cpu0: failed to set clock rate: -22
-[   82.785705] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   83.095428] cpu cpu0: failed to set clock rate: -22
-[   83.100555] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   83.410644] cpu cpu0: failed to set clock rate: -22
-[   83.415771] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   83.725585] cpu cpu0: failed to set clock rate: -22
-[   83.730712] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   84.040649] cpu cpu0: failed to set clock rate: -22
-[   84.045776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   84.355651] cpu cpu0: failed to set clock rate: -22
-[   84.360778] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   84.670593] cpu cpu0: failed to set clock rate: -22
-[   84.675720] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   84.985412] cpu cpu0: failed to set clock rate: -22
-[   84.990539] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   85.300659] cpu cpu0: failed to set clock rate: -22
-[   85.305786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   85.615661] cpu cpu0: failed to set clock rate: -22
-[   85.620788] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   85.930419] cpu cpu0: failed to set clock rate: -22
-[   85.935546] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   86.245635] cpu cpu0: failed to set clock rate: -22
-[   86.250762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   86.560638] cpu cpu0: failed to set clock rate: -22
-[   86.565765] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   86.875640] cpu cpu0: failed to set clock rate: -22
-[   86.880767] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   87.190643] cpu cpu0: failed to set clock rate: -22
-[   87.195770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   87.505645] cpu cpu0: failed to set clock rate: -22
-[   87.510772] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   87.820648] cpu cpu0: failed to set clock rate: -22
-[   87.825775] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   88.135620] cpu cpu0: failed to set clock rate: -22
-[   88.140747] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   88.445281] cpu cpu0: failed to set clock rate: -22
-[   88.450439] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   88.770446] cpu cpu0: failed to set clock rate: -22
-[   88.775573] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   89.085632] cpu cpu0: failed to set clock rate: -22
-[   89.090759] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   89.400604] cpu cpu0: failed to set clock rate: -22
-[   89.405731] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   89.715637] cpu cpu0: failed to set clock rate: -22
-[   89.720764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   90.030609] cpu cpu0: failed to set clock rate: -22
-[   90.035736] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   90.345581] cpu cpu0: failed to set clock rate: -22
-[   90.350708] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   90.660675] cpu cpu0: failed to set clock rate: -22
-[   90.665802] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   90.975646] cpu cpu0: failed to set clock rate: -22
-[   90.980773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   91.290588] cpu cpu0: failed to set clock rate: -22
-[   91.295715] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   91.605651] cpu cpu0: failed to set clock rate: -22
-[   91.610778] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   91.920654] cpu cpu0: failed to set clock rate: -22
-[   91.925781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   92.235595] cpu cpu0: failed to set clock rate: -22
-[   92.240722] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   92.550659] cpu cpu0: failed to set clock rate: -22
-[   92.555786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   92.865600] cpu cpu0: failed to set clock rate: -22
-[   92.870727] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   93.180389] cpu cpu0: failed to set clock rate: -22
-[   93.185516] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   93.495635] cpu cpu0: failed to set clock rate: -22
-[   93.500762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   93.810577] cpu cpu0: failed to set clock rate: -22
-[   93.815704] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   94.125579] cpu cpu0: failed to set clock rate: -22
-[   94.130706] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   94.440643] cpu cpu0: failed to set clock rate: -22
-[   94.445770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   94.755584] cpu cpu0: failed to set clock rate: -22
-[   94.760711] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   95.070617] cpu cpu0: failed to set clock rate: -22
-[   95.075744] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   95.385650] cpu cpu0: failed to set clock rate: -22
-[   95.390777] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   95.700592] cpu cpu0: failed to set clock rate: -22
-[   95.705718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   96.015380] cpu cpu0: failed to set clock rate: -22
-[   96.020507] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   96.330657] cpu cpu0: failed to set clock rate: -22
-[   96.335784] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   96.645599] cpu cpu0: failed to set clock rate: -22
-[   96.650726] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   96.960418] cpu cpu0: failed to set clock rate: -22
-[   96.965545] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   97.275665] cpu cpu0: failed to set clock rate: -22
-[   97.280792] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   97.590637] cpu cpu0: failed to set clock rate: -22
-[   97.595764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   97.905395] cpu cpu0: failed to set clock rate: -22
-[   97.910522] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   98.220642] cpu cpu0: failed to set clock rate: -22
-[   98.225769] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   98.535644] cpu cpu0: failed to set clock rate: -22
-[   98.540771] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   98.850646] cpu cpu0: failed to set clock rate: -22
-[   98.855773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   99.165649] cpu cpu0: failed to set clock rate: -22
-[   99.170776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   99.475280] cpu cpu0: failed to set clock rate: -22
-[   99.480438] cpufreq: __target_index: Failed to change cpu frequency: -22
-[   99.800445] cpu cpu0: failed to set clock rate: -22
-[   99.805572] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  100.115661] cpu cpu0: failed to set clock rate: -22
-[  100.120788] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  100.430603] cpu cpu0: failed to set clock rate: -22
-[  100.435729] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  100.745635] cpu cpu0: failed to set clock rate: -22
-[  100.750762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  101.060424] cpu cpu0: failed to set clock rate: -22
-[  101.065551] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  101.370208] cpu cpu0: failed to set clock rate: -22
-[  101.375366] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  101.695434] cpu cpu0: failed to set clock rate: -22
-[  101.700561] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  102.010620] cpu cpu0: failed to set clock rate: -22
-[  102.015747] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  102.325592] cpu cpu0: failed to set clock rate: -22
-[  102.330718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  102.640655] cpu cpu0: failed to set clock rate: -22
-[  102.645782] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  102.955596] cpu cpu0: failed to set clock rate: -22
-[  102.960723] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  103.270599] cpu cpu0: failed to set clock rate: -22
-[  103.275726] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  103.585662] cpu cpu0: failed to set clock rate: -22
-[  103.590789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  103.900360] cpu cpu0: failed to set clock rate: -22
-[  103.905487] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  104.215637] cpu cpu0: failed to set clock rate: -22
-[  104.220764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  104.530639] cpu cpu0: failed to set clock rate: -22
-[  104.535766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  104.845581] cpu cpu0: failed to set clock rate: -22
-[  104.850708] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  105.160461] cpu cpu0: failed to set clock rate: -22
-[  105.165588] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  105.475646] cpu cpu0: failed to set clock rate: -22
-[  105.480773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  105.790588] cpu cpu0: failed to set clock rate: -22
-[  105.795715] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  106.105651] cpu cpu0: failed to set clock rate: -22
-[  106.110778] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  106.420654] cpu cpu0: failed to set clock rate: -22
-[  106.425781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  106.735656] cpu cpu0: failed to set clock rate: -22
-[  106.740783] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  107.050659] cpu cpu0: failed to set clock rate: -22
-[  107.055786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  107.155029] random: nonblocking pool is initialized
-[  107.370635] cpu cpu0: failed to set clock rate: -22
-[  107.375762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  107.685577] cpu cpu0: failed to set clock rate: -22
-[  107.690704] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  108.000396] cpu cpu0: failed to set clock rate: -22
-[  108.005523] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  108.315643] cpu cpu0: failed to set clock rate: -22
-[  108.320770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  108.630218] cpu cpu0: failed to set clock rate: -22
-[  108.635375] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  108.945404] cpu cpu0: failed to set clock rate: -22
-[  108.950531] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  109.260589] cpu cpu0: failed to set clock rate: -22
-[  109.265716] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  109.575592] cpu cpu0: failed to set clock rate: -22
-[  109.580718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  109.890655] cpu cpu0: failed to set clock rate: -22
-[  109.895782] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  110.205596] cpu cpu0: failed to set clock rate: -22
-[  110.210723] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  110.520233] cpu cpu0: failed to set clock rate: -22
-[  110.525360] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  110.835662] cpu cpu0: failed to set clock rate: -22
-[  110.840789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  111.150604] cpu cpu0: failed to set clock rate: -22
-[  111.155731] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  111.465637] cpu cpu0: failed to set clock rate: -22
-[  111.470764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  111.780639] cpu cpu0: failed to set clock rate: -22
-[  111.785766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  112.095611] cpu cpu0: failed to set clock rate: -22
-[  112.100738] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  112.410644] cpu cpu0: failed to set clock rate: -22
-[  112.415771] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  112.725646] cpu cpu0: failed to set clock rate: -22
-[  112.730773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  113.040618] cpu cpu0: failed to set clock rate: -22
-[  113.045745] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  113.355651] cpu cpu0: failed to set clock rate: -22
-[  113.360778] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  113.670654] cpu cpu0: failed to set clock rate: -22
-[  113.675781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  113.980285] cpu cpu0: failed to set clock rate: -22
-[  113.985443] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  114.305450] cpu cpu0: failed to set clock rate: -22
-[  114.310577] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  114.620635] cpu cpu0: failed to set clock rate: -22
-[  114.625762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  114.935577] cpu cpu0: failed to set clock rate: -22
-[  114.940704] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  115.250640] cpu cpu0: failed to set clock rate: -22
-[  115.255767] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  115.565582] cpu cpu0: failed to set clock rate: -22
-[  115.570709] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  115.880584] cpu cpu0: failed to set clock rate: -22
-[  115.885711] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  116.195648] cpu cpu0: failed to set clock rate: -22
-[  116.200775] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  116.510589] cpu cpu0: failed to set clock rate: -22
-[  116.515716] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  116.825592] cpu cpu0: failed to set clock rate: -22
-[  116.830718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  117.140655] cpu cpu0: failed to set clock rate: -22
-[  117.145782] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  117.455596] cpu cpu0: failed to set clock rate: -22
-[  117.460723] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  117.770660] cpu cpu0: failed to set clock rate: -22
-[  117.775787] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  118.085632] cpu cpu0: failed to set clock rate: -22
-[  118.090759] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  118.400604] cpu cpu0: failed to set clock rate: -22
-[  118.405731] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  118.715637] cpu cpu0: failed to set clock rate: -22
-[  118.720764] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  119.030609] cpu cpu0: failed to set clock rate: -22
-[  119.035736] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  119.345642] cpu cpu0: failed to set clock rate: -22
-[  119.350769] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  119.660644] cpu cpu0: failed to set clock rate: -22
-[  119.665771] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  119.975402] cpu cpu0: failed to set clock rate: -22
-[  119.980529] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  120.290588] cpu cpu0: failed to set clock rate: -22
-[  120.295715] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  120.605682] cpu cpu0: failed to set clock rate: -22
-[  120.610809] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  120.920654] cpu cpu0: failed to set clock rate: -22
-[  120.925781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  121.235595] cpu cpu0: failed to set clock rate: -22
-[  121.240722] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  121.550659] cpu cpu0: failed to set clock rate: -22
-[  121.555786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  121.865600] cpu cpu0: failed to set clock rate: -22
-[  121.870727] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  122.180664] cpu cpu0: failed to set clock rate: -22
-[  122.185791] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  122.495635] cpu cpu0: failed to set clock rate: -22
-[  122.500762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  122.810211] cpu cpu0: failed to set clock rate: -22
-[  122.815338] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  123.125579] cpu cpu0: failed to set clock rate: -22
-[  123.130706] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  123.440643] cpu cpu0: failed to set clock rate: -22
-[  123.445770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  123.755584] cpu cpu0: failed to set clock rate: -22
-[  123.760711] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  124.070617] cpu cpu0: failed to set clock rate: -22
-[  124.075744] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  124.385650] cpu cpu0: failed to set clock rate: -22
-[  124.390777] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  124.700592] cpu cpu0: failed to set clock rate: -22
-[  124.705718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  125.015624] cpu cpu0: failed to set clock rate: -22
-[  125.020751] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  125.330657] cpu cpu0: failed to set clock rate: -22
-[  125.335784] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  125.645294] cpu cpu0: failed to set clock rate: -22
-[  125.650451] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  125.960418] cpu cpu0: failed to set clock rate: -22
-[  125.965545] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  126.275665] cpu cpu0: failed to set clock rate: -22
-[  126.280792] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  126.590576] cpu cpu0: failed to set clock rate: -22
-[  126.595703] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  126.905395] cpu cpu0: failed to set clock rate: -22
-[  126.910522] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  127.220367] cpu cpu0: failed to set clock rate: -22
-[  127.225494] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  127.535644] cpu cpu0: failed to set clock rate: -22
-[  127.540771] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  127.850646] cpu cpu0: failed to set clock rate: -22
-[  127.855773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  128.165222] cpu cpu0: failed to set clock rate: -22
-[  128.170379] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  128.480590] cpu cpu0: failed to set clock rate: -22
-[  128.485717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  128.795654] cpu cpu0: failed to set clock rate: -22
-[  128.800781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  129.110595] cpu cpu0: failed to set clock rate: -22
-[  129.115722] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  129.425659] cpu cpu0: failed to set clock rate: -22
-[  129.430786] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  129.740661] cpu cpu0: failed to set clock rate: -22
-[  129.745788] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  130.055633] cpu cpu0: failed to set clock rate: -22
-[  130.060760] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  130.370635] cpu cpu0: failed to set clock rate: -22
-[  130.375762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  130.685638] cpu cpu0: failed to set clock rate: -22
-[  130.690765] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  131.000640] cpu cpu0: failed to set clock rate: -22
-[  131.005767] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  131.315643] cpu cpu0: failed to set clock rate: -22
-[  131.320770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  131.630645] cpu cpu0: failed to set clock rate: -22
-[  131.635772] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  131.945220] cpu cpu0: failed to set clock rate: -22
-[  131.950347] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  132.260650] cpu cpu0: failed to set clock rate: -22
-[  132.265777] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  132.575592] cpu cpu0: failed to set clock rate: -22
-[  132.580718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  132.890594] cpu cpu0: failed to set clock rate: -22
-[  132.895721] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  133.205657] cpu cpu0: failed to set clock rate: -22
-[  133.210784] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  133.520416] cpu cpu0: failed to set clock rate: -22
-[  133.525543] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  133.835662] cpu cpu0: failed to set clock rate: -22
-[  133.840789] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  134.150482] cpu cpu0: failed to set clock rate: -22
-[  134.155609] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  134.465576] cpu cpu0: failed to set clock rate: -22
-[  134.470703] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  134.780639] cpu cpu0: failed to set clock rate: -22
-[  134.785766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  135.095611] cpu cpu0: failed to set clock rate: -22
-[  135.100738] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  135.410644] cpu cpu0: failed to set clock rate: -22
-[  135.415771] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  135.725646] cpu cpu0: failed to set clock rate: -22
-[  135.730773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  136.040649] cpu cpu0: failed to set clock rate: -22
-[  136.045776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  136.355590] cpu cpu0: failed to set clock rate: -22
-[  136.360717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  136.670654] cpu cpu0: failed to set clock rate: -22
-[  136.675781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  136.985290] cpu cpu0: failed to set clock rate: -22
-[  136.990447] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  137.300384] cpu cpu0: failed to set clock rate: -22
-[  137.305511] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  137.615661] cpu cpu0: failed to set clock rate: -22
-[  137.620788] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  137.930603] cpu cpu0: failed to set clock rate: -22
-[  137.935729] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  138.245391] cpu cpu0: failed to set clock rate: -22
-[  138.250518] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  138.560638] cpu cpu0: failed to set clock rate: -22
-[  138.565765] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  138.875579] cpu cpu0: failed to set clock rate: -22
-[  138.880706] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  139.190643] cpu cpu0: failed to set clock rate: -22
-[  139.195770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  139.505645] cpu cpu0: failed to set clock rate: -22
-[  139.510772] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  139.820648] cpu cpu0: failed to set clock rate: -22
-[  139.825775] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  140.135620] cpu cpu0: failed to set clock rate: -22
-[  140.140747] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  140.450653] cpu cpu0: failed to set clock rate: -22
-[  140.455780] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  140.765594] cpu cpu0: failed to set clock rate: -22
-[  140.770721] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  141.080627] cpu cpu0: failed to set clock rate: -22
-[  141.085754] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  141.395660] cpu cpu0: failed to set clock rate: -22
-[  141.400787] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  141.710601] cpu cpu0: failed to set clock rate: -22
-[  141.715728] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  142.025634] cpu cpu0: failed to set clock rate: -22
-[  142.030761] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  142.340576] cpu cpu0: failed to set clock rate: -22
-[  142.345703] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  142.655639] cpu cpu0: failed to set clock rate: -22
-[  142.660766] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  142.970397] cpu cpu0: failed to set clock rate: -22
-[  142.975524] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  143.285583] cpu cpu0: failed to set clock rate: -22
-[  143.290710] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  143.600646] cpu cpu0: failed to set clock rate: -22
-[  143.605773] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  143.915649] cpu cpu0: failed to set clock rate: -22
-[  143.920776] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  144.230590] cpu cpu0: failed to set clock rate: -22
-[  144.235717] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  144.545654] cpu cpu0: failed to set clock rate: -22
-[  144.550781] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  144.855285] cpu cpu0: failed to set clock rate: -22
-[  144.860443] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  145.180389] cpu cpu0: failed to set clock rate: -22
-[  145.185516] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  145.495635] cpu cpu0: failed to set clock rate: -22
-[  145.500762] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  145.810577] cpu cpu0: failed to set clock rate: -22
-[  145.815704] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  146.125640] cpu cpu0: failed to set clock rate: -22
-[  146.130767] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  146.440643] cpu cpu0: failed to set clock rate: -22
-[  146.445770] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  146.755645] cpu cpu0: failed to set clock rate: -22
-[  146.760772] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  147.070617] cpu cpu0: failed to set clock rate: -22
-[  147.075744] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  147.385650] cpu cpu0: failed to set clock rate: -22
-[  147.390777] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  147.700592] cpu cpu0: failed to set clock rate: -22
-[  147.705718] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  148.015380] cpu cpu0: failed to set clock rate: -22
-[  148.020507] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  148.330596] cpu cpu0: failed to set clock rate: -22
-[  148.335723] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  148.645599] cpu cpu0: failed to set clock rate: -22
-[  148.650726] cpufreq: __target_index: Failed to change cpu frequency: -22
-[  148.960418] cpu cpu0: failed to set clock rate: -22
-[  148.965545] cpufreq: __target_index: Failed to change cpu frequency: -22
-URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm06/tigtfarm06_vatf@beagleboard1/tigtfarm0612_17_2014_07_20_35/files/session_iteration_1/test_1
+[    0.142456] pinctrl core: initialized pinctrl subsystem
+[    0.173461] NET: Registered protocol family 16
+[    0.176940] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.179595] cpuidle: using governor ladder
+[    0.179626] cpuidle: using governor menu
+[    0.186187] Reprogramming SDRC clock to 400000000 Hz
+[    0.192108] omap_gpio 48310000.gpio: could not find pctldev for node /ocp/pinmux@48002a00/pinmux_gpio1_pins, deferring probe
+[    0.192138] platform 48310000.gpio: Driver omap_gpio requests probe deferral
+[    0.193145] OMAP GPIO hardware version 2.5
+[    0.198120] irq: no irq domain found for /ocp/pinmux@48002030 !
+[    0.210906] omap-gpmc 6e000000.gpmc: GPMC revision 5.0
+[    0.212219] platform 48058000.ssi-controller: Cannot lookup hwmod 'ssi'
+[    0.215637] of_amba_device_create(): amba_device_add() failed (-19) for /etb@5401b000
+[    0.215728] of_amba_device_create(): amba_device_add() failed (-19) for /etm@54010000
+[    0.217803] No ATAGs?
+[    0.217834] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.220153] OMAP DMA hardware revision 5.0
+[    0.224609] Serial: AMBA PL011 UART driver
+[    0.262725] omap-dma-engine 48056000.dma-controller: OMAP DMA engine driver
+[    0.263610] platform hsusb2_power_reg: Driver reg-fixed-voltage requests probe deferral
+[    0.267730] vgaarb: loaded
+[    0.268829] SCSI subsystem initialized
+[    0.269653] usbcore: registered new interface driver usbfs
+[    0.269744] usbcore: registered new interface driver hub
+[    0.269836] usbcore: registered new device driver usb
+[    0.270446] platform hsusb2_phy: Driver usb_phy_generic requests probe deferral
+[    0.272552] omap_i2c 48070000.i2c: bus 0 rev4.4 at 2600 kHz
+[    0.273284] omap_i2c 48072000.i2c: bus 1 rev4.4 at 400 kHz
+[    0.273895] omap_i2c 48060000.i2c: bus 2 rev4.4 at 100 kHz
+[    0.274841] Linux video capture interface: v2.00
+[    0.274932] pps_core: LinuxPPS API ver. 1 registered
+[    0.274932] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.274993] PTP clock support registered
+[    0.275329] EDAC MC: Ver: 3.0.0
+[    0.276458] Advanced Linux Sound Architecture Driver Initialized.
+[    0.278259] Switched to clocksource 32k_counter
+[    0.294799] NET: Registered protocol family 2
+[    0.295654] TCP established hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.295745] TCP bind hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.295837] TCP: Hash tables configured (established 4096 bind 4096)
+[    0.295898] TCP: reno registered
+[    0.295928] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    0.295959] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    0.296203] NET: Registered protocol family 1
+[    0.296600] RPC: Registered named UNIX socket transport module.
+[    0.296630] RPC: Registered udp transport module.
+[    0.296630] RPC: Registered tcp transport module.
+[    0.296630] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.299652] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    0.303253] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.321350] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.322570] NFS: Registering the id_resolver key type
+[    0.322631] Key type id_resolver registered
+[    0.322631] Key type id_legacy registered
+[    0.322753] ntfs: driver 2.1.31 [Flags: R/O].
+[    0.324829] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    0.324859] io scheduler noop registered
+[    0.324890] io scheduler deadline registered
+[    0.325164] io scheduler cfq registered (default)
+[    0.330383] pinctrl-single 48002030.pinmux: 284 pins at pa fa002030 size 568
+[    0.330688] pinctrl-single 48002a00.pinmux: 46 pins at pa fa002a00 size 92
+[    0.331390] pinctrl-single 480025a0.pinmux: 46 pins at pa fa0025a0 size 92
+[    0.430175] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.434112] msm_serial: driver initialized
+[    0.435028] omap_uart 4806a000.serial: no wakeirq for uart0
+[    0.435241] omap_uart 4806a000.serial: ttyO0 at MMIO 0x4806a000 (irq = 192, base_baud = 3000000) is a OMAP UART0
+[    0.435913] omap_uart 4806c000.serial: no wakeirq for uart0
+[    0.436096] omap_uart 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 193, base_baud = 3000000) is a OMAP UART1
+[    0.436920] omap_uart 49020000.serial: ttyO2 at MMIO 0x49020000 (irq = 194, base_baud = 3000000) is a OMAP UART2
+[    1.191986] console [ttyO2] enabled
+[    1.196441] omap_uart 49042000.serial: no wakeirq for uart0
+[    1.202484] omap_uart 49042000.serial: ttyO3 at MMIO 0x49042000 (irq = 231, base_baud = 3000000) is a OMAP UART3
+[    1.213745] STMicroelectronics ASC driver initialized
+[    1.220794] [drm] Initialized drm 1.1.0 20060810
+[    1.235015] loop: module loaded
+[    1.267974] twl 0-0048: PIH (irq 268) chaining IRQs 269..277
+[    1.274047] twl 0-0048: power (irq 274) chaining IRQs 277..284
+[    1.323486] twl4030_gpio twl4030-gpio: gpio (irq 269) chaining IRQs 285..302
+[    1.436035] CAN device driver interface
+[    1.442382] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.2.15-k
+[    1.449829] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.459106] pegasus: v0.9.3 (2013/04/25), Pegasus/Pegasus II USB Ethernet driver
+[    1.466979] usbcore: registered new interface driver pegasus
+[    1.473052] usbcore: registered new interface driver asix
+[    1.478820] usbcore: registered new interface driver ax88179_178a
+[    1.485321] usbcore: registered new interface driver cdc_ether
+[    1.491577] usbcore: registered new interface driver smsc75xx
+[    1.497711] usbcore: registered new interface driver smsc95xx
+[    1.503845] usbcore: registered new interface driver net1080
+[    1.509857] usbcore: registered new interface driver cdc_subset
+[    1.516174] usbcore: registered new interface driver zaurus
+[    1.522216] usbcore: registered new interface driver cdc_ncm
+[    1.528900] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.535766] ehci-pci: EHCI PCI platform driver
+[    1.540557] ehci-platform: EHCI generic platform driver
+[    1.546447] ehci-omap: OMAP-EHCI Host Controller driver
+[    1.552398] ehci-omap 48064800.ehci: Can't get PHY device for port 1: -19
+[    1.559692] ehci-orion: EHCI orion driver
+[    1.564270] SPEAr-ehci: EHCI SPEAr driver
+[    1.568786] ehci-st: EHCI STMicroelectronics driver
+[    1.574188] tegra-ehci: Tegra EHCI driver
+[    1.578735] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.585296] ohci-pci: OHCI PCI platform driver
+[    1.590087] ohci-platform: OHCI generic platform driver
+[    1.595886] ohci-omap3: OHCI OMAP3 driver
+[    1.600555] ohci-omap3 48064400.ohci: OHCI Host Controller
+[    1.606384] ohci-omap3 48064400.ohci: new USB bus registered, assigned bus number 1
+[    1.614868] ohci-omap3 48064400.ohci: irq 265, io mem 0x48064400
+[    1.694641] hub 1-0:1.0: USB hub found
+[    1.698730] hub 1-0:1.0: 3 ports detected
+[    1.703857] SPEAr-ohci: OHCI SPEAr driver
+[    1.708557] ohci-st: OHCI STMicroelectronics driver
+[    1.714813] usbcore: registered new interface driver usb-storage
+[    1.724334] mousedev: PS/2 mouse device common for all mice
+[    1.735778] twl_rtc 48070000.i2c:twl@48:rtc: Power up reset detected.
+[    1.742736] twl_rtc 48070000.i2c:twl@48:rtc: Enabling TWL-RTC
+[    1.753204] twl_rtc 48070000.i2c:twl@48:rtc: rtc core: registered 48070000.i2c:twl@48 as rtc0
+[    1.763977] i2c /dev entries driver
+[    1.771240] usbcore: registered new interface driver uvcvideo
+[    1.777313] USB Video Class driver (1.1.1)
+[    1.781646] gspca_main: v2.14.0 registered
+[    1.793090] Driver 'mmcblk' needs updating - please use bus_type methods
+[    1.800323] sdhci: Secure Digital Host Controller Interface driver
+[    1.806854] sdhci: Copyright(c) Pierre Ossman
+[    1.849365] Synopsys Designware Multimedia Card Interface Driver
+[    1.857574] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.866821] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
+[    1.874969] platform pwmleds: Driver leds_pwm requests probe deferral
+[    1.881988] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.888702] usbcore: registered new interface driver usbhid
+[    1.894592] usbhid: USB HID core driver
+[    1.904022] usbcore: registered new interface driver snd-usb-audio
+[    1.915618] TCP: cubic registered
+[    1.919189] NET: Registered protocol family 17
+[    1.923919] can: controller area network core (rev 20120528 abi 9)
+[    1.930541] NET: Registered protocol family 29
+[    1.935241] can: raw protocol (rev 20120528)
+[    1.939758] can: broadcast manager protocol (rev 20120528 t)
+[    1.945739] can: netlink gateway (rev 20130117) max_hops=1
+[    1.952209] Key type dns_resolver registered
+[    1.957092] omap2_set_init_voltage: unable to find boot up OPP for vdd_mpu_iva
+[    1.964691] omap2_set_init_voltage: unable to set vdd_mpu_iva
+[    1.970764] omap2_set_init_voltage: unable to find boot up OPP for vdd_core
+[    1.978088] omap2_set_init_voltage: unable to set vdd_core
+[    1.990173] ThumbEE CPU extension supported.
+[    1.994842] Registering SWP/SWPB emulation handler
+[    2.016601] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
+[    2.024932] platform pwmleds: Driver leds_pwm requests probe deferral
+[    2.035522] input: gpio_keys as /devices/platform/gpio_keys/input/input0
+[    2.046051] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
+[    2.054321] platform pwmleds: Driver leds_pwm requests probe deferral
+[    2.062438] twl_rtc 48070000.i2c:twl@48:rtc: setting system clock to 2000-01-01 00:00:00 UTC (946684800)
+[    3.568572] mmc0: card never left busy state
+[    3.573120] mmc0: error -110 whilst initialising SD card
+[   14.158843] hsusb2_vbus: disabling
+[   14.163024] VPLL2: disabling
+[   14.166595] VUSB3V1: disabling
+[   14.171874] VDAC: disabling
+[   14.175842] VAUX3: disabling
+[   14.180206] ALSA device list:
+[   14.183349]   No soundcards found.
+[   14.188873] Waiting for root device PARTUUID=00000000-02...
+[  110.448699] random: nonblocking pool is initialized
+URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm06/tigtfarm06_vatf@beagleboard1/tigtfarm0612_19_2014_20_22_42/files/session_iteration_1/test_1
