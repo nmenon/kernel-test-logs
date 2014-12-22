@@ -1,23 +1,96 @@
-- 03:33:10 [INFO] Starting target session
-- 03:33:10 [INFO] Connected to beagleboard via serial 
-- 03:33:10 [INFO] Host: #check prompt
-- 03:33:13 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
-- 03:33:13 [INFO] Target: 
-- 03:33:13 [INFO] Host: #check prompt
-- 03:33:15 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:[\w\d]+@.+[@:#]+) >>> error: execution expired
-- 03:33:15 [INFO] Target: 
-- 03:33:15 [INFO] Disconnected serial from beagleboard
-- 03:33:16 [INFO] Connected to beagleboard via serial 
-- 03:33:16 [INFO] Host: 
-- 03:33:17 [ERROR] On command:  waiting for (?-mix:OMAP3\s*beagleboard.org\s*#) >>> error: execution expired
-- 03:33:17 [INFO] Target: 
-U-Boot SPL 2014.04-00194-g173d294-dirty (May 07 2014 - 17:25:25)
-- 03:33:17 [INFO] Host: 
-- 03:33:17 [ERROR] On command:  waiting for (?-mix:OMAP3\s*beagleboard.org\s*#) >>> error: execution expired
-- 03:33:17 [INFO] Target: 
+- 03:51:01 [INFO] Starting target session
+- 03:51:01 [INFO] Connected to beagleboard via serial 
+- 03:51:01 [INFO] Host: #check prompt
+- 03:51:04 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
+- 03:51:04 [INFO] Target: 
+#check prompt
+root@beagleboard:/test# 
+- 03:51:04 [INFO] Host: #check prompt
+- 03:51:05 [INFO] Target: 
+#check prompt
+root@beagleboard:/test# 
+- 03:51:05 [INFO] Host: sync;poweroff
+- 03:51:21 [INFO] Target: 
+sync;poweroff
+Broadcast message from root@beagleboard (ttyO2) (Sun Apr 13 02:49:24 2014):
+The system is going down for system halt NOW!
+INIT: Switching to runlevel: 0
+root@beagleboard:/test# 
+INIT: Sending processes the TERM signal
+INIT: Sending processes the KILL siStopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 464)
+dropbear.
+Stopping telnet daemon.
+Stopping system message bus: dbus.
+Error opening /dev/fb0: No such file or directory
+Stopping syslogd/klogd: stopped syslogd (pid 476)
+stopped klogd (pid 479)
+done
+Stopping thttpd.
+ALSA: Storing mixer settings...
+/usr/sbin/alsactl: save_state:1590: No soundcards found...
+Deconfiguring network interfaces... ifdown: interface eth0 not configured
+done.
+Stopping Lighttpd Web Server: stopped /usr/sbin/lighttpd (pid 492)
+lighttpd.
+Stopping Matrix GUI applicationstart-stop-daemon: warning: killing process 503: No such process
+***************************************************************
+***************************************************************
+NOTICE: This file system contains the followin GPLv3 packages:
+	binutils-symlinks
+	binutils
+	gdbserver
+If you do not wish to distribute GPLv3 components please remove
+the above packages prior to distribution.  This can be done using
+the opkg remove command.  i.e.:
+    opkg remove <package>
+Where <package> is the name printed in the list above
+NOTE: If the package is a dependency of another package you
+      will be notified of the dependent packages.  You should
+      use the --force-removal-of-dependent-packages option to
+      also remove the dependent packages as well
+***************************************************************
+***************************************************************
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+[ 2703.844635] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
+[ 2706.072998] reboot: Power down
+[ 2706.076263] ------------[ cut here ]------------
+[ 2706.081146] WARNING: CPU: 0 PID: 628 at kernel/locking/lockdep.c:2744 lockdep_trace_alloc+0xec/0x10c()
+[ 2706.090972] DEBUG_LOCKS_WARN_ON(irqs_disabled_flags(flags))
+[ 2706.096679] Modules linked in:
+[ 2706.100097] CPU: 0 PID: 628 Comm: halt Not tainted 3.19.0-rc1-00002-gae5908d #1
+[ 2706.107818] Hardware name: Generic OMAP36xx (Flattened Device Tree)
+[ 2706.114440] [<c0015388>] (unwind_backtrace) from [<c0011a14>] (show_stack+0x10/0x14)
+[ 2706.122619] [<c0011a14>] (show_stack) from [<c05d45e8>] (dump_stack+0x78/0x94)
+[ 2706.130249] [<c05d45e8>] (dump_stack) from [<c003dd44>] (warn_slowpath_common+0x7c/0xb4)
+[ 2706.138793] [<c003dd44>] (warn_slowpath_common) from [<c003de10>] (warn_slowpath_fmt+0x30/0x40)
+[ 2706.147979] [<c003de10>] (warn_slowpath_fmt) from [<c0083ea4>] (lockdep_trace_alloc+0xec/0x10c)
+[ 2706.157165] [<c0083ea4>] (lockdep_trace_alloc) from [<c013b688>] (__kmalloc_track_caller+0x40/0x258)
+[ 2706.166809] [<c013b688>] (__kmalloc_track_caller) from [<c011574c>] (kmemdup+0x1c/0x38)
+[ 2706.175262] [<c011574c>] (kmemdup) from [<c03b8c50>] (regmap_bulk_write+0x74/0x19c)
+[ 2706.183349] [<c03b8c50>] (regmap_bulk_write) from [<c03c3d20>] (twl_i2c_write+0x4c/0x88)
+[ 2706.191894] [<c03c3d20>] (twl_i2c_write) from [<c03c6274>] (twl4030_power_off+0x3c/0x158)
+[ 2706.200531] [<c03c6274>] (twl4030_power_off) from [<c000f230>] (machine_power_off+0x24/0x2c)
+[ 2706.209442] [<c000f230>] (machine_power_off) from [<c005af00>] (SyS_reboot+0x114/0x1f0)
+[ 2706.217895] [<c005af00>] (SyS_reboot) from [<c000e5e0>] (ret_fast_syscall+0x0/0x48)
+[ 2706.225982] ---[ end trace a03c4872cd39b693 ]---
+- 03:51:21 [INFO] Disconnected serial from beagleboard
+- 03:51:22 [INFO] Connected to beagleboard via serial 
+- 03:51:22 [INFO] Host: 
+- 03:51:23 [ERROR] On command:  waiting for (?-mix:U-Boot#) >>> error: execution expired
+- 03:51:23 [INFO] Target: 
+U-Boot SPL 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
+- 03:51:23 [INFO] Host: 
+- 03:51:23 [ERROR] On command:  waiting for (?-mix:U-Boot#) >>> error: execution expired
+- 03:51:23 [INFO] Target: 
+SPL: Please implement spl_start_uboot() for your board
+SPL: Direct Linux boot not active!
 reading u-boot.img
 reading u-boot.img
-U-Boot 2014.04-00194-g173d294-dirty (May 07 2014 - 17:25:25)
+U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 OMAP36XX/37XX-GP ES1.2, CPU-OPP2, L3-200MHz, Max CPU Clock 1 Ghz
 OMAP3 Beagle board + LPDDR/NAND
 I2C:   ready
@@ -25,73 +98,74 @@ DRAM:  512 MiB
 NAND:  0 MiB
 MMC:   OMAP SD/MMC: 0
 *** Warning - readenv() failed, using default environment
-In:    serial
-Out:   serial
-Err:   serial
 Beagle xM Rev C
 No EEPROM on expansion board
 Die ID #723000029ff8000001578ca00e02e00b
 Net:   usb_ether
-Warning: Your board does not use generic board. Please read
-doc/README.generic-board and take action. Boards not
-upgraded by the late 2014 may break or be removed.
-Hit any key to stop autoboot:  3 
-- 03:33:17 [INFO] Host: 
-- 03:33:18 [INFO] Target: 
-OMAP3 beagleboard.org # 
-- 03:33:18 [INFO] Host: 
-- 03:33:18 [INFO] Target: 
-OMAP3 beagleboard.org # 
-- 03:33:18 [INFO] Host: version
-- 03:33:19 [INFO] Target: 
+Error: usb_ether address not set.
+Hit any key to stop autoboot:  1 
+- 03:51:23 [INFO] Host: 
+- 03:51:24 [INFO] Target: 
+U-Boot# 
+- 03:51:24 [INFO] Host: 
+- 03:51:24 [INFO] Target: 
+U-Boot# 
+- 03:51:24 [INFO] Host: version
+- 03:51:25 [INFO] Target: 
 version
-U-Boot 2014.04-00194-g173d294-dirty (May 07 2014 - 17:25:25)
-arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
-GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
-OMAP3 beagleboard.org # 
-- 03:33:19 [INFO] Host: setenv bootargs 'console=ttyO2,115200n8  earlyprintk rootwait '
-- 03:33:19 [INFO] Target: 
+U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
+arm-linux-gnueabi-gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
+GNU ld (GNU Binutils for Ubuntu) 2.22
+U-Boot# 
+- 03:51:25 [INFO] Host: setenv bootargs 'console=ttyO2,115200n8  earlyprintk rootwait '
+- 03:51:25 [INFO] Target: 
 setenv bootargs 'console=ttyO2,115200n8  earlyprintk rootwait '
-OMAP3 beagleboard.org # 
-- 03:33:19 [INFO] Host: setenv bootcmd  ''
-- 03:33:20 [INFO] Target: 
+U-Boot# 
+- 03:51:25 [INFO] Host: setenv bootcmd  ''
+- 03:51:26 [INFO] Target: 
 setenv bootcmd  ''
-OMAP3 beagleboard.org # 
-- 03:33:20 [INFO] Host: setenv autoload 'no'
-- 03:33:20 [INFO] Target: 
+U-Boot# 
+- 03:51:26 [INFO] Host: setenv autoload 'no'
+- 03:51:26 [INFO] Target: 
 setenv autoload 'no'
-OMAP3 beagleboard.org # 
-- 03:33:20 [INFO] Host: setenv serverip '192.168.0.1'
-- 03:33:21 [INFO] Target: 
+U-Boot# 
+- 03:51:26 [INFO] Host: setenv serverip '192.168.0.1'
+- 03:51:27 [INFO] Target: 
 setenv serverip '192.168.0.1'
-OMAP3 beagleboard.org # 
-- 03:33:21 [INFO] Host: printenv
-- 03:33:21 [INFO] Target: 
+U-Boot# 
+- 03:51:27 [INFO] Host: printenv
+- 03:51:27 [INFO] Target: 
 printenv
+arch=arm
 autoload=no
 baudrate=115200
 beaglerev=xMC
+board=beagle
+board_name=beagle
 bootargs=console=ttyO2,115200n8  earlyprintk rootwait 
 bootcmd=
-bootdelay=3
+bootdelay=1
 bootdir=/boot
 bootenv=uEnv.txt
 bootfile=uImage
+bootm_size=0x08000000
 bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
 buddy=none
 camera=none
 console=ttyO2,115200n8
+cpu=armv7
 defaultdisplay=dvi
 dieid#=723000029ff8000001578ca00e02e00b
 dvimode=640x480MR-16@60
 ethact=usb_ether
-fdt_high=0xffffffff
 fdtaddr=0x80f80000
-findfdt=if test $beaglerev = AxBx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = Cx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = C4; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = xMAB; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $beaglerev = xMC; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
-importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+findfdt=if test $beaglerev = AxBx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = Cx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = C4; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = xMAB; then setenv fdtfile omap3-beagle-xm-ab.dtb; fi; if test $beaglerev = xMC; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+importbootenv=echo Importing environment from mmc ...; env import -t -r $loadaddr $filesize
 loadaddr=0x80200000
 loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenv}
-loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=run validatefdt; load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
 loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
 loadramdisk=load mmc ${bootpart} ${rdaddr} ${bootdir}/${ramdisk}
 mmcargs=setenv bootargs console=${console} ${optargs} mpurate=${mpurate} buddy=${buddy} camera=${camera} vram=${vram} omapfb.mode=dvi:${dvimode} omapdss.def_disp=${defaultdisplay} root=${mmcroot} rootfstype=${mmcrootfstype}
@@ -112,60 +186,71 @@ ramroot=/dev/ram0 rw ramdisk_size=65536 initrd=0x81000000,64M
 ramrootfstype=ext2
 rdaddr=0x81000000
 serverip=192.168.0.1
+soc=omap3
 stderr=serial
 stdin=serial
 stdout=serial
+usbethaddr=02:0b:a0:00:02:00
 usbtty=cdc_acm
 userbutton=if gpio input 173; then run userbutton_xm; else run userbutton_nonxm; fi;
 userbutton_nonxm=gpio input 7;
 userbutton_xm=gpio input 4;
+validatefdt=if test $beaglerev = xMAB; then if test ! -e mmc ${bootpart} ${bootdir}/${fdtfile}; then setenv fdtfile omap3-beagle-xm.dtb; fi; fi; 
+vendor=ti
+ver=U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 vram=12M
-Environment size: 2748/131068 bytes
-OMAP3 beagleboard.org # 
-- 03:33:21 [INFO] Host: dcache off
-- 03:33:22 [INFO] Target: 
+Environment size: 3237/131068 bytes
+U-Boot# 
+- 03:51:27 [INFO] Host: dcache off
+- 03:51:28 [INFO] Target: 
 dcache off
-OMAP3 beagleboard.org # 
-- 03:33:22 [INFO] Host: setenv usbethaddr b0:ee:aa:12:34:56
-- 03:33:22 [INFO] Target: 
+U-Boot# 
+- 03:51:28 [INFO] Host: setenv usbethaddr b0:ee:aa:12:34:56
+- 03:51:28 [INFO] Target: 
 setenv usbethaddr b0:ee:aa:12:34:56
-OMAP3 beagleboard.org # 
-- 03:33:22 [INFO] Host: usb start
-- 03:33:25 [INFO] Target: 
+U-Boot# 
+- 03:51:28 [INFO] Host: usb start
+- 03:51:33 [INFO] Target: 
 usb start
 (Re)start USB...
 USB0:   USB EHCI 1.00
 scanning bus 0 for devices... 3 USB Device(s) found
        scanning usb for storage devices... 0 Storage Device(s) found
        scanning usb for ethernet devices... 1 Ethernet Device(s) found
-OMAP3 beagleboard.org # 
-- 03:33:25 [INFO] Host: printenv
-- 03:33:25 [INFO] Target: 
+U-Boot# 
+- 03:51:33 [INFO] Host: printenv
+- 03:51:33 [INFO] Target: 
 printenv
+arch=arm
 autoload=no
 baudrate=115200
 beaglerev=xMC
+board=beagle
+board_name=beagle
 bootargs=console=ttyO2,115200n8  earlyprintk rootwait 
 bootcmd=
-bootdelay=3
+bootdelay=1
 bootdir=/boot
 bootenv=uEnv.txt
 bootfile=uImage
+bootm_size=0x08000000
 bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
 buddy=none
 camera=none
 console=ttyO2,115200n8
+cpu=armv7
 defaultdisplay=dvi
 dieid#=723000029ff8000001578ca00e02e00b
 dvimode=640x480MR-16@60
 ethact=usb_ether
-fdt_high=0xffffffff
 fdtaddr=0x80f80000
-findfdt=if test $beaglerev = AxBx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = Cx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = C4; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = xMAB; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $beaglerev = xMC; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
-importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+findfdt=if test $beaglerev = AxBx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = Cx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = C4; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = xMAB; then setenv fdtfile omap3-beagle-xm-ab.dtb; fi; if test $beaglerev = xMC; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+importbootenv=echo Importing environment from mmc ...; env import -t -r $loadaddr $filesize
 loadaddr=0x80200000
 loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenv}
-loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=run validatefdt; load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
 loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
 loadramdisk=load mmc ${bootpart} ${rdaddr} ${bootdir}/${ramdisk}
 mmcargs=setenv bootargs console=${console} ${optargs} mpurate=${mpurate} buddy=${buddy} camera=${camera} vram=${vram} omapfb.mode=dvi:${dvimode} omapdss.def_disp=${defaultdisplay} root=${mmcroot} rootfstype=${mmcrootfstype}
@@ -186,6 +271,7 @@ ramroot=/dev/ram0 rw ramdisk_size=65536 initrd=0x81000000,64M
 ramrootfstype=ext2
 rdaddr=0x81000000
 serverip=192.168.0.1
+soc=omap3
 stderr=serial
 stdin=serial
 stdout=serial
@@ -194,78 +280,83 @@ usbtty=cdc_acm
 userbutton=if gpio input 173; then run userbutton_xm; else run userbutton_nonxm; fi;
 userbutton_nonxm=gpio input 7;
 userbutton_xm=gpio input 4;
+validatefdt=if test $beaglerev = xMAB; then if test ! -e mmc ${bootpart} ${bootdir}/${fdtfile}; then setenv fdtfile omap3-beagle-xm.dtb; fi; fi; 
+vendor=ti
+ver=U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 vram=12M
-Environment size: 2779/131068 bytes
-OMAP3 beagleboard.org # 
-- 03:33:25 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
-- 03:33:26 [INFO] Target: 
+Environment size: 3237/131068 bytes
+U-Boot# 
+- 03:51:33 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
+- 03:51:34 [INFO] Target: 
 setenv bootargs ''${bootargs}' ip=dhcp '
-OMAP3 beagleboard.org # 
-- 03:33:26 [INFO] Host: setenv serverip '192.168.0.1'
-- 03:33:26 [INFO] Target: 
+U-Boot# 
+- 03:51:34 [INFO] Host: setenv serverip '192.168.0.1'
+- 03:51:34 [INFO] Target: 
 setenv serverip '192.168.0.1'
-OMAP3 beagleboard.org # 
-- 03:33:26 [INFO] Host: setenv ipaddr dhcp
-- 03:33:27 [INFO] Target: 
+U-Boot# 
+- 03:51:34 [INFO] Host: setenv ipaddr dhcp
+- 03:51:35 [INFO] Target: 
 setenv ipaddr dhcp
-OMAP3 beagleboard.org # 
-- 03:33:27 [INFO] Host: setenv autoload 'no'
-- 03:33:27 [INFO] Target: 
+U-Boot# 
+- 03:51:35 [INFO] Host: setenv autoload 'no'
+- 03:51:35 [INFO] Target: 
 setenv autoload 'no'
-OMAP3 beagleboard.org # 
-- 03:33:27 [INFO] Host: dhcp
-- 03:33:30 [INFO] Target: 
+U-Boot# 
+- 03:51:35 [INFO] Host: dhcp
+- 03:51:38 [INFO] Target: 
 dhcp
 ERROR: Need valid 'usbnet_devaddr' to be set
-at drivers/usb/gadget/ether.c:2362/usb_eth_init()
+at drivers/usb/gadget/ether.c:2357/usb_eth_init()
 Waiting for Ethernet connection... done.
 BOOTP broadcast 1
-DHCP client bound to address 192.168.0.103
-OMAP3 beagleboard.org # 
-- 03:33:30 [INFO] Host: setenv serverip '192.168.0.1'
-- 03:33:31 [INFO] Target: 
+BOOTP broadcast 2
+DHCP client bound to address 192.168.0.103 (1040 ms)
+U-Boot# 
+- 03:51:38 [INFO] Host: setenv serverip '192.168.0.1'
+- 03:51:39 [INFO] Target: 
 setenv serverip '192.168.0.1'
-OMAP3 beagleboard.org # 
-- 03:33:31 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_beagleboard1/35c4e9edde8c9fc7980fe9154802869f
-- 03:33:36 [INFO] Target: 
-tftp ${loadaddr} 192.168.0.1:vatf_beagleboard1/35c4e9edde8c9fc7980fe9154802869f
+U-Boot# 
+- 03:51:39 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_beagleboard1/2d57e73a3e52ec4baf1693a890753634
+- 03:51:45 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_beagleboard1/2d57e73a3e52ec4baf1693a890753634
 Waiting for Ethernet connection... done.
 Using sms0 device
 TFTP from server 192.168.0.1; our IP address is 192.168.0.103
-Filename 'vatf_beagleboard1/35c4e9edde8c9fc7980fe9154802869f'.
+Filename 'vatf_beagleboard1/2d57e73a3e52ec4baf1693a890753634'.
 Load address: 0x80200000
 Loading: *#################################################################
 	 #################################################################
 	 #################################################################
 	 #################################################################
 	 #################################################################
-	 ###################################
+	 ################################################################
 	 1.4 MiB/s
 done
-Bytes transferred = 5282200 (509998 hex)
-OMAP3 beagleboard.org # 
-- 03:33:36 [INFO] Host: tftp ${fdtaddr} 192.168.0.1:vatf_beagleboard1/efe3cf6d0b0f39d1ecb203365fd724b9
-- 03:33:38 [INFO] Target: 
-tftp ${fdtaddr} 192.168.0.1:vatf_beagleboard1/efe3cf6d0b0f39d1ecb203365fd724b9
+Bytes transferred = 5710080 (572100 hex)
+U-Boot# 
+- 03:51:45 [INFO] Host: tftp ${fdtaddr} 192.168.0.1:vatf_beagleboard1/99169ff9a0b7ee4c0fbc81cc9eddec2f
+- 03:51:47 [INFO] Target: 
+tftp ${fdtaddr} 192.168.0.1:vatf_beagleboard1/99169ff9a0b7ee4c0fbc81cc9eddec2f
 Waiting for Ethernet connection... done.
 Using sms0 device
 TFTP from server 192.168.0.1; our IP address is 192.168.0.103
-Filename 'vatf_beagleboard1/efe3cf6d0b0f39d1ecb203365fd724b9'.
+Filename 'vatf_beagleboard1/99169ff9a0b7ee4c0fbc81cc9eddec2f'.
 Load address: 0x80f80000
 Loading: *#####
 	 1.3 MiB/s
 done
-Bytes transferred = 62172 (f2dc hex)
-OMAP3 beagleboard.org # 
-- 03:33:38 [INFO] Host: ls mmc 0:1
-- 03:33:39 [INFO] Target: 
+Bytes transferred = 62706 (f4f2 hex)
+U-Boot# 
+- 03:51:47 [INFO] Host: ls mmc 0:1
+- 03:51:47 [INFO] Target: 
 ls mmc 0:1
-    48880   mlo 
-   354856   u-boot.img 
-2 file(s), 0 dir(s)
-OMAP3 beagleboard.org # 
-- 03:33:39 [INFO] Host: ls mmc 0:2
-- 03:33:39 [INFO] Target: 
+    50708   mlo 
+   393400   u-boot.img 
+        4   ws-calibrate.rules 
+3 file(s), 0 dir(s)
+U-Boot# 
+- 03:51:47 [INFO] Host: ls mmc 0:2
+- 03:51:48 [INFO] Target: 
 ls mmc 0:2
 <DIR>       4096 .
 <DIR>       4096 ..
@@ -289,44 +380,50 @@ ls mmc 0:2
 <DIR>       4096 lib
 <DIR>       4096 Settings
 <DIR>       4096 test
-OMAP3 beagleboard.org # 
-- 03:33:39 [INFO] Host: part uuid mmc 0:2
-- 03:33:40 [INFO] Target: 
+U-Boot# 
+- 03:51:48 [INFO] Host: part uuid mmc 0:2
+- 03:51:48 [INFO] Target: 
 part uuid mmc 0:2
-Unknown command 'part' - try 'help'
-OMAP3 beagleboard.org # 
-- 03:33:40 [INFO] Host: printenv
-- 03:33:40 [INFO] Target: 
+00000000-02
+U-Boot# 
+- 03:51:48 [INFO] Host: printenv
+- 03:51:49 [INFO] Target: 
 printenv
+arch=arm
 autoload=no
 baudrate=115200
 beaglerev=xMC
+board=beagle
+board_name=beagle
 bootargs=console=ttyO2,115200n8  earlyprintk rootwait  ip=dhcp 
 bootcmd=
-bootdelay=3
+bootdelay=1
 bootdir=/boot
 bootenv=uEnv.txt
 bootfile=uImage
+bootm_size=0x08000000
 bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
 buddy=none
 camera=none
 console=ttyO2,115200n8
+cpu=armv7
 defaultdisplay=dvi
 dieid#=723000029ff8000001578ca00e02e00b
 dnsip=192.0.2.2
 dvimode=640x480MR-16@60
 ethact=sms0
-fdt_high=0xffffffff
 fdtaddr=0x80f80000
 fileaddr=80f80000
-filesize=f2dc
-findfdt=if test $beaglerev = AxBx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = Cx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = C4; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = xMAB; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $beaglerev = xMC; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+filesize=f4f2
+findfdt=if test $beaglerev = AxBx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = Cx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = C4; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = xMAB; then setenv fdtfile omap3-beagle-xm-ab.dtb; fi; if test $beaglerev = xMC; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
 gatewayip=192.168.0.1
-importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+importbootenv=echo Importing environment from mmc ...; env import -t -r $loadaddr $filesize
 ipaddr=192.168.0.103
 loadaddr=0x80200000
 loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenv}
-loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=run validatefdt; load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
 loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
 loadramdisk=load mmc ${bootpart} ${rdaddr} ${bootdir}/${ramdisk}
 mmcargs=setenv bootargs console=${console} ${optargs} mpurate=${mpurate} buddy=${buddy} camera=${camera} vram=${vram} omapfb.mode=dvi:${dvimode} omapdss.def_disp=${defaultdisplay} root=${mmcroot} rootfstype=${mmcrootfstype}
@@ -348,6 +445,7 @@ ramroot=/dev/ram0 rw ramdisk_size=65536 initrd=0x81000000,64M
 ramrootfstype=ext2
 rdaddr=0x81000000
 serverip=192.168.0.1
+soc=omap3
 stderr=serial
 stdin=serial
 stdout=serial
@@ -356,45 +454,54 @@ usbtty=cdc_acm
 userbutton=if gpio input 173; then run userbutton_xm; else run userbutton_nonxm; fi;
 userbutton_nonxm=gpio input 7;
 userbutton_xm=gpio input 4;
+validatefdt=if test $beaglerev = xMAB; then if test ! -e mmc ${bootpart} ${bootdir}/${fdtfile}; then setenv fdtfile omap3-beagle-xm.dtb; fi; fi; 
+vendor=ti
+ver=U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 vram=12M
-Environment size: 2908/131068 bytes
-OMAP3 beagleboard.org # 
-- 03:33:40 [INFO] Host: setenv bootargs ''${bootargs}' root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait '
-- 03:33:41 [INFO] Target: 
-setenv bootargs ''${bootargs}' root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait '
-OMAP3 beagleboard.org # 
-- 03:33:41 [INFO] Host: printenv
-- 03:33:41 [INFO] Target: 
+Environment size: 3366/131068 bytes
+U-Boot# 
+- 03:51:49 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 03:51:49 [INFO] Target: 
+setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+U-Boot# 
+- 03:51:49 [INFO] Host: printenv
+- 03:51:50 [INFO] Target: 
 printenv
+arch=arm
 autoload=no
 baudrate=115200
 beaglerev=xMC
-bootargs=console=ttyO2,115200n8  earlyprintk rootwait  ip=dhcp  root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait 
+board=beagle
+board_name=beagle
+bootargs=console=ttyO2,115200n8  earlyprintk rootwait  ip=dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
 bootcmd=
-bootdelay=3
+bootdelay=1
 bootdir=/boot
 bootenv=uEnv.txt
 bootfile=uImage
+bootm_size=0x08000000
 bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
 buddy=none
 camera=none
 console=ttyO2,115200n8
+cpu=armv7
 defaultdisplay=dvi
 dieid#=723000029ff8000001578ca00e02e00b
 dnsip=192.0.2.2
 dvimode=640x480MR-16@60
 ethact=sms0
-fdt_high=0xffffffff
 fdtaddr=0x80f80000
 fileaddr=80f80000
-filesize=f2dc
-findfdt=if test $beaglerev = AxBx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = Cx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = C4; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = xMAB; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $beaglerev = xMC; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+filesize=f4f2
+findfdt=if test $beaglerev = AxBx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = Cx; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = C4; then setenv fdtfile omap3-beagle.dtb; fi; if test $beaglerev = xMAB; then setenv fdtfile omap3-beagle-xm-ab.dtb; fi; if test $beaglerev = xMC; then setenv fdtfile omap3-beagle-xm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
 gatewayip=192.168.0.1
-importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+importbootenv=echo Importing environment from mmc ...; env import -t -r $loadaddr $filesize
 ipaddr=192.168.0.103
 loadaddr=0x80200000
 loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenv}
-loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=run validatefdt; load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
 loadimage=load mmc ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
 loadramdisk=load mmc ${bootpart} ${rdaddr} ${bootdir}/${ramdisk}
 mmcargs=setenv bootargs console=${console} ${optargs} mpurate=${mpurate} buddy=${buddy} camera=${camera} vram=${vram} omapfb.mode=dvi:${dvimode} omapdss.def_disp=${defaultdisplay} root=${mmcroot} rootfstype=${mmcrootfstype}
@@ -416,6 +523,7 @@ ramroot=/dev/ram0 rw ramdisk_size=65536 initrd=0x81000000,64M
 ramrootfstype=ext2
 rdaddr=0x81000000
 serverip=192.168.0.1
+soc=omap3
 stderr=serial
 stdin=serial
 stdout=serial
@@ -424,15 +532,18 @@ usbtty=cdc_acm
 userbutton=if gpio input 173; then run userbutton_xm; else run userbutton_nonxm; fi;
 userbutton_nonxm=gpio input 7;
 userbutton_xm=gpio input 4;
+validatefdt=if test $beaglerev = xMAB; then if test ! -e mmc ${bootpart} ${bootdir}/${fdtfile}; then setenv fdtfile omap3-beagle-xm.dtb; fi; fi; 
+vendor=ti
+ver=U-Boot 2014.10-00004-g9ade0ab-dirty (Dec 16 2014 - 13:40:24)
 vram=12M
-Environment size: 2957/131068 bytes
-OMAP3 beagleboard.org # 
-- 03:33:41 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
-- 03:33:42 [INFO] Target: 
+Environment size: 3421/131068 bytes
+U-Boot# 
+- 03:51:50 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
+- 03:51:50 [INFO] Target: 
 setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
-OMAP3 beagleboard.org # 
-- 03:33:42 [INFO] Host: bdinfo
-- 03:33:42 [INFO] Target: 
+U-Boot# 
+- 03:51:50 [INFO] Host: bdinfo
+- 03:51:51 [INFO] Target: 
 bdinfo
 arch_number = 0x0000060A
 boot_params = 0x80000100
@@ -450,30 +561,245 @@ current eth = sms0
 ip_addr     = 192.168.0.103
 baudrate    = 115200 bps
 TLB addr    = 0x9FFF0000
-relocaddr   = 0x9FF57000
-reloc off   = 0x1FE57000
-irq_sp      = 0x9FEF6F20
-sp start    = 0x9FEF6F10
-OMAP3 beagleboard.org # 
-- 03:33:42 [INFO] Host: mmc rescan
-- 03:33:43 [INFO] Target: 
+relocaddr   = 0x9FF4C000
+reloc off   = 0x1FE4C000
+irq_sp      = 0x9EF2BEE0
+sp start    = 0x9EF2BED0
+U-Boot# 
+- 03:51:51 [INFO] Host: mmc rescan
+- 03:51:51 [INFO] Target: 
 mmc rescan
-OMAP3 beagleboard.org # 
-- 03:33:43 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
-- 03:33:43 [INFO] Target: 
+U-Boot# 
+- 03:51:51 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 03:51:53 [INFO] Target: 
 fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
-Unknown command 'fatwrite' - try 'help'
-OMAP3 beagleboard.org # 
-- 03:33:43 [INFO] Host: boot
-- 03:36:13 [ERROR] On command: boot waiting for boot.+?(?-mix:login:) >>> error: execution expired
-- 03:36:13 [INFO] Target: 
+writing ws-calibrate.rules
+4 bytes written
+U-Boot# 
+- 03:51:53 [INFO] Host: boot
+- 03:54:23 [ERROR] On command: boot waiting for boot.+?(?-mix:login:) >>> error: execution expired
+- 03:54:23 [INFO] Target: 
 boot
-Unknown command 'iminfo' - try 'help'
-Kernel image @ 0x80200000 [ 0x000000 - 0x509998 ]
+## Checking Image at 80200000 ...
+Unknown image format!
+Kernel image @ 0x80200000 [ 0x000000 - 0x572100 ]
 ## Flattened Device Tree blob at 80f80000
    Booting using the fdt blob at 0x80f80000
-   Using Device Tree in place at 80f80000, end 80f922db
+   Loading Device Tree to 87fed000, end 87fff4f1 ... OK
 Starting kernel ...
-URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm06/tigtfarm06_vatf@beagleboard1/tigtfarm0612_15_2014_03_33_10/files/session_iteration_1/test_1
-Kernel hung.. retry! 1 Mon Dec 15 02:38:49 CST 2014
-GIVEN UP RETRIES
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 3.19.0-rc1-00002-gae5908d (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Mon Dec 22 02:48:43 CST 2014
+[    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] Machine model: TI OMAP3 BeagleBoard xM
+[    0.000000] cma: Reserved 64 MiB at 0x9b800000
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] OMAP3630 ES1.2 (l2cache iva sgx neon isp 192mhz_clk )
+[    0.000000] PERCPU: Embedded 10 pages/cpu @dfa8a000 s8512 r8192 d24256 u40960
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 129792
+[    0.000000] Kernel command line: console=ttyO2,115200n8  earlyprintk rootwait  ip=dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
+[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Memory: 440148K/523264K available (7479K kernel code, 953K rwdata, 3044K rodata, 764K init, 306K bss, 17580K reserved, 65536K cma-reserved, 0K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xe0800000 - 0xff000000   ( 488 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe0000000   ( 512 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0208000 - 0xc0c4eff0   (10524 kB)
+[    0.000000]       .init : 0xc0c4f000 - 0xc0d0e000   ( 764 kB)
+[    0.000000]       .data : 0xc0d0e000 - 0xc0dfc560   ( 954 kB)
+[    0.000000]        .bss : 0xc0dfc560 - 0xc0e48e60   ( 307 kB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] 	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=1.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] IRQ: Found an INTC at 0xfa200000 (revision 4.0) with 96 interrupts
+[    0.000000] Clocking rate (Crystal/Core/MPU): 26.0/400/600 MHz
+[    0.000000] OMAP clockevent source: timer1 at 32768 Hz
+[    0.000030] sched_clock: 32 bits at 32kHz, resolution 30517ns, wraps every 65536000000000ns
+[    0.000030] OMAP clocksource: 32k_counter at 32768 Hz
+[    0.000244] Console: colour dummy device 80x30
+[    0.000274] Calibrating delay loop... 594.73 BogoMIPS (lpj=1486848)
+[    0.029052] pid_max: default: 32768 minimum: 301
+[    0.029266] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.029266] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.030151] CPU: Testing write buffer coherency: ok
+[    0.030487] CPU0: thread -1, cpu 0, socket -1, mpidr 0
+[    0.030578] Setting up static identity map for 0x809126c8 - 0x80912760
+[    0.035186] Brought up 1 CPUs
+[    0.035186] CPU: All CPU(s) started in SVC mode.
+[    0.035888] devtmpfs: initialized
+[    0.036956] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.057495] omap_hwmod: mcbsp2_sidetone using broken dt data from mcbsp
+[    0.058105] omap_hwmod: mcbsp3_sidetone using broken dt data from mcbsp
+[    0.090942] omap_hwmod: mcbsp2: cannot be enabled for reset (3)
+[    0.139617] pinctrl core: initialized pinctrl subsystem
+[    0.170532] NET: Registered protocol family 16
+[    0.174102] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.176666] cpuidle: using governor ladder
+[    0.176696] cpuidle: using governor menu
+[    0.183288] Reprogramming SDRC clock to 400000000 Hz
+[    0.189270] omap_gpio 48310000.gpio: could not find pctldev for node /ocp/pinmux@48002a00/pinmux_gpio1_pins, deferring probe
+[    0.189331] platform 48310000.gpio: Driver omap_gpio requests probe deferral
+[    0.190338] OMAP GPIO hardware version 2.5
+[    0.195343] irq: no irq domain found for /ocp/pinmux@48002030 !
+[    0.208221] omap-gpmc 6e000000.gpmc: GPMC revision 5.0
+[    0.209594] platform 48058000.ssi-controller: Cannot lookup hwmod 'ssi'
+[    0.212951] of_amba_device_create(): amba_device_add() failed (-19) for /etb@5401b000
+[    0.213073] of_amba_device_create(): amba_device_add() failed (-19) for /etm@54010000
+[    0.215209] No ATAGs?
+[    0.215270] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.217529] OMAP DMA hardware revision 5.0
+[    0.222076] Serial: AMBA PL011 UART driver
+[    0.260437] omap-dma-engine 48056000.dma-controller: OMAP DMA engine driver
+[    0.261291] platform hsusb2_power_reg: Driver reg-fixed-voltage requests probe deferral
+[    0.265624] vgaarb: loaded
+[    0.266662] SCSI subsystem initialized
+[    0.267486] usbcore: registered new interface driver usbfs
+[    0.267608] usbcore: registered new interface driver hub
+[    0.267669] usbcore: registered new device driver usb
+[    0.268402] platform hsusb2_phy: Driver usb_phy_generic requests probe deferral
+[    0.270507] omap_i2c 48070000.i2c: bus 0 rev4.4 at 2600 kHz
+[    0.271179] omap_i2c 48072000.i2c: bus 1 rev4.4 at 400 kHz
+[    0.271759] omap_i2c 48060000.i2c: bus 2 rev4.4 at 100 kHz
+[    0.272735] Linux video capture interface: v2.00
+[    0.272918] pps_core: LinuxPPS API ver. 1 registered
+[    0.272949] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.272979] PTP clock support registered
+[    0.273345] EDAC MC: Ver: 3.0.0
+[    0.274505] Advanced Linux Sound Architecture Driver Initialized.
+[    0.276245] Switched to clocksource 32k_counter
+[    0.292785] NET: Registered protocol family 2
+[    0.293640] TCP established hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.293701] TCP bind hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.293792] TCP: Hash tables configured (established 4096 bind 4096)
+[    0.293853] TCP: reno registered
+[    0.293884] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    0.293914] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    0.294158] NET: Registered protocol family 1
+[    0.294525] RPC: Registered named UNIX socket transport module.
+[    0.294555] RPC: Registered udp transport module.
+[    0.294555] RPC: Registered tcp transport module.
+[    0.294555] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.297607] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    0.301269] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.319671] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.320892] NFS: Registering the id_resolver key type
+[    0.320953] Key type id_resolver registered
+[    0.320983] Key type id_legacy registered
+[    0.321075] ntfs: driver 2.1.31 [Flags: R/O].
+[    0.323242] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 249)
+[    0.323272] io scheduler noop registered
+[    0.323303] io scheduler deadline registered
+[    0.323577] io scheduler cfq registered (default)
+[    0.328826] pinctrl-single 48002030.pinmux: 284 pins at pa fa002030 size 568
+[    0.329132] pinctrl-single 48002a00.pinmux: 46 pins at pa fa002a00 size 92
+[    0.329833] pinctrl-single 480025a0.pinmux: 46 pins at pa fa0025a0 size 92
+[    0.429901] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.433868] msm_serial: driver initialized
+[    0.434783] omap_uart 4806a000.serial: no wakeirq for uart0
+[    0.434997] omap_uart 4806a000.serial: ttyO0 at MMIO 0x4806a000 (irq = 192, base_baud = 3000000) is a OMAP UART0
+[    0.435668] omap_uart 4806c000.serial: no wakeirq for uart0
+[    0.435821] omap_uart 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 193, base_baud = 3000000) is a OMAP UART1
+[    0.436767] omap_uart 49020000.serial: ttyO2 at MMIO 0x49020000 (irq = 194, base_baud = 3000000) is a OMAP UART2
+[    1.191223] console [ttyO2] enabled
+[    1.195678] omap_uart 49042000.serial: no wakeirq for uart0
+[    1.201721] omap_uart 49042000.serial: ttyO3 at MMIO 0x49042000 (irq = 231, base_baud = 3000000) is a OMAP UART3
+[    1.212951] STMicroelectronics ASC driver initialized
+[    1.220001] [drm] Initialized drm 1.1.0 20060810
+[    1.234283] loop: module loaded
+[    1.265960] twl 0-0048: PIH (irq 268) chaining IRQs 269..277
+[    1.272064] twl 0-0048: power (irq 274) chaining IRQs 277..284
+[    1.321807] twl4030_gpio twl4030-gpio: gpio (irq 269) chaining IRQs 285..302
+[    1.434631] CAN device driver interface
+[    1.441040] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.2.15-k
+[    1.448486] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.457855] pegasus: v0.9.3 (2013/04/25), Pegasus/Pegasus II USB Ethernet driver
+[    1.465759] usbcore: registered new interface driver pegasus
+[    1.471832] usbcore: registered new interface driver asix
+[    1.477600] usbcore: registered new interface driver ax88179_178a
+[    1.484069] usbcore: registered new interface driver cdc_ether
+[    1.490325] usbcore: registered new interface driver smsc75xx
+[    1.496490] usbcore: registered new interface driver smsc95xx
+[    1.502624] usbcore: registered new interface driver net1080
+[    1.508666] usbcore: registered new interface driver cdc_subset
+[    1.514984] usbcore: registered new interface driver zaurus
+[    1.520996] usbcore: registered new interface driver cdc_ncm
+[    1.527709] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.534606] ehci-pci: EHCI PCI platform driver
+[    1.539398] ehci-platform: EHCI generic platform driver
+[    1.545318] ehci-omap: OMAP-EHCI Host Controller driver
+[    1.551269] ehci-omap 48064800.ehci: Can't get PHY device for port 1: -19
+[    1.558624] ehci-orion: EHCI orion driver
+[    1.563201] SPEAr-ehci: EHCI SPEAr driver
+[    1.567718] ehci-st: EHCI STMicroelectronics driver
+[    1.573150] tegra-ehci: Tegra EHCI driver
+[    1.577697] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.584259] ohci-pci: OHCI PCI platform driver
+[    1.589050] ohci-platform: OHCI generic platform driver
+[    1.594879] ohci-omap3: OHCI OMAP3 driver
+[    1.599548] ohci-omap3 48064400.ohci: OHCI Host Controller
+[    1.605377] ohci-omap3 48064400.ohci: new USB bus registered, assigned bus number 1
+[    1.613861] ohci-omap3 48064400.ohci: irq 265, io mem 0x48064400
+[    1.692626] hub 1-0:1.0: USB hub found
+[    1.696716] hub 1-0:1.0: 3 ports detected
+[    1.701904] SPEAr-ohci: OHCI SPEAr driver
+[    1.706634] ohci-st: OHCI STMicroelectronics driver
+[    1.712951] usbcore: registered new interface driver usb-storage
+[    1.722503] mousedev: PS/2 mouse device common for all mice
+[    1.733978] twl_rtc 48070000.i2c:twl@48:rtc: Power up reset detected.
+[    1.740936] twl_rtc 48070000.i2c:twl@48:rtc: Enabling TWL-RTC
+[    1.751495] twl_rtc 48070000.i2c:twl@48:rtc: rtc core: registered 48070000.i2c:twl@48 as rtc0
+[    1.762420] i2c /dev entries driver
+[    1.769775] usbcore: registered new interface driver uvcvideo
+[    1.775848] USB Video Class driver (1.1.1)
+[    1.780181] gspca_main: v2.14.0 registered
+[    1.791809] Driver 'mmcblk' needs updating - please use bus_type methods
+[    1.799011] sdhci: Secure Digital Host Controller Interface driver
+[    1.805541] sdhci: Copyright(c) Pierre Ossman
+[    1.847351] Synopsys Designware Multimedia Card Interface Driver
+[    1.855590] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.864898] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
+[    1.873016] platform pwmleds: Driver leds_pwm requests probe deferral
+[    1.880065] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.886779] usbcore: registered new interface driver usbhid
+[    1.892669] usbhid: USB HID core driver
+[    1.902221] usbcore: registered new interface driver snd-usb-audio
+[    1.913879] TCP: cubic registered
+[    1.917449] NET: Registered protocol family 17
+[    1.922149] can: controller area network core (rev 20120528 abi 9)
+[    1.928802] NET: Registered protocol family 29
+[    1.933502] can: raw protocol (rev 20120528)
+[    1.938018] can: broadcast manager protocol (rev 20120528 t)
+[    1.944000] can: netlink gateway (rev 20130117) max_hops=1
+[    1.950469] Key type dns_resolver registered
+[    1.955352] omap2_set_init_voltage: unable to find boot up OPP for vdd_mpu_iva
+[    1.962951] omap2_set_init_voltage: unable to set vdd_mpu_iva
+[    1.969024] omap2_set_init_voltage: unable to find boot up OPP for vdd_core
+[    1.976348] omap2_set_init_voltage: unable to set vdd_core
+[    1.986297] ThumbEE CPU extension supported.
+[    1.990997] Registering SWP/SWPB emulation handler
+[    2.013916] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
+[    2.022155] platform pwmleds: Driver leds_pwm requests probe deferral
+[    2.032592] input: gpio_keys as /devices/platform/gpio_keys/input/input0
+[    2.043060] leds_pwm pwmleds: unable to request PWM for beagleboard::pmu_stat: -517
+[    2.051269] platform pwmleds: Driver leds_pwm requests probe deferral
+[    2.059143] twl_rtc 48070000.i2c:twl@48:rtc: setting system clock to 2000-01-01 00:00:00 UTC (946684800)
+[    3.596466] mmc0: card never left busy state
+[    3.600982] mmc0: error -110 whilst initialising SD card
+[   14.156860] hsusb2_vbus: disabling
+[   14.161010] VPLL2: disabling
+[   14.164550] VUSB3V1: disabling
+[   14.169494] VDAC: disabling
+[   14.173461] VAUX3: disabling
+[   14.177642] ALSA device list:
+[   14.180755]   No soundcards found.
+[   14.186218] Waiting for root device PARTUUID=00000000-02...
+[  110.446716] random: nonblocking pool is initialized
+URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm06/tigtfarm06_vatf@beagleboard1/tigtfarm0612_22_2014_03_51_01/files/session_iteration_1/test_1
