@@ -1,14 +1,14 @@
-Automated logs for TAG=next-20141219
-Fri Dec 19 20:25:08 CST 2014
+Automated logs for TAG=next-20141221
+Mon Dec 22 07:16:51 CST 2014
 ====defconfig=multi_lpae_defconfig===
-master-e589c9e
+multi_lpae_defconfig
  1:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
  2:                     dra72x-evm: BOOT: PASS: dra72x-evm.txt
  3:                     dra7xx-evm: BOOT: PASS: dra7xx-evm.txt
  4:                      omap5-evm: BOOT: PASS: omap5-evm.txt
 TOTAL = 4 boards, Booted Boards = 4, No Boot boards = 0
 ====defconfig=multi_v7_defconfig===
-master-e589c9e
+multi_v7_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
  2:                      am335x-sk: BOOT: FARM FAIL: am335x-sk.txt
  3:                     am3517-evm: BOOT: PASS: am3517-evm.txt
@@ -32,7 +32,7 @@ master-e589c9e
 21:                        sdp3430: BOOT: PASS: sdp3430.txt
 TOTAL = 21 boards, Booted Boards = 16, No Boot boards = 5
 ====defconfig=omap2plus_defconfig===
-master-e589c9e
+omap2plus_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
  2:                      am335x-sk: BOOT: FARM FAIL: am335x-sk.txt
  3:                     am3517-evm: BOOT: PASS: am3517-evm.txt
