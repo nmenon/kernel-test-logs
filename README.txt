@@ -1,12 +1,11 @@
-Automated logs for TAG=next-20150120
-Tue Jan 20 08:50:59 CST 2015
+Automated logs for TAG=next-20150121
+Wed Jan 21 07:09:10 CST 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
- 2:                     dra72x-evm: BOOT: FAIL: dra72x-evm.txt
- 3:                     dra7xx-evm: BOOT: FAIL: dra7xx-evm.txt
- 4:                      omap5-evm: BOOT: PASS: omap5-evm.txt
-TOTAL = 4 boards, Booted Boards = 2, No Boot boards = 2
+ 2:                     dra7xx-evm: BOOT: PASS: dra7xx-evm.txt
+ 3:                      omap5-evm: BOOT: PASS: omap5-evm.txt
+TOTAL = 3 boards, Booted Boards = 3, No Boot boards = 0
 ====defconfig=multi_v7_defconfig===
 multi_v7_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
@@ -18,7 +17,7 @@ multi_v7_defconfig
  7:                   am43xx-gpevm: BOOT: PASS: am43xx-gpevm.txt
  8:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
  9:                 BeagleBoard-XM: BOOT: FAIL: beagleboard.txt
-10:            beagleboard-vanilla: BOOT: PASS: beagleboard-vanilla.txt
+10:            beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
 11:               beaglebone-black: BOOT: PASS: beaglebone-black.txt
 12:                     beaglebone: BOOT: FAIL: beaglebone.txt
 13:                     craneboard: BOOT: FAIL: craneboard.txt
@@ -31,7 +30,7 @@ multi_v7_defconfig
 20:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
 21:                        sdp3430: BOOT: FAIL: sdp3430.txt
 22:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 22 boards, Booted Boards = 12, No Boot boards = 10
+TOTAL = 22 boards, Booted Boards = 11, No Boot boards = 11
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1:                     am335x-evm: BOOT: FAIL: am335x-evm.txt
@@ -45,7 +44,7 @@ omap2plus_defconfig
  9:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
 10:            beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
 11:               beaglebone-black: BOOT: FAIL: beaglebone-black.txt
-12:                     beaglebone: BOOT: FAIL: beaglebone.txt
+12:                     beaglebone: BOOT: PASS: beaglebone.txt
 13:                     craneboard: BOOT: FAIL: craneboard.txt
 14:                     dra72x-evm: BOOT: FAIL: dra72x-evm.txt
 15:                     dra7xx-evm: BOOT: PASS: dra7xx-evm.txt
@@ -53,7 +52,7 @@ omap2plus_defconfig
 17:                           n900: BOOT: FAIL: n900.txt
 18:                      omap5-evm: BOOT: PASS: omap5-evm.txt
 19:                  pandaboard-es: BOOT: PASS: pandaboard-es.txt
-20:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
+20:             pandaboard-vanilla: BOOT: FAIL: pandaboard-vanilla.txt
 21:                        sdp2430: BOOT: PASS: sdp2430.txt
 22:                        sdp3430: BOOT: FAIL: sdp3430.txt
 23:                        sdp4430: BOOT: PASS: sdp4430.txt
