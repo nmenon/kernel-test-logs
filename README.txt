@@ -1,5 +1,5 @@
 Automated logs for TAG=next-20150204
-Wed Feb  4 06:42:24 CST 2015
+Thu Feb  5 06:32:51 CST 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
@@ -27,11 +27,11 @@ multi_v7_defconfig
 16:         OMAP3430-Labrador(LDP): BOOT: PASS: ldp.txt
 17:                           n900: BOOT: PASS: n900.txt
 18:                      omap5-evm: BOOT: PASS: omap5-evm.txt
-19:                  pandaboard-es: BOOT: FAIL: pandaboard-es.txt
+19:                  pandaboard-es: BOOT: PASS: pandaboard-es.txt
 20:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
 21:                        sdp3430: BOOT: PASS: sdp3430.txt
 22:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 22 boards, Booted Boards = 18, No Boot boards = 4
+TOTAL = 22 boards, Booted Boards = 19, No Boot boards = 3
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
@@ -39,7 +39,7 @@ omap2plus_defconfig
  3:                     am3517-evm: BOOT: PASS: am3517-evm.txt
  4:                      am37x-evm: BOOT: PASS: am37x-evm.txt
  5:                      am437x-sk: BOOT: PASS: am437x-sk.txt
- 6:                    am43xx-epos: BOOT: FAIL: am43xx-epos.txt
+ 6:                    am43xx-epos: BOOT: PASS: am43xx-epos.txt
  7:                   am43xx-gpevm: BOOT: PASS: am43xx-gpevm.txt
  8:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
  9:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
@@ -52,7 +52,7 @@ omap2plus_defconfig
 16:         OMAP3430-Labrador(LDP): BOOT: PASS: ldp.txt
 17:                           n900: BOOT: PASS: n900.txt
 18:                      omap5-evm: BOOT: PASS: omap5-evm.txt
-19:                  pandaboard-es: BOOT: PASS: pandaboard-es.txt
+19:                  pandaboard-es: BOOT: FAIL: pandaboard-es.txt
 20:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
 21:                        sdp2430: BOOT: PASS: sdp2430.txt
 22:                        sdp3430: BOOT: PASS: sdp3430.txt
