@@ -1,5 +1,5 @@
 Automated logs for TAG=next-20150204
-Thu Feb  5 06:32:51 CST 2015
+Fri Feb  6 06:47:20 CST 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
@@ -52,9 +52,9 @@ omap2plus_defconfig
 16:         OMAP3430-Labrador(LDP): BOOT: PASS: ldp.txt
 17:                           n900: BOOT: PASS: n900.txt
 18:                      omap5-evm: BOOT: PASS: omap5-evm.txt
-19:                  pandaboard-es: BOOT: FAIL: pandaboard-es.txt
+19:                  pandaboard-es: BOOT: PASS: pandaboard-es.txt
 20:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
 21:                        sdp2430: BOOT: PASS: sdp2430.txt
 22:                        sdp3430: BOOT: PASS: sdp3430.txt
 23:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 23 boards, Booted Boards = 22, No Boot boards = 1
+TOTAL = 23 boards, Booted Boards = 23, No Boot boards = 0
