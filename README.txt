@@ -1,15 +1,14 @@
-Automated logs for TAG=next-20150213
-Fri Feb 13 06:39:05 CST 2015
+Automated logs for TAG=next-20150216
+Mon Feb 16 06:33:22 CST 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:                     dra72x-evm: BOOT: PASS: dra72x-evm.txt
- 2:                     dra7xx-evm: BOOT: PASS: dra7xx-evm.txt
- 3:                      omap5-evm: BOOT: PASS: omap5-evm.txt
-TOTAL = 3 boards, Booted Boards = 3, No Boot boards = 0
+ 2:                      omap5-evm: BOOT: PASS: omap5-evm.txt
+TOTAL = 2 boards, Booted Boards = 2, No Boot boards = 0
 ====defconfig=multi_v7_defconfig===
 multi_v7_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
- 2:                      am335x-sk: BOOT: PASS: am335x-sk.txt
+ 2:                      am335x-sk: BOOT: FAIL: am335x-sk.txt
  3:                     am3517-evm: BOOT: PASS: am3517-evm.txt
  4:                      am37x-evm: BOOT: PASS: am37x-evm.txt
  5:                      am437x-sk: BOOT: FAIL: am437x-sk.txt
@@ -29,7 +28,7 @@ multi_v7_defconfig
 19:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
 20:                        sdp3430: BOOT: PASS: sdp3430.txt
 21:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 21 boards, Booted Boards = 18, No Boot boards = 3
+TOTAL = 21 boards, Booted Boards = 17, No Boot boards = 4
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
@@ -38,7 +37,7 @@ omap2plus_defconfig
  4:                      am37x-evm: BOOT: PASS: am37x-evm.txt
  5:                      am437x-sk: BOOT: PASS: am437x-sk.txt
  6:                    am43xx-epos: BOOT: PASS: am43xx-epos.txt
- 7:                   am43xx-gpevm: BOOT: PASS: am43xx-gpevm.txt
+ 7:                   am43xx-gpevm: BOOT: FAIL: am43xx-gpevm.txt
  8:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
  9:            beagleboard-vanilla: BOOT: PASS: beagleboard-vanilla.txt
 10:               beaglebone-black: BOOT: PASS: beaglebone-black.txt
@@ -54,4 +53,4 @@ omap2plus_defconfig
 20:                        sdp2430: BOOT: PASS: sdp2430.txt
 21:                        sdp3430: BOOT: PASS: sdp3430.txt
 22:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 22 boards, Booted Boards = 22, No Boot boards = 0
+TOTAL = 22 boards, Booted Boards = 21, No Boot boards = 1
