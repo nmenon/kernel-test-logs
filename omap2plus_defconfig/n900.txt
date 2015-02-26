@@ -1,35 +1,35 @@
-- 05:35:25 [INFO] Starting target session
-- 05:35:25 [INFO] Connected to n900 via serial 
-- 05:35:25 [INFO] Host: #check prompt
-- 05:35:28 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
-- 05:35:28 [INFO] Target: 
+- 05:36:08 [INFO] Starting target session
+- 05:36:09 [INFO] Connected to n900 via serial 
+- 05:36:09 [INFO] Host: #check prompt
+- 05:36:12 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
+- 05:36:12 [INFO] Target: 
 #check prompt
 root@NokiaRX-51board:/test# 
-- 05:35:28 [INFO] Host: #check prompt
-- 05:35:29 [INFO] Target: 
+- 05:36:12 [INFO] Host: #check prompt
+- 05:36:12 [INFO] Target: 
 #check prompt
 root@NokiaRX-51board:/test# 
-- 05:35:29 [INFO] Host: sync;poweroff
-- 05:35:46 [INFO] Target: 
+- 05:36:12 [INFO] Host: sync;poweroff
+- 05:36:30 [INFO] Target: 
 sync;poweroff
-Broadcast message from root@NokiaRX-51board (ttyO2) (Wed Feb  4 18:06:53 2015
+Broadcast message from root@NokiaRX-51board (ttyO2) (Thu Feb  5 17:34:29 2015
 The system is going down for system halt NOW!
-INIT: Switchingroot@NokiaRX-51board:/test# 
+INIT: Switching to runlroot@NokiaRX-51board:/test# 
 INIT: Sending processes the TERM signal
-INIT: Sending processes the KILL signal
-Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 611)
+INIT: Sending processStopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 738)
 dropbear.
 Stopping telnet daemon.
-Stopping system message bus: Error opening /dev/fb0: No such file or directory
-Stopping syslogd/klogd: stopped syslogd (pid 623)
-stopped klogd (pid 626)
+Stopping system message bus: hwclock: can't open '/dev/misc/rtc': No such file or directory
+Error opening /dev/fb0: No such file or directory
+Stopping syslogd/klogd: stopped syslogd (pid 750)
+stopped klogd (pid 753)
 done
 Stopping thttpd.
 ALSA: Storing mixer settings...
 /usr/sbin/alsactl: save_state:1580: No soundcards found...
 Deconfiguring network interfaces... ifdown: interface eth0 not configured
 done.
-Stopping Lighttpd Web Server: stopped /usr/sbin/lighttpd (pid 637)
+Stopping Lighttpd Web Server: stopped /usr/sbin/lighttpd (pid 764)
 lighttpd.
 ***************************************************************
 ***************************************************************
@@ -54,22 +54,41 @@ Sending all processes the KILL signal...
 Unmounting remote filesystems...
 Deactivating swap...
 Unmounting local filesystems...
-[83705.711669] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
-[83708.140563] reboot: Power down
-- 05:35:46 [INFO] Disconnected serial from n900
-- 05:36:09 [INFO] Connected to n900 via serial 
-- 05:36:09 [INFO] Host: 
-- 05:36:10 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
-- 05:36:10 [INFO] Target: 
+[57864.334930] reboot: Power down
+[57864.341430] ------------[ cut here ]------------
+[57864.351013] WARNING: CPU: 0 PID: 890 at kernel/locking/lockdep.c:2744 lockdep_trace_alloc+0xec/0x10c()
+[57864.370239] DEBUG_LOCKS_WARN_ON(irqs_disabled_flags(flags))
+[57864.381408] Modules linked in:
+[57864.388092] CPU: 0 PID: 890 Comm: halt Not tainted 4.0.0-rc1-00035-gc8d50b1 #4353
+[57864.403594] Hardware name: Nokia RX-51 board
+[57864.412475] [<c001545c>] (unwind_backtrace) from [<c0011a74>] (show_stack+0x10/0x14)
+[57864.428497] [<c0011a74>] (show_stack) from [<c058b0b0>] (dump_stack+0x78/0x94)
+[57864.443481] [<c058b0b0>] (dump_stack) from [<c003de10>] (warn_slowpath_common+0x7c/0xb4)
+[57864.460235] [<c003de10>] (warn_slowpath_common) from [<c003dedc>] (warn_slowpath_fmt+0x30/0x40)
+[57864.478271] [<c003dedc>] (warn_slowpath_fmt) from [<c00852b8>] (lockdep_trace_alloc+0xec/0x10c)
+[57864.496307] [<c00852b8>] (lockdep_trace_alloc) from [<c013f914>] (__kmalloc_track_caller+0x40/0x258)
+[57864.515228] [<c013f914>] (__kmalloc_track_caller) from [<c0118c0c>] (kmemdup+0x1c/0x38)
+[57864.531799] [<c0118c0c>] (kmemdup) from [<c03bc888>] (regmap_bulk_write+0x74/0x19c)
+[57864.547668] [<c03bc888>] (regmap_bulk_write) from [<c03c7864>] (twl_i2c_write+0x4c/0x88)
+[57864.564422] [<c03c7864>] (twl_i2c_write) from [<c03c9dbc>] (twl4030_power_off+0x3c/0x158)
+[57864.581359] [<c03c9dbc>] (twl4030_power_off) from [<c000f230>] (machine_power_off+0x24/0x2c)
+[57864.598846] [<c000f230>] (machine_power_off) from [<c005af0c>] (SyS_reboot+0x114/0x1f0)
+[57864.615447] [<c005af0c>] (SyS_reboot) from [<c000e5e0>] (ret_fast_syscall+0x0/0x4c)
+[57864.631286] ---[ end trace ae737328cd8fefe1 ]---
+- 05:36:30 [INFO] Disconnected serial from n900
+- 05:36:53 [INFO] Connected to n900 via serial 
+- 05:36:53 [INFO] Host: 
+- 05:36:53 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
+- 05:36:53 [INFO] Target: 
 Timed out in wait_for_event: status=0100
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
-- 05:36:10 [INFO] Host: 
-- 05:36:10 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
-- 05:36:10 [INFO] Target: 
+- 05:36:53 [INFO] Host: 
+- 05:36:54 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
+- 05:36:54 [INFO] Target: 
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
@@ -78,27 +97,27 @@ Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
-- 05:36:10 [INFO] Host: 
-- 05:36:11 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
-- 05:36:11 [INFO] Target: 
+- 05:36:54 [INFO] Host: 
+- 05:36:54 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
+- 05:36:54 [INFO] Target: 
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
-- 05:36:11 [INFO] Host: 
-- 05:36:11 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
-- 05:36:11 [INFO] Target: 
+- 05:36:54 [INFO] Host: 
+- 05:36:55 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
+- 05:36:55 [INFO] Target: 
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
-- 05:36:11 [INFO] Host: 
-- 05:36:12 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
-- 05:36:12 [INFO] Target: 
+- 05:36:55 [INFO] Host: 
+- 05:36:55 [ERROR] On command:  waiting for (?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
+- 05:36:55 [INFO] Target: 
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
@@ -106,8 +125,8 @@ Check if pads/pull-ups of bus 1 are properly configured
 Timed out in wait_for_event: status=0000
 Check if pads/pull-ups of bus 1 are properly configured
 i2c_read (addr phase): pads on bus 1 probably not configured (status=0x10)
-- 05:36:12 [INFO] Host: 
-- 05:36:12 [INFO] Target: 
+- 05:36:55 [INFO] Host: 
+- 05:36:56 [INFO] Target: 
 i2c_write: timed out writig last byte!
 Die ID #582a000400000000040366100301000d
 OMAP3530-HS ES3.1, CPU-OPP2, L3-165MHz, Max CPU Clock 600 MHz
@@ -118,34 +137,34 @@ Nokia RX-51 #
 Nokia RX-51 # 
 Nokia RX-51 # 
 Nokia RX-51 # 
-- 05:36:12 [INFO] Host: 
-- 05:36:13 [INFO] Target: 
+- 05:36:56 [INFO] Host: 
+- 05:36:56 [INFO] Target: 
 Nokia RX-51 # 
-- 05:36:13 [INFO] Host: version
-- 05:36:13 [INFO] Target: 
+- 05:36:56 [INFO] Host: version
+- 05:36:57 [INFO] Target: 
 version
 U-Boot 2014.04-00073-g4fa5b9e (Apr 22 2014 - 14:37:10)
 arm-linux-gnueabi-gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
 GNU ld (GNU Binutils for Ubuntu) 2.22
 Nokia RX-51 # 
-- 05:36:13 [INFO] Host: setenv bootargs 'console=ttyO2,57600n8 vram=16M earlyprintk rootwait '
-- 05:36:14 [INFO] Target: 
+- 05:36:57 [INFO] Host: setenv bootargs 'console=ttyO2,57600n8 vram=16M earlyprintk rootwait '
+- 05:36:57 [INFO] Target: 
 setenv bootargs 'console=ttyO2,57600n8 vram=16M earlyprintk rootwait '
 Nokia RX-51 # 
-- 05:36:14 [INFO] Host: setenv bootcmd  ''
-- 05:36:14 [INFO] Target: 
+- 05:36:57 [INFO] Host: setenv bootcmd  ''
+- 05:36:58 [INFO] Target: 
 setenv bootcmd  ''
 Nokia RX-51 # 
-- 05:36:14 [INFO] Host: setenv autoload 'no'
-- 05:36:15 [INFO] Target: 
+- 05:36:58 [INFO] Host: setenv autoload 'no'
+- 05:36:58 [INFO] Target: 
 setenv autoload 'no'
 Nokia RX-51 # 
-- 05:36:15 [INFO] Host: setenv serverip '192.168.1.254'
-- 05:36:15 [INFO] Target: 
+- 05:36:58 [INFO] Host: setenv serverip '192.168.1.254'
+- 05:36:59 [INFO] Target: 
 setenv serverip '192.168.1.254'
 Nokia RX-51 # 
-- 05:36:15 [INFO] Host: printenv
-- 05:36:16 [INFO] Target: 
+- 05:36:59 [INFO] Host: printenv
+- 05:37:00 [INFO] Target: 
 printenv
 arch=arm
 attachboot=echo Booting attached kernel image ...;setenv setup_omap_atag 1;bootm ${attkernaddr};setenv setup_omap_atag
@@ -211,8 +230,8 @@ vendor=nokia
 vgacon=setenv con vga; run setcon
 Environment size: 3196/131068 bytes
 Nokia RX-51 # 
-- 05:36:16 [INFO] Host: printenv
-- 05:36:17 [INFO] Target: 
+- 05:37:00 [INFO] Host: printenv
+- 05:37:01 [INFO] Target: 
 printenv
 arch=arm
 attachboot=echo Booting attached kernel image ...;setenv setup_omap_atag 1;bootm ${attkernaddr};setenv setup_omap_atag
@@ -278,37 +297,37 @@ vendor=nokia
 vgacon=setenv con vga; run setcon
 Environment size: 3196/131068 bytes
 Nokia RX-51 # 
-- 05:36:17 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
-- 05:36:18 [INFO] Target: 
+- 05:37:01 [INFO] Host: setenv bootargs ''${bootargs}' ip=dhcp '
+- 05:37:01 [INFO] Target: 
 setenv bootargs ''${bootargs}' ip=dhcp '
 Nokia RX-51 # 
-- 05:36:18 [INFO] Host: setenv serverip '192.168.1.254'
-- 05:36:18 [INFO] Target: 
+- 05:37:01 [INFO] Host: setenv serverip '192.168.1.254'
+- 05:37:02 [INFO] Target: 
 setenv serverip '192.168.1.254'
 Nokia RX-51 # 
-- 05:36:18 [INFO] Host: setenv ipaddr dhcp
-- 05:36:19 [INFO] Target: 
+- 05:37:02 [INFO] Host: setenv ipaddr dhcp
+- 05:37:02 [INFO] Target: 
 setenv ipaddr dhcp
 Nokia RX-51 # 
-- 05:36:19 [INFO] Host: setenv autoload 'no'
-- 05:36:19 [INFO] Target: 
+- 05:37:02 [INFO] Host: setenv autoload 'no'
+- 05:37:03 [INFO] Target: 
 setenv autoload 'no'
 Nokia RX-51 # 
-- 05:36:19 [INFO] Host: dhcp
-- 05:36:20 [INFO] Target: 
+- 05:37:03 [INFO] Host: dhcp
+- 05:37:03 [INFO] Target: 
 dhcp
 Unknown command 'dhcp' - try 'help'
 Nokia RX-51 # 
-- 05:36:21 [INFO] Disconnected serial from n900
-- 05:50:50 [INFO] Connected to n900 via serial 
-- 05:50:50 [INFO] Host: ls mmc 0:1
-- 05:51:10 [ERROR] On command: ls mmc 0:1 waiting for ls mmc 0:1.+?(?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
-- 05:51:10 [INFO] Target: 
+- 05:37:04 [INFO] Disconnected serial from n900
+- 05:51:34 [INFO] Connected to n900 via serial 
+- 05:51:34 [INFO] Host: ls mmc 0:1
+- 05:51:54 [ERROR] On command: ls mmc 0:1 waiting for ls mmc 0:1.+?(?-mix:Nokia\sRX-51\s#\s) >>> error: execution expired
+- 05:51:54 [INFO] Target: 
 e, 36579(SOH)/0(STX)/0(CAN) packets, 2 retries
 ## Total Size      = 0x00477021 = 4681761 Bytes
 Nokia RX-51 # 
-- 05:51:10 [INFO] Host: printenv
-- 05:51:11 [INFO] Target: 
+- 05:51:54 [INFO] Host: printenv
+- 05:51:55 [INFO] Target: 
 printenv
 arch=arm
 attachboot=echo Booting attached kernel image ...;setenv setup_omap_atag 1;bootm ${attkernaddr};setenv setup_omap_atag
@@ -376,12 +395,12 @@ vendor=nokia
 vgacon=setenv con vga; run setcon
 Environment size: 3237/131068 bytes
 Nokia RX-51 # 
-- 05:51:11 [INFO] Host: setenv bootargs ''${bootargs}' root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait '
-- 05:51:11 [INFO] Target: 
+- 05:51:55 [INFO] Host: setenv bootargs ''${bootargs}' root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait '
+- 05:51:55 [INFO] Target: 
 setenv bootargs ''${bootargs}' root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait '
 Nokia RX-51 # 
-- 05:51:11 [INFO] Host: printenv
-- 05:51:12 [INFO] Target: 
+- 05:51:55 [INFO] Host: printenv
+- 05:51:56 [INFO] Target: 
 printenv
 arch=arm
 attachboot=echo Booting attached kernel image ...;setenv setup_omap_atag 1;bootm ${attkernaddr};setenv setup_omap_atag
@@ -449,12 +468,12 @@ vendor=nokia
 vgacon=setenv con vga; run setcon
 Environment size: 3286/131068 bytes
 Nokia RX-51 # 
-- 05:51:12 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr}  ; else bootz ${loadaddr}  ; bootm ${loadaddr}  ; fi'
-- 05:51:13 [INFO] Target: 
+- 05:51:56 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr}  ; else bootz ${loadaddr}  ; bootm ${loadaddr}  ; fi'
+- 05:51:57 [INFO] Target: 
 setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr}  ; else bootz ${loadaddr}  ; bootm ${loadaddr}  ; fi'
 Nokia RX-51 # 
-- 05:51:13 [INFO] Host: bdinfo
-- 05:51:13 [INFO] Target: 
+- 05:51:57 [INFO] Host: bdinfo
+- 05:51:57 [INFO] Target: 
 bdinfo
 arch_number = 0x000007A3
 boot_params = 0x80000100
@@ -472,22 +491,22 @@ irq_sp      = 0x8FCF0F20
 sp start    = 0x8FCF0F10
 FB base     = 0x00000000
 Nokia RX-51 # 
-- 05:51:13 [INFO] Host: mmc rescan
-- 05:51:14 [INFO] Target: 
+- 05:51:57 [INFO] Host: mmc rescan
+- 05:51:58 [INFO] Target: 
 mmc rescan
 Nokia RX-51 # 
-- 05:51:14 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
-- 05:51:14 [INFO] Target: 
+- 05:51:58 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 05:51:58 [INFO] Target: 
 fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
 Unknown command 'fatwrite' - try 'help'
 Nokia RX-51 # 
-- 05:51:14 [INFO] Host: boot
-- 05:52:02 [INFO] Target: 
+- 05:51:58 [INFO] Host: boot
+- 05:52:46 [INFO] Target: 
 boot
 Unknown command 'iminfo' - try 'help'
 Bad Linux ARM zImage magic!
 ## Booting kernel from Legacy Image at 82008000 ...
-   Image Name:   Linux-4.0.0-rc1-next-20150225-00
+   Image Name:   Linux-4.0.0-rc1-next-20150226-00
    Image Type:   ARM Linux Kernel Image (uncompressed)
    Data Size:    4681697 Bytes = 4.5 MiB
    Load Address: 80800000
@@ -499,7 +518,7 @@ Starting kernel ...
 [    0.000000] Initializing cgroup subsys cpuset
 [    0.000000] Initializing cgroup subsys cpu
 [    0.000000] Initializing cgroup subsys cpuacct
-[    0.000000] Linux version 4.0.0-rc1-next-20150225-00002-g3b240c926da9 (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Wed Feb 25 05:33:46 CST 2015
+[    0.000000] Linux version 4.0.0-rc1-next-20150226-00002-g63fc9ac7c748 (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #1 SMP Thu Feb 26 05:34:27 CST 2015
 [    0.000000] CPU: ARMv7 Processor [411fc083] revision 3 (ARMv7), cr=10c5387d
 [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
 [    0.000000] Machine model: Nokia N900
@@ -548,12 +567,12 @@ Starting kernel ...
 [    0.001922] ... CHAINHASH_SIZE:          32768
 [    0.001922]  memory used by lock dependency info: 5167 kB
 [    0.001953]  per task-struct memory footprint: 1152 bytes
-[    0.001983] Calibrating delay loop... 496.43 BogoMIPS (lpj=2482176)
+[    0.002014] Calibrating delay loop... 496.43 BogoMIPS (lpj=2482176)
 [    0.096832] pid_max: default: 32768 minimum: 301
-[    0.097534] Security Framework initialized
+[    0.097503] Security Framework initialized
 [    0.097839] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
 [    0.097869] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.103546] Initializing cgroup subsys blkio
+[    0.103515] Initializing cgroup subsys blkio
 [    0.103607] Initializing cgroup subsys memory
 [    0.103759] Initializing cgroup subsys devices
 [    0.103942] Initializing cgroup subsys freezer
@@ -561,165 +580,165 @@ Starting kernel ...
 [    0.104370] CPU: Testing write buffer coherency: ok
 [    0.106994] CPU0: thread -1, cpu 0, socket -1, mpidr 0
 [    0.107238] Setting up static identity map for 0x805d2288 - 0x805d22f8
-[    0.114654] Brought up 1 CPUs
-[    0.114685] SMP: Total of 1 processors activated (496.43 BogoMIPS).
-[    0.114685] CPU: All CPU(s) started in SVC mode.
-[    0.121154] devtmpfs: initialized
-[    0.138397] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 1
+[    0.114562] Brought up 1 CPUs
+[    0.114624] SMP: Total of 1 processors activated (496.43 BogoMIPS).
+[    0.114624] CPU: All CPU(s) started in SVC mode.
+[    0.121093] devtmpfs: initialized
+[    0.138305] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 1
 [    0.258026] omap_hwmod: mcbsp2_sidetone using broken dt data from mcbsp
 [    0.261444] omap_hwmod: mcbsp3_sidetone using broken dt data from mcbsp
-[    0.351348] omap_hwmod: mcbsp2: _wait_target_ready failed: -16
-[    0.351379] omap_hwmod: mcbsp2: cannot be enabled for reset (3)
-[    0.376159] pinctrl core: initialized pinctrl subsystem
-[    0.541870] NET: Registered protocol family 16
-[    0.554382] DMA: preallocated 256 KiB pool for atomic coherent allocations
-[    0.558685] cpuidle: using governor ladder
-[    0.558746] cpuidle: using governor menu
-[    0.561767] Reprogramming SDRC clock to 332000000 Hz
-[    0.580902] OMAP GPIO hardware version 2.5
-[    0.601562] irq: no irq domain found for /ocp/pinmux@48002030 !
-[    0.602813] irq: no irq domain found for /ocp/pinmux@48002030 !
-[    0.637481] omap-gpmc 6e000000.gpmc: could not find pctldev for node /ocp/pinmux@48002030/pinmux_gpmc_pins, deferring probe
-[    0.637573] platform 6e000000.gpmc: Driver omap-gpmc requests probe deferral
-[    0.646301] RX-51: Enabling ARM errata 430973 workaround
-[    0.648101] RX-51: Registring OMAP3 HWRNG device
-[    0.654296] No ATAGs?
-[    0.654357] hw-breakpoint: debug architecture 0x4 unsupported.
-[    0.659454] Reserving DMA channels 0 and 1 for HS ROM code
-[    0.659484] OMAP DMA hardware revision 4.0
-[    0.783660] omap-dma-engine 48056000.dma-controller: OMAP DMA engine driver
-[    0.791992] SCSI subsystem initialized
-[    0.795806] omap_i2c 48070000.i2c: could not find pctldev for node /ocp/pinmux@48002030/pinmux_i2c1_pins, deferring probe
-[    0.795898] platform 48070000.i2c: Driver omap_i2c requests probe deferral
-[    0.796051] omap_i2c 48072000.i2c: could not find pctldev for node /ocp/pinmux@48002030/pinmux_i2c2_pins, deferring probe
-[    0.796112] platform 48072000.i2c: Driver omap_i2c requests probe deferral
-[    0.796264] omap_i2c 48060000.i2c: could not find pctldev for node /ocp/pinmux@48002030/pinmux_i2c3_pins, deferring probe
-[    0.796325] platform 48060000.i2c: Driver omap_i2c requests probe deferral
-[    0.804626] Switched to clocksource 32k_counter
-[    1.101135] NET: Registered protocol family 2
-[    1.104797] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
-[    1.105102] TCP bind hash table entries: 2048 (order: 4, 73728 bytes)
-[    1.106445] TCP: Hash tables configured (established 2048 bind 2048)
-[    1.106903] UDP hash table entries: 256 (order: 2, 20480 bytes)
-[    1.107269] UDP-Lite hash table entries: 256 (order: 2, 20480 bytes)
-[    1.109161] NET: Registered protocol family 1
-[    1.112121] RPC: Registered named UNIX socket transport module.
-[    1.112152] RPC: Registered udp transport module.
-[    1.112182] RPC: Registered tcp transport module.
-[    1.112213] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[    1.119384] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
-[    1.130187] futex hash table entries: 256 (order: 2, 16384 bytes)
-[    1.130676] audit: initializing netlink subsys (disabled)
-[    1.131134] audit: type=2000 audit(1.110:1): initialized
-[    1.139617] VFS: Disk quotas dquot_6.5.2
-[    1.139923] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
-[    1.144989] NFS: Registering the id_resolver key type
-[    1.145690] Key type id_resolver registered
-[    1.145721] Key type id_legacy registered
-[    1.146087] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
-[    1.155883] io scheduler noop registered
-[    1.155944] io scheduler deadline registered
-[    1.156036] io scheduler cfq registered (default)
-[    1.160461] pinctrl-single 48002030.pinmux: 284 pins at pa fa002030 size 568
-[    1.161499] pinctrl-single 48002a00.pinmux: 46 pins at pa fa002a00 size 92
-[    1.162780] pinctrl-single 480025d8.pinmux: 18 pins at pa fa0025d8 size 36
-[    1.171142] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
-[    1.186370] 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 89, base_baud = 3000000) is a OMAP UART1
-[    1.191131] 49020000.serial: ttyO2 at MMIO 0x49020000 (irq = 90, base_baud = 3000000) is a OMAP UART2
-[    2.790405] console [ttyO2] enabled
-[    2.861602] brd: module loaded
-[    2.903808] loop: module loaded
-[    2.915893] mtdoops: mtd device (mtddev=name/number) must be supplied
-[    2.964355] mousedev: PS/2 mouse device common for all mice
-[    2.976196] i2c /dev entries driver
-[    2.983978] Driver 'mmcblk' needs updating - please use bus_type methods
-[    3.000946] omap_hsmmc 4809c000.mmc: Got CD GPIO
-[    3.012084] omap_hsmmc 4809c000.mmc: unable to get vmmc regulator -517
-[    3.026672] platform 4809c000.mmc: Driver omap_hsmmc requests probe deferral
-[    3.043090] omap_hsmmc 480b4000.mmc: unable to get vmmc regulator -517
-[    3.057037] platform 480b4000.mmc: Driver omap_hsmmc requests probe deferral
-[    3.072357] ledtrig-cpu: registered to indicate activity on CPUs
-[    3.087463] oprofile: using arm/armv7
-[    3.096557] Initializing XFRM netlink socket
-[    3.105804] NET: Registered protocol family 17
-[    3.115234] NET: Registered protocol family 15
-[    3.125152] Key type dns_resolver registered
-[    3.134643] omap2_set_init_voltage: unable to find boot up OPP for vdd_mpu_iva
-[    3.149658] omap2_set_init_voltage: unable to set vdd_mpu_iva
-[    3.161651] omap2_set_init_voltage: unable to find boot up OPP for vdd_core
-[    3.176147] omap2_set_init_voltage: unable to set vdd_core
-[    3.197082] ThumbEE CPU extension supported.
-[    3.206085] Registering SWP/SWPB emulation handler
-[    3.216125] SmartReflex Class3 initialized
-[    3.235473] omap-gpmc 6e000000.gpmc: GPMC revision 5.0
-[    3.248840] omap2-onenand omap2-onenand: initializing on CS0, phys base 0x01000000, virtual base d0940000, freq 83 MHz
-[    3.271179] Muxed OneNAND 256MB 1.8V 16-bit (0x40)
-[    3.281158] OneNAND version = 0x0031
-[    3.290802] Scanning device for bad blocks
-[    3.428527] 6 ofpart partitions found on MTD device omap2-onenand
-[    3.441192] Creating 6 MTD partitions on "omap2-onenand":
-[    3.452453] 0x000000000000-0x000000020000 : "bootloader"
-[    3.475219] 0x000000020000-0x000000080000 : "config"
-[    3.492614] 0x000000080000-0x0000000c0000 : "log"
-[    3.509613] 0x0000000c0000-0x0000002c0000 : "kernel"
-[    3.527221] 0x0000002c0000-0x0000004c0000 : "initfs"
-[    3.544830] 0x0000004c0000-0x000010000000 : "rootfs"
-[    3.584014] smc91x: not found (-19).
-[    3.619140] twl 1-0048: PIH (irq 23) chaining IRQs 340..348
-[    3.631591] twl 1-0048: power (irq 345) chaining IRQs 348..355
-[    3.733428] twl4030_gpio twl4030-gpio: gpio (irq 340) chaining IRQs 356..373
-[    3.856689] omap_i2c 48070000.i2c: bus 1 rev3.3 at 2200 kHz
-[    3.878692] omap_i2c 48072000.i2c: bus 2 rev3.3 at 100 kHz
-[    3.894165] omap_i2c 48060000.i2c: bus 3 rev3.3 at 400 kHz
-[    3.907531] omap_hsmmc 4809c000.mmc: Got CD GPIO
-[    4.029479] drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
-[    4.042633] sr_init: No PMIC hook to init smartreflex
-[    4.053863] smartreflex smartreflex.0: omap_sr_probe: SmartReflex driver initialized
-[    4.071411] smartreflex smartreflex.1: omap_sr_probe: SmartReflex driver initialized
-[    4.213989] mmc0: host does not support reading read-only switch, assuming write-enable
-[    4.233551] mmc0: new high speed SD card at address fdd9
-[    4.248748] mmcblk0: mmc0:fdd9 SD02G 1.87 GiB 
-[    4.265502]  mmcblk0: p1 p2
-[    4.472564] mmc1: switch to bus width 2 failed
-[    4.482666] mmc1: switch to bus width 1 failed
-[    4.492004] mmc1: new high speed MMC card at address 0001
-[    4.506134] mmcblk1: mmc1:0001 MMC32G 29.8 GiB 
-[    4.516601] mmcblk1boot0: mmc1:0001 MMC32G partition 1 512 KiB
-[    4.529693] mmcblk1boot1: mmc1:0001 MMC32G partition 2 512 KiB
-[   16.317016] VUSB3V1: disabling
-[   16.324707] VUSB1V8: disabling
-[   16.332214] VUSB1V5: disabling
-[   16.339752] VDAC: disabling
-[   16.347137] VCSI: disabling
-[   16.378601] kjournald starting.  Commit interval 5 seconds
-[   16.489776] EXT3-fs (mmcblk0p2): using internal journal
-[   16.500701] EXT3-fs (mmcblk0p2): mounted filesystem with ordered data mode
-[   16.515228] VFS: Mounted root (ext3 filesystem) on device 179:2.
-[   16.533996] devtmpfs: mounted
-[   16.542022] Freeing unused kernel memory: 432K (c0842000 - c08ae000)
+[    0.351379] omap_hwmod: mcbsp2: _wait_target_ready failed: -16
+[    0.351409] omap_hwmod: mcbsp2: cannot be enabled for reset (3)
+[    0.375183] pinctrl core: initialized pinctrl subsystem
+[    0.541015] NET: Registered protocol family 16
+[    0.553527] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.557861] cpuidle: using governor ladder
+[    0.557922] cpuidle: using governor menu
+[    0.560974] Reprogramming SDRC clock to 332000000 Hz
+[    0.580078] OMAP GPIO hardware version 2.5
+[    0.600738] irq: no irq domain found for /ocp/pinmux@48002030 !
+[    0.601989] irq: no irq domain found for /ocp/pinmux@48002030 !
+[    0.636627] omap-gpmc 6e000000.gpmc: could not find pctldev for node /ocp/pinmux@48002030/pinmux_gpmc_pins, deferring probe
+[    0.636718] platform 6e000000.gpmc: Driver omap-gpmc requests probe deferral
+[    0.645263] RX-51: Enabling ARM errata 430973 workaround
+[    0.647277] RX-51: Registring OMAP3 HWRNG device
+[    0.653442] No ATAGs?
+[    0.653503] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.658569] Reserving DMA channels 0 and 1 for HS ROM code
+[    0.658599] OMAP DMA hardware revision 4.0
+[    0.782867] omap-dma-engine 48056000.dma-controller: OMAP DMA engine driver
+[    0.791198] SCSI subsystem initialized
+[    0.794830] omap_i2c 48070000.i2c: could not find pctldev for node /ocp/pinmux@48002030/pinmux_i2c1_pins, deferring probe
+[    0.794891] platform 48070000.i2c: Driver omap_i2c requests probe deferral
+[    0.795074] omap_i2c 48072000.i2c: could not find pctldev for node /ocp/pinmux@48002030/pinmux_i2c2_pins, deferring probe
+[    0.795135] platform 48072000.i2c: Driver omap_i2c requests probe deferral
+[    0.795288] omap_i2c 48060000.i2c: could not find pctldev for node /ocp/pinmux@48002030/pinmux_i2c3_pins, deferring probe
+[    0.795471] platform 48060000.i2c: Driver omap_i2c requests probe deferral
+[    0.803771] Switched to clocksource 32k_counter
+[    1.100189] NET: Registered protocol family 2
+[    1.103881] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    1.104187] TCP bind hash table entries: 2048 (order: 4, 73728 bytes)
+[    1.105529] TCP: Hash tables configured (established 2048 bind 2048)
+[    1.105957] UDP hash table entries: 256 (order: 2, 20480 bytes)
+[    1.106353] UDP-Lite hash table entries: 256 (order: 2, 20480 bytes)
+[    1.108215] NET: Registered protocol family 1
+[    1.111206] RPC: Registered named UNIX socket transport module.
+[    1.111236] RPC: Registered udp transport module.
+[    1.111267] RPC: Registered tcp transport module.
+[    1.111297] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.118469] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    1.129272] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    1.129760] audit: initializing netlink subsys (disabled)
+[    1.130218] audit: type=2000 audit(1.110:1): initialized
+[    1.138702] VFS: Disk quotas dquot_6.5.2
+[    1.139007] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    1.144073] NFS: Registering the id_resolver key type
+[    1.144744] Key type id_resolver registered
+[    1.144775] Key type id_legacy registered
+[    1.145141] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
+[    1.154907] io scheduler noop registered
+[    1.154968] io scheduler deadline registered
+[    1.155059] io scheduler cfq registered (default)
+[    1.159515] pinctrl-single 48002030.pinmux: 284 pins at pa fa002030 size 568
+[    1.160552] pinctrl-single 48002a00.pinmux: 46 pins at pa fa002a00 size 92
+[    1.161834] pinctrl-single 480025d8.pinmux: 18 pins at pa fa0025d8 size 36
+[    1.170166] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    1.185272] 4806c000.serial: ttyO1 at MMIO 0x4806c000 (irq = 89, base_baud = 3000000) is a OMAP UART1
+[    1.190032] 49020000.serial: ttyO2 at MMIO 0x49020000 (irq = 90, base_baud = 3000000) is a OMAP UART2
+[    2.789306] console [ttyO2] enabled
+[    2.860473] brd: module loaded
+[    2.902679] loop: module loaded
+[    2.914794] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    2.963317] mousedev: PS/2 mouse device common for all mice
+[    2.975158] i2c /dev entries driver
+[    2.982910] Driver 'mmcblk' needs updating - please use bus_type methods
+[    2.999877] omap_hsmmc 4809c000.mmc: Got CD GPIO
+[    3.011047] omap_hsmmc 4809c000.mmc: unable to get vmmc regulator -517
+[    3.025634] platform 4809c000.mmc: Driver omap_hsmmc requests probe deferral
+[    3.042022] omap_hsmmc 480b4000.mmc: unable to get vmmc regulator -517
+[    3.055969] platform 480b4000.mmc: Driver omap_hsmmc requests probe deferral
+[    3.071289] ledtrig-cpu: registered to indicate activity on CPUs
+[    3.086364] oprofile: using arm/armv7
+[    3.095458] Initializing XFRM netlink socket
+[    3.104705] NET: Registered protocol family 17
+[    3.114135] NET: Registered protocol family 15
+[    3.124114] Key type dns_resolver registered
+[    3.133453] omap2_set_init_voltage: unable to find boot up OPP for vdd_mpu_iva
+[    3.148498] omap2_set_init_voltage: unable to set vdd_mpu_iva
+[    3.160461] omap2_set_init_voltage: unable to find boot up OPP for vdd_core
+[    3.174926] omap2_set_init_voltage: unable to set vdd_core
+[    3.195861] ThumbEE CPU extension supported.
+[    3.204895] Registering SWP/SWPB emulation handler
+[    3.214904] SmartReflex Class3 initialized
+[    3.234313] omap-gpmc 6e000000.gpmc: GPMC revision 5.0
+[    3.247650] omap2-onenand omap2-onenand: initializing on CS0, phys base 0x01000000, virtual base d0940000, freq 83 MHz
+[    3.269989] Muxed OneNAND 256MB 1.8V 16-bit (0x40)
+[    3.279968] OneNAND version = 0x0031
+[    3.289611] Scanning device for bad blocks
+[    3.427337] 6 ofpart partitions found on MTD device omap2-onenand
+[    3.440032] Creating 6 MTD partitions on "omap2-onenand":
+[    3.451293] 0x000000000000-0x000000020000 : "bootloader"
+[    3.474090] 0x000000020000-0x000000080000 : "config"
+[    3.491455] 0x000000080000-0x0000000c0000 : "log"
+[    3.508514] 0x0000000c0000-0x0000002c0000 : "kernel"
+[    3.526092] 0x0000002c0000-0x0000004c0000 : "initfs"
+[    3.543670] 0x0000004c0000-0x000010000000 : "rootfs"
+[    3.582855] smc91x: not found (-19).
+[    3.618041] twl 1-0048: PIH (irq 23) chaining IRQs 340..348
+[    3.630493] twl 1-0048: power (irq 345) chaining IRQs 348..355
+[    3.732269] twl4030_gpio twl4030-gpio: gpio (irq 340) chaining IRQs 356..373
+[    3.855590] omap_i2c 48070000.i2c: bus 1 rev3.3 at 2200 kHz
+[    3.877593] omap_i2c 48072000.i2c: bus 2 rev3.3 at 100 kHz
+[    3.893096] omap_i2c 48060000.i2c: bus 3 rev3.3 at 400 kHz
+[    3.906463] omap_hsmmc 4809c000.mmc: Got CD GPIO
+[    4.028594] drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
+[    4.041778] sr_init: No PMIC hook to init smartreflex
+[    4.053009] smartreflex smartreflex.0: omap_sr_probe: SmartReflex driver initialized
+[    4.070556] smartreflex smartreflex.1: omap_sr_probe: SmartReflex driver initialized
+[    4.213165] mmc0: host does not support reading read-only switch, assuming write-enable
+[    4.232727] mmc0: new high speed SD card at address fdd9
+[    4.247924] mmcblk0: mmc0:fdd9 SD02G 1.87 GiB 
+[    4.264648]  mmcblk0: p1 p2
+[    4.471893] mmc1: switch to bus width 2 failed
+[    4.481994] mmc1: switch to bus width 1 failed
+[    4.491333] mmc1: new high speed MMC card at address 0001
+[    4.505462] mmcblk1: mmc1:0001 MMC32G 29.8 GiB 
+[    4.515899] mmcblk1boot0: mmc1:0001 MMC32G partition 1 512 KiB
+[    4.529022] mmcblk1boot1: mmc1:0001 MMC32G partition 2 512 KiB
+[   16.316131] VUSB3V1: disabling
+[   16.323852] VUSB1V8: disabling
+[   16.331329] VUSB1V5: disabling
+[   16.338867] VDAC: disabling
+[   16.346282] VCSI: disabling
+[   16.377716] kjournald starting.  Commit interval 5 seconds
+[   16.491546] EXT3-fs (mmcblk0p2): using internal journal
+[   16.502471] EXT3-fs (mmcblk0p2): mounted filesystem with ordered data mode
+[   16.517028] VFS: Mounted root (ext3 filesystem) on device 179:2.
+[   16.535797] devtmpfs: mounted
+[   16.543853] Freeing unused kernel memory: 432K (c0842000 - c08ae000)
 INIT: version 2.88 booting
 Error opening /dev/fb0: No such file or directory
 /dev/ttyO2 linked to /dev/tty-bd - using as console
 Starting udev
-[   18.361999] udevd[101]: starting version 182
-[   35.634826] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
-ERROR: could not open directory /lib/modules/4.0.0-rc1-next-20150225-00002-g3b240c926da9: No such file or directory
+[   18.353424] udevd[101]: starting version 182
+[   35.789123] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+ERROR: could not open directory /lib/modules/4.0.0-rc1-next-20150226-00002-g63fc9ac7c748: No such file or directory
 WARNING: -e needs -E or -F
-ERROR: could not open directory /lib/modules/4.0.0-rc1-next-20150225-00002-g3b240c926da9: No such file or directory
+ERROR: could not open directory /lib/modules/4.0.0-rc1-next-20150226-00002-g63fc9ac7c748: No such file or directory
 FATAL: could not search modules: No such file or directory
 Starting Bootlog daemon: bootlogd: cannot allocate pseudo tty: No such file or directory
 bootlogd.
-[   37.017791] random: dd urandom read with 113 bits of entropy available
+[   37.175628] random: dd urandom read with 113 bits of entropy available
 ALSA: Restoring mixer settings...
 /usr/sbin/alsactl: load_state:1696: No soundcards found...
 Configuring network interfaces... ifconfig: SIOCGIFFLAGS: No such device
 done.
 hwclock: can't open '/dev/misc/rtc': No such file or directory
-Wed Feb  4 18:07:00 UTC 2015
+Thu Feb  5 17:34:00 UTC 2015
 hwclock: can't open '/dev/misc/rtc': No such file or directory
 INIT: Entering runlevel: 3
 /dev/ttyO2 linked to /dev/tty-bd - using as console
-Starting system message bus: [   41.408813] random: nonblocking pool is initialized
+Starting system message bus: [   41.607635] random: nonblocking pool is initialized
 dbus.
 Starting Dropbear SSH server: dropbear.
 Starting telnet daemon.
@@ -727,7 +746,7 @@ hwclock: can't open '/dev/misc/rtc': No such file or directory
 Starting syslogd/klogd: done
 Starting thttpd.
 Starting Lighttpd Web Server: lighttpd.
-2015-02-04 18:07:02: (log.c.166) server started 
+2015-02-05 17:34:02: (log.c.166) server started 
 ***************************************************************
 ***************************************************************
 NOTICE: This file system contains the followin GPLv3 packages:
@@ -755,27 +774,27 @@ Stopping Bootlog daemon: bootlogd.
 Arago Project http://arago-project.org NokiaRX-51board tty-bd
 Arago 2013.12 NokiaRX-51board tty-bd
 NokiaRX-51board login: 
-- 05:52:02 [INFO] Host: root
-- 05:52:03 [INFO] Target: 
+- 05:52:46 [INFO] Host: root
+- 05:52:46 [INFO] Target: 
 root
 root@NokiaRX-51board:~# 
-- 05:52:03 [INFO] Host: uname -a
-- 05:52:03 [INFO] Target: 
+- 05:52:46 [INFO] Host: uname -a
+- 05:52:47 [INFO] Target: 
 uname -a
-Linux NokiaRX-51board 4.0.0-rc1-next-20150225-00002-g3b240c926da9 #1 SMP Wed Feb 25 05:33:46 CST 2015 armv7l GNU/Linux
+Linux NokiaRX-51board 4.0.0-rc1-next-20150226-00002-g63fc9ac7c748 #1 SMP Thu Feb 26 05:34:27 CST 2015 armv7l GNU/Linux
 root@NokiaRX-51board:~# 
-- 05:52:03 [INFO] Host: cat /proc/cmdline
-- 05:52:04 [INFO] Target: 
+- 05:52:47 [INFO] Host: cat /proc/cmdline
+- 05:52:47 [INFO] Target: 
 cat /proc/cmdline
 console=ttyO2,57600n8 vram=16M earlyprintk rootwait  ip=dhcp  root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait 
 root@NokiaRX-51board:~# 
-- 05:52:04 [INFO] Host: uname -a
-- 05:52:04 [INFO] Target: 
+- 05:52:47 [INFO] Host: uname -a
+- 05:52:48 [INFO] Target: 
 uname -a
-Linux NokiaRX-51board 4.0.0-rc1-next-20150225-00002-g3b240c926da9 #1 SMP Wed Feb 25 05:33:46 CST 2015 armv7l GNU/Linux
+Linux NokiaRX-51board 4.0.0-rc1-next-20150226-00002-g63fc9ac7c748 #1 SMP Thu Feb 26 05:34:27 CST 2015 armv7l GNU/Linux
 root@NokiaRX-51board:~# 
-- 05:52:04 [INFO] Host: cat /proc/mtd
-- 05:52:05 [INFO] Target: 
+- 05:52:48 [INFO] Host: cat /proc/mtd
+- 05:52:48 [INFO] Target: 
 cat /proc/mtd
 dev:    size   erasesize  name
 mtd0: 00020000 00020000 "bootloader"
@@ -785,131 +804,131 @@ mtd3: 00200000 00020000 "kernel"
 mtd4: 00200000 00020000 "initfs"
 mtd5: 0fb40000 00020000 "rootfs"
 root@NokiaRX-51board:~# 
-- 05:52:10 [INFO] Host: export IPERFHOST=192.168.1.254
-- 05:52:11 [INFO] Target: 
+- 05:52:54 [INFO] Host: export IPERFHOST=192.168.1.254
+- 05:52:54 [INFO] Target: 
 export IPERFHOST=192.168.1.254
 root@NokiaRX-51board:~# 
-- 05:52:11 [INFO] Host: export NFS_SERVER=192.168.1.254
-- 05:52:11 [INFO] Target: 
+- 05:52:54 [INFO] Host: export NFS_SERVER=192.168.1.254
+- 05:52:55 [INFO] Target: 
 export NFS_SERVER=192.168.1.254
 root@NokiaRX-51board:~# 
-- 05:52:11 [INFO] Host: export NFS_ROOT_PATH=/usr/workdir/filesys/linux/n900
-- 05:52:12 [INFO] Target: 
+- 05:52:55 [INFO] Host: export NFS_ROOT_PATH=/usr/workdir/filesys/linux/n900
+- 05:52:55 [INFO] Target: 
 export NFS_ROOT_PATH=/usr/workdir/filesys/linux/n900
 root@NokiaRX-51board:~# 
-- 05:52:12 [INFO] Host: mkdir -p -m 777 /test
-- 05:52:12 [INFO] Target: 
+- 05:52:55 [INFO] Host: mkdir -p -m 777 /test
+- 05:52:56 [INFO] Target: 
 mkdir -p -m 777 /test
 root@NokiaRX-51board:~# 
-- 05:52:12 [INFO] Host: cd /test
-- 05:52:13 [INFO] Target: 
+- 05:52:56 [INFO] Host: cd /test
+- 05:52:56 [INFO] Target: 
 cd /test
 root@NokiaRX-51board:/test# 
-- 05:52:13 [INFO] Host: cat > test.sh << EOF
-- 05:52:13 [INFO] Target: 
+- 05:52:56 [INFO] Host: cat > test.sh << EOF
+- 05:52:57 [INFO] Target: 
 cat > test.sh << EOF
-- 05:52:13 [INFO] Host: failtest() {
-- 05:52:14 [INFO] Target: 
+- 05:52:57 [INFO] Host: failtest() {
+- 05:52:57 [INFO] Target: 
 failtest() {
-- 05:52:14 [INFO] Host:   echo 1 >&3
-- 05:52:14 [INFO] Target: 
+- 05:52:57 [INFO] Host:   echo 1 >&3
+- 05:52:58 [INFO] Target: 
   echo 1 >&3
-- 05:52:14 [INFO] Host: }
-- 05:52:15 [INFO] Target: 
-- 05:52:15 [INFO] Host: timeout=600
-- 05:52:15 [INFO] Target: 
+- 05:52:58 [INFO] Host: }
+- 05:52:59 [INFO] Target: 
+- 05:52:59 [INFO] Host: timeout=600
+- 05:52:59 [INFO] Target: 
 timeout=600
-- 05:52:15 [INFO] Host: 
-- 05:52:16 [INFO] Target: 
-- 05:52:16 [INFO] Host: # Start of user's script logic
-- 05:52:16 [INFO] Target: 
+- 05:52:59 [INFO] Host: 
+- 05:53:00 [INFO] Target: 
+- 05:53:00 [INFO] Host: # Start of user's script logic
+- 05:53:00 [INFO] Target: 
 # Start of user's script logic
-- 05:52:16 [INFO] Host: 
-- 05:52:17 [INFO] Target: 
-- 05:52:17 [INFO] Host: 
-- 05:52:17 [INFO] Target: 
-- 05:52:17 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
-- 05:52:18 [INFO] Target: 
+- 05:53:00 [INFO] Host: 
+- 05:53:01 [INFO] Target: 
+- 05:53:01 [INFO] Host: 
+- 05:53:01 [INFO] Target: 
+- 05:53:01 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
+- 05:53:02 [INFO] Target: 
 mount -t proc proc /proc 2>/dev/null;
-- 05:52:18 [INFO] Host: 
-- 05:52:18 [INFO] Target: 
-- 05:52:18 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
-- 05:52:19 [INFO] Target: 
+- 05:53:02 [INFO] Host: 
+- 05:53:02 [INFO] Target: 
+- 05:53:02 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
+- 05:53:03 [INFO] Target: 
 mount -t sysfs sys /sys 2>/dev/null;
-- 05:52:19 [INFO] Host: 
-- 05:52:19 [INFO] Target: 
-- 05:52:19 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
-- 05:52:20 [INFO] Target: 
+- 05:53:03 [INFO] Host: 
+- 05:53:03 [INFO] Target: 
+- 05:53:03 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
+- 05:53:04 [INFO] Target: 
 mount -t debugfs none /sys/kernel/debug 2>/dev/null;
-- 05:52:20 [INFO] Host: 
-- 05:52:20 [INFO] Target: 
-- 05:52:20 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
-- 05:52:21 [INFO] Target: 
+- 05:53:04 [INFO] Host: 
+- 05:53:04 [INFO] Target: 
+- 05:53:04 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
+- 05:53:05 [INFO] Target: 
 echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
-- 05:52:21 [INFO] Host: 
-- 05:52:21 [INFO] Target: 
-- 05:52:21 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
-- 05:52:22 [INFO] Target: 
+- 05:53:05 [INFO] Host: 
+- 05:53:05 [INFO] Target: 
+- 05:53:05 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
+- 05:53:06 [INFO] Target: 
 echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
-- 05:52:22 [INFO] Host: 
-- 05:52:22 [INFO] Target: 
-- 05:52:22 [INFO] Host: echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /proc/device-tree/compatible 2>/dev/null;echo; echo '=======';
-- 05:52:23 [INFO] Target: 
+- 05:53:06 [INFO] Host: 
+- 05:53:06 [INFO] Target: 
+- 05:53:06 [INFO] Host: echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /proc/device-tree/compatible 2>/dev/null;echo; echo '=======';
+- 05:53:07 [INFO] Target: 
 echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /pro 
 c/device-tree/compatible 2>/dev/null;echo; echo '=======';
-- 05:52:23 [INFO] Host: 
-- 05:52:23 [INFO] Target: 
-- 05:52:23 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
-- 05:52:24 [INFO] Target: 
+- 05:53:07 [INFO] Host: 
+- 05:53:07 [INFO] Target: 
+- 05:53:07 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
+- 05:53:08 [INFO] Target: 
 echo 'interrupts:';cat /proc/interrupts; echo '=======';
-- 05:52:24 [INFO] Host: 
-- 05:52:24 [INFO] Target: 
-- 05:52:24 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
-- 05:52:25 [INFO] Target: 
+- 05:53:08 [INFO] Host: 
+- 05:53:08 [INFO] Target: 
+- 05:53:08 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
+- 05:53:09 [INFO] Target: 
 echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
-- 05:52:25 [INFO] Host: 
-- 05:52:25 [INFO] Target: 
-- 05:52:25 [INFO] Host: echo 'Orphan Clks:';ls /sys/kernel/debug/clk/orphans/; echo '=======';
-- 05:52:26 [INFO] Target: 
+- 05:53:09 [INFO] Host: 
+- 05:53:09 [INFO] Target: 
+- 05:53:09 [INFO] Host: echo 'Orphan Clks:';ls /sys/kernel/debug/clk/orphans/; echo '=======';
+- 05:53:10 [INFO] Target: 
 echo 'Orphan Clks:';ls /sys/kernel/debug/clk/orphans/; echo '=======';
-- 05:52:26 [INFO] Host: 
-- 05:52:26 [INFO] Target: 
-- 05:52:26 [INFO] Host: echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies 2>/dev/null;echo '=======';
-- 05:52:27 [INFO] Target: 
+- 05:53:10 [INFO] Host: 
+- 05:53:10 [INFO] Target: 
+- 05:53:10 [INFO] Host: echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies 2>/dev/null;echo '=======';
+- 05:53:11 [INFO] Target: 
 echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling 
 _available_frequencies 2>/dev/null;echo '=======';
-- 05:52:27 [INFO] Host: 
-- 05:52:27 [INFO] Target: 
-- 05:52:27 [INFO] Host: echo 'H''ello World' 'B''oard Booted';
-- 05:52:28 [INFO] Target: 
+- 05:53:11 [INFO] Host: 
+- 05:53:11 [INFO] Target: 
+- 05:53:11 [INFO] Host: echo 'H''ello World' 'B''oard Booted';
+- 05:53:12 [INFO] Target: 
 echo 'H''ello World' 'B''oard Booted';
-- 05:52:28 [INFO] Host: 
-- 05:52:28 [INFO] Target: 
-- 05:52:28 [INFO] Host: EOF
-- 05:52:29 [INFO] Target: 
+- 05:53:12 [INFO] Host: 
+- 05:53:12 [INFO] Target: 
+- 05:53:12 [INFO] Host: EOF
+- 05:53:13 [INFO] Target: 
 root@NokiaRX-51board:/test# 
-- 05:52:29 [INFO] Host: cd /test
-- 05:52:29 [INFO] Target: 
+- 05:53:13 [INFO] Host: cd /test
+- 05:53:13 [INFO] Target: 
 cd /test
 root@NokiaRX-51board:/test# 
-- 05:52:29 [INFO] Host: chmod +x test.sh
-- 05:52:30 [INFO] Target: 
+- 05:53:13 [INFO] Host: chmod +x test.sh
+- 05:53:14 [INFO] Target: 
 chmod +x test.sh
 root@NokiaRX-51board:/test# 
-- 05:52:30 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
-- 05:52:30 [INFO] Target: 
+- 05:53:14 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
+- 05:53:14 [INFO] Target: 
 ./test.sh 2> stderr.log > stdout.log 3> result.log
 root@NokiaRX-51board:/test# 
-- 05:52:30 [INFO] Host: echo $?
-- 05:52:31 [INFO] Target: 
+- 05:53:14 [INFO] Host: echo $?
+- 05:53:15 [INFO] Target: 
 echo $?
 root@NokiaRX-51board:/test# 
-- 05:52:31 [INFO] Host: cd /test
-- 05:52:31 [INFO] Target: 
+- 05:53:15 [INFO] Host: cd /test
+- 05:53:15 [INFO] Target: 
 cd /test
 root@NokiaRX-51board:/test# 
-- 05:52:31 [INFO] Host: cat stdout.log
-- 05:52:36 [INFO] Target: 
+- 05:53:15 [INFO] Host: cat stdout.log
+- 05:53:20 [INFO] Target: 
 cat stdout.log
 cpuinfo:
 processor	: 0
@@ -950,17 +969,17 @@ interrupts:
  25:          0      INTC   9  l3-debug-irq
  26:          0      INTC  10  l3-app-irq
  28:          0      INTC  12  DMA
- 29:       2359      INTC  13  omap-dma-engine
+ 29:       2318      INTC  13  omap-dma-engine
  36:          0      INTC  20  gpmc
- 53:       3610      INTC  37  gp_timer
+ 53:       3636      INTC  37  gp_timer
  72:       1011      INTC  56  48070000.i2c
  73:          0      INTC  57  48072000.i2c
  77:          0      INTC  61  48060000.i2c
- 90:       4154      INTC  74  OMAP UART2
- 99:       4679      INTC  83  mmc0
-102:        371      INTC  86  mmc1
+ 90:       4100      INTC  74  OMAP UART2
+ 99:       4672      INTC  83  mmc0
+102:        359      INTC  86  mmc1
 272:          0  49058000.gpio   0  4809c000.mmc cd
-304:        458      PRCM  pm_wkup
+304:        476      PRCM  pm_wkup
 313:          2      PRCM  pinctrl, pinctrl, pm_io
 337:          1   pinctrl 366  OMAP UART2
 340:          0   twl4030   0  twl4030_gpio
@@ -1216,18 +1235,18 @@ Available frequencies
 =======
 Hello World Board Booted
 root@NokiaRX-51board:/test# 
-- 05:52:36 [INFO] Host: cat stderr.log
-- 05:52:36 [INFO] Target: 
+- 05:53:20 [INFO] Host: cat stderr.log
+- 05:53:20 [INFO] Target: 
 cat stderr.log
 ls: /sys/kernel/debug/clk/orphans/: No such file or directory
 root@NokiaRX-51board:/test# 
-- 05:52:36 [INFO] Host: cat result.log
-- 05:52:38 [ERROR] On command: cat result.log waiting for cat result.log.+?(?m-ix:^1[\0\n\r]+) >>> error: execution expired
-- 05:52:38 [INFO] Target: 
+- 05:53:20 [INFO] Host: cat result.log
+- 05:53:22 [ERROR] On command: cat result.log waiting for cat result.log.+?(?m-ix:^1[\0\n\r]+) >>> error: execution expired
+- 05:53:22 [INFO] Target: 
 cat result.log
 root@NokiaRX-51board:/test# 
-- 05:52:38 [INFO] Host: cd /test
-- 05:52:39 [INFO] Target: 
+- 05:53:22 [INFO] Host: cd /test
+- 05:53:23 [INFO] Target: 
 cd /test
 root@NokiaRX-51board:/test# 
-URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-02/tidfarm-02_vatf@9/tidfarm-0202_25_2015_05_35_24/files/session_iteration_1/test_1
+URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-02/tidfarm-02_vatf@9/tidfarm-0202_26_2015_05_36_07/files/session_iteration_1/test_1
