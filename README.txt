@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20150226
-Thu Feb 26 08:16:36 CST 2015
+Automated logs for TAG=next-20150227
+Fri Feb 27 06:35:19 CST 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
@@ -27,11 +27,11 @@ multi_v7_defconfig
 16:         OMAP3430-Labrador(LDP): BOOT: PASS: ldp.txt
 17:                           n900: BOOT: PASS: n900.txt
 18:                      omap5-evm: BOOT: PASS: omap5-evm.txt
-19:                  pandaboard-es: BOOT: FAIL: pandaboard-es.txt
+19:                  pandaboard-es: BOOT: PASS: pandaboard-es.txt
 20:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
 21:                        sdp3430: BOOT: PASS: sdp3430.txt
 22:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 22 boards, Booted Boards = 18, No Boot boards = 4
+TOTAL = 22 boards, Booted Boards = 19, No Boot boards = 3
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
@@ -41,7 +41,7 @@ omap2plus_defconfig
  5:                      am437x-sk: BOOT: PASS: am437x-sk.txt
  6:                    am43xx-epos: BOOT: PASS: am43xx-epos.txt
  7:                   am43xx-gpevm: BOOT: PASS: am43xx-gpevm.txt
- 8:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
+ 8:    BeagleBoard-X15(am57xx-evm): BOOT: FAIL: am57xx-evm.txt
  9:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
 10:            beagleboard-vanilla: BOOT: PASS: beagleboard-vanilla.txt
 11:               beaglebone-black: BOOT: PASS: beaglebone-black.txt
@@ -57,4 +57,4 @@ omap2plus_defconfig
 21:                        sdp2430: BOOT: PASS: sdp2430.txt
 22:                        sdp3430: BOOT: PASS: sdp3430.txt
 23:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 23 boards, Booted Boards = 23, No Boot boards = 0
+TOTAL = 23 boards, Booted Boards = 22, No Boot boards = 1
