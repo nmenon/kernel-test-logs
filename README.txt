@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20150313
-Fri Mar 13 06:08:58 CDT 2015
+Automated logs for TAG=next-20150316
+Mon Mar 16 06:06:45 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
 TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
@@ -18,16 +18,17 @@ omap2plus_defconfig
  8:    BeagleBoard-X15(am57xx-evm): BOOT: FAIL: am57xx-evm.txt
  9:                 BeagleBoard-XM: BOOT: FAIL: beagleboard.txt
 10:            beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
-11:                     beaglebone: BOOT: FAIL: beaglebone.txt
-12:                     craneboard: BOOT: FAIL: craneboard.txt
-13:                     dra72x-evm: BOOT: FAIL: dra72x-evm.txt
-14:                     dra7xx-evm: BOOT: FAIL: dra7xx-evm.txt
-15:         OMAP3430-Labrador(LDP): BOOT: FAIL: ldp.txt
-16:                           n900: BOOT: FAIL: n900.txt
-17:                      omap5-evm: BOOT: FAIL: omap5-evm.txt
-18:                  pandaboard-es: BOOT: FAIL: pandaboard-es.txt
-19:             pandaboard-vanilla: BOOT: FAIL: pandaboard-vanilla.txt
-20:                        sdp2430: BOOT: FAIL: sdp2430.txt
-21:                        sdp3430: BOOT: FAIL: sdp3430.txt
-22:                        sdp4430: BOOT: FAIL: sdp4430.txt
-TOTAL = 22 boards, Booted Boards = 0, No Boot boards = 22
+11:               beaglebone-black: BOOT: FAIL: beaglebone-black.txt
+12:                     beaglebone: BOOT: FAIL: beaglebone.txt
+13:                     craneboard: BOOT: FAIL: craneboard.txt
+14:                     dra72x-evm: BOOT: FAIL: dra72x-evm.txt
+15:                     dra7xx-evm: BOOT: FAIL: dra7xx-evm.txt
+16:         OMAP3430-Labrador(LDP): BOOT: FAIL: ldp.txt
+17:                           n900: BOOT: FAIL: n900.txt
+18:                      omap5-evm: BOOT: FAIL: omap5-evm.txt
+19:                  pandaboard-es: BOOT: FAIL: pandaboard-es.txt
+20:             pandaboard-vanilla: BOOT: FAIL: pandaboard-vanilla.txt
+21:                        sdp2430: BOOT: FAIL: sdp2430.txt
+22:                        sdp3430: BOOT: FAIL: sdp3430.txt
+23:                        sdp4430: BOOT: FAIL: sdp4430.txt
+TOTAL = 23 boards, Booted Boards = 0, No Boot boards = 23
