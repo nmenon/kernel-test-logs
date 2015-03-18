@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20150317
-Tue Mar 17 06:07:21 CDT 2015
+Automated logs for TAG=next-20150318
+Wed Mar 18 06:06:11 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
 TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
@@ -9,11 +9,11 @@ TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
- 2:                      am335x-sk: BOOT: FAIL: am335x-sk.txt
+ 2:                      am335x-sk: BOOT: PASS: am335x-sk.txt
  3:                     am3517-evm: BOOT: PASS: am3517-evm.txt
  4:                      am37x-evm: BOOT: PASS: am37x-evm.txt
  5:                      am437x-sk: BOOT: PASS: am437x-sk.txt
- 6:                    am43xx-epos: BOOT: FAIL: am43xx-epos.txt
+ 6:                    am43xx-epos: BOOT: PASS: am43xx-epos.txt
  7:                   am43xx-gpevm: BOOT: PASS: am43xx-gpevm.txt
  8:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
  9:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
@@ -26,9 +26,9 @@ omap2plus_defconfig
 16:         OMAP3430-Labrador(LDP): BOOT: PASS: ldp.txt
 17:                           n900: BOOT: PASS: n900.txt
 18:                      omap5-evm: BOOT: PASS: omap5-evm.txt
-19:                  pandaboard-es: BOOT: FAIL: pandaboard-es.txt
+19:                  pandaboard-es: BOOT: PASS: pandaboard-es.txt
 20:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
 21:                        sdp2430: BOOT: PASS: sdp2430.txt
 22:                        sdp3430: BOOT: PASS: sdp3430.txt
 23:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 23 boards, Booted Boards = 20, No Boot boards = 3
+TOTAL = 23 boards, Booted Boards = 23, No Boot boards = 0
