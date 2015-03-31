@@ -1,5 +1,5 @@
-Automated logs for TAG=v4.0-rc5
-Mon Mar 23 03:09:03 CDT 2015
+Automated logs for TAG=v4.0-rc6
+Tue Mar 31 02:11:18 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
@@ -44,7 +44,7 @@ omap2plus_defconfig
  8:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
  9:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
 10:            beagleboard-vanilla: BOOT: PASS: beagleboard-vanilla.txt
-11:               beaglebone-black: BOOT: PASS: beaglebone-black.txt
+11:               beaglebone-black: BOOT: FAIL: beaglebone-black.txt
 12:                     beaglebone: BOOT: PASS: beaglebone.txt
 13:                     craneboard: BOOT: PASS: craneboard.txt
 14:                     dra72x-evm: BOOT: PASS: dra72x-evm.txt
@@ -57,4 +57,4 @@ omap2plus_defconfig
 21:                        sdp2430: BOOT: PASS: sdp2430.txt
 22:                        sdp3430: BOOT: PASS: sdp3430.txt
 23:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 23 boards, Booted Boards = 23, No Boot boards = 0
+TOTAL = 23 boards, Booted Boards = 22, No Boot boards = 1
