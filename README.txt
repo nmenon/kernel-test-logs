@@ -1,5 +1,5 @@
 Automated logs for TAG=next-20150402
-Fri Apr  3 06:34:44 CDT 2015
+Mon Apr  6 06:33:40 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
@@ -15,13 +15,13 @@ multi_v7_defconfig
  4:                      am37x-evm: BOOT: PASS: am37x-evm.txt
  5:                      am437x-sk: BOOT: FAIL: am437x-sk.txt
  6:                    am43xx-epos: BOOT: PASS: am43xx-epos.txt
- 7:                   am43xx-gpevm: BOOT: PASS: am43xx-gpevm.txt
+ 7:                   am43xx-gpevm: BOOT: FAIL: am43xx-gpevm.txt
  8:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
  9:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
 10:            beagleboard-vanilla: BOOT: PASS: beagleboard-vanilla.txt
 11:               beaglebone-black: BOOT: PASS: beaglebone-black.txt
 12:                     beaglebone: BOOT: FAIL: beaglebone.txt
-13:                     craneboard: BOOT: FAIL: craneboard.txt
+13:                     craneboard: BOOT: PASS: craneboard.txt
 14:                     dra72x-evm: BOOT: PASS: dra72x-evm.txt
 15:                     dra7xx-evm: BOOT: PASS: dra7xx-evm.txt
 16:         OMAP3430-Labrador(LDP): BOOT: FAIL: ldp.txt
@@ -42,7 +42,7 @@ omap2plus_defconfig
  6:                    am43xx-epos: BOOT: PASS: am43xx-epos.txt
  7:                   am43xx-gpevm: BOOT: PASS: am43xx-gpevm.txt
  8:    BeagleBoard-X15(am57xx-evm): BOOT: PASS: am57xx-evm.txt
- 9:                 BeagleBoard-XM: BOOT: FAIL: beagleboard.txt
+ 9:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
 10:            beagleboard-vanilla: BOOT: PASS: beagleboard-vanilla.txt
 11:               beaglebone-black: BOOT: PASS: beaglebone-black.txt
 12:                     beaglebone: BOOT: PASS: beaglebone.txt
@@ -57,4 +57,4 @@ omap2plus_defconfig
 21:                        sdp2430: BOOT: PASS: sdp2430.txt
 22:                        sdp3430: BOOT: PASS: sdp3430.txt
 23:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 23 boards, Booted Boards = 21, No Boot boards = 2
+TOTAL = 23 boards, Booted Boards = 22, No Boot boards = 1
