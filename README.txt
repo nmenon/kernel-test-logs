@@ -1,5 +1,5 @@
-Automated logs for TAG=v4.0-rc6
-Mon Apr  6 03:07:05 CDT 2015
+Automated logs for TAG=v4.0-rc7
+Sat Apr 11 15:12:15 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:                     dra72x-evm: BOOT: PASS: dra72x-evm.txt
@@ -19,7 +19,7 @@ multi_v7_defconfig
  9:            beagleboard-vanilla: BOOT: PASS: beagleboard-vanilla.txt
 10:               beaglebone-black: BOOT: PASS: beaglebone-black.txt
 11:                     beaglebone: BOOT: FAIL: beaglebone.txt
-12:                     craneboard: BOOT: PASS: craneboard.txt
+12:                     craneboard: BOOT: FAIL: craneboard.txt
 13:                     dra72x-evm: BOOT: PASS: dra72x-evm.txt
 14:                     dra7xx-evm: BOOT: PASS: dra7xx-evm.txt
 15:         OMAP3430-Labrador(LDP): BOOT: FAIL: ldp.txt
@@ -29,7 +29,7 @@ multi_v7_defconfig
 19:             pandaboard-vanilla: BOOT: PASS: pandaboard-vanilla.txt
 20:                        sdp3430: BOOT: FAIL: sdp3430.txt
 21:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 21 boards, Booted Boards = 17, No Boot boards = 4
+TOTAL = 21 boards, Booted Boards = 16, No Boot boards = 5
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1:                     am335x-evm: BOOT: PASS: am335x-evm.txt
@@ -46,7 +46,7 @@ omap2plus_defconfig
 12:                     craneboard: BOOT: PASS: craneboard.txt
 13:                     dra72x-evm: BOOT: PASS: dra72x-evm.txt
 14:                     dra7xx-evm: BOOT: PASS: dra7xx-evm.txt
-15:         OMAP3430-Labrador(LDP): BOOT: FAIL: ldp.txt
+15:         OMAP3430-Labrador(LDP): BOOT: PASS: ldp.txt
 16:                           n900: BOOT: PASS: n900.txt
 17:                      omap5-evm: BOOT: PASS: omap5-evm.txt
 18:                  pandaboard-es: BOOT: PASS: pandaboard-es.txt
@@ -54,4 +54,4 @@ omap2plus_defconfig
 20:                        sdp2430: BOOT: PASS: sdp2430.txt
 21:                        sdp3430: BOOT: PASS: sdp3430.txt
 22:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 22 boards, Booted Boards = 21, No Boot boards = 1
+TOTAL = 22 boards, Booted Boards = 22, No Boot boards = 0
