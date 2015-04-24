@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20150423
-Thu Apr 23 07:05:17 CDT 2015
+Automated logs for TAG=next-20150424
+Fri Apr 24 07:14:31 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:                     dra72x-evm: BOOT: PASS: dra72x-evm.txt
@@ -38,7 +38,7 @@ omap2plus_defconfig
  4:                      am37x-evm: BOOT: PASS: am37x-evm.txt
  5:                      am437x-sk: BOOT: PASS: am437x-sk.txt
  6:                    am43xx-epos: BOOT: PASS: am43xx-epos.txt
- 7:                   am43xx-gpevm: BOOT: PASS: am43xx-gpevm.txt
+ 7:                   am43xx-gpevm: BOOT: FAIL: am43xx-gpevm.txt
  8:                 BeagleBoard-XM: BOOT: PASS: beagleboard.txt
  9:            beagleboard-vanilla: BOOT: PASS: beagleboard-vanilla.txt
 10:               beaglebone-black: BOOT: PASS: beaglebone-black.txt
@@ -54,4 +54,4 @@ omap2plus_defconfig
 20:                        sdp2430: BOOT: PASS: sdp2430.txt
 21:                        sdp3430: BOOT: PASS: sdp3430.txt
 22:                        sdp4430: BOOT: PASS: sdp4430.txt
-TOTAL = 22 boards, Booted Boards = 22, No Boot boards = 0
+TOTAL = 22 boards, Booted Boards = 21, No Boot boards = 1
