@@ -1,24 +1,58 @@
-- 05:51:24 [INFO] Starting target session
-- 05:51:25 [INFO] Connected to am335x-sk via serial 
-- 05:51:25 [INFO] Host: #check prompt
-- 05:51:28 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
-- 05:51:28 [INFO] Target: 
+- 05:47:38 [INFO] Starting target session
+- 05:47:39 [INFO] Connected to am335x-sk via serial 
+- 05:47:39 [INFO] Host: #check prompt
+- 05:47:42 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
+- 05:47:42 [INFO] Target: 
 #check prompt
 root@am335x-evm:/test# 
-- 05:51:28 [INFO] Host: #check prompt
-- 05:51:28 [INFO] Target: 
+- 05:47:42 [INFO] Host: #check prompt
+- 05:47:43 [INFO] Target: 
 #check prompt
 root@am335x-evm:/test# 
-- 05:51:28 [INFO] Host: sync;poweroff
-- 05:51:42 [INFO] Target: 
+- 05:47:43 [INFO] Host: sync;poweroff
+- 05:47:56 [INFO] Target: 
 sync;poweroff
+Broadcast message from root@am335x-evm (ttyS0) (Thu Apr 16 02:12:04 2015):
+The system is going down for system halt NOW!
+INIT: ux am335x-evm 3.14.38-g27989b8 #2 Wed Apr 15 22:36:11 EDT 2015 armv7l GNU/Linux
+root@am335x-evm:~# cat /proc/cmdline
+console=ttyO0,115200n8 earlyprintk rootwait ip=:::::eth0:dhcp root=/dev/ram0 rw ramdisk_size=80000
+root@am335x-evm:~# uname -a
+Linux am335x-evm 3.14.38-g27989b8 #2 Wed Apr 15 22:36:11 EDT 2015 armv7l GNU/Linux
+root@am335x-evm:~# cat /proc/mtd
+dev:    size   erasesize  name
+root@am335x-evm:~# export IPERFHOST=192.168.1.254
+root@am335x-evm:~# export NFS_SERVER=192.168.1.254
+root@am335x-evm:~# export NFS_ROOT_PATH=/usr/workdir/filesys/linux/am335xsk
+root@am335x-evm:~# mkdir -p -m 777 /test
+root@am335x-evm:~# cd /test
+root@am335x-evm:/test# cat > test.sh << EOF
+> failtest() {
+>   echo 1 >&3
+> timeout=600
+> # Start of user's script logic
+> uname -a
+> EOF
+root@am335x-evm:/test# cd /test
+root@am335x-evm:/test# chmod +x test.sh
+root@am335x-evm:/test# ./test.sh 2> stderr.log > stdout.log 3> result.log
+root@am335x-evm:/test# echo $?
+root@am335x-evm:/test# cd /test
+root@am335x-evm:/test# cat stdout.log
+Linux am335x-evm 3.14.38-g27989b8 #2 Wed Apr 15 22:36:11 EDT 2015 armv7l GNU/Linux
+root@am335x-evm:/test# cat stderr.log
+root@am335x-evm:/test# cat result.log
+root@am335x-evm:/test# cd /test
+root@am335x-evm:/test# #check prompt
+root@am335x-evm:/test# #check prompt
+root@am335x-evm:/test# sync;poweroff
+Broadcast message from root@am335x-evm (ttyS0) (Thu Apr 16 02:12:04 2015):
+The system is going down for system halt NOW!
 INIT: Switching to runlevel: 0
 INIT: Sending processes the TERM signal
-Broadcast message from root@am335x-evm (ttyS0) (Thu Apr 16 02:16:41 2015):
-The system is going down for system halt NOW!
 root@am335x-evm:/test# 
-INIT: SendingStopping syslogd/klogd: stopped syslogd (pid 1230)
-stopped klogd (pid 1234)
+INIT: SendinStopping syslogd/klogd: stopped syslogd (pid 1225)
+stopped klogd (pid 1229)
 done
 Deconfiguring network interfaces... done.
 Sending all processes the TERM signal...
@@ -26,11 +60,11 @@ Sending all processes the KILL signal...
 Unmounting remote filesystems...
 Deactivating swap...
 Unmounting local filesystems...
-[ 3132.004801] reboot: System halted
-- 05:51:42 [INFO] Disconnected serial from am335x-sk
-- 05:52:10 [INFO] Connected to am335x-sk via serial 
-- 05:52:10 [INFO] Host: 
-- 05:52:11 [INFO] Target: 
+[ 2856.038299] reboot: System halted
+- 05:47:56 [INFO] Disconnected serial from am335x-sk
+- 05:48:22 [INFO] Connected to am335x-sk via serial 
+- 05:48:22 [INFO] Host: 
+- 05:48:23 [INFO] Target: 
 reading args
 spl: error reading image args, err - -1
 reading u-boot.img
@@ -51,40 +85,38 @@ U-Boot#
 U-Boot# 
 U-Boot# 
 U-Boot# 
+- 05:48:23 [INFO] Host: 
+- 05:48:23 [INFO] Target: 
 U-Boot# 
-- 05:52:11 [INFO] Host: 
-- 05:52:11 [INFO] Target: 
--Boot# 
-U-Boot# 
-- 05:52:11 [INFO] Host: version
-- 05:52:11 [INFO] Target: 
-version
+- 05:48:23 [INFO] Host: version
+- 05:48:23 [INFO] Target: 
+U-Boot# version
 U-Boot 2013.10-ti2013.12.00 (Mar 18 2014 - 07:10:50)
 arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
 GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
 U-Boot# 
-- 05:52:11 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait '
-- 05:52:11 [INFO] Target: 
+- 05:48:23 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait '
+- 05:48:23 [INFO] Target: 
 setenv bootargs 'console=ttyO0,115200n8 earlyprintk rootwait '
 U-Boot# 
-- 05:52:11 [INFO] Host: setenv bootcmd  ''
-- 05:52:11 [INFO] Target: 
+- 05:48:23 [INFO] Host: setenv bootcmd  ''
+- 05:48:24 [INFO] Target: 
 setenv bootcmd  ''
 U-Boot# 
-- 05:52:11 [INFO] Host: setenv autoload 'no'
-- 05:52:11 [INFO] Target: 
+- 05:48:24 [INFO] Host: setenv autoload 'no'
+- 05:48:24 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 05:52:11 [INFO] Host: setenv serverip '192.168.1.254'
-- 05:52:12 [INFO] Target: 
+- 05:48:24 [INFO] Host: setenv serverip '192.168.1.254'
+- 05:48:24 [INFO] Target: 
 setenv serverip '192.168.1.254'
 U-Boot# 
-- 05:52:12 [INFO] Host: setenv mmcdev ' '
-- 05:52:12 [INFO] Target: 
+- 05:48:24 [INFO] Host: setenv mmcdev ' '
+- 05:48:24 [INFO] Target: 
 setenv mmcdev ' '
 U-Boot# 
-- 05:52:12 [INFO] Host: printenv
-- 05:52:12 [INFO] Target: 
+- 05:48:24 [INFO] Host: printenv
+- 05:48:24 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -172,8 +204,8 @@ vendor=ti
 ver=U-Boot 2013.10-ti2013.12.00 (Mar 18 2014 - 07:10:50)
 Environment size: 5445/131067 bytes
 U-Boot# 
-- 05:52:12 [INFO] Host: printenv
-- 05:52:13 [INFO] Target: 
+- 05:48:24 [INFO] Host: printenv
+- 05:48:25 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -261,66 +293,65 @@ vendor=ti
 ver=U-Boot 2013.10-ti2013.12.00 (Mar 18 2014 - 07:10:50)
 Environment size: 5445/131067 bytes
 U-Boot# 
-- 05:52:13 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
-- 05:52:13 [INFO] Target: 
+- 05:48:25 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 05:48:25 [INFO] Target: 
 setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
 U-Boot# 
-- 05:52:13 [INFO] Host: setenv serverip '192.168.1.254'
-- 05:52:13 [INFO] Target: 
+- 05:48:25 [INFO] Host: setenv serverip '192.168.1.254'
+- 05:48:25 [INFO] Target: 
 setenv serverip '192.168.1.254'
 U-Boot# 
-- 05:52:13 [INFO] Host: setenv ipaddr dhcp
-- 05:52:13 [INFO] Target: 
+- 05:48:25 [INFO] Host: setenv ipaddr dhcp
+- 05:48:25 [INFO] Target: 
 setenv ipaddr dhcp
 U-Boot# 
-- 05:52:13 [INFO] Host: setenv autoload 'no'
-- 05:52:13 [INFO] Target: 
+- 05:48:25 [INFO] Host: setenv autoload 'no'
+- 05:48:25 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 05:52:13 [INFO] Host: dhcp
-- 05:52:18 [INFO] Target: 
+- 05:48:25 [INFO] Host: dhcp
+- 05:48:28 [INFO] Target: 
 dhcp
 cpsw Waiting for PHY auto negotiation to complete. done
 link up on port 0, speed 1000, full duplex
 BOOTP broadcast 1
-BOOTP broadcast 2
-DHCP client bound to address 192.168.1.171
+DHCP client bound to address 192.168.1.156
 U-Boot# 
-- 05:52:18 [INFO] Host: setenv serverip '192.168.1.254'
-- 05:52:18 [INFO] Target: 
+- 05:48:28 [INFO] Host: setenv serverip '192.168.1.254'
+- 05:48:28 [INFO] Target: 
 setenv serverip '192.168.1.254'
 U-Boot# 
-- 05:52:18 [INFO] Host: tftp ${loadaddr} 192.168.1.254:vatf_am335x-sk/3ac662ccfa0492572ae9a33484ce321d
-- 05:52:28 [INFO] Target: 
-tftp ${loadaddr} 192.168.1.254:vatf_am335x-sk/3ac662ccfa0492572ae9a33484ce321d
+- 05:48:28 [INFO] Host: tftp ${loadaddr} 192.168.1.254:vatf_am335x-sk/6ee3bcfb5fd7f0d7807b649014cb14ca
+- 05:48:38 [INFO] Target: 
+tftp ${loadaddr} 192.168.1.254:vatf_am335x-sk/6ee3bcfb5fd7f0d7807b649014cb14ca
 link up on port 0, speed 1000, full duplex
 Using cpsw device
-TFTP from server 192.168.1.254; our IP address is 192.168.1.171
-Filename 'vatf_am335x-sk/3ac662ccfa0492572ae9a33484ce321d'.
+TFTP from server 192.168.1.254; our IP address is 192.168.1.156
+Filename 'vatf_am335x-sk/6ee3bcfb5fd7f0d7807b649014cb14ca'.
 Load address: 0x80200000
 Loading: *#################################################################
 	 #################################################################
 	 #################################################################
 	 #########################################
-	 346.7 KiB/s
+	 349.6 KiB/s
 done
-Bytes transferred = 3452392 (34ade8 hex)
+Bytes transferred = 3454528 (34b640 hex)
 U-Boot# 
-- 05:52:28 [INFO] Host: tftp ${fdtaddr} 192.168.1.254:vatf_am335x-sk/f8988aedc8735dfcdbfb52e0a953bde2
-- 05:52:28 [INFO] Target: 
+- 05:48:38 [INFO] Host: tftp ${fdtaddr} 192.168.1.254:vatf_am335x-sk/f8988aedc8735dfcdbfb52e0a953bde2
+- 05:48:38 [INFO] Target: 
 tftp ${fdtaddr} 192.168.1.254:vatf_am335x-sk/f8988aedc8735dfcdbfb52e0a953bde2
 link up on port 0, speed 1000, full duplex
 Using cpsw device
-TFTP from server 192.168.1.254; our IP address is 192.168.1.171
+TFTP from server 192.168.1.254; our IP address is 192.168.1.156
 Filename 'vatf_am335x-sk/f8988aedc8735dfcdbfb52e0a953bde2'.
 Load address: 0x80f80000
 Loading: *###
-	 342.8 KiB/s
+	 353.5 KiB/s
 done
 Bytes transferred = 35116 (892c hex)
 U-Boot# 
-- 05:52:28 [INFO] Host: ls mmc 0:1
-- 05:52:28 [INFO] Target: 
+- 05:48:38 [INFO] Host: ls mmc 0:1
+- 05:48:38 [INFO] Target: 
 ls mmc 0:1
    107928   mlo 
    389772   u-boot.img 
@@ -329,8 +360,8 @@ ls mmc 0:1
         4   ws-calibrate.rules 
 5 file(s), 0 dir(s)
 U-Boot# 
-- 05:52:28 [INFO] Host: ls mmc 0:2
-- 05:52:28 [INFO] Target: 
+- 05:48:38 [INFO] Host: ls mmc 0:2
+- 05:48:38 [INFO] Target: 
 ls mmc 0:2
 <DIR>       4096 .
 <DIR>       4096 ..
@@ -355,13 +386,13 @@ ls mmc 0:2
 <DIR>       4096 Settings
 <DIR>       4096 test
 U-Boot# 
-- 05:52:28 [INFO] Host: part uuid mmc 0:2
-- 05:52:29 [INFO] Target: 
+- 05:48:38 [INFO] Host: part uuid mmc 0:2
+- 05:48:38 [INFO] Target: 
 part uuid mmc 0:2
 00000000-02
 U-Boot# 
-- 05:52:29 [INFO] Host: printenv
-- 05:52:29 [INFO] Target: 
+- 05:48:38 [INFO] Host: printenv
+- 05:48:39 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -400,7 +431,7 @@ filesize=892c
 findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then setenv fdtfile am335x-boneblack.dtb; fi; if test $board_name = A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv fdtfile am335x-evmsk.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
 gatewayip=192.168.1.254
 importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
-ipaddr=192.168.1.171
+ipaddr=192.168.1.156
 loadaddr=0x80200000
 loadbootenv=load mmc ${mmcdev} ${loadaddr} ${bootenv}
 loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
@@ -456,12 +487,12 @@ vendor=ti
 ver=U-Boot 2013.10-ti2013.12.00 (Mar 18 2014 - 07:10:50)
 Environment size: 5608/131067 bytes
 U-Boot# 
-- 05:52:29 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
-- 05:52:29 [INFO] Target: 
+- 05:48:39 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 05:48:39 [INFO] Target: 
 setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
 U-Boot# 
-- 05:52:29 [INFO] Host: printenv
-- 05:52:30 [INFO] Target: 
+- 05:48:39 [INFO] Host: printenv
+- 05:48:39 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -500,7 +531,7 @@ filesize=892c
 findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then setenv fdtfile am335x-boneblack.dtb; fi; if test $board_name = A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv fdtfile am335x-evmsk.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
 gatewayip=192.168.1.254
 importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
-ipaddr=192.168.1.171
+ipaddr=192.168.1.156
 loadaddr=0x80200000
 loadbootenv=load mmc ${mmcdev} ${loadaddr} ${bootenv}
 loadfdt=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
@@ -556,12 +587,12 @@ vendor=ti
 ver=U-Boot 2013.10-ti2013.12.00 (Mar 18 2014 - 07:10:50)
 Environment size: 5662/131067 bytes
 U-Boot# 
-- 05:52:30 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
-- 05:52:30 [INFO] Target: 
+- 05:48:39 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
+- 05:48:39 [INFO] Target: 
 setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} - ${fdtaddr}; else bootz ${loadaddr} - ${fdtaddr}; bootm ${loadaddr} - ${fdtaddr}; fi'
 U-Boot# 
-- 05:52:30 [INFO] Host: bdinfo
-- 05:52:30 [INFO] Target: 
+- 05:48:39 [INFO] Host: bdinfo
+- 05:48:39 [INFO] Target: 
 bdinfo
 arch_number = 0x00000E05
 boot_params = 0x80000100
@@ -573,7 +604,7 @@ ethaddr     = c8:a0:30:a1:db:61
 eth1name    = usb_ether
 eth1addr    = c8:a0:30:a1:db:63
 current eth = cpsw
-ip_addr     = 192.168.1.171
+ip_addr     = 192.168.1.156
 baudrate    = 115200 bps
 TLB addr    = 0x8FFF0000
 relocaddr   = 0x8F74E000
@@ -581,22 +612,22 @@ reloc off   = 0x0EF4E000
 irq_sp      = 0x8F32DF38
 sp start    = 0x8F32DF28
 U-Boot# 
-- 05:52:30 [INFO] Host: mmc rescan
-- 05:52:30 [INFO] Target: 
+- 05:48:39 [INFO] Host: mmc rescan
+- 05:48:40 [INFO] Target: 
 mmc rescan
 U-Boot# 
-- 05:52:30 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
-- 05:52:30 [INFO] Target: 
+- 05:48:40 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 05:48:40 [INFO] Target: 
 fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
 writing ws-calibrate.rules
 4 bytes written
 U-Boot# 
-- 05:52:30 [INFO] Host: boot
-- 05:53:02 [INFO] Target: 
+- 05:48:40 [INFO] Host: boot
+- 05:49:18 [INFO] Target: 
 boot
 ## Checking Image at 80200000 ...
 Unknown image format!
-Kernel image @ 0x80200000 [ 0x000000 - 0x34ade8 ]
+Kernel image @ 0x80200000 [ 0x000000 - 0x34b640 ]
 ## Flattened Device Tree blob at 80f80000
    Booting using the fdt blob at 0x80f80000
    Loading Device Tree to 8f321000, end 8f32c92b ... OK
@@ -605,7 +636,7 @@ Starting kernel ...
 [    0.000000] Initializing cgroup subsys cpuset
 [    0.000000] Initializing cgroup subsys cpu
 [    0.000000] Initializing cgroup subsys cpuacct
-[    0.000000] Linux version 4.1.0-rc6-next-20150603-00002-g8fea79185b95 (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #3 SMP Wed Jun 3 05:48:45 CDT 2015
+[    0.000000] Linux version 4.1.0-rc6-next-20150603-00002-g0cf41e15551a (nmenon@kahuna) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #3 SMP Thu Jun 4 05:45:13 CDT 2015
 [    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
 [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
 [    0.000000] Machine model: TI AM335x EVM-SK
@@ -641,156 +672,156 @@ Starting kernel ...
 [    0.000000] NR_IRQS:16 nr_irqs:16 16
 [    0.000000] IRQ: Found an INTC at 0xfa200000 (revision 5.0) with 128 interrupts
 [    0.000000] OMAP clockevent source: timer2 at 24000000 Hz
-[    0.000017] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
-[    0.000041] clocksource timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
-[    0.000090] OMAP clocksource: timer1 at 24000000 Hz
+[    0.000016] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000040] clocksource timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000092] OMAP clocksource: timer1 at 24000000 Hz
 [    0.000963] Console: colour dummy device 80x30
-[    0.001026] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
-[    0.001034] ... MAX_LOCKDEP_SUBCLASSES:  8
-[    0.001042] ... MAX_LOCK_DEPTH:          48
-[    0.001050] ... MAX_LOCKDEP_KEYS:        8191
-[    0.001058] ... CLASSHASH_SIZE:          4096
-[    0.001065] ... MAX_LOCKDEP_ENTRIES:     32768
-[    0.001073] ... MAX_LOCKDEP_CHAINS:      65536
-[    0.001080] ... CHAINHASH_SIZE:          32768
-[    0.001088]  memory used by lock dependency info: 5167 kB
-[    0.001096]  per task-struct memory footprint: 1152 bytes
-[    0.001123] Calibrating delay loop... 996.14 BogoMIPS (lpj=4980736)
-[    0.078806] pid_max: default: 32768 minimum: 301
-[    0.079160] Security Framework initialized
-[    0.079317] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.079332] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.082398] Initializing cgroup subsys blkio
-[    0.082446] Initializing cgroup subsys memory
-[    0.082553] Initializing cgroup subsys devices
-[    0.082644] Initializing cgroup subsys freezer
-[    0.082782] Initializing cgroup subsys perf_event
-[    0.082849] CPU: Testing write buffer coherency: ok
-[    0.084368] CPU0: thread -1, cpu 0, socket -1, mpidr 0
-[    0.084507] Setting up static identity map for 0x80008280 - 0x800082f0
-[    0.089277] Brought up 1 CPUs
-[    0.089303] SMP: Total of 1 processors activated (996.14 BogoMIPS).
-[    0.089313] CPU: All CPU(s) started in SVC mode.
-[    0.092771] devtmpfs: initialized
-[    0.130546] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
-[    0.179122] omap_hwmod: tptc0 using broken dt data from edma
-[    0.179630] omap_hwmod: tptc1 using broken dt data from edma
-[    0.180111] omap_hwmod: tptc2 using broken dt data from edma
-[    0.189618] omap_hwmod: debugss: _wait_target_disable failed
-[    0.244934] clocksource jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
-[    0.247805] pinctrl core: initialized pinctrl subsystem
-[    0.253548] NET: Registered protocol family 16
-[    0.259929] DMA: preallocated 256 KiB pool for atomic coherent allocations
-[    0.262380] cpuidle: using governor ladder
-[    0.262413] cpuidle: using governor menu
-[    0.270903] OMAP GPIO hardware version 0.1
-[    0.294465] No ATAGs?
-[    0.294501] hw-breakpoint: debug architecture 0x4 unsupported.
-[    0.341166] edma-dma-engine edma-dma-engine.0: TI EDMA DMA engine driver
-[    0.343951] reg-fixed-voltage fixedregulator@2: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_wl12xx_gpio, deferring probe
-[    0.348154] SCSI subsystem initialized
-[    0.350329] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins, deferring probe
-[    0.354977] Switched to clocksource timer1
-[    0.520507] NET: Registered protocol family 2
-[    0.522655] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
-[    0.522727] TCP bind hash table entries: 2048 (order: 4, 73728 bytes)
-[    0.523397] TCP: Hash tables configured (established 2048 bind 2048)
-[    0.523650] UDP hash table entries: 256 (order: 2, 20480 bytes)
-[    0.523845] UDP-Lite hash table entries: 256 (order: 2, 20480 bytes)
-[    0.524988] NET: Registered protocol family 1
-[    0.526950] RPC: Registered named UNIX socket transport module.
-[    0.526978] RPC: Registered udp transport module.
-[    0.526989] RPC: Registered tcp transport module.
-[    0.527000] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[    0.529645] hw perfevents: Failed to parse /pmu/interrupt-affinity[0]
-[    0.529752] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
-[    0.534579] futex hash table entries: 256 (order: 2, 16384 bytes)
-[    0.535074] audit: initializing netlink subsys (disabled)
-[    0.535409] audit: type=2000 audit(0.530:1): initialized
-[    0.540324] VFS: Disk quotas dquot_6.6.0
-[    0.540490] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
-[    0.543135] NFS: Registering the id_resolver key type
-[    0.543579] Key type id_resolver registered
-[    0.543595] Key type id_legacy registered
-[    0.543814] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
-[    0.549448] io scheduler noop registered
-[    0.549485] io scheduler deadline registered
-[    0.549545] io scheduler cfq registered (default)
-[    0.551899] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568
-[    0.556499] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
-[    0.562857] omap_uart 44e09000.serial: no wakeirq for uart0
-[    0.563600] 44e09000.serial: ttyO0 at MMIO 0x44e09000 (irq = 154, base_baud = 3000000) is a OMAP UART0
-[    1.285929] console [ttyO0] enabled
-[    1.323046] brd: module loaded
-[    1.345262] loop: module loaded
-[    1.351417] mtdoops: mtd device (mtddev=name/number) must be supplied
-[    1.365179] mousedev: PS/2 mouse device common for all mice
-[    1.371034] i2c /dev entries driver
-[    1.376726] omap_hsmmc 48060000.mmc: Got CD GPIO
-[    1.383124] omap_hsmmc 48060000.mmc: unable to get vmmc regulator -517
-[    1.392817] omap_hsmmc 481d8000.mmc: unable to get vmmc regulator -517
-[    1.400392] ledtrig-cpu: registered to indicate activity on CPUs
-[    1.408025] oprofile: using arm/armv7
-[    1.412749] Initializing XFRM netlink socket
-[    1.417551] NET: Registered protocol family 17
-[    1.422289] NET: Registered protocol family 15
-[    1.427464] Key type dns_resolver registered
-[    1.432161] omap_voltage_late_init: Voltage driver support not added
-[    1.438884] sr_dev_init: No voltage domain specified for smartreflex0. Cannot initialize
-[    1.447364] sr_dev_init: No voltage domain specified for smartreflex1. Cannot initialize
-[    1.457136] ThumbEE CPU extension supported.
-[    1.461637] Registering SWP/SWPB emulation handler
-[    1.466738] SmartReflex Class3 initialized
-[    1.496187] tps65910 0-002d: No interrupt support, no core IRQ
-[    1.550016] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
-[    1.557216] omap_hsmmc 48060000.mmc: Got CD GPIO
-[    1.562741] vmmc: supplied by vbat
-[    1.642953] mmc0: host does not support reading read-only switch, assuming write-enable
-[    1.653416] mmc0: new high speed SDHC card at address 0007
-[    1.661662] mmcblk0: mmc0:0007 SD8GB 7.42 GiB 
-[    1.671080]  mmcblk0: p1 p2
-[    1.747967] omap_hsmmc 481d8000.mmc: card claims to support voltages below defined range
-[    1.770278] mmc1: queuing unknown CIS tuple 0x91 (3 bytes)
-[    1.779560] mmc1: new SDIO card at address 0001
-[    1.786056] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6
-[    1.792434] davinci_mdio 4a101000.mdio: detected phy mask fffffffc
-[    1.806885] libphy: 4a101000.mdio: probed
-[    1.811090] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver Atheros 8031 ethernet
-[    1.820829] davinci_mdio 4a101000.mdio: phy[1]: device 4a101000.mdio:01, driver Atheros 8031 ethernet
-[    1.831872] cpsw 4a100000.ethernet: Detected MACID = c8:a0:30:a1:db:61
-[    1.841707] cpsw 4a100000.ethernet: cpsw: Detected MACID = c8:a0:30:a1:db:63
-[    1.850990] hctosys: unable to open rtc device (rtc0)
-[    1.856360] sr_init: No PMIC hook to init smartreflex
-[    1.861954] sr_init: platform driver register failed for SR
-[    1.892471] net eth0: initializing cpsw version 1.12 (0)
-[    1.975658] net eth0: phy found : id is : 0x4dd074
-[    5.975830] cpsw 4a100000.ethernet eth0: Link is Up - 1Gbps/Full - flow control rx/tx
-[    6.004867] Sending DHCP requests ., OK
-[    6.675367] IP-Config: Got DHCP answer from 192.168.1.254, my address is 192.168.1.171
-[    6.684348] IP-Config: Complete:
-[    6.687833]      device=eth0, hwaddr=c8:a0:30:a1:db:61, ipaddr=192.168.1.171, mask=255.255.255.0, gw=192.168.1.254
-[    6.698670]      host=192.168.1.171, domain=ti.com, nis-domain=(none)
-[    6.705419]      bootserver=192.168.1.254, rootserver=192.168.1.254, rootpath=
-[    6.712779]      nameserver0=192.0.2.2, nameserver1=192.0.2.3
-[    6.720501] vwl1271: disabling
-[    6.723713] lis3_reg: disabling
-[    7.250448] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
-[    7.259215] VFS: Mounted root (ext4 filesystem) on device 179:2.
-[    7.281396] devtmpfs: mounted
-[    7.285417] Freeing unused kernel memory: 436K (c0853000 - c08c0000)
+[    0.001023] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.001032] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.001040] ... MAX_LOCK_DEPTH:          48
+[    0.001048] ... MAX_LOCKDEP_KEYS:        8191
+[    0.001055] ... CLASSHASH_SIZE:          4096
+[    0.001063] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.001070] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.001078] ... CHAINHASH_SIZE:          32768
+[    0.001085]  memory used by lock dependency info: 5167 kB
+[    0.001093]  per task-struct memory footprint: 1152 bytes
+[    0.001120] Calibrating delay loop... 996.14 BogoMIPS (lpj=4980736)
+[    0.078798] pid_max: default: 32768 minimum: 301
+[    0.079151] Security Framework initialized
+[    0.079305] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.079319] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.082402] Initializing cgroup subsys blkio
+[    0.082451] Initializing cgroup subsys memory
+[    0.082559] Initializing cgroup subsys devices
+[    0.082649] Initializing cgroup subsys freezer
+[    0.082788] Initializing cgroup subsys perf_event
+[    0.082853] CPU: Testing write buffer coherency: ok
+[    0.084371] CPU0: thread -1, cpu 0, socket -1, mpidr 0
+[    0.084515] Setting up static identity map for 0x80008280 - 0x800082f0
+[    0.089292] Brought up 1 CPUs
+[    0.089320] SMP: Total of 1 processors activated (996.14 BogoMIPS).
+[    0.089331] CPU: All CPU(s) started in SVC mode.
+[    0.092785] devtmpfs: initialized
+[    0.130565] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.179089] omap_hwmod: tptc0 using broken dt data from edma
+[    0.179594] omap_hwmod: tptc1 using broken dt data from edma
+[    0.180077] omap_hwmod: tptc2 using broken dt data from edma
+[    0.189575] omap_hwmod: debugss: _wait_target_disable failed
+[    0.244917] clocksource jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.247754] pinctrl core: initialized pinctrl subsystem
+[    0.253520] NET: Registered protocol family 16
+[    0.259905] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.262340] cpuidle: using governor ladder
+[    0.262372] cpuidle: using governor menu
+[    0.270855] OMAP GPIO hardware version 0.1
+[    0.294446] No ATAGs?
+[    0.294481] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.341144] edma-dma-engine edma-dma-engine.0: TI EDMA DMA engine driver
+[    0.343931] reg-fixed-voltage fixedregulator@2: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_wl12xx_gpio, deferring probe
+[    0.348127] SCSI subsystem initialized
+[    0.350326] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins, deferring probe
+[    0.354979] Switched to clocksource timer1
+[    0.520472] NET: Registered protocol family 2
+[    0.522604] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.522679] TCP bind hash table entries: 2048 (order: 4, 73728 bytes)
+[    0.523349] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.523605] UDP hash table entries: 256 (order: 2, 20480 bytes)
+[    0.523798] UDP-Lite hash table entries: 256 (order: 2, 20480 bytes)
+[    0.524938] NET: Registered protocol family 1
+[    0.526913] RPC: Registered named UNIX socket transport module.
+[    0.526939] RPC: Registered udp transport module.
+[    0.526949] RPC: Registered tcp transport module.
+[    0.526960] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.529608] hw perfevents: Failed to parse /pmu/interrupt-affinity[0]
+[    0.529718] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    0.534564] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.535068] audit: initializing netlink subsys (disabled)
+[    0.535398] audit: type=2000 audit(0.530:1): initialized
+[    0.540365] VFS: Disk quotas dquot_6.6.0
+[    0.540530] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.543189] NFS: Registering the id_resolver key type
+[    0.543634] Key type id_resolver registered
+[    0.543652] Key type id_legacy registered
+[    0.543864] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
+[    0.549502] io scheduler noop registered
+[    0.549539] io scheduler deadline registered
+[    0.549598] io scheduler cfq registered (default)
+[    0.551957] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568
+[    0.556551] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.562909] omap_uart 44e09000.serial: no wakeirq for uart0
+[    0.563657] 44e09000.serial: ttyO0 at MMIO 0x44e09000 (irq = 154, base_baud = 3000000) is a OMAP UART0
+[    1.285973] console [ttyO0] enabled
+[    1.323080] brd: module loaded
+[    1.345296] loop: module loaded
+[    1.351447] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    1.365202] mousedev: PS/2 mouse device common for all mice
+[    1.371058] i2c /dev entries driver
+[    1.376741] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    1.383137] omap_hsmmc 48060000.mmc: unable to get vmmc regulator -517
+[    1.392820] omap_hsmmc 481d8000.mmc: unable to get vmmc regulator -517
+[    1.400384] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.408017] oprofile: using arm/armv7
+[    1.412744] Initializing XFRM netlink socket
+[    1.417547] NET: Registered protocol family 17
+[    1.422281] NET: Registered protocol family 15
+[    1.427455] Key type dns_resolver registered
+[    1.432151] omap_voltage_late_init: Voltage driver support not added
+[    1.438866] sr_dev_init: No voltage domain specified for smartreflex0. Cannot initialize
+[    1.447348] sr_dev_init: No voltage domain specified for smartreflex1. Cannot initialize
+[    1.457113] ThumbEE CPU extension supported.
+[    1.461617] Registering SWP/SWPB emulation handler
+[    1.466714] SmartReflex Class3 initialized
+[    1.496182] tps65910 0-002d: No interrupt support, no core IRQ
+[    1.550004] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
+[    1.557211] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    1.562740] vmmc: supplied by vbat
+[    1.642961] mmc0: host does not support reading read-only switch, assuming write-enable
+[    1.653432] mmc0: new high speed SDHC card at address 0007
+[    1.661667] mmcblk0: mmc0:0007 SD8GB 7.42 GiB 
+[    1.671091]  mmcblk0: p1 p2
+[    1.747973] omap_hsmmc 481d8000.mmc: card claims to support voltages below defined range
+[    1.770330] mmc1: queuing unknown CIS tuple 0x91 (3 bytes)
+[    1.779615] mmc1: new SDIO card at address 0001
+[    1.786105] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6
+[    1.792483] davinci_mdio 4a101000.mdio: detected phy mask fffffffc
+[    1.807023] libphy: 4a101000.mdio: probed
+[    1.811228] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver Atheros 8031 ethernet
+[    1.820975] davinci_mdio 4a101000.mdio: phy[1]: device 4a101000.mdio:01, driver Atheros 8031 ethernet
+[    1.832021] cpsw 4a100000.ethernet: Detected MACID = c8:a0:30:a1:db:61
+[    1.841834] cpsw 4a100000.ethernet: cpsw: Detected MACID = c8:a0:30:a1:db:63
+[    1.851117] hctosys: unable to open rtc device (rtc0)
+[    1.856483] sr_init: No PMIC hook to init smartreflex
+[    1.862071] sr_init: platform driver register failed for SR
+[    1.892615] net eth0: initializing cpsw version 1.12 (0)
+[    1.975666] net eth0: phy found : id is : 0x4dd074
+[    5.975770] cpsw 4a100000.ethernet eth0: Link is Up - 1Gbps/Full - flow control rx/tx
+[    6.004872] Sending DHCP requests ., OK
+[    6.475364] IP-Config: Got DHCP answer from 192.168.1.254, my address is 192.168.1.156
+[    6.484335] IP-Config: Complete:
+[    6.487822]      device=eth0, hwaddr=c8:a0:30:a1:db:61, ipaddr=192.168.1.156, mask=255.255.255.0, gw=192.168.1.254
+[    6.498661]      host=192.168.1.156, domain=ti.com, nis-domain=(none)
+[    6.505408]      bootserver=192.168.1.254, rootserver=192.168.1.254, rootpath=
+[    6.512767]      nameserver0=192.0.2.2, nameserver1=192.0.2.3
+[    6.520500] vwl1271: disabling
+[    6.523713] lis3_reg: disabling
+[    6.989481] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+[    6.998250] VFS: Mounted root (ext4 filesystem) on device 179:2.
+[    7.020480] devtmpfs: mounted
+[    7.024378] Freeing unused kernel memory: 436K (c0853000 - c08c0000)
 INIT: version 2.88 booting
 Error opening /dev/fb0: No such file or directory
 Starting udev
-[    8.356621] udevd[71]: starting version 182
-[   14.076958] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
-ERROR: could not open directory /lib/modules/4.1.0-rc6-next-20150603-00002-g8fea79185b95: No such file or directory
+[    8.082079] udevd[71]: starting version 182
+[   14.140049] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+ERROR: could not open directory /lib/modules/4.1.0-rc6-next-20150603-00002-g0cf41e15551a: No such file or directory
 WARNING: -e needs -E or -F
-ERROR: could not open directory /lib/modules/4.1.0-rc6-next-20150603-00002-g8fea79185b95: No such file or directory
+ERROR: could not open directory /lib/modules/4.1.0-rc6-next-20150603-00002-g0cf41e15551a: No such file or directory
 FATAL: could not search modules: No such file or directory
 Starting Bootlog daemon: bootlogd: cannot allocate pseudo tty: No such file or directory
 bootlogd.
-[   14.632317] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
-[   14.744659] random: dd urandom read with 58 bits of entropy available
+[   14.699420] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
+[   14.813839] random: dd urandom read with 58 bits of entropy available
 ALSA: Restoring mixer settings...
 /usr/sbin/alsactl: load_state:1696: No soundcards found...
 Configuring network interfaces... udhcpc (v1.20.2) started
@@ -801,7 +832,7 @@ Lease of 192.168.1.176 obtained, lease time 600
 /etc/udhcpc.d/50default: Adding DNS 192.0.2.3
 done.
 hwclock: can't open '/dev/misc/rtc': No such file or directory
-Mon Dec 15 15:27:00 UTC 2014
+Tue Dec 16 14:32:00 UTC 2014
 hwclock: can't open '/dev/misc/rtc': No such file or directory
 INIT: Entering runlevel: 5
 Starting system message bus: dbus.
@@ -812,9 +843,9 @@ hwclock: can't open '/dev/misc/rtc': No such file or directory
 Starting syslogd/klogd: done
 Starting thttpd.
 Starting Lighttpd Web Server: lighttpd.
-2014-12-15 15:27:02: (log.c.166) server started 
+2014-12-16 14:32:02: (log.c.166) server started 
 Starting Matrix GUI application.
-[   27.258153] random: nonblocking pool is initialized
+[   33.648730] random: nonblocking pool is initialized
 ***************************************************************
 ***************************************************************
 NOTICE: This file system contains the followin GPLv3 packages:
@@ -841,201 +872,201 @@ Stopping Bootlog daemon: bootlogd.
 Arago Project http://arago-project.org am335x-evm ttyO0
 Arago 2013.12 am335x-evm ttyO0
 am335x-evm login: 
-- 05:53:02 [INFO] Host: root
-- 05:53:02 [INFO] Target: 
+- 05:49:18 [INFO] Host: root
+- 05:49:18 [INFO] Target: 
 root
 root@am335x-evm:~# 
-- 05:53:02 [INFO] Host: uname -a
-- 05:53:02 [INFO] Target: 
+- 05:49:18 [INFO] Host: uname -a
+- 05:49:18 [INFO] Target: 
 uname -a
-Linux am335x-evm 4.1.0-rc6-next-20150603-00002-g8fea79185b95 #3 SMP Wed Jun 3 05:48:45 CDT 2015 armv7l GNU/Linux
+Linux am335x-evm 4.1.0-rc6-next-20150603-00002-g0cf41e15551a #3 SMP Thu Jun 4 05:45:13 CDT 2015 armv7l GNU/Linux
 root@am335x-evm:~# 
-- 05:53:02 [INFO] Host: cat /proc/cmdline
-- 05:53:02 [INFO] Target: 
+- 05:49:18 [INFO] Host: cat /proc/cmdline
+- 05:49:19 [INFO] Target: 
 cat /proc/cmdline
 console=ttyO0,115200n8 earlyprintk rootwait ip=:::::eth0:dhcp root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait
 root@am335x-evm:~# 
-- 05:53:02 [INFO] Host: uname -a
-- 05:53:02 [INFO] Target: 
+- 05:49:19 [INFO] Host: uname -a
+- 05:49:19 [INFO] Target: 
 uname -a
-Linux am335x-evm 4.1.0-rc6-next-20150603-00002-g8fea79185b95 #3 SMP Wed Jun 3 05:48:45 CDT 2015 armv7l GNU/Linux
+Linux am335x-evm 4.1.0-rc6-next-20150603-00002-g0cf41e15551a #3 SMP Thu Jun 4 05:45:13 CDT 2015 armv7l GNU/Linux
 root@am335x-evm:~# 
-- 05:53:02 [INFO] Host: cat /proc/mtd
-- 05:53:02 [INFO] Target: 
+- 05:49:19 [INFO] Host: cat /proc/mtd
+- 05:49:19 [INFO] Target: 
 cat /proc/mtd
 dev:    size   erasesize  name
 root@am335x-evm:~# 
-- 05:53:11 [INFO] Host: export IPERFHOST=192.168.1.254
-- 05:53:12 [INFO] Target: 
+- 05:49:26 [INFO] Host: export IPERFHOST=192.168.1.254
+- 05:49:26 [INFO] Target: 
 export IPERFHOST=192.168.1.254
 root@am335x-evm:~# 
-- 05:53:12 [INFO] Host: export NFS_SERVER=192.168.1.254
-- 05:53:12 [INFO] Target: 
+- 05:49:26 [INFO] Host: export NFS_SERVER=192.168.1.254
+- 05:49:26 [INFO] Target: 
 export NFS_SERVER=192.168.1.254
 root@am335x-evm:~# 
-- 05:53:12 [INFO] Host: export NFS_ROOT_PATH=/usr/workdir/filesys/linux/am335xsk
-- 05:53:12 [INFO] Target: 
+- 05:49:26 [INFO] Host: export NFS_ROOT_PATH=/usr/workdir/filesys/linux/am335xsk
+- 05:49:26 [INFO] Target: 
 export NFS_ROOT_PATH=/usr/workdir/filesys/linux/am335xsk
 root@am335x-evm:~# 
-- 05:53:12 [INFO] Host: mkdir -p -m 777 /test
-- 05:53:12 [INFO] Target: 
+- 05:49:26 [INFO] Host: mkdir -p -m 777 /test
+- 05:49:26 [INFO] Target: 
 mkdir -p -m 777 /test
 root@am335x-evm:~# 
-- 05:53:12 [INFO] Host: cd /test
-- 05:53:12 [INFO] Target: 
+- 05:49:26 [INFO] Host: cd /test
+- 05:49:26 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-- 05:53:12 [INFO] Host: cat > test.sh << EOF
-- 05:53:12 [INFO] Target: 
+- 05:49:26 [INFO] Host: cat > test.sh << EOF
+- 05:49:26 [INFO] Target: 
 cat > test.sh << EOF
-- 05:53:12 [INFO] Host: failtest() {
-- 05:53:12 [INFO] Target: 
+- 05:49:26 [INFO] Host: failtest() {
+- 05:49:27 [INFO] Target: 
 failtest() {
-- 05:53:12 [INFO] Host:   echo 1 >&3
-- 05:53:12 [INFO] Target: 
+- 05:49:27 [INFO] Host:   echo 1 >&3
+- 05:49:27 [INFO] Target: 
   echo 1 >&3
-- 05:53:12 [INFO] Host: }
-- 05:53:12 [INFO] Target: 
-- 05:53:12 [INFO] Host: timeout=600
-- 05:53:12 [INFO] Target: 
+- 05:49:27 [INFO] Host: }
+- 05:49:27 [INFO] Target: 
+- 05:49:27 [INFO] Host: timeout=600
+- 05:49:27 [INFO] Target: 
 timeout=600
-- 05:53:12 [INFO] Host: 
-- 05:53:13 [INFO] Target: 
-- 05:53:13 [INFO] Host: # Start of user's script logic
-- 05:53:13 [INFO] Target: 
+- 05:49:27 [INFO] Host: 
+- 05:49:27 [INFO] Target: 
+- 05:49:27 [INFO] Host: # Start of user's script logic
+- 05:49:27 [INFO] Target: 
 # Start of user's script logic
-- 05:53:13 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
-- 05:53:13 [INFO] Target: 
+- 05:49:27 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
+- 05:49:27 [INFO] Target: 
 mount -t proc proc /proc 2>/dev/null;
-- 05:53:13 [INFO] Host: 
-- 05:53:13 [INFO] Target: 
-- 05:53:13 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
-- 05:53:13 [INFO] Target: 
+- 05:49:27 [INFO] Host: 
+- 05:49:27 [INFO] Target: 
+- 05:49:27 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
+- 05:49:27 [INFO] Target: 
 mount -t sysfs sys /sys 2>/dev/null;
-- 05:53:13 [INFO] Host: 
-- 05:53:13 [INFO] Target: 
-- 05:53:13 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
-- 05:53:13 [INFO] Target: 
+- 05:49:27 [INFO] Host: 
+- 05:49:27 [INFO] Target: 
+- 05:49:27 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
+- 05:49:28 [INFO] Target: 
 mount -t debugfs none /sys/kernel/debug 2>/dev/null;
-- 05:53:13 [INFO] Host: 
-- 05:53:13 [INFO] Target: 
-- 05:53:13 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
-- 05:53:13 [INFO] Target: 
+- 05:49:28 [INFO] Host: 
+- 05:49:28 [INFO] Target: 
+- 05:49:28 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
+- 05:49:28 [INFO] Target: 
 echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
-- 05:53:13 [INFO] Host: 
-- 05:53:13 [INFO] Target: 
-- 05:53:13 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
-- 05:53:14 [INFO] Target: 
+- 05:49:28 [INFO] Host: 
+- 05:49:28 [INFO] Target: 
+- 05:49:28 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
+- 05:49:28 [INFO] Target: 
 echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
-- 05:53:14 [INFO] Host: 
-- 05:53:14 [INFO] Target: 
-- 05:53:14 [INFO] Host: echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /proc/device-tree/compatible 2>/dev/null;echo; echo '=======';
-- 05:53:14 [INFO] Target: 
+- 05:49:28 [INFO] Host: 
+- 05:49:28 [INFO] Target: 
+- 05:49:28 [INFO] Host: echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /proc/device-tree/compatible 2>/dev/null;echo; echo '=======';
+- 05:49:28 [INFO] Target: 
 echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /pro 
 c/device-tree/compatible 2>/dev/null;echo; echo '=======';
-- 05:53:14 [INFO] Host: 
-- 05:53:14 [INFO] Target: 
-- 05:53:14 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
-- 05:53:14 [INFO] Target: 
+- 05:49:28 [INFO] Host: 
+- 05:49:28 [INFO] Target: 
+- 05:49:28 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
+- 05:49:28 [INFO] Target: 
 echo 'interrupts:';cat /proc/interrupts; echo '=======';
-- 05:53:14 [INFO] Host: 
-- 05:53:14 [INFO] Target: 
-- 05:53:14 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
-- 05:53:14 [INFO] Target: 
+- 05:49:28 [INFO] Host: 
+- 05:49:28 [INFO] Target: 
+- 05:49:28 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
+- 05:49:29 [INFO] Target: 
 echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
-- 05:53:14 [INFO] Host: 
-- 05:53:14 [INFO] Target: 
-- 05:53:14 [INFO] Host: echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies 2>/dev/null;echo '=======';
-- 05:53:14 [INFO] Target: 
+- 05:49:29 [INFO] Host: 
+- 05:49:29 [INFO] Target: 
+- 05:49:29 [INFO] Host: echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies 2>/dev/null;echo '=======';
+- 05:49:29 [INFO] Target: 
 echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling 
 _available_frequencies 2>/dev/null;echo '=======';
-- 05:53:14 [INFO] Host: 
-- 05:53:14 [INFO] Target: 
-- 05:53:14 [INFO] Host: TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
-- 05:53:15 [INFO] Target: 
+- 05:49:29 [INFO] Host: 
+- 05:49:29 [INFO] Target: 
+- 05:49:29 [INFO] Host: TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
+- 05:49:29 [INFO] Target: 
 TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
-- 05:53:15 [INFO] Host: 
-- 05:53:15 [INFO] Target: 
-- 05:53:15 [INFO] Host: cp /dev/kmsg \$TMPF &
-- 05:53:15 [INFO] Target: 
+- 05:49:29 [INFO] Host: 
+- 05:49:29 [INFO] Target: 
+- 05:49:29 [INFO] Host: cp /dev/kmsg \$TMPF &
+- 05:49:29 [INFO] Target: 
 cp /dev/kmsg \$TMPF &
-- 05:53:15 [INFO] Host: 
-- 05:53:15 [INFO] Target: 
-- 05:53:15 [INFO] Host: PID=\$! ; sleep 5; kill -9 \$PID
-- 05:53:15 [INFO] Target: 
+- 05:49:29 [INFO] Host: 
+- 05:49:29 [INFO] Target: 
+- 05:49:29 [INFO] Host: PID=\$! ; sleep 5; kill -9 \$PID
+- 05:49:29 [INFO] Target: 
 PID=\$! ; sleep 5; kill -9 \$PID
-- 05:53:15 [INFO] Host: 
-- 05:53:15 [INFO] Target: 
-- 05:53:15 [INFO] Host: 
-- 05:53:15 [INFO] Target: 
-- 05:53:15 [INFO] Host: 
-- 05:53:15 [INFO] Target: 
-- 05:53:15 [INFO] Host: cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 05:53:15 [INFO] Target: 
+- 05:49:29 [INFO] Host: 
+- 05:49:29 [INFO] Target: 
+- 05:49:29 [INFO] Host: 
+- 05:49:30 [INFO] Target: 
+- 05:49:30 [INFO] Host: 
+- 05:49:30 [INFO] Target: 
+- 05:49:30 [INFO] Host: cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 05:49:30 [INFO] Target: 
 cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "= 
 ===="; fi
-- 05:53:15 [INFO] Host: 
-- 05:53:15 [INFO] Target: 
-- 05:53:15 [INFO] Host: cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 05:53:16 [INFO] Target: 
+- 05:49:30 [INFO] Host: 
+- 05:49:30 [INFO] Target: 
+- 05:49:30 [INFO] Host: cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 05:49:30 [INFO] Target: 
 cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "= 
 ===="; fi
-- 05:53:16 [INFO] Host: 
-- 05:53:16 [INFO] Target: 
-- 05:53:16 [INFO] Host: cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 05:53:16 [INFO] Target: 
+- 05:49:30 [INFO] Host: 
+- 05:49:30 [INFO] Target: 
+- 05:49:30 [INFO] Host: cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 05:49:30 [INFO] Target: 
 cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "=== 
 =="; fi
-- 05:53:16 [INFO] Host: 
-- 05:53:16 [INFO] Target: 
-- 05:53:16 [INFO] Host: cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
-- 05:53:16 [INFO] Target: 
+- 05:49:30 [INFO] Host: 
+- 05:49:30 [INFO] Target: 
+- 05:49:30 [INFO] Host: cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
+- 05:49:30 [INFO] Target: 
 cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "===== 
 " ;fi
-- 05:53:16 [INFO] Host: 
-- 05:53:16 [INFO] Target: 
-- 05:53:16 [INFO] Host: cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
-- 05:53:16 [INFO] Target: 
+- 05:49:30 [INFO] Host: 
+- 05:49:30 [INFO] Target: 
+- 05:49:30 [INFO] Host: cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
+- 05:49:31 [INFO] Target: 
 cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=== 
 ==" ;fi
-- 05:53:16 [INFO] Host: 
-- 05:53:16 [INFO] Target: 
-- 05:53:16 [INFO] Host: rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oard' "Booted" "Boot Log has::::\$STR:"
-- 05:53:16 [INFO] Target: 
+- 05:49:31 [INFO] Host: 
+- 05:49:31 [INFO] Target: 
+- 05:49:31 [INFO] Host: rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oard' "Booted" "Boot Log has::::\$STR:"
+- 05:49:31 [INFO] Target: 
 rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oa 
 rd' "Booted" "Boot Log has::::\$STR:"
-- 05:53:16 [INFO] Host: 
-- 05:53:16 [INFO] Target: 
-- 05:53:16 [INFO] Host: EOF
-- 05:53:17 [INFO] Target: 
+- 05:49:31 [INFO] Host: 
+- 05:49:31 [INFO] Target: 
+- 05:49:31 [INFO] Host: EOF
+- 05:49:31 [INFO] Target: 
 root@am335x-evm:/test# 
-- 05:53:17 [INFO] Host: cd /test
-- 05:53:17 [INFO] Target: 
+- 05:49:31 [INFO] Host: cd /test
+- 05:49:31 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-- 05:53:17 [INFO] Host: chmod +x test.sh
-- 05:53:17 [INFO] Target: 
+- 05:49:31 [INFO] Host: chmod +x test.sh
+- 05:49:31 [INFO] Target: 
 chmod +x test.sh
 root@am335x-evm:/test# 
-- 05:53:17 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
-- 05:53:22 [INFO] Target: 
+- 05:49:31 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
+- 05:49:37 [INFO] Target: 
 ./test.sh 2> stderr.log > stdout.log 3> result.log
 root@am335x-evm:/test# 
-- 05:53:22 [INFO] Host: echo $?
-- 05:53:22 [INFO] Target: 
+- 05:49:37 [INFO] Host: echo $?
+- 05:49:37 [INFO] Target: 
 echo $?
 root@am335x-evm:/test# 
-- 05:53:22 [INFO] Host: cd /test
-- 05:53:23 [INFO] Target: 
+- 05:49:37 [INFO] Host: cd /test
+- 05:49:37 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-- 05:53:23 [INFO] Host: cat stdout.log
-- 05:53:24 [INFO] Target: 
+- 05:49:37 [INFO] Host: cat stdout.log
+- 05:49:38 [INFO] Target: 
 cat stdout.log
 cpuinfo:
 processor	: 0
@@ -1072,16 +1103,16 @@ ti,am335x-evmskti,am33xx
 =======
 interrupts:
            CPU0       
- 16:       3083      INTC  68 Level     gp_timer
- 19:       1898      INTC  12 Level     edma
- 21:         11      INTC  14 Level     edma_error
+ 16:       3145      INTC  68 Level     gp_timer
+ 19:       1961      INTC  12 Level     edma
+ 21:         14      INTC  14 Level     edma_error
  29:          0  44e07000.gpio   6 Edge      48060000.mmc cd
-154:       7506      INTC  72 Level     OMAP UART0
+154:       7489      INTC  72 Level     OMAP UART0
 155:        269      INTC  70 Level     44e0b000.i2c
-156:       5717      INTC  64 Level     mmc0
+156:       6014      INTC  64 Level     mmc0
 157:        144      INTC  28 Level     mmc1
-168:         50      INTC  41 Level     4a100000.ethernet
-169:         12      INTC  42 Level     4a100000.ethernet
+168:         32      INTC  41 Level     4a100000.ethernet
+169:         14      INTC  42 Level     4a100000.ethernet
 IPI0:          0  CPU wakeup interrupts
 IPI1:          0  Timer broadcast interrupts
 IPI2:          0  Rescheduling interrupts
@@ -1111,8 +1142,8 @@ Clk_summary:
        cefuse_fck                         0            0    24000000          0 0  
        dpll_per_ck                        1            2   960000000          0 0  
           usbotg_fck                      0            1   960000000          0 0  
-          dpll_per_m2_ck                  2            4   192000000          0 0  
-             mmc_clk                      0            3    96000000          0 0  
+          dpll_per_m2_ck                  3            4   192000000          0 0  
+             mmc_clk                      1            3    96000000          0 0  
              clk_24mhz                    1            1    24000000          0 0  
                 clkdiv32k_ck              1            1       32786          0 0  
                    clkdiv32k_ick           1            5       32786          0 0  
@@ -1210,24 +1241,24 @@ mmc0: host does not support reading read-only switch, assuming write-enable
 omap_hsmmc 481d8000.mmc: card claims to support voltages below defined range
 mmc1: queuing unknown CIS tuple 0x91 (3 bytes)
 sr_init: No PMIC hook to init smartreflex
-IP-Config: Got DHCP answer from 192.168.1.254, my address is 192.168.1.171
+IP-Config: Got DHCP answer from 192.168.1.254, my address is 192.168.1.156
 , nameserver1=192.0.2.3
 FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
 =====
 SUMMARY RESULT: BOOT: PASS: Hello World Board Booted Boot Log has:::: err=8 warn=23:
 root@am335x-evm:/test# 
-- 05:53:24 [INFO] Host: cat stderr.log
-- 05:53:24 [INFO] Target: 
+- 05:49:38 [INFO] Host: cat stderr.log
+- 05:49:38 [INFO] Target: 
 cat stderr.log
-./test.sh: line 33:   614 Killed                  cp /dev/kmsg $TMPF
+./test.sh: line 33:   644 Killed                  cp /dev/kmsg $TMPF
 root@am335x-evm:/test# 
-- 05:53:24 [INFO] Host: cat result.log
-- 05:53:26 [ERROR] On command: cat result.log waiting for cat result.log.+?(?m-ix:^1[\0\n\r]+) >>> error: execution expired
-- 05:53:26 [INFO] Target: 
+- 05:49:38 [INFO] Host: cat result.log
+- 05:49:40 [ERROR] On command: cat result.log waiting for cat result.log.+?(?m-ix:^1[\0\n\r]+) >>> error: execution expired
+- 05:49:40 [INFO] Target: 
 cat result.log
 root@am335x-evm:/test# 
-- 05:53:26 [INFO] Host: cd /test
-- 05:53:26 [INFO] Target: 
+- 05:49:40 [INFO] Host: cd /test
+- 05:49:40 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-01.dal.design.ti.com/tidfarm-01.dal.design.ti.com_vatf@am335x-sk/tidfarm-01.dal.design.ti.com06_03_2015_05_51_23/files/session_iteration_1/test_1
+URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-01.dal.design.ti.com/tidfarm-01.dal.design.ti.com_vatf@am335x-sk/tidfarm-01.dal.design.ti.com06_04_2015_05_47_37/files/session_iteration_1/test_1
