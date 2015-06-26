@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20150625
-Thu Jun 25 06:44:32 CDT 2015
+Automated logs for TAG=next-20150626
+Fri Jun 26 07:00:08 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:     BeagleBoard-X15: BOOT: PASS: err=9 warn=12: am57xx-evm.txt
@@ -19,7 +19,7 @@ multi_v7_defconfig
  8:     BeagleBoard-X15: BOOT: PASS: err=9 warn=11: am57xx-evm.txt
  9:      BeagleBoard-XM: BOOT: PASS: err=14 warn=10: beagleboard.txt
 10: beagleboard-vanilla: BOOT: PASS: err=8 warn=9: beagleboard-vanilla.txt
-11:    beaglebone-black: BOOT: PASS: err=4 warn=11: beaglebone-black.txt
+11:    beaglebone-black: BOOT: PASS: err=4 warn=12: beaglebone-black.txt
 12:          beaglebone: BOOT: FAIL: beaglebone.txt
 13:          craneboard: BOOT: PASS: err=18 warn=50: craneboard.txt
 14:          dra72x-evm: BOOT: PASS: err=8 warn=9: dra72x-evm.txt
@@ -42,9 +42,9 @@ omap2plus_defconfig
  6:         am43xx-epos: BOOT: PASS: err=9 warn=42: am43xx-epos.txt
  7:        am43xx-gpevm: BOOT: PASS: err=9 warn=41: am43xx-gpevm.txt
  8:     BeagleBoard-X15: BOOT: PASS: err=13 warn=21: am57xx-evm.txt
- 9:      BeagleBoard-XM: BOOT: PASS: err=7 warn=18: beagleboard.txt
+ 9:      BeagleBoard-XM: BOOT: FAIL: beagleboard.txt
 10: beagleboard-vanilla: BOOT: PASS: err=7 warn=23: beagleboard-vanilla.txt
-11:    beaglebone-black: BOOT: PASS: err=8 warn=22: beaglebone-black.txt
+11:    beaglebone-black: BOOT: PASS: err=8 warn=23: beaglebone-black.txt
 12:          beaglebone: BOOT: PASS: err=9 warn=20: beaglebone.txt
 13:          craneboard: BOOT: PASS: err=19 warn=64: craneboard.txt
 14:          dra72x-evm: BOOT: PASS: err=11 warn=19: dra72x-evm.txt
@@ -57,4 +57,4 @@ omap2plus_defconfig
 21:             sdp2430: BOOT: PASS: err=11 warn=19: sdp2430.txt
 22:             sdp3430: BOOT: PASS: err=20 warn=27: sdp3430.txt
 23:             sdp4430: BOOT: PASS: err=21 warn=32: sdp4430.txt
-TOTAL = 23 boards, Booted Boards = 23, No Boot boards = 0
+TOTAL = 23 boards, Booted Boards = 22, No Boot boards = 1
