@@ -1,5 +1,5 @@
 Automated logs for TAG=v4.1
-Mon Jun 22 16:51:46 CDT 2015
+Mon Jun 29 02:29:25 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:     BeagleBoard-X15: BOOT: PASS: err=13 warn=14: am57xx-evm.txt
