@@ -1,9 +1,9 @@
 Automated logs for TAG=next-20150810
-Mon Aug 10 06:22:18 CDT 2015
+Tue Aug 11 06:11:01 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:     BeagleBoard-X15: BOOT: PASS: err=5 warn=13: am57xx-evm.txt
- 2:          dra72x-evm: BOOT: PASS: err=6 warn=12: dra72x-evm.txt
+ 2:          dra72x-evm: BOOT: PASS: err=6 warn=15: dra72x-evm.txt
  3:          dra7xx-evm: BOOT: PASS: err=6 warn=10: dra7xx-evm.txt
  4:           omap5-evm: BOOT: PASS: err=13 warn=13: omap5-evm.txt
 TOTAL = 4 boards, Booted Boards = 4, No Boot boards = 0
@@ -41,7 +41,7 @@ omap2plus_defconfig
  5:           am437x-sk: BOOT: PASS: err=11 warn=23: am437x-sk.txt
  6:         am43xx-epos: BOOT: PASS: err=9 warn=26: am43xx-epos.txt
  7:        am43xx-gpevm: BOOT: PASS: err=9 warn=25: am43xx-gpevm.txt
- 8:     BeagleBoard-X15: BOOT: FAIL: am57xx-evm.txt
+ 8:     BeagleBoard-X15: BOOT: PASS: am57xx-evm.txt
  9:      BeagleBoard-XM: BOOT: PASS: err=7 warn=19: beagleboard.txt
 10: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
 11:    beaglebone-black: BOOT: PASS: err=8 warn=23: beaglebone-black.txt
@@ -57,4 +57,4 @@ omap2plus_defconfig
 21:             sdp2430: BOOT: PASS: err=11 warn=21: sdp2430.txt
 22:             sdp3430: BOOT: PASS: err=20 warn=28: sdp3430.txt
 23:             sdp4430: BOOT: PASS: err=21 warn=34: sdp4430.txt
-TOTAL = 23 boards, Booted Boards = 16, No Boot boards = 7
+TOTAL = 23 boards, Booted Boards = 17, No Boot boards = 6
