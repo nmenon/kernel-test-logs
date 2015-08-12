@@ -1,9 +1,9 @@
 Automated logs for TAG=next-20150810
-Tue Aug 11 06:11:01 CDT 2015
+Wed Aug 12 06:41:00 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:     BeagleBoard-X15: BOOT: PASS: err=5 warn=13: am57xx-evm.txt
- 2:          dra72x-evm: BOOT: PASS: err=6 warn=15: dra72x-evm.txt
+ 2:          dra72x-evm: BOOT: PASS: err=6 warn=14: dra72x-evm.txt
  3:          dra7xx-evm: BOOT: PASS: err=6 warn=10: dra7xx-evm.txt
  4:           omap5-evm: BOOT: PASS: err=13 warn=13: omap5-evm.txt
 TOTAL = 4 boards, Booted Boards = 4, No Boot boards = 0
@@ -12,14 +12,14 @@ multi_v7_defconfig
  1:          am335x-evm: BOOT: PASS: err=6 warn=24: am335x-evm.txt
  2:           am335x-sk: BOOT: PASS: err=5 warn=22: am335x-sk.txt
  3:          am3517-evm: BOOT: FAIL: am3517-evm.txt
- 4:           am37x-evm: BOOT: PASS: err=6 warn=20: am37x-evm.txt
+ 4:           am37x-evm: BOOT: PASS: err=6 warn=19: am37x-evm.txt
  5:           am437x-sk: BOOT: FAIL: am437x-sk.txt
  6:         am43xx-epos: BOOT: PASS: err=7 warn=19: am43xx-epos.txt
  7:        am43xx-gpevm: BOOT: PASS: err=7 warn=19: am43xx-gpevm.txt
  8:     BeagleBoard-X15: BOOT: PASS: err=5 warn=12: am57xx-evm.txt
  9:      BeagleBoard-XM: BOOT: PASS: err=14 warn=11: beagleboard.txt
 10: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
-11:    beaglebone-black: BOOT: PASS: err=4 warn=12: beaglebone-black.txt
+11:    beaglebone-black: BOOT: PASS: err=4 warn=13: beaglebone-black.txt
 12:          beaglebone: BOOT: FAIL: beaglebone.txt
 13:          craneboard: BOOT: PASS: err=19 warn=46: craneboard.txt
 14:          dra72x-evm: BOOT: PASS: err=6 warn=11: dra72x-evm.txt
@@ -44,7 +44,7 @@ omap2plus_defconfig
  8:     BeagleBoard-X15: BOOT: PASS: am57xx-evm.txt
  9:      BeagleBoard-XM: BOOT: PASS: err=7 warn=19: beagleboard.txt
 10: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
-11:    beaglebone-black: BOOT: PASS: err=8 warn=23: beaglebone-black.txt
+11:    beaglebone-black: BOOT: PASS: err=8 warn=24: beaglebone-black.txt
 12:          beaglebone: BOOT: FAIL: beaglebone.txt
 13:          craneboard: BOOT: PASS: err=19 warn=60: craneboard.txt
 14:          dra72x-evm: BOOT: FAIL: dra72x-evm.txt
