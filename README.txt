@@ -1,11 +1,12 @@
 Automated logs for TAG=next-20150814
-Fri Aug 14 08:11:10 CDT 2015
+Mon Aug 17 06:12:51 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
- 1:          dra72x-evm: BOOT: PASS: err=6 warn=15: dra72x-evm.txt
- 2:          dra7xx-evm: BOOT: PASS: err=6 warn=10: dra7xx-evm.txt
- 3:           omap5-evm: BOOT: PASS: err=13 warn=13: omap5-evm.txt
-TOTAL = 3 boards, Booted Boards = 3, No Boot boards = 0
+ 1:     BeagleBoard-X15: BOOT: PASS: err=5 warn=13: am57xx-evm.txt
+ 2:          dra72x-evm: BOOT: PASS: err=6 warn=12: dra72x-evm.txt
+ 3:          dra7xx-evm: BOOT: PASS: err=6 warn=10: dra7xx-evm.txt
+ 4:           omap5-evm: BOOT: PASS: err=13 warn=13: omap5-evm.txt
+TOTAL = 4 boards, Booted Boards = 4, No Boot boards = 0
 ====defconfig=multi_v7_defconfig===
 multi_v7_defconfig
  1:          am335x-evm: BOOT: PASS: err=6 warn=24: am335x-evm.txt
@@ -15,21 +16,22 @@ multi_v7_defconfig
  5:           am437x-sk: BOOT: FAIL: am437x-sk.txt
  6:         am43xx-epos: BOOT: PASS: err=7 warn=19: am43xx-epos.txt
  7:        am43xx-gpevm: BOOT: PASS: err=7 warn=19: am43xx-gpevm.txt
- 8:      BeagleBoard-XM: BOOT: PASS: err=14 warn=11: beagleboard.txt
- 9: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
-10:    beaglebone-black: BOOT: PASS: err=4 warn=12: beaglebone-black.txt
-11:          beaglebone: BOOT: FAIL: beaglebone.txt
-12:          craneboard: BOOT: PASS: err=19 warn=46: craneboard.txt
-13:          dra72x-evm: BOOT: PASS: err=6 warn=11: dra72x-evm.txt
-14:          dra7xx-evm: BOOT: PASS: err=6 warn=9: dra7xx-evm.txt
-15:        OMAP3430-LDP: BOOT: FAIL: ldp.txt
-16:                n900: BOOT: FAIL: n900.txt
-17:           omap5-evm: BOOT: PASS: err=13 warn=12: omap5-evm.txt
-18:       pandaboard-es: BOOT: PASS: err=19 warn=24: pandaboard-es.txt
-19:  pandaboard-vanilla: BOOT: PASS: err=19 warn=22: pandaboard-vanilla.txt
-20:             sdp3430: BOOT: FAIL: sdp3430.txt
-21:             sdp4430: BOOT: PASS: err=23 warn=27: sdp4430.txt
-TOTAL = 21 boards, Booted Boards = 15, No Boot boards = 6
+ 8:     BeagleBoard-X15: BOOT: PASS: err=5 warn=12: am57xx-evm.txt
+ 9:      BeagleBoard-XM: BOOT: PASS: err=14 warn=11: beagleboard.txt
+10: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
+11:    beaglebone-black: BOOT: PASS: err=4 warn=10: beaglebone-black.txt
+12:          beaglebone: BOOT: FAIL: beaglebone.txt
+13:          craneboard: BOOT: PASS: err=19 warn=46: craneboard.txt
+14:          dra72x-evm: BOOT: PASS: err=6 warn=11: dra72x-evm.txt
+15:          dra7xx-evm: BOOT: PASS: err=6 warn=9: dra7xx-evm.txt
+16:        OMAP3430-LDP: BOOT: FAIL: ldp.txt
+17:                n900: BOOT: FAIL: n900.txt
+18:           omap5-evm: BOOT: PASS: err=13 warn=12: omap5-evm.txt
+19:       pandaboard-es: BOOT: PASS: err=19 warn=24: pandaboard-es.txt
+20:  pandaboard-vanilla: BOOT: PASS: err=19 warn=22: pandaboard-vanilla.txt
+21:             sdp3430: BOOT: FAIL: sdp3430.txt
+22:             sdp4430: BOOT: PASS: err=23 warn=27: sdp4430.txt
+TOTAL = 22 boards, Booted Boards = 16, No Boot boards = 6
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1:          am335x-evm: BOOT: PASS: err=9 warn=26: am335x-evm.txt
@@ -39,19 +41,20 @@ omap2plus_defconfig
  5:           am437x-sk: BOOT: PASS: err=11 warn=24: am437x-sk.txt
  6:         am43xx-epos: BOOT: PASS: err=9 warn=26: am43xx-epos.txt
  7:        am43xx-gpevm: BOOT: PASS: err=9 warn=25: am43xx-gpevm.txt
- 8:      BeagleBoard-XM: BOOT: PASS: err=7 warn=19: beagleboard.txt
- 9: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
-10:    beaglebone-black: BOOT: PASS: err=8 warn=23: beaglebone-black.txt
-11:          beaglebone: BOOT: FAIL: beaglebone.txt
-12:          craneboard: BOOT: PASS: err=19 warn=60: craneboard.txt
-13:          dra72x-evm: BOOT: FAIL: dra72x-evm.txt
-14:          dra7xx-evm: BOOT: FAIL: dra7xx-evm.txt
-15:        OMAP3430-LDP: BOOT: FAIL: ldp.txt
-16:                n900: BOOT: FAIL: n900.txt
-17:           omap5-evm: BOOT: PASS: err=14 warn=22: omap5-evm.txt
-18:       pandaboard-es: BOOT: PASS: err=20 warn=31: pandaboard-es.txt
-19:  pandaboard-vanilla: BOOT: PASS: err=20 warn=31: pandaboard-vanilla.txt
-20:             sdp2430: BOOT: PASS: err=11 warn=21: sdp2430.txt
-21:             sdp3430: BOOT: PASS: err=20 warn=28: sdp3430.txt
-22:             sdp4430: BOOT: PASS: err=21 warn=33: sdp4430.txt
-TOTAL = 22 boards, Booted Boards = 16, No Boot boards = 6
+ 8:     BeagleBoard-X15: BOOT: PASS: err=9 warn=23: am57xx-evm.txt
+ 9:      BeagleBoard-XM: BOOT: PASS: err=7 warn=19: beagleboard.txt
+10: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
+11:    beaglebone-black: BOOT: PASS: err=8 warn=21: beaglebone-black.txt
+12:          beaglebone: BOOT: FAIL: beaglebone.txt
+13:          craneboard: BOOT: PASS: err=19 warn=60: craneboard.txt
+14:          dra72x-evm: BOOT: FAIL: dra72x-evm.txt
+15:          dra7xx-evm: BOOT: FAIL: dra7xx-evm.txt
+16:        OMAP3430-LDP: BOOT: PASS: err=7 warn=26: ldp.txt
+17:                n900: BOOT: FAIL: n900.txt
+18:           omap5-evm: BOOT: PASS: err=14 warn=22: omap5-evm.txt
+19:       pandaboard-es: BOOT: PASS: err=20 warn=31: pandaboard-es.txt
+20:  pandaboard-vanilla: BOOT: PASS: err=20 warn=31: pandaboard-vanilla.txt
+21:             sdp2430: BOOT: PASS: err=11 warn=21: sdp2430.txt
+22:             sdp3430: BOOT: PASS: err=20 warn=28: sdp3430.txt
+23:             sdp4430: BOOT: PASS: err=21 warn=33: sdp4430.txt
+TOTAL = 23 boards, Booted Boards = 18, No Boot boards = 5
