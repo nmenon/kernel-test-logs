@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20150908
-Tue Sep  8 10:08:42 CDT 2015
+Automated logs for TAG=next-20150909
+Wed Sep  9 10:37:47 CDT 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
  1:     BeagleBoard-X15: BOOT: FAIL: am57xx-evm.txt
@@ -18,19 +18,18 @@ multi_v7_defconfig
  7:        am43xx-gpevm: BOOT: PASS: err=8 warn=19: am43xx-gpevm.txt
  8:     BeagleBoard-X15: BOOT: FAIL: am57xx-evm.txt
  9:      BeagleBoard-XM: BOOT: FAIL: beagleboard.txt
-10: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
-11:    beaglebone-black: BOOT: PASS: err=4 warn=10: beaglebone-black.txt
-12:          beaglebone: BOOT: FAIL: beaglebone.txt
-13:          craneboard: BOOT: FAIL: craneboard.txt
-14:          dra72x-evm: BOOT: FAIL: dra72x-evm.txt
-15:          dra7xx-evm: BOOT: FAIL: dra7xx-evm.txt
-16:        OMAP3430-LDP: BOOT: FAIL: ldp.txt
-17:                n900: BOOT: FAIL: n900.txt
-18:           omap5-evm: BOOT: FAIL: omap5-evm.txt
-19:       pandaboard-es: BOOT: FAIL: pandaboard-es.txt
-20:  pandaboard-vanilla: BOOT: FAIL: pandaboard-vanilla.txt
-21:             sdp3430: BOOT: FAIL: sdp3430.txt
-TOTAL = 21 boards, Booted Boards = 4, No Boot boards = 17
+10:    beaglebone-black: BOOT: PASS: err=4 warn=10: beaglebone-black.txt
+11:          beaglebone: BOOT: FAIL: beaglebone.txt
+12:          craneboard: BOOT: FAIL: craneboard.txt
+13:          dra72x-evm: BOOT: FAIL: dra72x-evm.txt
+14:          dra7xx-evm: BOOT: FAIL: dra7xx-evm.txt
+15:        OMAP3430-LDP: BOOT: FAIL: ldp.txt
+16:                n900: BOOT: FAIL: n900.txt
+17:           omap5-evm: BOOT: FAIL: omap5-evm.txt
+18:       pandaboard-es: BOOT: FAIL: pandaboard-es.txt
+19:  pandaboard-vanilla: BOOT: FAIL: pandaboard-vanilla.txt
+20:             sdp3430: BOOT: FAIL: sdp3430.txt
+TOTAL = 20 boards, Booted Boards = 4, No Boot boards = 16
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
  1:          am335x-evm: BOOT: PASS: err=8 warn=26: am335x-evm.txt
