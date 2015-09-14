@@ -2,7 +2,7 @@
 ++build defconfig multi_lpae_defconfig++
 ++build kernel ++
 <stdin>:1298:2: warning: #warning syscall userfaultfd not implemented [-Wcpp]
-<stdin>:1301:2: warning: #warning syscall mlock2 not implemented [-Wcpp]
+<stdin>:1301:2: warning: #warning syscall membarrier not implemented [-Wcpp]
 arch/arm/crypto/Makefile:22: These ARMv8 Crypto Extensions modules need binutils 2.23 or higher
 arch/arm/crypto/Makefile:23:  aes-arm-ce.o sha1-arm-ce.o sha2-arm-ce.o ghash-arm-ce.o
 block/blk-merge.c: In function ‘blk_queue_split’:
@@ -17,18 +17,6 @@ kernel/cgroup.c:1910:13: warning: ‘root’ may be used uninitialized in this f
 lib/iommu-common.c: In function ‘iommu_tbl_range_alloc’:
 lib/iommu-common.c:127:3: warning: large integer implicitly truncated to unsigned type [-Woverflow]
 lib/iommu-common.c:210:4: warning: large integer implicitly truncated to unsigned type [-Woverflow]
-drivers/dma/at_xdmac.c: In function ‘at_xdmac_interleaved_queue_desc’:
-drivers/dma/at_xdmac.c:913:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
-drivers/dma/at_xdmac.c:913:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 6 has type ‘dma_addr_t’ [-Wformat]
-drivers/dma/at_xdmac.c: In function ‘at_xdmac_prep_interleaved’:
-drivers/dma/at_xdmac.c:941:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
-drivers/dma/at_xdmac.c:941:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 6 has type ‘dma_addr_t’ [-Wformat]
-drivers/dma/at_xdmac.c: In function ‘at_xdmac_memset_create_desc’:
-drivers/dma/at_xdmac.c:1172:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
-drivers/dma/at_xdmac.c: In function ‘at_xdmac_prep_dma_memset’:
-drivers/dma/at_xdmac.c:1187:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
-drivers/dma/at_xdmac.c: In function ‘at_xdmac_prep_dma_memset_sg’:
-drivers/dma/at_xdmac.c:1223:3: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
 In file included from drivers/dma/at_hdmac.c:30:0:
 drivers/dma/at_hdmac_regs.h: In function ‘atc_dump_lli’:
 drivers/dma/at_hdmac_regs.h:390:4: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 3 has type ‘dma_addr_t’ [-Wformat]
@@ -44,6 +32,18 @@ drivers/dma/at_hdmac.c: In function ‘atc_prep_dma_memset’:
 drivers/dma/at_hdmac.c:903:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
 drivers/dma/at_hdmac.c: In function ‘atc_prep_dma_cyclic’:
 drivers/dma/at_hdmac.c:1348:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
+drivers/dma/at_xdmac.c: In function ‘at_xdmac_interleaved_queue_desc’:
+drivers/dma/at_xdmac.c:913:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
+drivers/dma/at_xdmac.c:913:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 6 has type ‘dma_addr_t’ [-Wformat]
+drivers/dma/at_xdmac.c: In function ‘at_xdmac_prep_interleaved’:
+drivers/dma/at_xdmac.c:941:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
+drivers/dma/at_xdmac.c:941:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 6 has type ‘dma_addr_t’ [-Wformat]
+drivers/dma/at_xdmac.c: In function ‘at_xdmac_memset_create_desc’:
+drivers/dma/at_xdmac.c:1172:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
+drivers/dma/at_xdmac.c: In function ‘at_xdmac_prep_dma_memset’:
+drivers/dma/at_xdmac.c:1187:2: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
+drivers/dma/at_xdmac.c: In function ‘at_xdmac_prep_dma_memset_sg’:
+drivers/dma/at_xdmac.c:1223:3: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 5 has type ‘dma_addr_t’ [-Wformat]
 drivers/tty/serial/atmel_serial.c: In function ‘atmel_prepare_tx_dma’:
 drivers/tty/serial/atmel_serial.c:934:3: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘dma_addr_t’ [-Wformat]
 drivers/tty/serial/atmel_serial.c: In function ‘atmel_prepare_rx_dma’:
@@ -51,14 +51,14 @@ drivers/tty/serial/atmel_serial.c:1116:3: warning: format ‘%x’ expects argum
 drivers/tty/serial/atmel_serial.c: In function ‘atmel_verify_port’:
 drivers/tty/serial/atmel_serial.c:2299:6: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
 <stdin>:1298:2: warning: #warning syscall userfaultfd not implemented [-Wcpp]
-<stdin>:1301:2: warning: #warning syscall mlock2 not implemented [-Wcpp]
+<stdin>:1301:2: warning: #warning syscall membarrier not implemented [-Wcpp]
 arch/arm/crypto/Makefile:22: These ARMv8 Crypto Extensions modules need binutils 2.23 or higher
 arch/arm/crypto/Makefile:23:  aes-arm-ce.o sha1-arm-ce.o sha2-arm-ce.o ghash-arm-ce.o
 <stdin>:1298:2: warning: #warning syscall userfaultfd not implemented [-Wcpp]
-<stdin>:1301:2: warning: #warning syscall mlock2 not implemented [-Wcpp]
+<stdin>:1301:2: warning: #warning syscall membarrier not implemented [-Wcpp]
 arch/arm/crypto/Makefile:22: These ARMv8 Crypto Extensions modules need binutils 2.23 or higher
 arch/arm/crypto/Makefile:23:  aes-arm-ce.o sha1-arm-ce.o sha2-arm-ce.o ghash-arm-ce.o
 make[1]: *** No rule to make target `arch/arm/boot/uImage.sun8i-a23-ippo-q8h-v1'.  Stop.
 make: *** [uImage.sun8i-a23-ippo-q8h-v1] Error 2
 make: *** Waiting for unfinished jobs....
-Fri Sep 11 08:40:21 CDT 2015: Build result = 0
+Mon Sep 14 08:12:03 CDT 2015: Build result = 0
