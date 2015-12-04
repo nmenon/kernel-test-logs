@@ -1,11 +1,12 @@
-Automated logs for TAG=next-20151202
-Thu Dec  3 06:25:33 CST 2015
+Automated logs for TAG=next-20151203
+Fri Dec  4 06:34:15 CST 2015
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
- 1:     BeagleBoard-X15: BOOT: PASS: err=4 warn=16: am57xx-evm.txt
+ 1:     BeagleBoard-X15: BOOT: PASS: err=4 warn=14: am57xx-evm.txt
  2:          dra72x-evm: BOOT: PASS: err=5 warn=15: dra72x-evm.txt
- 3:           omap5-evm: BOOT: PASS: err=11 warn=14: omap5-evm.txt
-TOTAL = 3 boards, Booted Boards = 3, No Boot boards = 0
+ 3:          dra7xx-evm: BOOT: PASS: err=4 warn=15: dra7xx-evm.txt
+ 4:           omap5-evm: BOOT: PASS: err=11 warn=15: omap5-evm.txt
+TOTAL = 4 boards, Booted Boards = 4, No Boot boards = 0
 ====defconfig=multi_v7_defconfig===
 multi_v7_defconfig
  1:          am335x-evm: BOOT: PASS: err=5 warn=22: am335x-evm.txt
@@ -20,11 +21,11 @@ multi_v7_defconfig
 10:    beaglebone-black: BOOT: PASS: err=4 warn=11: beaglebone-black.txt
 11:          beaglebone: BOOT: FAIL: beaglebone.txt
 12:          craneboard: BOOT: FAIL: craneboard.txt
-13:          dra72x-evm: BOOT: PASS: err=5 warn=16: dra72x-evm.txt
-14:          dra7xx-evm: BOOT: PASS: err=4 warn=13: dra7xx-evm.txt
+13:          dra72x-evm: BOOT: PASS: err=5 warn=14: dra72x-evm.txt
+14:          dra7xx-evm: BOOT: PASS: err=4 warn=14: dra7xx-evm.txt
 15:             ldp3430: BOOT: FAIL: ldp3430.txt
 16:                n900: BOOT: PASS: err=5 warn=15: n900.txt
-17:           omap5-evm: BOOT: PASS: err=11 warn=12: omap5-evm.txt
+17:           omap5-evm: BOOT: PASS: err=11 warn=14: omap5-evm.txt
 18:       pandaboard-es: BOOT: PASS: err=17 warn=22: pandaboard-es.txt
 19:  pandaboard-vanilla: BOOT: FAIL: pandaboard-vanilla.txt
 20:             sdp3430: BOOT: FAIL: sdp3430.txt
