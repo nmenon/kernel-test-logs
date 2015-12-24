@@ -2,6 +2,10 @@
 ++build defconfig keystone_defconfig++
 ++build kernel ++
 <stdin>:1307:2: warning: #warning syscall copy_file_range not implemented [-Wcpp]
+kernel/printk/nmi.c: In function '__printk_nmi_flush':
+kernel/printk/nmi.c:143:3: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'size_t' [-Wformat=]
+   pr_err("printk_nmi_flush: internal error: i=%d >= len=%lu\n",
+   ^
 drivers/gpio/gpiolib.c: In function 'gpiochip_add':
 drivers/gpio/gpiolib.c:193:20: warning: 'iterator' may be used uninitialized in this function [-Wmaybe-uninitialized]
   struct gpio_chip *iterator;
@@ -40,6 +44,14 @@ drivers/net/ethernet/ti/netcp_core.c:133:10: warning: 'ptr' may be used uninitia
 drivers/net/ethernet/ti/netcp_core.c:678:9: note: 'ptr' was declared here
    void *ptr;
          ^
-<stdin>:1307:2: warning: #warning syscall copy_file_range not implemented [-Wcpp]
-<stdin>:1307:2: warning: #warning syscall copy_file_range not implemented [-Wcpp]
-Fri Dec 18 06:21:14 CST 2015: Build result = 0
+arch/arm/kernel/built-in.o: In function `patch_text':
+/home/nmenon/Src/opensource/auto-test/linux/arch/arm/kernel/patch.c:127: undefined reference to `stop_machine'
+arch/arm/probes/built-in.o: In function `kprobes_remove_breakpoint':
+/home/nmenon/Src/opensource/auto-test/linux/arch/arm/probes/kprobes/core.c:184: undefined reference to `stop_machine'
+/home/nmenon/Src/opensource/auto-test/linux/arch/arm/probes/kprobes/core.c:184: undefined reference to `stop_machine'
+kernel/built-in.o: In function `timekeeping_notify':
+/home/nmenon/Src/opensource/auto-test/linux/kernel/time/timekeeping.c:1096: undefined reference to `stop_machine'
+mm/built-in.o: In function `build_all_zonelists':
+/home/nmenon/Src/opensource/auto-test/linux/mm/page_alloc.c:4508: undefined reference to `stop_machine'
+make: *** [vmlinux] Error 1
+Sat Dec 19 10:49:25 CST 2015: Build result = 1
