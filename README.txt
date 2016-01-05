@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20160104
-Mon Jan  4 08:04:00 CST 2016
+Automated logs for TAG=next-20160105
+Tue Jan  5 16:07:07 CST 2016
 ====defconfig=keystone_defconfig===
 keystone_defconfig
  1:             k2e-evm: BOOT: FAIL: k2e-evm.txt
