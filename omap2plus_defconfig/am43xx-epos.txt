@@ -1,0 +1,465 @@
+- 00:32:30 [INFO] Starting target session
+- 00:32:33 [INFO] Connected to am43xx-epos via serial 
+- 00:32:33 [INFO] Host: #check prompt
+- 00:32:36 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
+- 00:32:36 [INFO] Target: 
+- 00:32:36 [INFO] Host: #check prompt
+- 00:32:38 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root@am437x-evm.*#) >>> error: execution expired
+- 00:32:38 [INFO] Target: 
+- 00:32:38 [INFO] Host: #check prompt
+- 00:32:40 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root@am437x-evm.*#) >>> error: execution expired
+- 00:32:40 [INFO] Target: 
+- 00:32:40 [INFO] Host: #check prompt
+- 00:32:42 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root@am437x-evm.*#) >>> error: execution expired
+- 00:32:42 [INFO] Target: 
+- 00:32:42 [INFO] Disconnected serial from am43xx-epos
+- 00:33:03 [INFO] Connected to am43xx-epos via serial 
+- 00:33:03 [INFO] Host: 
+- 00:33:04 [INFO] Target: 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+- 00:33:05 [INFO] Host: 
+- 00:33:05 [INFO] Target: 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+- 00:33:05 [INFO] Host: version
+- 00:33:05 [INFO] Target: 
+version
+U-Boot 2014.07 (Aug 11 2014 - 20:04:22)
+arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
+GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
+U-Boot# 
+- 00:33:05 [INFO] Host: setenv bootargs 'console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait '
+- 00:33:05 [INFO] Target: 
+setenv bootargs 'console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait '
+U-Boot# 
+- 00:33:05 [INFO] Host: setenv bootcmd  ''
+- 00:33:05 [INFO] Target: 
+setenv bootcmd  ''
+U-Boot# 
+- 00:33:05 [INFO] Host: setenv autoload 'no'
+- 00:33:05 [INFO] Target: 
+setenv autoload 'no'
+U-Boot# 
+- 00:33:05 [INFO] Host: setenv serverip '192.168.1.254'
+- 00:33:05 [INFO] Target: 
+setenv serverip '192.168.1.254'
+U-Boot# 
+- 00:33:05 [INFO] Host: printenv
+- 00:33:06 [INFO] Target: 
+printenv
+arch=arm
+autoload=no
+baudrate=115200
+board=am43xx
+board_name=AM43EPOS
+board_rev=1.2B
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait 
+bootcmd=
+bootdelay=1
+bootdir=/boot
+bootenv=uEnv.txt
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+console=ttyO0,115200n8
+cpu=armv7
+eth1addr=34:b1:f7:31:4c:2e
+ethact=cpsw
+ethaddr=34:b1:f7:31:4c:2c
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtfile=undefined
+findfdt=if test $board_name = AM43EPOS; then setenv fdtfile am43x-epos-evm.dtb; fi; if test $board_name = AM43__GP; then setenv fdtfile am437x-gp-evm.dtb; fi; if test $board_name = AM43__SK; then setenv fdtfile am437x-sk-evm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree; fi; 
+importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=load ${devtype} ${devnum} ${loadaddr} ${bootenv}
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load ${devtype} ${devnum} ${rdaddr} ramdisk.gz
+mmcargs=setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device ${devnum};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk0p2 rw
+mmcrootfstype=ext4 rootwait
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramdisk_addr_r=0x88080000
+ramroot=/dev/ram0 rw
+ramrootfstype=ext2
+rdaddr=0x88080000
+serverip=192.168.1.254
+soc=am33xx
+stderr=serial
+stdin=serial
+stdout=serial
+usbargs=setenv bootargs console=${console} ${optargs} root=${usbroot} rootfstype=${usbrootfstype}
+usbboot=setenv devnum ${usbdev}; setenv devtype usb; usb start ${usbdev}; if usb dev ${usbdev}; then if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from usb ${usbdev}...; run usbargs;bootz ${loadaddr} - ${fdtaddr}; fi;fi
+usbdev=0
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+vendor=ti
+ver=U-Boot 2014.07 (Aug 11 2014 - 20:04:22)
+Environment size: 2746/65532 bytes
+U-Boot# 
+- 00:33:06 [INFO] Host: setenv _initramfs -
+- 00:33:06 [INFO] Target: 
+setenv _initramfs -
+U-Boot# 
+- 00:33:06 [INFO] Host: printenv
+- 00:33:06 [INFO] Target: 
+printenv
+_initramfs=-
+arch=arm
+autoload=no
+baudrate=115200
+board=am43xx
+board_name=AM43EPOS
+board_rev=1.2B
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait 
+bootcmd=
+bootdelay=1
+bootdir=/boot
+bootenv=uEnv.txt
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+console=ttyO0,115200n8
+cpu=armv7
+eth1addr=34:b1:f7:31:4c:2e
+ethact=cpsw
+ethaddr=34:b1:f7:31:4c:2c
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtfile=undefined
+findfdt=if test $board_name = AM43EPOS; then setenv fdtfile am43x-epos-evm.dtb; fi; if test $board_name = AM43__GP; then setenv fdtfile am437x-gp-evm.dtb; fi; if test $board_name = AM43__SK; then setenv fdtfile am437x-sk-evm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree; fi; 
+importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=load ${devtype} ${devnum} ${loadaddr} ${bootenv}
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load ${devtype} ${devnum} ${rdaddr} ramdisk.gz
+mmcargs=setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device ${devnum};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk0p2 rw
+mmcrootfstype=ext4 rootwait
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramdisk_addr_r=0x88080000
+ramroot=/dev/ram0 rw
+ramrootfstype=ext2
+rdaddr=0x88080000
+serverip=192.168.1.254
+soc=am33xx
+stderr=serial
+stdin=serial
+stdout=serial
+usbargs=setenv bootargs console=${console} ${optargs} root=${usbroot} rootfstype=${usbrootfstype}
+usbboot=setenv devnum ${usbdev}; setenv devtype usb; usb start ${usbdev}; if usb dev ${usbdev}; then if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from usb ${usbdev}...; run usbargs;bootz ${loadaddr} - ${fdtaddr}; fi;fi
+usbdev=0
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+vendor=ti
+ver=U-Boot 2014.07 (Aug 11 2014 - 20:04:22)
+Environment size: 2761/65532 bytes
+U-Boot# 
+- 00:33:06 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 00:33:06 [INFO] Target: 
+setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+U-Boot# 
+- 00:33:06 [INFO] Host: setenv serverip '192.168.1.254'
+- 00:33:06 [INFO] Target: 
+setenv serverip '192.168.1.254'
+U-Boot# 
+- 00:33:06 [INFO] Host: setenv autoload 'no'
+- 00:33:06 [INFO] Target: 
+setenv autoload 'no'
+U-Boot# 
+- 00:33:06 [INFO] Host: dhcp
+- 00:33:08 [INFO] Target: 
+dhcp
+link up on port 0, speed 100, full duplex
+BOOTP broadcast 1
+DHCP client bound to address 192.168.1.161
+U-Boot# 
+- 00:33:08 [INFO] Host: tftp ${loadaddr} 192.168.1.254:vatf_am43xx-epos/41aa3bcead3213c64edd08d8146d9eea
+- 00:33:08 [INFO] Target: 
+tftp ${loadaddr} 192.168.1.254:vatf_am43xx-epos/41aa3bcead3213c64edd08d8146d9eea
+link up on port 0, speed 100, full duplex
+Using cpsw device
+TFTP from server 192.168.1.254; our IP address is 192.168.1.161
+Filename 'vatf_am43xx-epos/41aa3bcead3213c64edd08d8146d9eea'.
+Load address: 0x82000000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #######################################################
+	 4.5 MiB/s
+done
+Bytes transferred = 3655400 (37c6e8 hex)
+U-Boot# 
+- 00:33:08 [INFO] Host: tftp ${fdtaddr} 192.168.1.254:vatf_am43xx-epos/96ef95c2546c31216415d127cc5ab819
+- 00:33:08 [INFO] Target: 
+tftp ${fdtaddr} 192.168.1.254:vatf_am43xx-epos/96ef95c2546c31216415d127cc5ab819
+link up on port 0, speed 100, full duplex
+Using cpsw device
+TFTP from server 192.168.1.254; our IP address is 192.168.1.161
+Filename 'vatf_am43xx-epos/96ef95c2546c31216415d127cc5ab819'.
+Load address: 0x88000000
+Loading: *####
+	 3.9 MiB/s
+done
+Bytes transferred = 44423 (ad87 hex)
+U-Boot# 
+- 00:33:08 [INFO] Host: ls mmc 0:1
+- 00:33:09 [INFO] Target: 
+ls mmc 0:1
+   109692   mlo 
+   292904   u-boot.img 
+       14   .ipaddr 
+        0   pointercal 
+        4   ws-calibrate.rules 
+5 file(s), 0 dir(s)
+U-Boot# 
+- 00:33:09 [INFO] Host: ls mmc 0:2
+- 00:33:09 [INFO] Target: 
+ls mmc 0:2
+<DIR>       4096 .
+<DIR>       4096 ..
+<DIR>      16384 lost+found
+<DIR>       4096 bin
+<DIR>       4096 boot
+<DIR>       4096 dev
+<DIR>       4096 etc
+<DIR>       4096 home
+<DIR>       4096 lib
+<DIR>       4096 media
+<DIR>       4096 mnt
+<DIR>       4096 opt
+<DIR>       4096 proc
+<DIR>       4096 sbin
+<DIR>       4096 srv
+<DIR>       4096 sys
+<SYM>          8 tmp
+<DIR>       4096 usr
+<DIR>       4096 var
+<DIR>       4096 www
+<SYM>          8 run
+<DIR>       4096 Settings
+<DIR>       4096 test
+U-Boot# 
+- 00:33:09 [INFO] Host: part uuid mmc 0:2
+- 00:33:09 [INFO] Target: 
+part uuid mmc 0:2
+00000000-02
+U-Boot# 
+- 00:33:09 [INFO] Host: printenv
+- 00:33:09 [INFO] Target: 
+printenv
+_initramfs=-
+arch=arm
+autoload=no
+baudrate=115200
+board=am43xx
+board_name=AM43EPOS
+board_rev=1.2B
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait  ip=:::::eth0:dhcp 
+bootcmd=
+bootdelay=1
+bootdir=/boot
+bootenv=uEnv.txt
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+console=ttyO0,115200n8
+cpu=armv7
+dnsip=192.0.2.2
+dnsip2=192.0.2.3
+eth1addr=34:b1:f7:31:4c:2e
+ethact=cpsw
+ethaddr=34:b1:f7:31:4c:2c
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtfile=undefined
+fileaddr=88000000
+filesize=ad87
+findfdt=if test $board_name = AM43EPOS; then setenv fdtfile am43x-epos-evm.dtb; fi; if test $board_name = AM43__GP; then setenv fdtfile am437x-gp-evm.dtb; fi; if test $board_name = AM43__SK; then setenv fdtfile am437x-sk-evm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree; fi; 
+gatewayip=192.168.1.254
+importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+ipaddr=192.168.1.161
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=load ${devtype} ${devnum} ${loadaddr} ${bootenv}
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load ${devtype} ${devnum} ${rdaddr} ramdisk.gz
+mmcargs=setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device ${devnum};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk0p2 rw
+mmcrootfstype=ext4 rootwait
+netmask=255.255.255.0
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramdisk_addr_r=0x88080000
+ramroot=/dev/ram0 rw
+ramrootfstype=ext2
+rdaddr=0x88080000
+serverip=192.168.1.254
+soc=am33xx
+stderr=serial
+stdin=serial
+stdout=serial
+usbargs=setenv bootargs console=${console} ${optargs} root=${usbroot} rootfstype=${usbrootfstype}
+usbboot=setenv devnum ${usbdev}; setenv devtype usb; usb start ${usbdev}; if usb dev ${usbdev}; then if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from usb ${usbdev}...; run usbargs;bootz ${loadaddr} - ${fdtaddr}; fi;fi
+usbdev=0
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+vendor=ti
+ver=U-Boot 2014.07 (Aug 11 2014 - 20:04:22)
+Environment size: 2926/65532 bytes
+U-Boot# 
+- 00:33:09 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 00:33:09 [INFO] Target: 
+setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+U-Boot# 
+- 00:33:09 [INFO] Host: printenv
+- 00:33:09 [INFO] Target: 
+printenv
+_initramfs=-
+arch=arm
+autoload=no
+baudrate=115200
+board=am43xx
+board_name=AM43EPOS
+board_rev=1.2B
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait  ip=:::::eth0:dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
+bootcmd=
+bootdelay=1
+bootdir=/boot
+bootenv=uEnv.txt
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+console=ttyO0,115200n8
+cpu=armv7
+dnsip=192.0.2.2
+dnsip2=192.0.2.3
+eth1addr=34:b1:f7:31:4c:2e
+ethact=cpsw
+ethaddr=34:b1:f7:31:4c:2c
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtfile=undefined
+fileaddr=88000000
+filesize=ad87
+findfdt=if test $board_name = AM43EPOS; then setenv fdtfile am43x-epos-evm.dtb; fi; if test $board_name = AM43__GP; then setenv fdtfile am437x-gp-evm.dtb; fi; if test $board_name = AM43__SK; then setenv fdtfile am437x-sk-evm.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree; fi; 
+gatewayip=192.168.1.254
+importbootenv=echo Importing environment from mmc ...; env import -t $loadaddr $filesize
+ipaddr=192.168.1.161
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=load ${devtype} ${devnum} ${loadaddr} ${bootenv}
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load ${devtype} ${devnum} ${rdaddr} ramdisk.gz
+mmcargs=setenv bootargs console=${console} ${optargs} root=${mmcroot} rootfstype=${mmcrootfstype}
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device ${devnum};if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from mmc${mmcdev} ...; run mmcargs; bootz ${loadaddr} - ${fdtaddr}; fi;fi;
+mmcdev=0
+mmcroot=/dev/mmcblk0p2 rw
+mmcrootfstype=ext4 rootwait
+netmask=255.255.255.0
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramdisk_addr_r=0x88080000
+ramroot=/dev/ram0 rw
+ramrootfstype=ext2
+rdaddr=0x88080000
+serverip=192.168.1.254
+soc=am33xx
+stderr=serial
+stdin=serial
+stdout=serial
+usbargs=setenv bootargs console=${console} ${optargs} root=${usbroot} rootfstype=${usbrootfstype}
+usbboot=setenv devnum ${usbdev}; setenv devtype usb; usb start ${usbdev}; if usb dev ${usbdev}; then if run loadbootenv; then echo Loaded environment from ${bootenv};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;if run loadimage; then run loadfdt; echo Booting from usb ${usbdev}...; run usbargs;bootz ${loadaddr} - ${fdtaddr}; fi;fi
+usbdev=0
+usbroot=/dev/sda2 rw
+usbrootfstype=ext4 rootwait
+vendor=ti
+ver=U-Boot 2014.07 (Aug 11 2014 - 20:04:22)
+Environment size: 2981/65532 bytes
+U-Boot# 
+- 00:33:09 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdtaddr}; else bootz ${loadaddr} ${_initramfs} ${fdtaddr}; bootm ${loadaddr} ${_initramfs} ${fdtaddr}; fi'
+- 00:33:10 [INFO] Target: 
+setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdtaddr}; else bootz ${loadaddr} ${_initramfs} ${fdtaddr}; bootm ${loadaddr} ${_initramfs} ${fdtaddr}; fi'
+U-Boot# 
+- 00:33:10 [INFO] Host: version
+- 00:33:10 [INFO] Target: 
+version
+U-Boot 2014.07 (Aug 11 2014 - 20:04:22)
+arm-linux-gnueabihf-gcc (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 4.7.3 20130226 (prerelease)
+GNU ld (crosstool-NG linaro-1.13.1-4.7-2013.03-20130313 - Linaro GCC 2013.03) 2.23.1
+U-Boot# 
+- 00:33:10 [INFO] Host: bdinfo
+- 00:33:10 [INFO] Target: 
+bdinfo
+arch_number = 0x00000000
+boot_params = 0x80000100
+DRAM bank   = 0x00000000
+-> start    = 0x80000000
+-> size     = 0x40000000
+eth0name    = cpsw
+ethaddr     = 34:b1:f7:31:4c:2c
+current eth = cpsw
+ip_addr     = 192.168.1.161
+baudrate    = 115200 bps
+TLB addr    = 0xBFFF0000
+relocaddr   = 0xBFF4E000
+reloc off   = 0x3F74E000
+irq_sp      = 0xBEF3DEE0
+sp start    = 0xBEF3DED0
+U-Boot# 
+- 00:33:10 [INFO] Host: mmc rescan; echo $?
+- 00:33:10 [INFO] Target: 
+mmc rescan; echo $?
+U-Boot# 
+- 00:33:10 [INFO] Host: fatwrite mmc 0:1 ${loadaddr} ws-calibrate.rules 4
+- 00:33:10 [INFO] Target: 
+fatwrite mmc 0:1 ${loadaddr} ws-calibrate.rules 4
+writing ws-calibrate.rules
+4 bytes written
+U-Boot# 
+- 00:33:10 [INFO] Host: boot
+- 00:36:40 [ERROR] On command: boot waiting for boot.+?(?-mix:.*\s+login) >>> error: execution expired
+- 00:36:40 [INFO] Target: 
+boot
+## Checking Image at 82000000 ...
+Unknown image format!
+Kernel image @ 0x82000000 [ 0x000000 - 0x37c6e8 ]
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Device Tree to 8fff2000, end 8ffffd86 ... OK
+Starting kernel ...
+- 00:36:40 [INFO] Boot attempt 1/1 failed
+- 00:36:40 [INFO] Collecting kernel traces via sysrq...
+- 00:36:50 [INFO] 
+- 00:37:00 [INFO] 
+- 00:37:11 [INFO] 
+- 00:37:11 [INFO] Disconnected serial from am43xx-epos
+URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-02/tidfarm-02_vatf@am43xx-epos/tidfarm-0202_15_2016_00_32_29/files/session_iteration_1/test_1
