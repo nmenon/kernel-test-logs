@@ -1,22 +1,85 @@
-- 01:26:45 [INFO] Starting target session
-- 01:26:45 [INFO] Connected to am57xx-evm via serial 
-- 01:26:45 [INFO] Host: #check prompt
-- 01:26:48 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
-- 01:26:48 [INFO] Target: 
-- 01:26:48 [INFO] Host: #check prompt
-- 01:26:50 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:[\w\d]+@.+[@:#]+) >>> error: execution expired
-- 01:26:50 [INFO] Target: 
-- 01:26:50 [INFO] Host: #check prompt
-- 01:26:52 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:[\w\d]+@.+[@:#]+) >>> error: execution expired
-- 01:26:52 [INFO] Target: 
-- 01:26:52 [INFO] Host: #check prompt
-- 01:26:54 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:[\w\d]+@.+[@:#]+) >>> error: execution expired
-- 01:26:54 [INFO] Target: 
-- 01:26:54 [INFO] Disconnected serial from am57xx-evm
-- 01:26:59 [INFO] Connected to am57xx-evm via serial 
-- 01:26:59 [INFO] Host: 
-- 01:27:00 [INFO] Target: 
-MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+- 13:27:37 [INFO] Starting target session
+- 13:27:37 [INFO] Connected to am57xx-evm via serial 
+- 13:27:37 [INFO] Host: #check prompt
+- 13:27:40 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
+- 13:27:40 [INFO] Target: 
+#check prompt
+root@am57xx-evm:/test# 
+- 13:27:40 [INFO] Host: #check prompt
+- 13:27:41 [INFO] Target: 
+#check prompt
+root@am57xx-evm:/test# 
+- 13:27:41 [INFO] Host: sync;poweroff
+- 13:27:51 [INFO] Target: 
+sync;poweroff
+Broadcast message from root@am57xx-evm (ttyS2) (Fri Feb 12 [ 4436.778293] ------------[ cut here ]------------
+[ 4436.782950] WARNING: CPU: 1 PID: 12 at drivers/tty/serial/8250/8250_omap.c:1037 omap8250_no_handle_irq+0x34/0x50()
+[ 4436.793342] Unexpected irq handling before port startup
+[ 4436.798589] Modules linked in:
+[ 4436.801669] CPU: 1 PID: 12 Comm: ksoftirqd/1 Not tainted 4.1.0-00631-g26b97e1 #1
+[ 4436.809096] Hardware name: Generic DRA74X (Flattened Device Tree)
+[ 4436.815215] Backtrace: 
+[ 4436.817691] [<c0012b0c>] (dump_backtrace) from [<c0012ca8>] (show_stack+0x18/0x1c)
+[ 4436.825293]  r6:0000040d r5:ed8b8000 r4:00000000 r3:00000000
+[ 4436.831019] [<c0012c90>] (show_stack) from [<c056699c>] (dump_stack+0x94/0xe0)
+[ 4436.838282] [<c0566908>] (dump_stack) from [<c00414e4>] (warn_slowpath_common+0x80/0xbc)
+[ 4436.846404]  r5:c036ac8c r4:ed8b9dd0
+[ 4436.850017] [<c0041464>] (warn_slowpath_common) from [<c00415c4>] (warn_slowpath_fmt+0x38/0x40)
+[ 4436.858749]  r8:0000018f r7:00000000 r6:00000000 r5:edbb12a0 r4:c081fd9e
+[ 4436.865532] [<c0041590>] (warn_slowpath_fmt) from [<c036ac8c>] (omap8250_no_handle_irq+0x34/0x50)
+[ 4436.874442]  r3:00000000 r2:c06f25c8
+[ 4436.878056] [<c036ac58>] (omap8250_no_handle_irq) from [<c036a944>] (omap_wake_irq+0x18/0x24)
+[ 4436.886615]  r4:edf81ec0 r3:c036ac58
+[ 4436.890227] [<c036a92c>] (omap_wake_irq) from [<c0080218>] (handle_irq_event_percpu+0x54/0x158)
+[ 4436.898971] [<c00801c4>] (handle_irq_event_percpu) from [<c0080360>] (handle_irq_event+0x44/0x64)
+[ 4436.907879]  r10:c0824980 r9:00000000 r8:c07a9310 r7:c07b0b4c r6:edf81ec0 r5:edbb12a0
+[ 4436.915788]  r4:edbb1240
+[ 4436.918345] [<c008031c>] (handle_irq_event) from [<c0083408>] (handle_level_irq+0xbc/0x144)
+[ 4436.926729]  r6:c07e9e3c r5:edbb12a0 r4:edbb1240 r3:00020000
+[ 4436.932450] [<c008334c>] (handle_level_irq) from [<c0082b00>] (resend_irqs+0x48/0x74)
+[ 4436.940313]  r5:c07e9e3c r4:0000018f
+[ 4436.943925] [<c0082ab8>] (resend_irqs) from [<c0044434>] (tasklet_action+0x8c/0x138)
+[ 4436.951698]  r6:00000000 r5:c07e9e64 r4:c07e9e60 r3:c0082ab8
+[ 4436.957422] [<c00443a8>] (tasklet_action) from [<c004489c>] (__do_softirq+0xf4/0x248)
+[ 4436.965282]  r10:c07b0080 r9:00000100 r8:00000006 r7:c07b0080 r6:00000006 r5:c07b0098
+[ 4436.973186]  r4:00000000 r3:c00443a8
+[ 4436.976796] [<c00447a8>] (__do_softirq) from [<c0044a2c>] (run_ksoftirqd+0x3c/0x58)
+[ 4436.984482]  r10:00000002 r9:00000000 r8:00000000 r7:00000000 r6:c07e73ec r5:00000001
+[ 4436.992389]  r4:ed845e80
+[ 4436.994949] [<c00449f0>] (run_ksoftirqd) from [<c005df00>] (smpboot_thread_fn+0x190/0x2b4)
+[ 4437.003258] [<c005dd70>] (smpboot_thread_fn) from [<c005a6b4>] (kthread+0xdc/0xf8)
+[ 4437.010859]  r10:00000000 r9:00000000 r8:00000000 r7:c005dd70 r6:ed845e80 r5:ed845f00
+[ 4437.018760]  r4:00000000 r3:00000005
+[ 4437.022374] [<c005a5d8>] (kthread) from [<c000fc08>] (ret_from_fork+0x14/0x2c)
+[ 4437.029624]  r7:00000000 r6:00000000 r5:c005a5d8 r4:ed845f00
+[ 4437.035341] ---[ end trace 36e60187272e070d ]---
+Stopping telnet daemon.
+Stopping system message bus: dbus.
+Error opening /dev/fb0: No such file or directory
+Stopping syslogd/klogd: stopped syslogd (pid 889)
+stopped klogd (pid 892)
+done
+Stopping thttpd.
+stopping statd: done
+ALSA: Storing mixer settings...
+/usr/sbin/alsactl: save_state:1590: No soundcards found...
+Stopping rpcbind daemon...
+done.
+Deconfiguring network interfaces... done.
+Disabling thermal zones...
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+[ 4442.726177] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
+[ 4445.322227] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+[ 4445.327699] sd 0:0:0:0: [sda] Stopping disk
+[ 4445.795833] reboot: Power down
+- 13:27:51 [INFO] Disconnected serial from am57xx-evm
+- 13:27:56 [INFO] Connected to am57xx-evm via serial 
+- 13:27:56 [INFO] Host: 
+- 13:28:00 [INFO] Target: 
 reading uboot.env
 Target spinup took 0 ms.
 AHCI 0001.0300 32 slots 1 ports 3 Gbps 0x1 impl SATA mode
@@ -37,35 +100,72 @@ U-Boot#
 U-Boot# 
 U-Boot# 
 U-Boot# 
-- 01:27:00 [INFO] Host: 
-- 01:27:00 [INFO] Target: 
-Boot# 
 U-Boot# 
-- 01:27:00 [INFO] Host: version
-- 01:27:00 [INFO] Target: 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+- 13:28:00 [INFO] Host: 
+- 13:28:00 [INFO] Target: 
+ot# 
+U-Boot# 
+- 13:28:00 [INFO] Host: version
+- 13:28:00 [INFO] Target: 
 version
 U-Boot 2015.07 (Dec 04 2015 - 23:41:40 -0500)
 arm-linux-gnueabihf-gcc (Linaro GCC 4.9-2015.05) 4.9.3 20150413 (prerelease)
 GNU ld (GNU Binutils) Linaro 2014.11-3-git 2.24.0.20141017
 U-Boot# 
-- 01:27:00 [INFO] Host: setenv bootargs 'console=ttyO2,115200n8  earlyprintk rootwait '
-- 01:27:00 [INFO] Target: 
-setenv bootargs 'console=ttyO2,115200n8  earlyprintk rootwait '
+- 13:28:00 [INFO] Host: setenv bootargs 'console=ttyS2,115200n8  earlyprintk=serial,ttyS2,115200n8 rootwait '
+- 13:28:00 [INFO] Target: 
+setenv bootargs 'console=ttyS2,115200n8  earlyprintk=serial,ttyS2,115200n8 rootwait '
 U-Boot# 
-- 01:27:00 [INFO] Host: setenv bootcmd  ''
-- 01:27:01 [INFO] Target: 
+- 13:28:00 [INFO] Host: setenv bootcmd  ''
+- 13:28:01 [INFO] Target: 
 setenv bootcmd  ''
 U-Boot# 
-- 01:27:01 [INFO] Host: setenv autoload 'no'
-- 01:27:01 [INFO] Target: 
+- 13:28:01 [INFO] Host: setenv autoload 'no'
+- 13:28:01 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 01:27:01 [INFO] Host: setenv serverip '192.168.0.1'
-- 01:27:01 [INFO] Target: 
+- 13:28:01 [INFO] Host: setenv serverip '192.168.0.1'
+- 13:28:01 [INFO] Target: 
 setenv serverip '192.168.0.1'
 U-Boot# 
-- 01:27:01 [INFO] Host: printenv
-- 01:27:01 [INFO] Target: 
+- 13:28:01 [INFO] Host: printenv
+- 13:28:01 [INFO] Target: 
 printenv
 arch=arm
 args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
@@ -75,7 +175,7 @@ board=am57xx
 board_name=am57xx_evm
 board_rev=A.20
 board_serial=33154P550004
-bootargs=console=ttyO2,115200n8  earlyprintk rootwait 
+bootargs=console=ttyS2,115200n8  earlyprintk=serial,ttyS2,115200n8 rootwait 
 bootcmd=
 bootdelay=1
 bootdir=/boot
@@ -131,14 +231,14 @@ usbtty=cdc_acm
 vendor=ti
 ver=U-Boot 2015.07 (Dec 04 2015 - 23:41:40 -0500)
 vram=16M
-Environment size: 4248/65532 bytes
+Environment size: 4270/65532 bytes
 U-Boot# 
-- 01:27:01 [INFO] Host: setenv _initramfs -
-- 01:27:01 [INFO] Target: 
+- 13:28:01 [INFO] Host: setenv _initramfs -
+- 13:28:01 [INFO] Target: 
 setenv _initramfs -
 U-Boot# 
-- 01:27:01 [INFO] Host: printenv
-- 01:27:02 [INFO] Target: 
+- 13:28:01 [INFO] Host: printenv
+- 13:28:02 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -149,7 +249,7 @@ board=am57xx
 board_name=am57xx_evm
 board_rev=A.20
 board_serial=33154P550004
-bootargs=console=ttyO2,115200n8  earlyprintk rootwait 
+bootargs=console=ttyS2,115200n8  earlyprintk=serial,ttyS2,115200n8 rootwait 
 bootcmd=
 bootdelay=1
 bootdir=/boot
@@ -205,52 +305,51 @@ usbtty=cdc_acm
 vendor=ti
 ver=U-Boot 2015.07 (Dec 04 2015 - 23:41:40 -0500)
 vram=16M
-Environment size: 4263/65532 bytes
+Environment size: 4285/65532 bytes
 U-Boot# 
-- 01:27:02 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
-- 01:27:02 [INFO] Target: 
+- 13:28:02 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 13:28:02 [INFO] Target: 
 setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
 U-Boot# 
-- 01:27:02 [INFO] Host: setenv serverip '192.168.0.1'
-- 01:27:02 [INFO] Target: 
+- 13:28:02 [INFO] Host: setenv serverip '192.168.0.1'
+- 13:28:02 [INFO] Target: 
 setenv serverip '192.168.0.1'
 U-Boot# 
-- 01:27:02 [INFO] Host: setenv autoload 'no'
-- 01:27:02 [INFO] Target: 
+- 13:28:02 [INFO] Host: setenv autoload 'no'
+- 13:28:02 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 01:27:02 [INFO] Host: dhcp
-- 01:27:04 [INFO] Target: 
+- 13:28:02 [INFO] Host: dhcp
+- 13:28:03 [INFO] Target: 
 dhcp
-cpsw Waiting for PHY auto negotiation to complete. done
 link up on port 0, speed 1000, full duplex
 BOOTP broadcast 1
 BOOTP broadcast 2
 BOOTP broadcast 3
-DHCP client bound to address 192.168.0.132 (1002 ms)
+DHCP client bound to address 192.168.0.216 (1035 ms)
 U-Boot# 
-- 01:27:04 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_am57xx-evm1/d74a25e06a2552d7a228676f54f8c4e6
-- 01:27:04 [INFO] Target: 
-tftp ${loadaddr} 192.168.0.1:vatf_am57xx-evm1/d74a25e06a2552d7a228676f54f8c4e6
+- 13:28:03 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_am57xx-evm1/ac8acf5ea9d8423b26a1c6a6696bbd25
+- 13:28:04 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_am57xx-evm1/ac8acf5ea9d8423b26a1c6a6696bbd25
 link up on port 0, speed 1000, full duplex
 Using cpsw device
-TFTP from server 192.168.0.1; our IP address is 192.168.0.132
-Filename 'vatf_am57xx-evm1/d74a25e06a2552d7a228676f54f8c4e6'.
+TFTP from server 192.168.0.1; our IP address is 192.168.0.216
+Filename 'vatf_am57xx-evm1/ac8acf5ea9d8423b26a1c6a6696bbd25'.
 Load address: 0x82000000
 Loading: *#################################################################
 	 #################################################################
 	 #################################################################
-	 ########################################################
-	 9.2 MiB/s
+	 #########################################################
+	 9.3 MiB/s
 done
-Bytes transferred = 3680736 (3829e0 hex)
+Bytes transferred = 3686936 (384218 hex)
 U-Boot# 
-- 01:27:04 [INFO] Host: tftp ${fdtaddr} 192.168.0.1:vatf_am57xx-evm1/ee79e447e21c9c40a8ff8cb788de024b
-- 01:27:04 [INFO] Target: 
+- 13:28:04 [INFO] Host: tftp ${fdtaddr} 192.168.0.1:vatf_am57xx-evm1/ee79e447e21c9c40a8ff8cb788de024b
+- 13:28:04 [INFO] Target: 
 tftp ${fdtaddr} 192.168.0.1:vatf_am57xx-evm1/ee79e447e21c9c40a8ff8cb788de024b
 link up on port 0, speed 1000, full duplex
 Using cpsw device
-TFTP from server 192.168.0.1; our IP address is 192.168.0.132
+TFTP from server 192.168.0.1; our IP address is 192.168.0.216
 Filename 'vatf_am57xx-evm1/ee79e447e21c9c40a8ff8cb788de024b'.
 Load address: 0x88000000
 Loading: *######
@@ -258,8 +357,8 @@ Loading: *######
 done
 Bytes transferred = 80318 (139be hex)
 U-Boot# 
-- 01:27:04 [INFO] Host: ls mmc 0:1
-- 01:27:04 [INFO] Target: 
+- 13:28:04 [INFO] Host: ls mmc 0:1
+- 13:28:04 [INFO] Target: 
 ls mmc 0:1
     59144   mlo 
    288816   u-boot.img 
@@ -270,8 +369,8 @@ ls mmc 0:1
     65536   uboot.env 
 7 file(s), 0 dir(s)
 U-Boot# 
-- 01:27:04 [INFO] Host: ls mmc 0:2
-- 01:27:04 [INFO] Target: 
+- 13:28:04 [INFO] Host: ls mmc 0:2
+- 13:28:04 [INFO] Target: 
 ls mmc 0:2
 <DIR>       4096 .
 <DIR>       4096 ..
@@ -293,13 +392,13 @@ ls mmc 0:2
 <DIR>       4096 lib
 <DIR>       4096 test
 U-Boot# 
-- 01:27:04 [INFO] Host: part uuid mmc 0:2
-- 01:27:04 [INFO] Target: 
+- 13:28:04 [INFO] Host: part uuid mmc 0:2
+- 13:28:04 [INFO] Target: 
 part uuid mmc 0:2
 00000000-02
 U-Boot# 
-- 01:27:04 [INFO] Host: printenv
-- 01:27:05 [INFO] Target: 
+- 13:28:04 [INFO] Host: printenv
+- 13:28:04 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -310,7 +409,7 @@ board=am57xx
 board_name=am57xx_evm
 board_rev=A.20
 board_serial=33154P550004
-bootargs=console=ttyO2,115200n8  earlyprintk rootwait  ip=:::::eth0:dhcp 
+bootargs=console=ttyS2,115200n8  earlyprintk=serial,ttyS2,115200n8 rootwait  ip=:::::eth0:dhcp 
 bootcmd=
 bootdelay=1
 bootdir=/boot
@@ -342,7 +441,7 @@ findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi
 finduuid=part uuid mmc 0:2 uuid
 gatewayip=192.168.0.1
 importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
-ipaddr=192.168.0.132
+ipaddr=192.168.0.216
 kernel_addr_r=0x82000000
 loadaddr=0x82000000
 loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
@@ -373,14 +472,14 @@ usbtty=cdc_acm
 vendor=ti
 ver=U-Boot 2015.07 (Dec 04 2015 - 23:41:40 -0500)
 vram=16M
-Environment size: 4427/65532 bytes
+Environment size: 4449/65532 bytes
 U-Boot# 
-- 01:27:05 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
-- 01:27:05 [INFO] Target: 
+- 13:28:04 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 13:28:04 [INFO] Target: 
 setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
 U-Boot# 
-- 01:27:05 [INFO] Host: printenv
-- 01:27:05 [INFO] Target: 
+- 13:28:04 [INFO] Host: printenv
+- 13:28:05 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -391,7 +490,7 @@ board=am57xx
 board_name=am57xx_evm
 board_rev=A.20
 board_serial=33154P550004
-bootargs=console=ttyO2,115200n8  earlyprintk rootwait  ip=:::::eth0:dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
+bootargs=console=ttyS2,115200n8  earlyprintk=serial,ttyS2,115200n8 rootwait  ip=:::::eth0:dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
 bootcmd=
 bootdelay=1
 bootdir=/boot
@@ -423,7 +522,7 @@ findfdt=if test $board_name = omap5_uevm; then setenv fdtfile omap5-uevm.dtb; fi
 finduuid=part uuid mmc 0:2 uuid
 gatewayip=192.168.0.1
 importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
-ipaddr=192.168.0.132
+ipaddr=192.168.0.216
 kernel_addr_r=0x82000000
 loadaddr=0x82000000
 loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
@@ -454,21 +553,21 @@ usbtty=cdc_acm
 vendor=ti
 ver=U-Boot 2015.07 (Dec 04 2015 - 23:41:40 -0500)
 vram=16M
-Environment size: 4482/65532 bytes
+Environment size: 4504/65532 bytes
 U-Boot# 
-- 01:27:05 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdtaddr}; else bootz ${loadaddr} ${_initramfs} ${fdtaddr}; bootm ${loadaddr} ${_initramfs} ${fdtaddr}; fi'
-- 01:27:05 [INFO] Target: 
+- 13:28:05 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdtaddr}; else bootz ${loadaddr} ${_initramfs} ${fdtaddr}; bootm ${loadaddr} ${_initramfs} ${fdtaddr}; fi'
+- 13:28:05 [INFO] Target: 
 setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdtaddr}; else bootz ${loadaddr} ${_initramfs} ${fdtaddr}; bootm ${loadaddr} ${_initramfs} ${fdtaddr}; fi'
 U-Boot# 
-- 01:27:05 [INFO] Host: version
-- 01:27:06 [INFO] Target: 
+- 13:28:05 [INFO] Host: version
+- 13:28:05 [INFO] Target: 
 version
 U-Boot 2015.07 (Dec 04 2015 - 23:41:40 -0500)
 arm-linux-gnueabihf-gcc (Linaro GCC 4.9-2015.05) 4.9.3 20150413 (prerelease)
 GNU ld (GNU Binutils) Linaro 2014.11-3-git 2.24.0.20141017
 U-Boot# 
-- 01:27:06 [INFO] Host: bdinfo
-- 01:27:06 [INFO] Target: 
+- 13:28:05 [INFO] Host: bdinfo
+- 13:28:05 [INFO] Target: 
 bdinfo
 arch_number = 0x00000000
 boot_params = 0x80000100
@@ -481,7 +580,7 @@ DRAM bank   = 0x00000001
 eth0name    = cpsw
 ethaddr     = 74:da:ea:08:38:a8
 current eth = cpsw
-ip_addr     = 192.168.0.132
+ip_addr     = 192.168.0.216
 baudrate    = 115200 bps
 TLB addr    = 0xFFFF0000
 relocaddr   = 0xFFF64000
@@ -489,31 +588,31 @@ reloc off   = 0x7F764000
 irq_sp      = 0xFEF53EE0
 sp start    = 0xFEF53ED0
 U-Boot# 
-- 01:27:06 [INFO] Host: mmc rescan; echo $?
-- 01:27:06 [INFO] Target: 
+- 13:28:05 [INFO] Host: mmc rescan; echo $?
+- 13:28:05 [INFO] Target: 
 mmc rescan; echo $?
 U-Boot# 
-- 01:27:06 [INFO] Host: fatwrite mmc 0:1 ${loadaddr} ws-calibrate.rules 4
-- 01:27:06 [INFO] Target: 
+- 13:28:05 [INFO] Host: fatwrite mmc 0:1 ${loadaddr} ws-calibrate.rules 4
+- 13:28:05 [INFO] Target: 
 fatwrite mmc 0:1 ${loadaddr} ws-calibrate.rules 4
 writing ws-calibrate.rules
 4 bytes written
 U-Boot# 
-- 01:27:06 [INFO] Host: boot
-- 01:30:36 [ERROR] On command: boot waiting for boot.+?(?-mix:login:) >>> error: execution expired
-- 01:30:36 [INFO] Target: 
+- 13:28:05 [INFO] Host: boot
+- 13:31:35 [ERROR] On command: boot waiting for boot.+?(?-mix:login:) >>> error: execution expired
+- 13:31:35 [INFO] Target: 
 boot
 ## Checking Image at 82000000 ...
 Unknown image format!
-Kernel image @ 0x82000000 [ 0x000000 - 0x3829e0 ]
+Kernel image @ 0x82000000 [ 0x000000 - 0x384218 ]
 ## Flattened Device Tree blob at 88000000
    Booting using the fdt blob at 0x88000000
    Loading Device Tree to 8ffe9000, end 8ffff9bd ... OK
 Starting kernel ...
-- 01:30:36 [INFO] Boot attempt 1/1 failed
-- 01:30:36 [INFO] Collecting kernel traces via sysrq...
-- 01:30:46 [INFO] 
-- 01:30:56 [INFO] 
-- 01:31:07 [INFO] 
-- 01:31:07 [INFO] Disconnected serial from am57xx-evm
-URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm03/tigtfarm03_vatf@am57xx-evm1/tigtfarm0302_17_2016_01_26_45/files/session_iteration_1/test_1
+- 13:31:35 [INFO] Boot attempt 1/1 failed
+- 13:31:35 [INFO] Collecting kernel traces via sysrq...
+- 13:31:46 [INFO] 
+- 13:31:56 [INFO] 
+- 13:32:06 [INFO] 
+- 13:32:06 [INFO] Disconnected serial from am57xx-evm
+URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm03/tigtfarm03_vatf@am57xx-evm1/tigtfarm0302_18_2016_13_27_37/files/session_iteration_1/test_1

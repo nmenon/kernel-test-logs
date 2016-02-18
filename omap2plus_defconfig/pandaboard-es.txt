@@ -1,21 +1,105 @@
-- 00:33:13 [INFO] Starting target session
-- 00:33:15 [INFO] Connected to pandaboard-es via serial 
-- 00:33:15 [INFO] Host: #check prompt
-- 00:33:18 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
-- 00:33:18 [INFO] Target: 
-- 00:33:18 [INFO] Host: #check prompt
-- 00:33:20 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root.*#) >>> error: execution expired
-- 00:33:20 [INFO] Target: 
-- 00:33:20 [INFO] Host: #check prompt
-- 00:33:22 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root.*#) >>> error: execution expired
-- 00:33:22 [INFO] Target: 
-- 00:33:22 [INFO] Host: #check prompt
-- 00:33:24 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root.*#) >>> error: execution expired
-- 00:33:24 [INFO] Target: 
-- 00:33:24 [INFO] Disconnected serial from pandaboard-es
-- 00:33:57 [INFO] Connected to pandaboard-es via serial 
-- 00:33:58 [INFO] Host: 
-- 00:33:59 [INFO] Target: 
+- 12:34:06 [INFO] Starting target session
+- 12:34:09 [INFO] Connected to pandaboard-es via serial 
+- 12:34:09 [INFO] Host: #check prompt
+- 12:34:12 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
+- 12:34:12 [INFO] Target: 
+#check prompt
+root@GenericOMAP4(FlattenedDeviceTree):/test# 
+- 12:34:12 [INFO] Host: #check prompt
+- 12:34:12 [INFO] Target: 
+#check prompt
+root@GenericOMAP4(FlattenedDeviceTree):/test# 
+- 12:34:12 [INFO] Host: sync;poweroff
+- 12:34:29 [INFO] Target: 
+sync;poweroff
+Broadcast message from root@GenericOMAP4(FlattenedDeviceTree) (ttyS2) (Sun Fe
+The system is going down for system halt NOW!
+INIT: Sending processes the TERM signal
+root@GenericOMAP4(FlattenedDeviceTree):/test# 
+INIT: Sending [ 4280.265563] ------------[ cut here ]------------
+[ 4280.268463] WARNING: CPU: 0 PID: 3 at drivers/tty/serial/8250/8250_omap.c:1037 omap8250_no_handle_irq+0x34/0x50()
+[ 4280.277038] Unexpected irq handling before port startup
+[ 4280.277038] Modules linked in:
+[ 4280.287048] CPU: 0 PID: 3 Comm: ksoftirqd/0 Not tainted 4.1.0-00631-g26b97e1 #1
+[ 4280.287048] Hardware name: Generic OMAP4 (Flattened Device Tree)
+[ 4280.302307] Backtrace: 
+[ 4280.302307] [<c0012b0c>] (dump_backtrace) from [<c0012ca8>] (show_stack+0x18/0x1c)
+[ 4280.307037]  r6:0000040d r5:ee088000 r4:00000000 r3:00000000
+[ 4280.316925] [<c0012c90>] (show_stack) from [<c056699c>] (dump_stack+0x94/0xe0)
+[ 4280.316925] [<c0566908>] (dump_stack) from [<c00414e4>] (warn_slowpath_common+0x80/0xbc)
+[ 4280.327026]  r5:c036ac8c r4:ee089dd0
+[ 4280.337036] [<c0041464>] (warn_slowpath_common) from [<c00415c4>] (warn_slowpath_fmt+0x38/0x40)
+[ 4280.346008]  r8:00000152 r7:00000000 r6:00000000 r5:ee33b120 r4:c081fd9e
+[ 4280.352813] [<c0041590>] (warn_slowpath_fmt) from [<c036ac8c>] (omap8250_no_handle_irq+0x34/0x50)
+[ 4280.361114]  r3:00000000 r2:c06f25c8
+[ 4280.361114] [<c036ac58>] (omap8250_no_handle_irq) from [<c036a944>] (omap_wake_irq+0x18/0x24)
+[ 4280.367034]  r4:ee7ae480 r3:c036ac58
+[ 4280.377593] [<c036a92c>] (omap_wake_irq) from [<c0080218>] (handle_irq_event_percpu+0x54/0x158)
+[ 4280.377593] [<c00801c4>] (handle_irq_event_percpu) from [<c0080360>] (handle_irq_event+0x44/0x64)
+[ 4280.395263]  r10:c0824980 r9:00000000 r8:c07a9310 r7:c07b0b4c r6:ee7ae480 r5:ee33b120
+[ 4280.397033]  r4:ee33b0c0
+[ 4280.397033] [<c008031c>] (handle_irq_event) from [<c0083408>] (handle_level_irq+0xbc/0x144)
+[ 4280.407073]  r6:c07e9e3c r5:ee33b120 r4:ee33b0c0 r3:00020000
+[ 4280.417053] [<c008334c>] (handle_level_irq) from [<c0082b00>] (resend_irqs+0x48/0x74)
+[ 4280.426940]  r5:c07e9e3c r4:00000152
+[ 4280.426940] [<c0082ab8>] (resend_irqs) from [<c0044434>] (tasklet_action+0x8c/0x138)
+[ 4280.437011]  r6:00000000 r5:c07e9e64 r4:c07e9e60 r3:c0082ab8
+[ 4280.444976] [<c00443a8>] (tasklet_action) from [<c004489c>] (__do_softirq+0xf4/0x248)
+[ 4280.452850]  r10:c07b0080 r9:00000100 r8:00000006 r7:c07b0080 r6:00000006 r5:c07b0098
+[ 4280.460784]  r4:00000000 r3:c00443a8
+[ 4280.461090] [<c00447a8>] (__do_softirq) from [<c0044a2c>] (run_ksoftirqd+0x3c/0x58)
+[ 4280.467010]  r10:00000002 r9:00000000 r8:00000000 r7:00000000 r6:c07e73ec r5:00000001
+[ 4280.477020]  r4:ee02c7c0
+[ 4280.482635] [<c00449f0>] (run_ksoftirqd) from [<c005df00>] (smpboot_thread_fn+0x190/0x2b4)
+[ 4280.486938] [<c005dd70>] (smpboot_thread_fn) from [<c005a6b4>] (kthread+0xdc/0xf8)
+[ 4280.497009]  r10:00000000 r9:00000000 r8:00000000 r7:c005dd70 r6:ee02c7c0 r5:ee02c800
+[ 4280.497009]  r4:00000000 r3:00000005
+[ 4280.507019] [<c005a5d8>] (kthread) from [<c000fc08>] (ret_from_fork+0x14/0x2c)
+[ 4280.516937]  r7:00000000 r6:00000000 r5:c005a5d8 r4:ee02c800
+[ 4280.516937] ---[ end trace 74ceae640cb8ef89 ]---
+Stopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 634)
+dropbear.
+Stopping telnet daemon.
+Stopping system message bus: hwclock: can't open '/dev/misc/rtc': No such file or directory
+Error opening /dev/fb0: No such file or directory
+Stopping syslogd/klogd: stopped syslogd (pid 645)
+stopped klogd (pid 648)
+done
+Stopping thttpd.
+ALSA: Storing mixer settings...
+/usr/sbin/alsactl: save_state:1580: No soundcards found...
+Deconfiguring network interfaces... ifdown: interface eth0 not configured
+done.
+Stopping Lighttpd Web Server: stopped /usr/sbin/lighttpd (pid 659)
+lighttpd.
+***************************************************************
+***************************************************************
+NOTICE: This file system contains the followin GPLv3 packages:
+	binutils-symlinks
+	binutils
+	gdbserver
+	parted
+If you do not wish to distribute GPLv3 components please remove
+the above packages prior to distribution.  This can be done using
+the opkg remove command.  i.e.:
+    opkg remove <package>
+Where <package> is the name printed in the list above
+NOTE: If the package is a dependency of another package you
+      will be notified of the dependent packages.  You should
+      use the --force-removal-of-dependent-packages option to
+      also remove the dependent packages as well
+***************************************************************
+***************************************************************
+Sending all processes the TERM signal...
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+[ 4290.628906] reboot: System halted
+- 12:34:29 [INFO] Disconnected serial from pandaboard-es
+- 12:34:53 [INFO] Connected to pandaboard-es via serial 
+- 12:34:53 [INFO] Host: 
+- 12:34:54 [INFO] Target: 
 U-Boot# 
 U-Boot# 
 U-Boot# 
@@ -27,43 +111,39 @@ U-Boot#
 U-Boot# 
 U-Boot# 
 U-Boot# 
-- 00:34:00 [INFO] Host: 
-- 00:34:00 [INFO] Target: 
+U-Boot# 
+- 12:34:55 [INFO] Host: 
+- 12:34:55 [INFO] Target: 
 U-Boot# 
 U-Boot# 
 U-Boot# 
 U-Boot# 
 U-Boot# 
-U-Boot# 
-U-Boot# 
-U-Boot# 
-U-Boot# 
-U-Boot# 
-- 00:34:00 [INFO] Host: version
-- 00:34:00 [INFO] Target: 
+- 12:34:55 [INFO] Host: version
+- 12:34:55 [INFO] Target: 
 version
 U-Boot 2014.04-00069-g53b0d70 (Apr 22 2014 - 14:39:57)
 arm-linux-gnueabi-gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
 GNU ld (GNU Binutils for Ubuntu) 2.22
 U-Boot# 
-- 00:34:00 [INFO] Host: setenv bootargs 'console=ttyS2,115200n8 vram=16M earlyprintk=serial,ttyS2,115200n8 rootwait '
-- 00:34:00 [INFO] Target: 
+- 12:34:55 [INFO] Host: setenv bootargs 'console=ttyS2,115200n8 vram=16M earlyprintk=serial,ttyS2,115200n8 rootwait '
+- 12:34:55 [INFO] Target: 
 setenv bootargs 'console=ttyS2,115200n8 vram=16M earlyprintk=serial,ttyS2,115200n8 rootwait '
 U-Boot# 
-- 00:34:00 [INFO] Host: setenv bootcmd  ''
-- 00:34:00 [INFO] Target: 
+- 12:34:55 [INFO] Host: setenv bootcmd  ''
+- 12:34:55 [INFO] Target: 
 setenv bootcmd  ''
 U-Boot# 
-- 00:34:00 [INFO] Host: setenv autoload 'no'
-- 00:34:00 [INFO] Target: 
+- 12:34:55 [INFO] Host: setenv autoload 'no'
+- 12:34:55 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 00:34:00 [INFO] Host: setenv serverip '192.168.1.254'
-- 00:34:00 [INFO] Target: 
+- 12:34:55 [INFO] Host: setenv serverip '192.168.1.254'
+- 12:34:55 [INFO] Target: 
 setenv serverip '192.168.1.254'
 U-Boot# 
-- 00:34:00 [INFO] Host: printenv
-- 00:34:00 [INFO] Target: 
+- 12:34:55 [INFO] Host: printenv
+- 12:34:55 [INFO] Target: 
 printenv
 arch=arm
 autoload=no
@@ -107,21 +187,21 @@ ver=U-Boot 2014.04-00069-g53b0d70 (Apr 22 2014 - 14:39:57)
 vram=16M
 Environment size: 1719/131068 bytes
 U-Boot# 
-- 00:34:00 [INFO] Host: setenv _initramfs -
-- 00:34:00 [INFO] Target: 
+- 12:34:55 [INFO] Host: setenv _initramfs -
+- 12:34:56 [INFO] Target: 
 setenv _initramfs -
 U-Boot# 
-- 00:34:00 [INFO] Host: dcache off
-- 00:34:01 [INFO] Target: 
+- 12:34:56 [INFO] Host: dcache off
+- 12:34:56 [INFO] Target: 
 dcache off
 Unknown command 'dcache' - try 'help'
 U-Boot# 
-- 00:34:01 [INFO] Host: setenv usbethaddr 2E:60:05:CC:46:01
-- 00:34:01 [INFO] Target: 
+- 12:34:56 [INFO] Host: setenv usbethaddr 2E:60:05:CC:46:01
+- 12:34:56 [INFO] Target: 
 setenv usbethaddr 2E:60:05:CC:46:01
 U-Boot# 
-- 00:34:01 [INFO] Host: usb start
-- 00:34:03 [INFO] Target: 
+- 12:34:56 [INFO] Host: usb start
+- 12:34:58 [INFO] Target: 
 usb start
 (Re)start USB...
 USB0:   USB EHCI 1.00
@@ -129,8 +209,8 @@ scanning bus 0 for devices... 3 USB Device(s) found
        scanning usb for storage devices... 0 Storage Device(s) found
        scanning usb for ethernet devices... 1 Ethernet Device(s) found
 U-Boot# 
-- 00:34:03 [INFO] Host: printenv
-- 00:34:03 [INFO] Target: 
+- 12:34:58 [INFO] Host: printenv
+- 12:34:58 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -176,57 +256,58 @@ ver=U-Boot 2014.04-00069-g53b0d70 (Apr 22 2014 - 14:39:57)
 vram=16M
 Environment size: 1748/131068 bytes
 U-Boot# 
-- 00:34:03 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
-- 00:34:03 [INFO] Target: 
+- 12:34:58 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 12:34:58 [INFO] Target: 
 setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
 U-Boot# 
-- 00:34:03 [INFO] Host: setenv serverip '192.168.1.254'
-- 00:34:03 [INFO] Target: 
+- 12:34:58 [INFO] Host: setenv serverip '192.168.1.254'
+- 12:34:58 [INFO] Target: 
 setenv serverip '192.168.1.254'
 U-Boot# 
-- 00:34:03 [INFO] Host: setenv autoload 'no'
-- 00:34:03 [INFO] Target: 
+- 12:34:58 [INFO] Host: setenv autoload 'no'
+- 12:34:58 [INFO] Target: 
 setenv autoload 'no'
 U-Boot# 
-- 00:34:03 [INFO] Host: dhcp
-- 00:34:06 [INFO] Target: 
+- 12:34:58 [INFO] Host: dhcp
+- 12:35:01 [INFO] Target: 
 dhcp
 Waiting for Ethernet connection... done.
 BOOTP broadcast 1
 DHCP client bound to address 192.168.1.156
 U-Boot# 
-- 00:34:06 [INFO] Host: tftp ${loadaddr} 192.168.1.254:vatf_pandaboard-es/d74a25e06a2552d7a228676f54f8c4e6
-- 00:34:14 [INFO] Target: 
-tftp ${loadaddr} 192.168.1.254:vatf_pandaboard-es/d74a25e06a2552d7a228676f54f8c4e6
+- 12:35:01 [INFO] Host: tftp ${loadaddr} 192.168.1.254:vatf_pandaboard-es/ac8acf5ea9d8423b26a1c6a6696bbd25
+- 12:35:09 [INFO] Target: 
+tftp ${loadaddr} 192.168.1.254:vatf_pandaboard-es/ac8acf5ea9d8423b26a1c6a6696bbd25
 Waiting for Ethernet connection... done.
 Using sms0 device
 TFTP from server 192.168.1.254; our IP address is 192.168.1.156
-Filename 'vatf_pandaboard-es/d74a25e06a2552d7a228676f54f8c4e6'.
+Filename 'vatf_pandaboard-es/ac8acf5ea9d8423b26a1c6a6696bbd25'.
 Load address: 0x82000000
-Loading: *#################################################################
+Loading: *##EHCI timed out on TD - token=0x88008d80
+T ###############################################################
 	 #################################################################
 	 #################################################################
-	 ########################################################
-	 572.3 KiB/s
+	 #########################################################
+	 574.2 KiB/s
 done
-Bytes transferred = 3680736 (3829e0 hex)
+Bytes transferred = 3686936 (384218 hex)
 U-Boot# 
-- 00:34:14 [INFO] Host: tftp ${fdtaddr} 192.168.1.254:vatf_pandaboard-es/a1a7b6276fee2315d23fa337941eaace
-- 00:34:21 [INFO] Target: 
+- 12:35:09 [INFO] Host: tftp ${fdtaddr} 192.168.1.254:vatf_pandaboard-es/a1a7b6276fee2315d23fa337941eaace
+- 12:35:16 [INFO] Target: 
 tftp ${fdtaddr} 192.168.1.254:vatf_pandaboard-es/a1a7b6276fee2315d23fa337941eaace
 Waiting for Ethernet connection... done.
 Using sms0 device
 TFTP from server 192.168.1.254; our IP address is 192.168.1.156
 Filename 'vatf_pandaboard-es/a1a7b6276fee2315d23fa337941eaace'.
 Load address: 0x88000000
-Loading: *EHCI timed out on TD - token=0x88008d80
+Loading: *EHCI timed out on TD - token=0x8008d80
 T ####
 	 10.7 KiB/s
 done
 Bytes transferred = 57353 (e009 hex)
 U-Boot# 
-- 00:34:21 [INFO] Host: ls mmc 0:1
-- 00:34:21 [INFO] Target: 
+- 12:35:16 [INFO] Host: ls mmc 0:1
+- 12:35:16 [INFO] Target: 
 ls mmc 0:1
     33508   mlo 
    208700   u-boot.img 
@@ -234,8 +315,8 @@ ls mmc 0:1
         4   ws-calibrate.rules 
 3 file(s), 1 dir(s)
 U-Boot# 
-- 00:34:21 [INFO] Host: ls mmc 0:2
-- 00:34:21 [INFO] Target: 
+- 12:35:16 [INFO] Host: ls mmc 0:2
+- 12:35:16 [INFO] Target: 
 ls mmc 0:2
 <DIR>       4096 .
 <DIR>       4096 ..
@@ -262,13 +343,13 @@ ls mmc 0:2
 <DIR>       4096 www
 <DIR>       4096 test
 U-Boot# 
-- 00:34:21 [INFO] Host: part uuid mmc 0:2
-- 00:34:21 [INFO] Target: 
+- 12:35:16 [INFO] Host: part uuid mmc 0:2
+- 12:35:16 [INFO] Target: 
 part uuid mmc 0:2
 Unknown command 'part' - try 'help'
 U-Boot# 
-- 00:34:21 [INFO] Host: printenv
-- 00:34:21 [INFO] Target: 
+- 12:35:16 [INFO] Host: printenv
+- 12:35:16 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -320,12 +401,12 @@ ver=U-Boot 2014.04-00069-g53b0d70 (Apr 22 2014 - 14:39:57)
 vram=16M
 Environment size: 1894/131068 bytes
 U-Boot# 
-- 00:34:21 [INFO] Host: setenv bootargs ''${bootargs}' root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait '
-- 00:34:21 [INFO] Target: 
+- 12:35:16 [INFO] Host: setenv bootargs ''${bootargs}' root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait '
+- 12:35:16 [INFO] Target: 
 setenv bootargs ''${bootargs}' root=/dev/mmcblk0p2 rw rootfstype=ext3 rootwait '
 U-Boot# 
-- 00:34:21 [INFO] Host: printenv
-- 00:34:21 [INFO] Target: 
+- 12:35:16 [INFO] Host: printenv
+- 12:35:17 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -377,19 +458,19 @@ ver=U-Boot 2014.04-00069-g53b0d70 (Apr 22 2014 - 14:39:57)
 vram=16M
 Environment size: 1943/131068 bytes
 U-Boot# 
-- 00:34:21 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdtaddr}; else bootz ${loadaddr} ${_initramfs} ${fdtaddr}; bootm ${loadaddr} ${_initramfs} ${fdtaddr}; fi'
-- 00:34:22 [INFO] Target: 
+- 12:35:17 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdtaddr}; else bootz ${loadaddr} ${_initramfs} ${fdtaddr}; bootm ${loadaddr} ${_initramfs} ${fdtaddr}; fi'
+- 12:35:17 [INFO] Target: 
 setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdtaddr}; else bootz ${loadaddr} ${_initramfs} ${fdtaddr}; bootm ${loadaddr} ${_initramfs} ${fdtaddr}; fi'
 U-Boot# 
-- 00:34:22 [INFO] Host: version
-- 00:34:22 [INFO] Target: 
+- 12:35:17 [INFO] Host: version
+- 12:35:17 [INFO] Target: 
 version
 U-Boot 2014.04-00069-g53b0d70 (Apr 22 2014 - 14:39:57)
 arm-linux-gnueabi-gcc (Ubuntu/Linaro 4.6.3-1ubuntu5) 4.6.3
 GNU ld (GNU Binutils for Ubuntu) 2.22
 U-Boot# 
-- 00:34:22 [INFO] Host: bdinfo
-- 00:34:22 [INFO] Target: 
+- 12:35:17 [INFO] Host: bdinfo
+- 12:35:17 [INFO] Target: 
 bdinfo
 arch_number = 0x00000AE7
 boot_params = 0x80000100
@@ -407,31 +488,31 @@ reloc off   = 0x3F779000
 irq_sp      = 0xBFE58EE0
 sp start    = 0xBFE58ED0
 U-Boot# 
-- 00:34:22 [INFO] Host: mmc rescan; echo $?
-- 00:34:22 [INFO] Target: 
+- 12:35:17 [INFO] Host: mmc rescan; echo $?
+- 12:35:17 [INFO] Target: 
 mmc rescan; echo $?
 U-Boot# 
-- 00:34:22 [INFO] Host: fatwrite mmc 0:1 ${loadaddr} ws-calibrate.rules 4
-- 00:34:22 [INFO] Target: 
+- 12:35:17 [INFO] Host: fatwrite mmc 0:1 ${loadaddr} ws-calibrate.rules 4
+- 12:35:17 [INFO] Target: 
 fatwrite mmc 0:1 ${loadaddr} ws-calibrate.rules 4
 writing ws-calibrate.rules
 4 bytes written
 U-Boot# 
-- 00:34:22 [INFO] Host: boot
-- 00:37:52 [ERROR] On command: boot waiting for boot.+?(?-mix:.*\s+login) >>> error: execution expired
-- 00:37:52 [INFO] Target: 
+- 12:35:17 [INFO] Host: boot
+- 12:38:47 [ERROR] On command: boot waiting for boot.+?(?-mix:.*\s+login) >>> error: execution expired
+- 12:38:47 [INFO] Target: 
 boot
 ## Checking Image at 82000000 ...
 Unknown image format!
-Kernel image @ 0x82000000 [ 0x000000 - 0x3829e0 ]
+Kernel image @ 0x82000000 [ 0x000000 - 0x384218 ]
 ## Flattened Device Tree blob at 88000000
    Booting using the fdt blob at 0x88000000
    Loading Device Tree to 87fee000, end 87fff008 ... OK
 Starting kernel ...
-- 00:37:52 [INFO] Boot attempt 1/1 failed
-- 00:37:52 [INFO] Collecting kernel traces via sysrq...
-- 00:38:02 [INFO] 
-- 00:38:13 [INFO] 
-- 00:38:23 [INFO] 
-- 00:38:23 [INFO] Disconnected serial from pandaboard-es
-URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-05/tidfarm-05_vatf@pandaboard-es/tidfarm-0502_17_2016_00_33_12/files/session_iteration_1/test_1
+- 12:38:47 [INFO] Boot attempt 1/1 failed
+- 12:38:47 [INFO] Collecting kernel traces via sysrq...
+- 12:38:57 [INFO] 
+- 12:39:08 [INFO] 
+- 12:39:18 [INFO] 
+- 12:39:18 [INFO] Disconnected serial from pandaboard-es
+URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-05/tidfarm-05_vatf@pandaboard-es/tidfarm-0502_18_2016_12_34_05/files/session_iteration_1/test_1
