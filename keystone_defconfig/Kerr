@@ -2,6 +2,31 @@
 ++build defconfig keystone_defconfig++
 ++build kernel ++
 <stdin>:1310:2: warning: #warning syscall madvisev not implemented [-Wcpp]
-<stdin>:1310:2: warning: #warning syscall madvisev not implemented [-Wcpp]
-<stdin>:1310:2: warning: #warning syscall madvisev not implemented [-Wcpp]
-Fri Feb 19 01:38:38 CST 2016: Build result = 0
+drivers/net/ethernet/ti/netcp_core.c: In function 'netcp_setup_tc':
+drivers/net/ethernet/ti/netcp_core.c:1846:35: error: invalid type argument of '->' (have 'struct tc_to_netdev')
+  if (handle != TC_H_ROOT || tc->type != TC_SETUP_MQPRIO)
+                                   ^
+drivers/net/ethernet/ti/netcp_core.c:1851:35: error: invalid type argument of '->' (have 'struct tc_to_netdev')
+      (dev->real_num_tx_queues < tc->tc))
+                                   ^
+drivers/net/ethernet/ti/netcp_core.c:1855:8: error: invalid type argument of '->' (have 'struct tc_to_netdev')
+  if (tc->tc) {
+        ^
+drivers/net/ethernet/ti/netcp_core.c:1856:28: error: invalid type argument of '->' (have 'struct tc_to_netdev')
+   netdev_set_num_tc(dev, tc->tc);
+                            ^
+drivers/net/ethernet/ti/netcp_core.c:1857:21: error: invalid type argument of '->' (have 'struct tc_to_netdev')
+   for (i = 0; i < tc->tc; i++)
+                     ^
+drivers/net/ethernet/ti/netcp_core.c: At top level:
+drivers/net/ethernet/ti/netcp_core.c:1879:18: warning: initialization from incompatible pointer type
+  .ndo_setup_tc  = netcp_setup_tc,
+                  ^
+drivers/net/ethernet/ti/netcp_core.c:1879:18: warning: (near initialization for 'netcp_netdev_ops.ndo_setup_tc')
+make[4]: *** [drivers/net/ethernet/ti/netcp_core.o] Error 1
+make[3]: *** [drivers/net/ethernet/ti] Error 2
+make[2]: *** [drivers/net/ethernet] Error 2
+make[1]: *** [drivers/net] Error 2
+make: *** [drivers] Error 2
+make: *** Waiting for unfinished jobs....
+Mon Feb 22 05:17:44 CST 2016: Build result = 1
