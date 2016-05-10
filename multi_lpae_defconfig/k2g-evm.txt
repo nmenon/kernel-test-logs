@@ -1,0 +1,1364 @@
+- 17:46:29 [INFO] Starting target session
+- 17:46:31 [INFO] Connected to k2g-evm via serial 
+- 17:46:31 [INFO] Host: #check prompt
+- 17:46:34 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
+- 17:46:34 [INFO] Target: 
+#check prompt
+- 17:46:34 [INFO] Host: #check prompt
+- 17:46:36 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:root@.+[@:#]+) >>> error: execution expired
+- 17:46:36 [INFO] Target: 
+#check prompt
+- 17:46:36 [INFO] Host: #check prompt
+- 17:46:38 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:root@.+[@:#]+) >>> error: execution expired
+- 17:46:38 [INFO] Target: 
+#check prompt
+- 17:46:38 [INFO] Host: #check prompt
+- 17:46:40 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:root@.+[@:#]+) >>> error: execution expired
+- 17:46:40 [INFO] Target: 
+#check prompt
+- 17:46:40 [INFO] Disconnected serial from k2g-evm
+- 17:46:41 [INFO] Connected to k2g-evm via serial 
+- 17:46:41 [INFO] Host: 
+- 17:46:43 [INFO] Target: 
+U-Boot 2015.07 (Apr 14 2016 - 06:06:49 -0400)
+CPU: 66AK2Gx SR1.0
+I2C:   ready
+DRAM:  2 GiB
+NAND:  256 MiB
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+reading uboot.env
+Net:   K2G_EMAC
+Warning: K2G_EMAC using MAC address from net device
+Hit any key to stop autoboot:  1  0 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+U-Boot# 
+- 17:46:43 [INFO] Host: 
+- 17:46:43 [INFO] Target: 
+U-Boot# 
+- 17:46:43 [INFO] Host: version
+- 17:46:43 [INFO] Target: 
+version
+U-Boot 2015.07 (Apr 14 2016 - 06:06:49 -0400)
+arm-linux-gnueabihf-gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
+GNU ld (GNU Binutils) 2.25.0 Linaro 2015_10
+U-Boot# 
+- 17:46:43 [INFO] Host: setenv bootargs 'console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait '
+- 17:46:43 [INFO] Target: 
+setenv bootargs 'console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait '
+U-Boot# 
+- 17:46:43 [INFO] Host: setenv bootcmd  ''
+- 17:46:44 [INFO] Target: 
+setenv bootcmd  ''
+U-Boot# 
+- 17:46:44 [INFO] Host: setenv autoload 'no'
+- 17:46:44 [INFO] Target: 
+setenv autoload 'no'
+U-Boot# 
+- 17:46:44 [INFO] Host: setenv serverip '192.168.0.1'
+- 17:46:44 [INFO] Target: 
+setenv serverip '192.168.0.1'
+U-Boot# 
+- 17:46:44 [INFO] Host: setenv _initramfs -
+- 17:46:44 [INFO] Target: 
+setenv _initramfs -
+U-Boot# 
+- 17:46:44 [INFO] Host: printenv
+- 17:46:44 [INFO] Target: 
+printenv
+_initramfs=-
+addr_mon=0x0c040000
+addr_secdb_key=0xc000000
+addr_ubi=0x82000000
+arch=arm
+args_all=setenv bootargs console=ttyS0,115200n8 rootwait=1
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+args_net=setenv bootargs ${bootargs} rootfstype=nfs root=/dev/nfs rw nfsroot=${serverip}:${nfs_root},${nfs_options} ip=dhcp
+args_ramfs=setenv bootargs ${bootargs} rdinit=/sbin/init rw root=/dev/ram0 initrd=0x808080000,80M
+args_ubi=setenv bootargs ${bootargs} rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw ubi.mtd=ubifs,2048
+autoload=no
+baudrate=115200
+board=ks2_evm
+board_name=ks2_evm
+boot=mmc
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait 
+bootcmd=
+bootdelay=1
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+burn_ubi=nand erase.part ubifs; nand write ${addr_ubi} ubifs ${filesize}
+burn_uboot_nand=nand erase 0 0x100000; nand write ${loadaddr} 0 ${filesize}
+burn_uboot_spi=sf probe; sf erase 0 0x80000; sf write ${loadaddr} 0 ${filesize}
+console=ttyS0,115200n8
+cpu=armv7
+dev_pmmc=0
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+ethact=K2G_EMAC
+ethaddr=50:72:24:d6:39:db
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+finduuid=part uuid mmc 0:2 uuid
+get_fdt_mmc=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${name_fdt}
+get_fdt_net=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ramfs=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ubi=ubifsload ${fdtaddr} ${bootdir}/${name_fdt}
+get_fs_ramfs=dhcp ${rdaddr} ${tftp_root}/${name_fs}
+get_kern_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_kern}
+get_kern_net=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ramfs=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ubi=ubifsload ${loadaddr} ${bootdir}/${name_kern}
+get_mon_mmc=load mmc ${bootpart} ${addr_mon} ${bootdir}/${name_mon}
+get_mon_net=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ramfs=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ubi=ubifsload ${addr_mon} ${bootdir}/${name_mon}
+get_pmmc_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_pmmc}
+get_pmmc_net=dhcp ${loadaddr} ${tftp_root}/${name_pmmc}
+get_pmmc_ramfs=run get_pmmc_net
+get_pmmc_ubi=ubifsload ${loadaddr} ${bootdir}/${name_pmmc}
+get_ubi_net=dhcp ${addr_ubi} ${tftp_root}/${name_ubi}
+get_uboot_net=dhcp ${loadaddr} ${tftp_root}/${name_uboot}
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_mmc=run args_all args_mmc
+init_net=run args_all args_net
+init_ramfs=run args_all args_ramfs get_fs_ramfs
+init_ubi=run args_all args_ubi; ubi part ubifs; ubifsmount ubi:rootfs;
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+mem_lpae=1
+mem_reserve=512M
+mmcdev=0
+mmcrootfstype=ext4 rootwait
+mtdparts=mtdparts=davinci_nand.0:1024k(bootloader)ro,512k(params)ro,-(ubifs)
+name_fdt=keystone-k2g-evm.dtb
+name_kern=zImage
+name_mon=skern-k2g.bin
+name_ubi=k2g-evm-ubifs.ubi
+name_uboot=u-boot-spi-k2g-evm.gph
+nfs_options=v3,tcp,rsize=4096,wsize=4096
+nfs_root=/export
+no_post=1
+ramdisk_addr_r=0x88080000
+rd_spec=-
+rdaddr=0x88080000
+run_kern=bootz ${loadaddr} ${rd_spec} ${fdtaddr}
+run_mon=mon_install ${addr_mon}
+run_pmmc=rproc init; rproc list; rproc load ${dev_pmmc} ${loadaddr} 0x${filesize}; rproc start ${dev_pmmc}
+serverip=192.168.0.1
+set_name_pmmc=setenv name_pmmc ti-sci-firmware-${soc_variant}.bin
+soc=keystone
+soc_variant=k2g
+stderr=serial
+stdin=serial
+stdout=serial
+tftp_root=/
+vendor=ti
+ver=U-Boot 2015.07 (Apr 14 2016 - 06:06:49 -0400)
+Environment size: 4118/262140 bytes
+U-Boot# 
+- 17:46:44 [INFO] Host: printenv
+- 17:46:45 [INFO] Target: 
+printenv
+_initramfs=-
+addr_mon=0x0c040000
+addr_secdb_key=0xc000000
+addr_ubi=0x82000000
+arch=arm
+args_all=setenv bootargs console=ttyS0,115200n8 rootwait=1
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+args_net=setenv bootargs ${bootargs} rootfstype=nfs root=/dev/nfs rw nfsroot=${serverip}:${nfs_root},${nfs_options} ip=dhcp
+args_ramfs=setenv bootargs ${bootargs} rdinit=/sbin/init rw root=/dev/ram0 initrd=0x808080000,80M
+args_ubi=setenv bootargs ${bootargs} rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw ubi.mtd=ubifs,2048
+autoload=no
+baudrate=115200
+board=ks2_evm
+board_name=ks2_evm
+boot=mmc
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait 
+bootcmd=
+bootdelay=1
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+burn_ubi=nand erase.part ubifs; nand write ${addr_ubi} ubifs ${filesize}
+burn_uboot_nand=nand erase 0 0x100000; nand write ${loadaddr} 0 ${filesize}
+burn_uboot_spi=sf probe; sf erase 0 0x80000; sf write ${loadaddr} 0 ${filesize}
+console=ttyS0,115200n8
+cpu=armv7
+dev_pmmc=0
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+ethact=K2G_EMAC
+ethaddr=50:72:24:d6:39:db
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+finduuid=part uuid mmc 0:2 uuid
+get_fdt_mmc=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${name_fdt}
+get_fdt_net=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ramfs=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ubi=ubifsload ${fdtaddr} ${bootdir}/${name_fdt}
+get_fs_ramfs=dhcp ${rdaddr} ${tftp_root}/${name_fs}
+get_kern_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_kern}
+get_kern_net=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ramfs=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ubi=ubifsload ${loadaddr} ${bootdir}/${name_kern}
+get_mon_mmc=load mmc ${bootpart} ${addr_mon} ${bootdir}/${name_mon}
+get_mon_net=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ramfs=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ubi=ubifsload ${addr_mon} ${bootdir}/${name_mon}
+get_pmmc_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_pmmc}
+get_pmmc_net=dhcp ${loadaddr} ${tftp_root}/${name_pmmc}
+get_pmmc_ramfs=run get_pmmc_net
+get_pmmc_ubi=ubifsload ${loadaddr} ${bootdir}/${name_pmmc}
+get_ubi_net=dhcp ${addr_ubi} ${tftp_root}/${name_ubi}
+get_uboot_net=dhcp ${loadaddr} ${tftp_root}/${name_uboot}
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_mmc=run args_all args_mmc
+init_net=run args_all args_net
+init_ramfs=run args_all args_ramfs get_fs_ramfs
+init_ubi=run args_all args_ubi; ubi part ubifs; ubifsmount ubi:rootfs;
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+mem_lpae=1
+mem_reserve=512M
+mmcdev=0
+mmcrootfstype=ext4 rootwait
+mtdparts=mtdparts=davinci_nand.0:1024k(bootloader)ro,512k(params)ro,-(ubifs)
+name_fdt=keystone-k2g-evm.dtb
+name_kern=zImage
+name_mon=skern-k2g.bin
+name_ubi=k2g-evm-ubifs.ubi
+name_uboot=u-boot-spi-k2g-evm.gph
+nfs_options=v3,tcp,rsize=4096,wsize=4096
+nfs_root=/export
+no_post=1
+ramdisk_addr_r=0x88080000
+rd_spec=-
+rdaddr=0x88080000
+run_kern=bootz ${loadaddr} ${rd_spec} ${fdtaddr}
+run_mon=mon_install ${addr_mon}
+run_pmmc=rproc init; rproc list; rproc load ${dev_pmmc} ${loadaddr} 0x${filesize}; rproc start ${dev_pmmc}
+serverip=192.168.0.1
+set_name_pmmc=setenv name_pmmc ti-sci-firmware-${soc_variant}.bin
+soc=keystone
+soc_variant=k2g
+stderr=serial
+stdin=serial
+stdout=serial
+tftp_root=/
+vendor=ti
+ver=U-Boot 2015.07 (Apr 14 2016 - 06:06:49 -0400)
+Environment size: 4118/262140 bytes
+U-Boot# 
+- 17:46:45 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 17:46:45 [INFO] Target: 
+setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+U-Boot# 
+- 17:46:45 [INFO] Host: setenv serverip '192.168.0.1'
+- 17:46:45 [INFO] Target: 
+setenv serverip '192.168.0.1'
+U-Boot# 
+- 17:46:45 [INFO] Host: setenv autoload 'no'
+- 17:46:45 [INFO] Target: 
+setenv autoload 'no'
+U-Boot# 
+- 17:46:45 [INFO] Host: dhcp
+- 17:46:47 [INFO] Target: 
+dhcp
+. done
+K2G_EMAC Waiting for PHY auto negotiation to complete.. done
+BOOTP broadcast 1
+BOOTP broadcast 2
+BOOTP broadcast 3
+DHCP client bound to address 192.168.0.104 (1002 ms)
+U-Boot# 
+- 17:46:47 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_k2g-evm/bb70e5375d69ab47162e92b0ef00d896
+- 17:46:48 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_k2g-evm/bb70e5375d69ab47162e92b0ef00d896
+. done
+Using K2G_EMAC device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.104
+Filename 'vatf_k2g-evm/bb70e5375d69ab47162e92b0ef00d896'.
+Load address: 0x82000000
+Loading: *#########
+	 2 MiB/s
+done
+Bytes transferred = 131136 (20040 hex)
+U-Boot# 
+- 17:46:48 [INFO] Host: run run_pmmc
+- 17:46:48 [INFO] Target: 
+run run_pmmc
+0 - Name:'PMMC' type:'internal memory mapped' supports: load start 
+Load Remote Processor 0 with data@addr=0x82000000 131136 bytes: Success!
+U-Boot# 
+- 17:46:48 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_k2g-evm/0095c5a611d529e59ed79fa0531ce785
+- 17:46:52 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_k2g-evm/0095c5a611d529e59ed79fa0531ce785
+. done
+Using K2G_EMAC device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.104
+Filename 'vatf_k2g-evm/0095c5a611d529e59ed79fa0531ce785'.
+Load address: 0x82000000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #########################
+	 2 MiB/s
+done
+Bytes transferred = 7031880 (6b4c48 hex)
+U-Boot# 
+- 17:46:52 [INFO] Host: tftp ${fdt_addr_r} 192.168.0.1:vatf_k2g-evm/3b60a4eb805b087c7e49c4fc129fcc27
+- 17:46:52 [INFO] Target: 
+tftp ${fdt_addr_r} 192.168.0.1:vatf_k2g-evm/3b60a4eb805b087c7e49c4fc129fcc27
+. done
+Using K2G_EMAC device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.104
+Filename 'vatf_k2g-evm/3b60a4eb805b087c7e49c4fc129fcc27'.
+Load address: 0x88000000
+Loading: *#
+	 692.4 KiB/s
+done
+Bytes transferred = 1418 (58a hex)
+U-Boot# 
+- 17:46:52 [INFO] Host: tftp ${addr_mon} 192.168.0.1:vatf_k2g-evm/49e117557e8dd8d2a8cad2826a5b4b59
+- 17:46:53 [INFO] Target: 
+tftp ${addr_mon} 192.168.0.1:vatf_k2g-evm/49e117557e8dd8d2a8cad2826a5b4b59
+. done
+Using K2G_EMAC device
+TFTP from server 192.168.0.1; our IP address is 192.168.0.104
+Filename 'vatf_k2g-evm/49e117557e8dd8d2a8cad2826a5b4b59'.
+Load address: 0xc040000
+Loading: *####
+	 1.9 MiB/s
+done
+Bytes transferred = 45056 (b000 hex)
+U-Boot# 
+- 17:46:53 [INFO] Host: printenv
+- 17:46:53 [INFO] Target: 
+printenv
+_initramfs=-
+addr_mon=0x0c040000
+addr_secdb_key=0xc000000
+addr_ubi=0x82000000
+arch=arm
+args_all=setenv bootargs console=ttyS0,115200n8 rootwait=1
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+args_net=setenv bootargs ${bootargs} rootfstype=nfs root=/dev/nfs rw nfsroot=${serverip}:${nfs_root},${nfs_options} ip=dhcp
+args_ramfs=setenv bootargs ${bootargs} rdinit=/sbin/init rw root=/dev/ram0 initrd=0x808080000,80M
+args_ubi=setenv bootargs ${bootargs} rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw ubi.mtd=ubifs,2048
+autoload=no
+baudrate=115200
+board=ks2_evm
+board_name=ks2_evm
+boot=mmc
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait  ip=:::::eth0:dhcp 
+bootcmd=
+bootdelay=1
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+burn_ubi=nand erase.part ubifs; nand write ${addr_ubi} ubifs ${filesize}
+burn_uboot_nand=nand erase 0 0x100000; nand write ${loadaddr} 0 ${filesize}
+burn_uboot_spi=sf probe; sf erase 0 0x80000; sf write ${loadaddr} 0 ${filesize}
+console=ttyS0,115200n8
+cpu=armv7
+dev_pmmc=0
+dnsip=192.0.2.2
+dnsip2=192.0.2.3
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+ethact=K2G_EMAC
+ethaddr=50:72:24:d6:39:db
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fileaddr=c040000
+filesize=b000
+finduuid=part uuid mmc 0:2 uuid
+get_fdt_mmc=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${name_fdt}
+get_fdt_net=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ramfs=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ubi=ubifsload ${fdtaddr} ${bootdir}/${name_fdt}
+get_fs_ramfs=dhcp ${rdaddr} ${tftp_root}/${name_fs}
+get_kern_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_kern}
+get_kern_net=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ramfs=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ubi=ubifsload ${loadaddr} ${bootdir}/${name_kern}
+get_mon_mmc=load mmc ${bootpart} ${addr_mon} ${bootdir}/${name_mon}
+get_mon_net=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ramfs=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ubi=ubifsload ${addr_mon} ${bootdir}/${name_mon}
+get_pmmc_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_pmmc}
+get_pmmc_net=dhcp ${loadaddr} ${tftp_root}/${name_pmmc}
+get_pmmc_ramfs=run get_pmmc_net
+get_pmmc_ubi=ubifsload ${loadaddr} ${bootdir}/${name_pmmc}
+get_ubi_net=dhcp ${addr_ubi} ${tftp_root}/${name_ubi}
+get_uboot_net=dhcp ${loadaddr} ${tftp_root}/${name_uboot}
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_mmc=run args_all args_mmc
+init_net=run args_all args_net
+init_ramfs=run args_all args_ramfs get_fs_ramfs
+init_ubi=run args_all args_ubi; ubi part ubifs; ubifsmount ubi:rootfs;
+ipaddr=192.168.0.104
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+mem_lpae=1
+mem_reserve=512M
+mmcdev=0
+mmcrootfstype=ext4 rootwait
+mtdparts=mtdparts=davinci_nand.0:1024k(bootloader)ro,512k(params)ro,-(ubifs)
+name_fdt=keystone-k2g-evm.dtb
+name_kern=zImage
+name_mon=skern-k2g.bin
+name_ubi=k2g-evm-ubifs.ubi
+name_uboot=u-boot-spi-k2g-evm.gph
+netmask=255.255.255.0
+nfs_options=v3,tcp,rsize=4096,wsize=4096
+nfs_root=/export
+no_post=1
+ramdisk_addr_r=0x88080000
+rd_spec=-
+rdaddr=0x88080000
+run_kern=bootz ${loadaddr} ${rd_spec} ${fdtaddr}
+run_mon=mon_install ${addr_mon}
+run_pmmc=rproc init; rproc list; rproc load ${dev_pmmc} ${loadaddr} 0x${filesize}; rproc start ${dev_pmmc}
+serverip=192.168.0.1
+set_name_pmmc=setenv name_pmmc ti-sci-firmware-${soc_variant}.bin
+soc=keystone
+soc_variant=k2g
+stderr=serial
+stdin=serial
+stdout=serial
+tftp_root=/
+vendor=ti
+ver=U-Boot 2015.07 (Apr 14 2016 - 06:06:49 -0400)
+Environment size: 4256/262140 bytes
+U-Boot# 
+- 17:46:53 [INFO] Host: setenv bootcmd ''${bootcmd}' mon_install ${addr_mon};'
+- 17:46:53 [INFO] Target: 
+setenv bootcmd ''${bootcmd}' mon_install ${addr_mon};'
+U-Boot# 
+- 17:46:53 [INFO] Host: printenv
+- 17:46:54 [INFO] Target: 
+printenv
+_initramfs=-
+addr_mon=0x0c040000
+addr_secdb_key=0xc000000
+addr_ubi=0x82000000
+arch=arm
+args_all=setenv bootargs console=ttyS0,115200n8 rootwait=1
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+args_net=setenv bootargs ${bootargs} rootfstype=nfs root=/dev/nfs rw nfsroot=${serverip}:${nfs_root},${nfs_options} ip=dhcp
+args_ramfs=setenv bootargs ${bootargs} rdinit=/sbin/init rw root=/dev/ram0 initrd=0x808080000,80M
+args_ubi=setenv bootargs ${bootargs} rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw ubi.mtd=ubifs,2048
+autoload=no
+baudrate=115200
+board=ks2_evm
+board_name=ks2_evm
+boot=mmc
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait  ip=:::::eth0:dhcp 
+bootcmd= mon_install ${addr_mon};
+bootdelay=1
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+burn_ubi=nand erase.part ubifs; nand write ${addr_ubi} ubifs ${filesize}
+burn_uboot_nand=nand erase 0 0x100000; nand write ${loadaddr} 0 ${filesize}
+burn_uboot_spi=sf probe; sf erase 0 0x80000; sf write ${loadaddr} 0 ${filesize}
+console=ttyS0,115200n8
+cpu=armv7
+dev_pmmc=0
+dnsip=192.0.2.2
+dnsip2=192.0.2.3
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+ethact=K2G_EMAC
+ethaddr=50:72:24:d6:39:db
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fileaddr=c040000
+filesize=b000
+finduuid=part uuid mmc 0:2 uuid
+get_fdt_mmc=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${name_fdt}
+get_fdt_net=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ramfs=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ubi=ubifsload ${fdtaddr} ${bootdir}/${name_fdt}
+get_fs_ramfs=dhcp ${rdaddr} ${tftp_root}/${name_fs}
+get_kern_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_kern}
+get_kern_net=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ramfs=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ubi=ubifsload ${loadaddr} ${bootdir}/${name_kern}
+get_mon_mmc=load mmc ${bootpart} ${addr_mon} ${bootdir}/${name_mon}
+get_mon_net=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ramfs=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ubi=ubifsload ${addr_mon} ${bootdir}/${name_mon}
+get_pmmc_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_pmmc}
+get_pmmc_net=dhcp ${loadaddr} ${tftp_root}/${name_pmmc}
+get_pmmc_ramfs=run get_pmmc_net
+get_pmmc_ubi=ubifsload ${loadaddr} ${bootdir}/${name_pmmc}
+get_ubi_net=dhcp ${addr_ubi} ${tftp_root}/${name_ubi}
+get_uboot_net=dhcp ${loadaddr} ${tftp_root}/${name_uboot}
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_mmc=run args_all args_mmc
+init_net=run args_all args_net
+init_ramfs=run args_all args_ramfs get_fs_ramfs
+init_ubi=run args_all args_ubi; ubi part ubifs; ubifsmount ubi:rootfs;
+ipaddr=192.168.0.104
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+mem_lpae=1
+mem_reserve=512M
+mmcdev=0
+mmcrootfstype=ext4 rootwait
+mtdparts=mtdparts=davinci_nand.0:1024k(bootloader)ro,512k(params)ro,-(ubifs)
+name_fdt=keystone-k2g-evm.dtb
+name_kern=zImage
+name_mon=skern-k2g.bin
+name_ubi=k2g-evm-ubifs.ubi
+name_uboot=u-boot-spi-k2g-evm.gph
+netmask=255.255.255.0
+nfs_options=v3,tcp,rsize=4096,wsize=4096
+nfs_root=/export
+no_post=1
+ramdisk_addr_r=0x88080000
+rd_spec=-
+rdaddr=0x88080000
+run_kern=bootz ${loadaddr} ${rd_spec} ${fdtaddr}
+run_mon=mon_install ${addr_mon}
+run_pmmc=rproc init; rproc list; rproc load ${dev_pmmc} ${loadaddr} 0x${filesize}; rproc start ${dev_pmmc}
+serverip=192.168.0.1
+set_name_pmmc=setenv name_pmmc ti-sci-firmware-${soc_variant}.bin
+soc=keystone
+soc_variant=k2g
+stderr=serial
+stdin=serial
+stdout=serial
+tftp_root=/
+vendor=ti
+ver=U-Boot 2015.07 (Apr 14 2016 - 06:06:49 -0400)
+Environment size: 4281/262140 bytes
+U-Boot# 
+- 17:46:54 [INFO] Host: setenv bootargs ''${bootargs}' root=/dev/nfs rw nfsroot=192.168.0.1:/home/tigtfarm14/NFS_exports/linux/k2g-evm/autofs/1d9e5d24935c69031f74938a033f45de,nolock,v3,tcp,rsize=4096,wsize=4096 '
+- 17:46:54 [INFO] Target: 
+setenv bootargs ''${bootargs}' root=/dev/nfs rw nfsroot=192.168.0.1:/home/tigtfarm14/NFS_exports/linux/k2g-evm/autofs/1d9e5d24935c69031f74938a033f45de,nolock,v3,tcp,rsize=4096,wsize=4096 '
+U-Boot# 
+- 17:46:54 [INFO] Host: printenv
+- 17:46:54 [INFO] Target: 
+printenv
+_initramfs=-
+addr_mon=0x0c040000
+addr_secdb_key=0xc000000
+addr_ubi=0x82000000
+arch=arm
+args_all=setenv bootargs console=ttyS0,115200n8 rootwait=1
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+args_net=setenv bootargs ${bootargs} rootfstype=nfs root=/dev/nfs rw nfsroot=${serverip}:${nfs_root},${nfs_options} ip=dhcp
+args_ramfs=setenv bootargs ${bootargs} rdinit=/sbin/init rw root=/dev/ram0 initrd=0x808080000,80M
+args_ubi=setenv bootargs ${bootargs} rootfstype=ubifs root=ubi0:rootfs rootflags=sync rw ubi.mtd=ubifs,2048
+autoload=no
+baudrate=115200
+board=ks2_evm
+board_name=ks2_evm
+boot=mmc
+bootargs=console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait  ip=:::::eth0:dhcp  root=/dev/nfs rw nfsroot=192.168.0.1:/home/tigtfarm14/NFS_exports/linux/k2g-evm/autofs/1d9e5d24935c69031f74938a033f45de,nolock,v3,tcp,rsize=4096,wsize=4096 
+bootcmd= mon_install ${addr_mon};
+bootdelay=1
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+burn_ubi=nand erase.part ubifs; nand write ${addr_ubi} ubifs ${filesize}
+burn_uboot_nand=nand erase 0 0x100000; nand write ${loadaddr} 0 ${filesize}
+burn_uboot_spi=sf probe; sf erase 0 0x80000; sf write ${loadaddr} 0 ${filesize}
+console=ttyS0,115200n8
+cpu=armv7
+dev_pmmc=0
+dnsip=192.0.2.2
+dnsip2=192.0.2.3
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+ethact=K2G_EMAC
+ethaddr=50:72:24:d6:39:db
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fileaddr=c040000
+filesize=b000
+finduuid=part uuid mmc 0:2 uuid
+get_fdt_mmc=load mmc ${bootpart} ${fdtaddr} ${bootdir}/${name_fdt}
+get_fdt_net=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ramfs=dhcp ${fdtaddr} ${tftp_root}/${name_fdt}
+get_fdt_ubi=ubifsload ${fdtaddr} ${bootdir}/${name_fdt}
+get_fs_ramfs=dhcp ${rdaddr} ${tftp_root}/${name_fs}
+get_kern_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_kern}
+get_kern_net=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ramfs=dhcp ${loadaddr} ${tftp_root}/${name_kern}
+get_kern_ubi=ubifsload ${loadaddr} ${bootdir}/${name_kern}
+get_mon_mmc=load mmc ${bootpart} ${addr_mon} ${bootdir}/${name_mon}
+get_mon_net=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ramfs=dhcp ${addr_mon} ${tftp_root}/${name_mon}
+get_mon_ubi=ubifsload ${addr_mon} ${bootdir}/${name_mon}
+get_pmmc_mmc=load mmc ${bootpart} ${loadaddr} ${bootdir}/${name_pmmc}
+get_pmmc_net=dhcp ${loadaddr} ${tftp_root}/${name_pmmc}
+get_pmmc_ramfs=run get_pmmc_net
+get_pmmc_ubi=ubifsload ${loadaddr} ${bootdir}/${name_pmmc}
+get_ubi_net=dhcp ${addr_ubi} ${tftp_root}/${name_ubi}
+get_uboot_net=dhcp ${loadaddr} ${tftp_root}/${name_uboot}
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_mmc=run args_all args_mmc
+init_net=run args_all args_net
+init_ramfs=run args_all args_ramfs get_fs_ramfs
+init_ubi=run args_all args_ubi; ubi part ubifs; ubifsmount ubi:rootfs;
+ipaddr=192.168.0.104
+kernel_addr_r=0x82000000
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+mem_lpae=1
+mem_reserve=512M
+mmcdev=0
+mmcrootfstype=ext4 rootwait
+mtdparts=mtdparts=davinci_nand.0:1024k(bootloader)ro,512k(params)ro,-(ubifs)
+name_fdt=keystone-k2g-evm.dtb
+name_kern=zImage
+name_mon=skern-k2g.bin
+name_ubi=k2g-evm-ubifs.ubi
+name_uboot=u-boot-spi-k2g-evm.gph
+netmask=255.255.255.0
+nfs_options=v3,tcp,rsize=4096,wsize=4096
+nfs_root=/export
+no_post=1
+ramdisk_addr_r=0x88080000
+rd_spec=-
+rdaddr=0x88080000
+run_kern=bootz ${loadaddr} ${rd_spec} ${fdtaddr}
+run_mon=mon_install ${addr_mon}
+run_pmmc=rproc init; rproc list; rproc load ${dev_pmmc} ${loadaddr} 0x${filesize}; rproc start ${dev_pmmc}
+serverip=192.168.0.1
+set_name_pmmc=setenv name_pmmc ti-sci-firmware-${soc_variant}.bin
+soc=keystone
+soc_variant=k2g
+stderr=serial
+stdin=serial
+stdout=serial
+tftp_root=/
+vendor=ti
+ver=U-Boot 2015.07 (Apr 14 2016 - 06:06:49 -0400)
+Environment size: 4438/262140 bytes
+U-Boot# 
+- 17:46:54 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
+- 17:46:54 [INFO] Target: 
+setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
+U-Boot# 
+- 17:46:54 [INFO] Host: version
+- 17:46:54 [INFO] Target: 
+version
+U-Boot 2015.07 (Apr 14 2016 - 06:06:49 -0400)
+arm-linux-gnueabihf-gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
+GNU ld (GNU Binutils) 2.25.0 Linaro 2015_10
+U-Boot# 
+- 17:46:54 [INFO] Host: bdinfo
+- 17:46:54 [INFO] Target: 
+bdinfo
+arch_number = 0x00000000
+boot_params = 0x80000100
+DRAM bank   = 0x00000000
+-> start    = 0x80000000
+-> size     = 0x80000000
+DRAM bank   = 0x00000001
+-> start    = 0x00000000
+-> size     = 0x00000000
+eth0name    = K2G_EMAC
+ethaddr     = 50:72:24:d6:39:db
+current eth = K2G_EMAC
+ip_addr     = 192.168.0.104
+baudrate    = 115200 bps
+TLB addr    = 0xFFFF0000
+relocaddr   = 0xFFF3A000
+reloc off   = 0xF3F3A000
+irq_sp      = 0xFEEF9ED0
+sp start    = 0xFEEF9EC0
+U-Boot# 
+- 17:46:54 [INFO] Host: mmc rescan; echo $?
+- 17:46:54 [INFO] Target: 
+mmc rescan; echo $?
+U-Boot# 
+- 17:46:54 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 17:46:55 [INFO] Target: 
+fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+writing ws-calibrate.rules
+4 bytes written
+U-Boot# 
+- 17:46:55 [INFO] Host: boot
+- 17:50:25 [ERROR] On command: boot waiting for boot.+?(?-mix:login:) >>> error: execution expired
+- 17:50:25 [INFO] Target: 
+boot
+K2_BM_15.07-39-g035329caed63 SoC:k2g built:16:02:41, Dec 16 2015
+## installed monitor, freq [24000000], status 0
+## Checking Image at 82000000 ...
+Unknown image format!
+Kernel image @ 0x82000000 [ 0x000000 - 0x6b4c48 ]
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Device Tree to 8fffc000, end 8ffff589 ... OK
+Starting kernel ...
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.6.0-rc7-next-20160510-00002-g0da96f13c200 (nmenon@horus) (gcc version 4.9.3 20150413 (prerelease) (Linaro GCC 4.9-2015.05) ) #1 SMP Tue May 10 08:33:14 CDT 2016
+[    0.000000] CPU: ARMv7 Processor [412fc0f4] revision 4 (ARMv7), cr=30c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, PIPT instruction cache
+[    0.000000] Machine model: Texas Instruments K2G General Purpose EVM
+[    0.000000] Switching physical address space to 0x800000000
+[    0.000000] cma: Reserved 64 MiB at 0x000000085c000000
+[    0.000000] Forcing write-allocate cache policy for SMP
+[    0.000000] Memory policy: Data cache writealloc
+[    0.000000] percpu: Embedded 13 pages/cpu @ef3e3000 s23744 r8192 d21312 u53248
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 391680
+[    0.000000] Kernel command line: console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 rootwait  ip=:::::eth0:dhcp  root=/dev/nfs rw nfsroot=192.168.0.1:/home/tigtfarm14/NFS_exports/linux/k2g-evm/autofs/1d9e5d24935c69031f74938a033f45de,nolock,v3,tcp,rsize=4096,wsize=4096 
+[    0.000000] PID hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Dentry cache hash table entries: 131072 (order: 7, 524288 bytes)
+[    0.000000] Inode-cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Memory: 1474256K/1572864K available (10494K kernel code, 1079K rwdata, 4292K rodata, 2048K init, 347K bss, 33072K reserved, 65536K cma-reserved, 720896K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xf0800000 - 0xff800000   ( 240 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xf0000000   ( 768 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0208000 - 0xc1270b94   (16803 kB)
+[    0.000000]       .init : 0xc1400000 - 0xc1600000   (2048 kB)
+[    0.000000]       .data : 0xc1600000 - 0xc170dc60   (1080 kB)
+[    0.000000]        .bss : 0xc170f000 - 0xc1765ee0   ( 348 kB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] 	Build-time adjustment of leaf fanout to 32.
+[    0.000000] 	RCU restricting CPUs from NR_CPUS=16 to nr_cpu_ids=1.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=1
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] Architected cp15 timer(s) running at 24.00MHz (virt).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000006] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.000022] Switching to timer-based delay loop, resolution 41ns
+[    0.000222] Console: colour dummy device 80x30
+[    0.000254] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=120000)
+[    0.000273] pid_max: default: 32768 minimum: 301
+[    0.000383] Mount-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.000395] Mountpoint-cache hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.001170] CPU: Testing write buffer coherency: ok
+[    0.001415] /cpus/cpu@0 missing clock-frequency property
+[    0.001435] CPU0: thread -1, cpu 0, socket 0, mpidr 80000000
+[    0.001455] Setting up static identity map for 0x80400000 - 0x80400170
+[    0.002652] Brought up 1 CPUs
+[    0.002667] SMP: Total of 1 processors activated (48.00 BogoMIPS).
+[    0.002677] CPU: All CPU(s) started in SVC mode.
+[    0.003122] devtmpfs: initialized
+[    0.004473] VFP support v0.3: implementor 41 architecture 4 part 30 variant f rev 0
+[    0.004754] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 9556302231375000 ns
+[    0.006537] pinctrl core: initialized pinctrl subsystem
+[    0.008139] NET: Registered protocol family 16
+[    0.010739] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.012114] cpuidle: using governor menu
+[    0.014131] No ATAGs?
+[    0.014155] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+[    0.014167] hw-breakpoint: maximum watchpoint size is 8 bytes.
+[    0.016090] Serial: AMBA PL011 UART driver
+[    0.031265] vgaarb: loaded
+[    0.032089] SCSI subsystem initialized
+[    0.032602] usbcore: registered new interface driver usbfs
+[    0.032693] usbcore: registered new interface driver hub
+[    0.032756] usbcore: registered new device driver usb
+[    0.033419] pps_core: LinuxPPS API ver. 1 registered
+[    0.033429] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.033460] PTP clock support registered
+[    0.033572] EDAC MC: Ver: 3.0.0
+[    0.035960] clocksource: Switched to clocksource arch_sys_counter
+[    0.047331] NET: Registered protocol family 2
+[    0.047964] TCP established hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.048065] TCP bind hash table entries: 8192 (order: 4, 65536 bytes)
+[    0.048270] TCP: Hash tables configured (established 8192 bind 8192)
+[    0.048364] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    0.048416] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    0.048612] NET: Registered protocol family 1
+[    0.049017] RPC: Registered named UNIX socket transport module.
+[    0.049030] RPC: Registered udp transport module.
+[    0.049039] RPC: Registered tcp transport module.
+[    0.049048] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.049774] hw perfevents: enabled with armv7_cortex_a15 PMU driver, 7 counters available
+[    0.050411] platform alarmtimer: set dma_pfn_offset00780000
+[    0.051037] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.051976] workingset: timestamp_bits=28 max_order=19 bucket_order=0
+[    0.066161] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.067256] NFS: Registering the id_resolver key type
+[    0.067301] Key type id_resolver registered
+[    0.067311] Key type id_legacy registered
+[    0.067365] ntfs: driver 2.1.32 [Flags: R/O].
+[    0.068914] bounce: pool size: 64 pages
+[    0.069190] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 248)
+[    0.069204] io scheduler noop registered
+[    0.069214] io scheduler deadline registered
+[    0.069252] io scheduler cfq registered (default)
+[    0.145781] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.145910] platform serial8250: set dma_pfn_offset00780000
+[    0.148972] console [ttyS0] disabled
+[    0.149037] 2530c00.serial: ttyS0 at MMIO 0x2530c00 (irq = 22, base_baud = 12500000) is a 16550A
+[    0.786832] console [ttyS0] enabled
+[    0.790984] SuperH (H)SCI(F) driver initialized
+[    0.796202] msm_serial: driver initialized
+[    0.800573] STMicroelectronics ASC driver initialized
+[    0.807615] [drm] Initialized drm 1.1.0 20060810
+[    0.826583] brd: module loaded
+[    0.836750] loop: module loaded
+[    0.845299] platform Fixed MDIO bus.0: set dma_pfn_offset00780000
+[    0.852345] libphy: Fixed MDIO Bus: probed
+[    0.857402] CAN device driver interface
+[    0.862254] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.3.0-k
+[    0.869557] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    0.876991] pegasus: v0.9.3 (2013/04/25), Pegasus/Pegasus II USB Ethernet driver
+[    0.884821] usbcore: registered new interface driver pegasus
+[    0.890830] usbcore: registered new interface driver asix
+[    0.896548] usbcore: registered new interface driver ax88179_178a
+[    0.902987] usbcore: registered new interface driver cdc_ether
+[    0.909187] usbcore: registered new interface driver smsc75xx
+[    0.915288] usbcore: registered new interface driver smsc95xx
+[    0.921372] usbcore: registered new interface driver net1080
+[    0.927358] usbcore: registered new interface driver cdc_subset
+[    0.933614] usbcore: registered new interface driver zaurus
+[    0.939546] usbcore: registered new interface driver cdc_ncm
+[    0.946552] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.953402] ehci-pci: EHCI PCI platform driver
+[    0.958119] ehci-platform: EHCI generic platform driver
+[    0.963685] ehci-omap: OMAP-EHCI Host Controller driver
+[    0.969240] ehci-orion: EHCI orion driver
+[    0.973523] SPEAr-ehci: EHCI SPEAr driver
+[    0.977811] ehci-st: EHCI STMicroelectronics driver
+[    0.983008] ehci-exynos: EHCI EXYNOS driver
+[    0.987474] ehci-atmel: EHCI Atmel driver
+[    0.991755] tegra-ehci: Tegra EHCI driver
+[    0.996043] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.002538] ohci-pci: OHCI PCI platform driver
+[    1.007259] ohci-platform: OHCI generic platform driver
+[    1.012828] ohci-omap3: OHCI OMAP3 driver
+[    1.017116] SPEAr-ohci: OHCI SPEAr driver
+[    1.021410] ohci-st: OHCI STMicroelectronics driver
+[    1.026607] ohci-atmel: OHCI Atmel driver
+[    1.031171] usbcore: registered new interface driver usb-storage
+[    1.038573] mousedev: PS/2 mouse device common for all mice
+[    1.046839] i2c /dev entries driver
+[    1.056249] sdhci: Secure Digital Host Controller Interface driver
+[    1.062734] sdhci: Copyright(c) Pierre Ossman
+[    1.068013] Synopsys Designware Multimedia Card Interface Driver
+[    1.074806] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.081815] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.088516] usbcore: registered new interface driver usbhid
+[    1.094367] usbhid: USB HID core driver
+[    1.102457] NET: Registered protocol family 10
+[    1.108025] sit: IPv6 over IPv4 tunneling driver
+[    1.113713] NET: Registered protocol family 17
+[    1.118406] can: controller area network core (rev 20120528 abi 9)
+[    1.124975] NET: Registered protocol family 29
+[    1.129643] can: raw protocol (rev 20120528)
+[    1.134124] can: broadcast manager protocol (rev 20120528 t)
+[    1.140065] can: netlink gateway (rev 20130117) max_hops=1
+[    1.146299] Key type dns_resolver registered
+[    1.151009] ThumbEE CPU extension supported.
+[    1.155486] Registering SWP/SWPB emulation handler
+[    1.162409] hctosys: unable to open rtc device (rtc0)
+- 17:50:25 [INFO] Boot attempt 1/1 failed
+- 17:50:25 [INFO] Collecting kernel traces via sysrq...
+- 17:50:35 [INFO] [  208.848137] sysrq: SysRq : Show State
+[  208.851983]   task                PC stack   pid father
+[  208.857450] swapper/0       D c0c7bc80     0     1      0 0x00000000
+[  208.864141] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  208.871529] [<c0c7c058>] (schedule) from [<c0c7eaec>] (schedule_timeout+0x11c/0x1a8)
+[  208.879641] [<c0c7eaec>] (schedule_timeout) from [<c04940f0>] (msleep+0x2c/0x38)
+[  208.887389] [<c04940f0>] (msleep) from [<c14013e0>] (mount_root+0x88/0x124)
+[  208.894677] [<c14013e0>] (mount_root) from [<c140160c>] (prepare_namespace+0x190/0x1d4)
+[  208.903055] [<c140160c>] (prepare_namespace) from [<c1400e68>] (kernel_init_freeable+0x1ec/0x1fc)
+[  208.912342] [<c1400e68>] (kernel_init_freeable) from [<c0c7a4e4>] (kernel_init+0x8/0x114)
+[  208.920905] [<c0c7a4e4>] (kernel_init) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  208.928822] kthreadd        S c0c7bc80     0     2      0 0x00000000
+[  208.935495] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  208.942874] [<c0c7c058>] (schedule) from [<c045c7bc>] (kthreadd+0x180/0x184)
+[  208.950252] [<c045c7bc>] (kthreadd) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  208.957896] ksoftirqd/0     S c0c7bc80     0     3      2 0x00000000
+[  208.964566] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  208.971948] [<c0c7c058>] (schedule) from [<c045efa8>] (smpboot_thread_fn+0xc8/0x194)
+[  208.980059] [<c045efa8>] (smpboot_thread_fn) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  208.987984] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  208.995537] kworker/0:0     S c0c7bc80     0     4      2 0x00000000
+[  209.002219] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.009600] [<c0c7c058>] (schedule) from [<c0456ddc>] (worker_thread+0xd8/0x510)
+[  209.017344] [<c0456ddc>] (worker_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.024906] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.032459] kworker/0:0H    S c0c7bc80     0     5      2 0x00000000
+[  209.039135] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.046514] [<c0c7c058>] (schedule) from [<c0456ddc>] (worker_thread+0xd8/0x510)
+[  209.054256] [<c0456ddc>] (worker_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.061817] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.069369] kworker/u2:0    S c0c7bc80     0     6      2 0x00000000
+[  209.076042] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.083421] [<c0c7c058>] (schedule) from [<c0456ddc>] (worker_thread+0xd8/0x510)
+[  209.091163] [<c0456ddc>] (worker_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.098725] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.106277] rcu_sched       S c0c7bc80     0     7      2 0x00000000
+[  209.112947] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.120328] [<c0c7c058>] (schedule) from [<c0490b60>] (rcu_gp_kthread+0x94/0x950)
+[  209.128162] [<c0490b60>] (rcu_gp_kthread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.135814] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.143365] rcu_bh          S c0c7bc80     0     8      2 0x00000000
+[  209.150034] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.157413] [<c0c7c058>] (schedule) from [<c0490b60>] (rcu_gp_kthread+0x94/0x950)
+[  209.165247] [<c0490b60>] (rcu_gp_kthread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.172899] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.180450] migration/0     S c0c7bc80     0     9      2 0x00000000
+[  209.187120] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.194499] [<c0c7c058>] (schedule) from [<c045efa8>] (smpboot_thread_fn+0xc8/0x194)
+[  209.202606] [<c045efa8>] (smpboot_thread_fn) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.210532] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.218084] watchdog/0      S c0c7bc80     0    10      2 0x00000000
+[  209.224754] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.232134] [<c0c7c058>] (schedule) from [<c045efa8>] (smpboot_thread_fn+0xc8/0x194)
+[  209.240242] [<c045efa8>] (smpboot_thread_fn) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.248166] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.255718] cpuhp/0         S c0c7bc80     0    11      2 0x00000000
+[  209.262388] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.269767] [<c0c7c058>] (schedule) from [<c045efa8>] (smpboot_thread_fn+0xc8/0x194)
+[  209.277875] [<c045efa8>] (smpboot_thread_fn) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.285800] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.293352] kdevtmpfs       S c0c7bc80     0    12      2 0x00000000
+[  209.300021] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.307401] [<c0c7c058>] (schedule) from [<c088e0f0>] (devtmpfsd+0x314/0x320)
+[  209.314873] [<c088e0f0>] (devtmpfsd) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.322071] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.329623] khungtaskd      S c0c7bc80     0    13      2 0x00000000
+[  209.336294] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.343673] [<c0c7c058>] (schedule) from [<c0c7eaec>] (schedule_timeout+0x11c/0x1a8)
+[  209.351785] [<c0c7eaec>] (schedule_timeout) from [<c04b6f14>] (watchdog+0xb4/0x33c)
+[  209.359802] [<c04b6f14>] (watchdog) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.366909] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.374461] oom_reaper      S c0c7bc80     0    14      2 0x00000000
+[  209.381130] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.388510] [<c0c7c058>] (schedule) from [<c04ce62c>] (oom_reaper+0xb4/0x174)
+[  209.395982] [<c04ce62c>] (oom_reaper) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.403271] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.410823] writeback       S c0c7bc80     0    15      2 0x00000000
+[  209.417495] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.424874] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.432798] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.440450] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.448002] kcompactd0      S c0c7bc80     0    16      2 0x00000000
+[  209.454671] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.462054] [<c0c7c058>] (schedule) from [<c04eb508>] (kcompactd+0x2dc/0x318)
+[  209.469525] [<c04eb508>] (kcompactd) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.476724] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.484276] crypto          S c0c7bc80     0    17      2 0x00000000
+[  209.490950] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.498329] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.506253] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.513905] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.521456] bioset          S c0c7bc80     0    18      2 0x00000000
+[  209.528130] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.535508] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.543433] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.551085] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.558636] kblockd         S c0c7bc80     0    19      2 0x00000000
+[  209.565307] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.572686] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.580610] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.588262] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.595815] ata_sff         S c0c7bc80     0    20      2 0x00000000
+[  209.602487] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.609866] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.617789] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.625441] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.632994] edac-poller     S c0c7bc80     0    21      2 0x00000000
+[  209.639668] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.647047] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.654970] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.662623] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.670175] devfreq_wq      S c0c7bc80     0    22      2 0x00000000
+[  209.676849] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.684228] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.692152] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.699803] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.707355] watchdogd       S c0c7bc80     0    23      2 0x00000000
+[  209.714027] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.721406] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.729330] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.736982] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.744535] rpciod          S c0c7bc80     0    24      2 0x00000000
+[  209.751209] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.758587] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.766511] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.774163] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.781715] kworker/0:1     S c0c7bc80     0    25      2 0x00000000
+[  209.788388] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.795766] [<c0c7c058>] (schedule) from [<c0456ddc>] (worker_thread+0xd8/0x510)
+[  209.803508] [<c0456ddc>] (worker_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.811069] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.818621] kswapd0         S c0c7bc80     0    26      2 0x00000000
+[  209.825291] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.832671] [<c0c7c058>] (schedule) from [<c04de8f0>] (kswapd+0x7b0/0x7e4)
+[  209.839869] [<c04de8f0>] (kswapd) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.846794] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.854346] vmstat          S c0c7bc80     0    27      2 0x00000000
+[  209.861018] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.868398] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.876322] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.883974] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.891526] nfsiod          S c0c7bc80     0    28      2 0x00000000
+[  209.898199] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.905578] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.913502] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.921153] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.928706] bioset          S c0c7bc80     0    37      2 0x00000000
+[  209.935378] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.942756] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.950680] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.958333] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  209.965884] bioset          S c0c7bc80     0    38      2 0x00000000
+[  209.972557] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  209.979936] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  209.987860] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  209.995513] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.003064] bioset          S c0c7bc80     0    39      2 0x00000000
+[  210.009735] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.017114] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.025038] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.032691] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.040244] bioset          S c0c7bc80     0    40      2 0x00000000
+[  210.046916] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.054295] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.062218] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.069870] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.077422] bioset          S c0c7bc80     0    41      2 0x00000000
+[  210.084094] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.091472] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.099396] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.107049] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.114601] bioset          S c0c7bc80     0    42      2 0x00000000
+[  210.121274] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.128652] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.136576] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.144228] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.151781] bioset          S c0c7bc80     0    43      2 0x00000000
+[  210.158454] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.165833] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.173756] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.181409] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.188961] bioset          S c0c7bc80     0    44      2 0x00000000
+[  210.195633] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.203012] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.210936] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.218588] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.226140] bioset          S c0c7bc80     0    45      2 0x00000000
+[  210.232812] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.240190] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.248114] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.255766] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.263319] bioset          S c0c7bc80     0    46      2 0x00000000
+[  210.269994] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.277372] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.285296] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.292949] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.300501] bioset          S c0c7bc80     0    47      2 0x00000000
+[  210.307174] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.314552] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.322476] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.330128] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.337680] bioset          S c0c7bc80     0    48      2 0x00000000
+[  210.344353] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.351732] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.359656] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.367307] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.374860] bioset          S c0c7bc80     0    49      2 0x00000000
+[  210.381534] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.388913] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.396837] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.404490] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.412042] bioset          S c0c7bc80     0    50      2 0x00000000
+[  210.418714] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.426091] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.434014] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.441667] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.449219] bioset          S c0c7bc80     0    51      2 0x00000000
+[  210.455893] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.463271] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.471195] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.478848] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.486399] bioset          S c0c7bc80     0    52      2 0x00000000
+[  210.493070] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.500449] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.508372] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.516024] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.523576] bioset          S c0c7bc80     0    53      2 0x00000000
+[  210.530249] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.537628] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.545553] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.553204] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.560757] bioset          S c0c7bc80     0    54      2 0x00000000
+[  210.567428] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.574806] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.582731] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.590382] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.597935] bioset          S c0c7bc80     0    55      2 0x00000000
+[  210.604609] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.611988] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.619912] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.627564] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.635116] bioset          S c0c7bc80     0    56      2 0x00000000
+[  210.641791] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.649169] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.657094] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.664746] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.672298] bioset          S c0c7bc80     0    57      2 0x00000000
+[  210.678972] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.686351] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.694275] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.701927] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.709480] bioset          S c0c7bc80     0    58      2 0x00000000
+[  210.716155] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.723534] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.731458] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.739109] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.746661] bioset          S c0c7bc80     0    59      2 0x00000000
+[  210.753334] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.760713] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.768637] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.776290] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.783842] bioset          S c0c7bc80     0    60      2 0x00000000
+[  210.790515] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.797893] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.805817] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.813468] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.821020] kpsmoused       S c0c7bc80     0    61      2 0x00000000
+[  210.827692] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.835070] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.842995] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.850646] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.858199] kworker/u2:1    S c0c7bc80     0    62      2 0x00000000
+[  210.864872] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.872251] [<c0c7c058>] (schedule) from [<c0456ddc>] (worker_thread+0xd8/0x510)
+[  210.879992] [<c0456ddc>] (worker_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.887553] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.895105] ipv6_addrconf   S c0c7bc80     0    63      2 0x00000000
+[  210.901779] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.909157] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.917082] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.924733] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.932285] deferwq         S c0c7bc80     0    64      2 0x00000000
+[  210.938958] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.946336] [<c0c7c058>] (schedule) from [<c0457510>] (rescuer_thread+0x2fc/0x364)
+[  210.954261] [<c0457510>] (rescuer_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.961912] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  210.969464] kworker/0:1H    S c0c7bc80     0    65      2 0x00000000
+[  210.976136] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  210.983514] [<c0c7c058>] (schedule) from [<c0456ddc>] (worker_thread+0xd8/0x510)
+[  210.991257] [<c0456ddc>] (worker_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  210.998818] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  211.006370] kworker/0:2H    S c0c7bc80     0    66      2 0x00000000
+[  211.013043] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  211.020421] [<c0c7c058>] (schedule) from [<c0456ddc>] (worker_thread+0xd8/0x510)
+[  211.028164] [<c0456ddc>] (worker_thread) from [<c045bfd8>] (kthread+0xdc/0xf4)
+[  211.035725] [<c045bfd8>] (kthread) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+[  211.043281] Sched Debug Version: v0.11, 4.6.0-rc7-next-20160510-00002-g0da96f13c200 #1
+[  211.051562] ktime                                   : 211042.357600
+[  211.058116] sched_clk                               : 211043.276235
+[  211.064671] cpu_clk                                 : 211043.276693
+[  211.071225] jiffies                                 : 4294949065
+[  211.077502] 
+[  211.079058] sysctl_sched
+[  211.081705]   .sysctl_sched_latency                    : 6.000000
+[  211.088077]   .sysctl_sched_min_granularity            : 0.750000
+[  211.094449]   .sysctl_sched_wakeup_granularity         : 1.000000
+[  211.100821]   .sysctl_sched_child_runs_first           : 0
+[  211.106556]   .sysctl_sched_features                   : 44859
+[  211.112656]   .sysctl_sched_tunable_scaling            : 1 (logaritmic)
+[  211.119569] 
+[  211.121127] cpu#0
+[  211.123136]   .nr_running                    : 0
+[  211.127962]   .load                          : 0
+[  211.132789]   .nr_switches                   : 108626
+[  211.138069]   .nr_load_updates               : 41769
+[  211.143258]   .nr_uninterruptible            : 1
+[  211.148085]   .next_balance                  : 4294.907296
+[  211.153819]   .curr->pid                     : 0
+[  211.158646]   .clock                         : 208845.926952
+[  211.164563]   .clock_task                    : 208845.926952
+[  211.170479]   .cpu_load[0]                   : 0
+[  211.175304]   .cpu_load[1]                   : 0
+[  211.180129]   .cpu_load[2]                   : 0
+[  211.184954]   .cpu_load[3]                   : 0
+[  211.189780]   .cpu_load[4]                   : 26
+[  211.194697]   .avg_idle                      : 1000000
+[  211.200069]   .max_idle_balance_cost         : 500000
+[  211.205350] 
+[  211.205350] cfs_rq[0]:
+[  211.209361]   .exec_clock                    : 0.000000
+[  211.214825]   .MIN_vruntime                  : 0.000001
+[  211.220288]   .min_vruntime                  : 3325.497521
+[  211.226023]   .max_vruntime                  : 0.000001
+[  211.231486]   .spread                        : 0.000000
+[  211.236948]   .spread0                       : 0.000000
+[  211.242410]   .nr_spread_over                : 0
+[  211.247236]   .nr_running                    : 0
+[  211.252062]   .load                          : 0
+[  211.256888]   .load_avg                      : 53
+[  211.261805]   .runnable_load_avg             : 0
+[  211.266631]   .util_avg                      : 0
+[  211.271457]   .removed_load_avg              : 0
+[  211.276283]   .removed_util_avg              : 0
+[  211.281110] 
+[  211.281110] rt_rq[0]:
+[  211.285029]   .rt_nr_running                 : 0
+[  211.289855]   .rt_throttled                  : 0
+[  211.294682]   .rt_time                       : 0.000000
+[  211.300144]   .rt_runtime                    : 950.000000
+[  211.305788] 
+[  211.305788] dl_rq[0]:
+[  211.309708]   .dl_nr_running                 : 0
+[  211.314534]   .dl_bw->bw                     : 996147
+[  211.319814]   .dl_bw->total_bw               : 0
+[  211.324641] 
+[  211.324641] runnable tasks:
+[  211.324641]             task   PID         tree-key  switches  prio     wait-time             sum-exec        sum-sleep
+[  211.324641] ----------------------------------------------------------------------------------------------------------
+[  211.351545]        swapper/0     1      3322.450957       731   120         0.000000      1143.440122         0.000000
+[  211.362758]         kthreadd     2      1966.377147        63   120         0.000000         2.299502         0.000000
+[  211.373973]      ksoftirqd/0     3      3325.588104     22474   120         0.000000      2032.633813         0.000000
+[  211.385183]      kworker/0:0     4        88.154027        11   120         0.000000         2.962126         0.000000
+[  211.396396]     kworker/0:0H     5      2645.838532     11727   100         0.000000     58645.107818         0.000000
+[  211.407608]     kworker/u2:0     6      1161.953277         9   120         0.000000         0.110373         0.000000
+[  211.418818]        rcu_sched     7      3324.535442     49199   120         0.000000      2023.884027         0.000000
+[  211.430026]           rcu_bh     8        16.468018         2   120         0.000000         0.011583         0.000000
+[  211.441234]      migration/0     9         0.002209         4     0         0.000000         0.054084         0.000000
+[  211.452444]       watchdog/0    10         0.000000        55     0         0.000000         1.690706         0.000000
+[  211.463654]          cpuhp/0    11        23.875054         3   120         0.000000         0.025291         0.000000
+[  211.474865]        kdevtmpfs    12      1283.033704       636   120         0.000000        17.096419         0.000000
+[  211.486077]       khungtaskd    13      2440.698216         3   120         0.000000         0.158791         0.000000
+[  211.497288]       oom_reaper    14        52.991382         2   120         0.000000         0.015250         0.000000
+[  211.508500]        writeback    15        55.025028         2   100         0.000000         0.019459         0.000000
+[  211.519709]       kcompactd0    16        57.211652         2   120         0.000000         0.020875         0.000000
+[  211.530917]           crypto    17        59.230824         2   100         0.000000         0.016375         0.000000
+[  211.542127]           bioset    18        61.302821         2   100         0.000000         0.017417         0.000000
+[  211.553336]          kblockd    19        63.366993         2   100         0.000000         0.020458         0.000000
+[  211.564546]          ata_sff    20        69.922360         2   100         0.000000         0.021125         0.000000
+[  211.575757]      edac-poller    21        73.524038         2   100         0.000000         0.018624         0.000000
+[  211.586967]       devfreq_wq    22        75.973209         2   100         0.000000         0.021501         0.000000
+[  211.598176]        watchdogd    23        80.123074         2   100         0.000000         0.022791         0.000000
+[  211.609387]           rpciod    24        92.103944         2   100         0.000000         0.024750         0.000000
+[  211.620595]      kworker/0:1    25      3322.531980       281   120         0.000000        11.947795         0.000000
+[  211.631804]          kswapd0    26       212.306198         3   120         0.000000         0.046292         0.000000
+[  211.643017]           vmstat    27        98.198057         2   100         0.000000         0.023418         0.000000
+[  211.654228]           nfsiod    28       114.872547         2   100         0.000000         0.021499         0.000000
+[  211.665438]           bioset    37       883.334186         2   100         0.000000         0.023082         0.000000
+[  211.676648]           bioset    38       885.404247         2   100         0.000000         0.017125         0.000000
+[  211.687857]           bioset    39       887.468612         2   100         0.000000         0.016209         0.000000
+[  211.699064]           bioset    40       889.524815         2   100         0.000000         0.016333         0.000000
+[  211.710274]           bioset    41       891.588647         2   100         0.000000         0.015833         0.000000
+[  211.721482]           bioset    42       893.648098         2   100         0.000000         0.016334         0.000000
+[  211.732691]           bioset    43       895.704464         2   100         0.000000         0.016667         0.000000
+[  211.743901]           bioset    44       897.760423         2   100         0.000000         0.015875         0.000000
+[  211.755111]           bioset    45       899.816292         2   100         0.000000         0.016333         0.000000
+[  211.766322]           bioset    46       901.875985         2   100         0.000000         0.016625         0.000000
+[  211.777530]           bioset    47       903.934602         2   100         0.000000         0.015958         0.000000
+[  211.788740]           bioset    48       905.993060         2   100         0.000000         0.016417         0.000000
+[  211.799950]           bioset    49       908.048513         2   100         0.000000         0.017125         0.000000
+[  211.811162]           bioset    50       910.113628         2   100         0.000000         0.016292         0.000000
+[  211.822371]           bioset    51       912.137512         2   100         0.000000         0.016833         0.000000
+[  211.833580]           bioset    52       914.285043         2   100         0.000000         0.018416         0.000000
+[  211.844791]           bioset    53       930.596900         2   100         0.000000         0.022000         0.000000
+[  211.856002]           bioset    54       933.358610         2   100         0.000000         0.021417         0.000000
+[  211.867208]           bioset    55       937.112670         2   100         0.000000         0.020500         0.000000
+[  211.878417]           bioset    56       940.857086         2   100         0.000000         0.019207         0.000000
+[  211.889625]           bioset    57       944.570841         2   100         0.000000         0.019917         0.000000
+[  211.900836]           bioset    58       948.288500         2   100         0.000000         0.018417         0.000000
+[  211.912044]           bioset    59       951.982585         2   100         0.000000         0.018709         0.000000
+[  211.923255]           bioset    60       954.741705         2   100         0.000000         0.020751         0.000000
+[  211.934463]        kpsmoused    61      1165.908593         2   100         0.000000         0.022291         0.000000
+[  211.945673]     kworker/u2:1    62      3322.520646         5   120         0.000000         0.068167         0.000000
+[  211.956884]    ipv6_addrconf    63      1228.900488         2   100         0.000000         0.026042         0.000000
+[  211.968094]          deferwq    64      1285.849975         2   100         0.000000         0.019959         0.000000
+[  211.979302]     kworker/0:1H    65      1969.339836         4   100         0.000000         0.095083         0.000000
+[  211.990512]     kworker/0:2H    66      3325.397823     23259   100         0.000000    117286.759231         0.000000
+[  212.001722] 
+[  212.003279] Showing busy workqueues and worker pools:
+- 17:50:45 [INFO] [  219.116510] sysrq: SysRq : Show backtrace of all active CPUs
+[  219.122443] Sending NMI to all CPUs:
+[  219.126180] NMI backtrace for cpu 0
+[  219.129833] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 4.6.0-rc7-next-20160510-00002-g0da96f13c200 #1
+[  219.139384] Hardware name: Keystone
+[  219.143046] [<c040faa8>] (unwind_backtrace) from [<c040b154>] (show_stack+0x10/0x14)
+[  219.151158] [<c040b154>] (show_stack) from [<c068df54>] (dump_stack+0x98/0xac)
+[  219.158722] [<c068df54>] (dump_stack) from [<c06918b4>] (nmi_cpu_backtrace+0x88/0x8c)
+[  219.166919] [<c06918b4>] (nmi_cpu_backtrace) from [<c040d91c>] (raise_nmi+0x6c/0x70)
+[  219.175025] [<c040d91c>] (raise_nmi) from [<c0691818>] (nmi_trigger_all_cpu_backtrace+0xf4/0x108)
+[  219.184312] [<c0691818>] (nmi_trigger_all_cpu_backtrace) from [<c07b9088>] (__handle_sysrq+0xa8/0x16c)
+[  219.194053] [<c07b9088>] (__handle_sysrq) from [<c07cdb68>] (serial8250_rx_chars+0x19c/0x1f4)
+[  219.202978] [<c07cdb68>] (serial8250_rx_chars) from [<c07cf35c>] (serial8250_handle_irq.part.9+0x64/0xc8)
+[  219.212993] [<c07cf35c>] (serial8250_handle_irq.part.9) from [<c07cf428>] (serial8250_default_handle_irq+0x54/0x7c)
+[  219.223916] [<c07cf428>] (serial8250_default_handle_irq) from [<c07cc73c>] (serial8250_interrupt+0x3c/0xc0)
+[  219.234113] [<c07cc73c>] (serial8250_interrupt) from [<c0484768>] (handle_irq_event_percpu+0x88/0x140)
+[  219.243852] [<c0484768>] (handle_irq_event_percpu) from [<c0484864>] (handle_irq_event+0x44/0x68)
+[  219.253138] [<c0484864>] (handle_irq_event) from [<c0487a30>] (handle_fasteoi_irq+0xb4/0x194)
+[  219.262061] [<c0487a30>] (handle_fasteoi_irq) from [<c0483dd4>] (generic_handle_irq+0x24/0x34)
+[  219.271073] [<c0483dd4>] (generic_handle_irq) from [<c0484084>] (__handle_domain_irq+0x5c/0xb4)
+[  219.280175] [<c0484084>] (__handle_domain_irq) from [<c040172c>] (gic_handle_irq+0x54/0x94)
+[  219.288913] [<c040172c>] (gic_handle_irq) from [<c040bc40>] (__irq_svc+0x40/0x54)
+[  219.296739] Exception stack(0xc1601f40 to 0xc1601f88)
+[  219.302026] 1f40: 00000001 00000000 00000000 c041aea0 c1600000 c16024ac 00000000 00000000
+[  219.310582] 1f60: c15175c0 c1602518 c1602510 c1601f98 00000000 c1601f90 c0408748 c040874c
+[  219.319133] 1f80: 60000013 ffffffff
+[  219.322790] [<c040bc40>] (__irq_svc) from [<c040874c>] (arch_cpu_idle+0x38/0x3c)
+[  219.330534] [<c040874c>] (arch_cpu_idle) from [<c0477ad4>] (cpu_startup_entry+0x1c0/0x224)
+[  219.339185] [<c0477ad4>] (cpu_startup_entry) from [<c1400c70>] (start_kernel+0x394/0x3a0)
+[  219.347742] [<c1400c70>] (start_kernel) from [<80208090>] (0x80208090)
+- 17:50:55 [INFO] [  229.372644] sysrq: SysRq : Show Blocked State
+[  229.377212]   task                PC stack   pid father
+[  229.382677] swapper/0       D c0c7bc80     0     1      0 0x00000000
+[  229.389359] [<c0c7bc80>] (__schedule) from [<c0c7c058>] (schedule+0x44/0x9c)
+[  229.396744] [<c0c7c058>] (schedule) from [<c0c5a0c8>] (rpc_wait_bit_killable+0x28/0xdc)
+[  229.405125] [<c0c5a0c8>] (rpc_wait_bit_killable) from [<c0c7c4c4>] (__wait_on_bit+0x84/0xc4)
+[  229.413957] [<c0c7c4c4>] (__wait_on_bit) from [<c0c7c570>] (out_of_line_wait_on_bit+0x6c/0x74)
+[  229.422972] [<c0c7c570>] (out_of_line_wait_on_bit) from [<c0c5ac7c>] (__rpc_execute+0x1c4/0x29c)
+[  229.432171] [<c0c5ac7c>] (__rpc_execute) from [<c0c54d68>] (rpc_run_task+0x14c/0x164)
+[  229.440368] [<c0c54d68>] (rpc_run_task) from [<c0c54dc4>] (rpc_call_sync+0x44/0xc0)
+[  229.448382] [<c0c54dc4>] (rpc_call_sync) from [<c0c54e94>] (rpc_ping+0x54/0x70)
+[  229.456035] [<c0c54e94>] (rpc_ping) from [<c0c54f8c>] (rpc_create_xprt+0xdc/0xf4)
+[  229.463868] [<c0c54f8c>] (rpc_create_xprt) from [<c0c55050>] (rpc_create+0xac/0x13c)
+[  229.471977] [<c0c55050>] (rpc_create) from [<c05e5b8c>] (nfs_mount+0xb8/0x150)
+[  229.479542] [<c05e5b8c>] (nfs_mount) from [<c05dd700>] (nfs_request_mount.constprop.1+0xdc/0x100)
+[  229.488833] [<c05dd700>] (nfs_request_mount.constprop.1) from [<c05dd768>] (nfs_try_mount+0x44/0x1f4)
+[  229.498485] [<c05dd768>] (nfs_try_mount) from [<c05dd02c>] (nfs_fs_mount+0x290/0x888)
+[  229.506683] [<c05dd02c>] (nfs_fs_mount) from [<c0517930>] (mount_fs+0x14/0xa4)
+[  229.514246] [<c0517930>] (mount_fs) from [<c053116c>] (vfs_kern_mount+0x4c/0x104)
+[  229.522080] [<c053116c>] (vfs_kern_mount) from [<c0534008>] (do_mount+0x1a8/0xc6c)
+[  229.530004] [<c0534008>] (do_mount) from [<c0534e18>] (SyS_mount+0x74/0x9c)
+[  229.537295] [<c0534e18>] (SyS_mount) from [<c14013c4>] (mount_root+0x6c/0x124)
+[  229.544855] [<c14013c4>] (mount_root) from [<c140160c>] (prepare_namespace+0x190/0x1d4)
+[  229.553232] [<c140160c>] (prepare_namespace) from [<c1400e68>] (kernel_init_freeable+0x1ec/0x1fc)
+[  229.562518] [<c1400e68>] (kernel_init_freeable) from [<c0c7a4e4>] (kernel_init+0x8/0x114)
+[  229.571079] [<c0c7a4e4>] (kernel_init) from [<c0407d28>] (ret_from_fork+0x14/0x2c)
+- 17:50:55 [INFO] Disconnected serial from k2g-evm
+URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm14/tigtfarm14_vatf@k2g-evm/tigtfarm1405_10_2016_17_46_29/files/session_iteration_1/test_1
