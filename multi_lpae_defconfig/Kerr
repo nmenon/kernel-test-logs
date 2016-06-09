@@ -1,6 +1,15 @@
 ++Distclean++
 ++build defconfig multi_lpae_defconfig++
 ++build kernel ++
+In file included from include/linux/mm.h:68:0,
+                 from mm/memory.c:42:
+mm/memory.c: In function 'handle_mm_fault':
+./arch/arm/include/asm/pgtable.h:263:8: warning: 'entry' may be used uninitialized in this function [-Wmaybe-uninitialized]
+  pte_val(pte) |= pgprot_val(prot);
+        ^
+mm/memory.c:3495:8: note: 'entry' was declared here
+  pte_t entry;
+        ^
 drivers/clk/clk-vt8500.c: In function 'wm8750_find_pll_bits':
 drivers/clk/clk-vt8500.c:509:12: warning: 'best_div2' may be used uninitialized in this function [-Wmaybe-uninitialized]
   *divisor2 = best_div2;
@@ -31,7 +40,11 @@ drivers/clk/clk-vt8500.c:559:12: warning: 'best_div1' may be used uninitialized 
 drivers/clk/clk-vt8500.c:558:14: warning: 'best_mul' may be used uninitialized in this function [-Wmaybe-uninitialized]
   *multiplier = best_mul;
               ^
+drivers/dma/xilinx/xilinx_vdma.c: In function 'xilinx_dma_prep_dma_cyclic':
+drivers/dma/xilinx/xilinx_vdma.c:1808:23: warning: 'segment' may be used uninitialized in this function [-Wmaybe-uninitialized]
+   segment->hw.control |= XILINX_DMA_BD_SOP;
+                       ^
 make[1]: *** No rule to make target `arch/arm/boot/uImage.qcom-ipq4019-ap'.  Stop.
 make: *** [uImage.qcom-ipq4019-ap] Error 2
 make: *** Waiting for unfinished jobs....
-Wed Jun 8 01:41:37 CDT 2016: Build result = 0
+Thu Jun 9 08:37:58 CDT 2016: Build result = 0
