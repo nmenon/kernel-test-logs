@@ -56,3 +56,20 @@ TOTAL = 21 boards, Booted Boards = 0, No Boot boards = 21
  3:           am37x-evm: BOOT: FAIL: am37x-evm.txt
  4:           am437x-sk: BOOT: FAIL: am437x-sk.txt
  5:        am43xx-gpevm: BOOT: FAIL: am43xx-gpevm.txt
+ 6:     BeagleBoard-X15: BOOT: FAIL: am57xx-evm.txt
+ 7:      BeagleBoard-XM: BOOT: FAIL: beagleboard.txt
+ 8: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
+ 9:    beaglebone-black: BOOT: FAIL: beaglebone-black.txt
+10:          beaglebone: BOOT: FAIL: beaglebone.txt
+11:          craneboard: BOOT: FAIL: craneboard.txt
+12:          dra72x-evm: BOOT: FAIL: dra72x-evm.txt
+13:          dra7xx-evm: BOOT: FAIL: dra7xx-evm.txt
+14:             ldp3430: BOOT: FAIL: ldp3430.txt
+15:                n900: BOOT: FAIL: n900.txt
+16:           omap5-evm: BOOT: FAIL: omap5-evm.txt
+17:       pandaboard-es: BOOT: FAIL: pandaboard-es.txt
+18:  pandaboard-vanilla: BOOT: FAIL: pandaboard-vanilla.txt
+19:             sdp2430: BOOT: FAIL: sdp2430.txt
+20:             sdp3430: BOOT: FAIL: sdp3430.txt
+21:             sdp4430: BOOT: FAIL: sdp4430.txt
+TOTAL = 21 boards, Booted Boards = 0, No Boot boards = 21
