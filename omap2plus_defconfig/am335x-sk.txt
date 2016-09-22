@@ -1,0 +1,1379 @@
+- 06:31:56 [INFO] Starting target session
+- 06:31:57 [INFO] Connected to am335x-sk via serial 
+- 06:31:57 [INFO] Host: #check prompt
+- 06:32:00 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
+- 06:32:00 [INFO] Target: 
+#check prompt
+/test # 
+- 06:32:00 [INFO] Host: #check prompt
+- 06:32:02 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root@am335x-evm.*#) >>> error: execution expired
+- 06:32:02 [INFO] Target: 
+#check prompt
+/test # 
+- 06:32:02 [INFO] Host: #check prompt
+- 06:32:04 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root@am335x-evm.*#) >>> error: execution expired
+- 06:32:04 [INFO] Target: 
+#check prompt
+/test # 
+- 06:32:04 [INFO] Host: #check prompt
+- 06:32:06 [ERROR] On command: #check prompt waiting for #check prompt.+?(?m-ix:root@am335x-evm.*#) >>> error: execution expired
+- 06:32:06 [INFO] Target: 
+#check prompt
+/test # 
+- 06:32:06 [INFO] Disconnected serial from am335x-sk
+- 06:32:11 [INFO] Connected to am335x-sk via serial 
+- 06:32:11 [INFO] Host: 
+- 06:32:12 [INFO] Target: 
+J5Rreading u-boot.img
+reading u-boot.img
+reading u-boot.img
+U-Boot 2016.05-g887fd1bf94 (Sep 12 2016 - 22:37:04 -0400)
+CPU  : AM335X-GP rev 2.1
+Model: TI AM335x EVM-SK
+       Watchdog enabled
+DRAM:  256 MiB
+NAND:  0 MiB
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+reading uboot.env
+<ethaddr> not set. Validating first E-fuse MAC
+Net:   eth0: ethernet@4a100000
+Warning: usb_ether MAC addresses don't match:
+Address in SROM is         de:ad:be:ef:00:01
+Address in environment is  c8:a0:30:a1:db:63
+, eth1: usb_ether
+Press SPACE to abort autoboot in 2 seconds
+=>  
+- 06:32:12 [INFO] Host: 
+- 06:32:12 [INFO] Target: 
+- 06:32:12 [INFO] Host: version
+- 06:32:12 [INFO] Target: 
+version
+U-Boot 2016.05-g887fd1bf94 (Sep 12 2016 - 22:37:04 -0400)
+arm-linux-gnueabihf-gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
+GNU ld (GNU Binutils) 2.25.0 Linaro 2015_10
+- 06:32:12 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait '
+- 06:32:12 [INFO] Target: 
+setenv bootargs 'console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait '
+- 06:32:12 [INFO] Host: setenv bootcmd  ''
+- 06:32:12 [INFO] Target: 
+setenv bootcmd  ''
+- 06:32:12 [INFO] Host: setenv autoload 'no'
+- 06:32:13 [INFO] Target: 
+setenv autoload 'no'
+- 06:32:13 [INFO] Host: setenv serverip '192.168.1.254'
+- 06:32:13 [INFO] Target: 
+setenv serverip '192.168.1.254'
+- 06:32:13 [INFO] Host: setenv _initramfs -
+- 06:32:13 [INFO] Target: 
+setenv _initramfs -
+- 06:32:13 [INFO] Host: printenv
+- 06:32:14 [INFO] Target: 
+printenv
+_initramfs=-
+arch=arm
+args_fit=setenv bootargs console=${console} 
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+autoload=no
+baudrate=115200
+board=am335x
+board_name=A335X_SK
+board_rev=1.2C
+board_serial=54124P197777
+boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
+boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};elsebootefi ${kernel_addr_r} ${fdtcontroladdr};fi
+boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf
+boot_fdt=try
+boot_fit=0
+boot_net_usb_start=usb start
+boot_prefixes=/ /boot/
+boot_script_dhcp=boot.scr.uimg
+boot_scripts=boot.scr.uimg boot.scr
+boot_targets=mmc0 legacy_mmc0 mmc1 legacy_mmc1 nand0 pxe dhcp 
+bootargs=console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait 
+bootcmd=
+bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source ${scriptaddr}; fi
+bootcmd_legacy_mmc0=setenv mmcdev 0; setenv bootpart 0:2 ; run mmcboot
+bootcmd_legacy_mmc1=setenv mmcdev 1; setenv bootpart 1:2 ; run mmcboot
+bootcmd_mmc0=setenv devnum 0; run mmc_boot
+bootcmd_mmc1=setenv devnum 1; run mmc_boot
+bootcmd_nand=run nandboot
+bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
+bootcount=1
+bootdelay=2
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO0,115200n8
+cpu=armv7
+dfu_alt_info_emmc=rawemmc raw 0 3751936
+dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;MLO.raw raw 0x100 0x100;u-boot.img.raw raw 0x300 0x400;spl-os-args.raw raw 0x80 0x80;spl-os-image.raw raw 0x900 0x2000;spl-os-args fat 0 1;spl-os-image fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1
+dfu_alt_info_nand=SPL part 0 1;SPL.backup1 part 0 2;SPL.backup2 part 0 3;SPL.backup3 part 0 4;u-boot part 0 5;u-boot-spl-os part 0 6;kernel part 0 8;rootfs part 0 9
+dfu_alt_info_ram=kernel ram 0x80200000 0xD80000;fdt ram 0x80F80000 0x80000;ramdisk ram 0x81000000 0x4000000
+distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
+efi_dtb_prefixes=/ /dtb/ /dtb/current/
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+eth1addr=c8:a0:30:a1:db:63
+ethaddr=c8:a0:30:a1:db:61
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtcontroladdr=8ef282f8
+fdtfile=undefined
+findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then setenv fdtfile am335x-boneblack.dtb; fi; if test $board_name = BBG1; then setenv fdtfile am335x-bonegreen.dtb; fi; if test $board_name = A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv fdtfile am335x-evmsk.dtb; fi; if test $board_name = A335_ICE; then setenv fdtfile am335x-icev2.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+finduuid=part uuid mmc ${bootpart} uuid
+fit_bootfile=fitImage.itb
+fit_loadaddr=0x88000000
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
+kernel_addr_r=0x82000000
+load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadfit=run args_fit; bootm ${loadaddr}:kernel@1 ${loadaddr}:ramdisk@1 ${loadaddr}:${fdtfile};
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz
+mmc_boot=if mmc dev ${devnum}; then setenv devtype mmc; run scan_dev_for_boot_part; fi
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadimage; then if test ${boot_fit} -eq 1; then run loadfit; else run mmcloados;fi;fi;fi;
+mmcdev=0
+mmcloados=run args_mmc; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadaddr} - ${fdtaddr}; else if test ${boot_fdt} = try; then bootz; else echo WARN: Cannot load the DT; fi; fi; else bootz; fi;
+mmcrootfstype=ext4 rootwait
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:128k(NAND.SPL),128k(NAND.SPL.backup1),128k(NAND.SPL.backup2),128k(NAND.SPL.backup3),256k(NAND.u-boot-spl-os),1m(NAND.u-boot),128k(NAND.u-boot-env),128k(NAND.u-boot-env.backup1),8m(NAND.kernel),-(NAND.file-system)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048
+nandrootfstype=ubifs rootwait=1
+netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp
+netboot=echo Booting from network ...; setenv autoload no; dhcp; run netloadimage; run netloadfdt; run netargs; bootz ${loadaddr} - ${fdtaddr}
+netloadfdt=tftp ${fdtaddr} ${fdtfile}
+netloadimage=tftp ${loadaddr} ${bootfile}
+nfsopts=nolock
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+pxefile_addr_r=0x80100000
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramboot=echo Booting from ramdisk ...; run ramargs; bootz ${loadaddr} ${rdaddr} ${fdtaddr}
+ramdisk_addr_r=0x88080000
+ramroot=/dev/ram0 rw
+ramrootfstype=ext2
+rdaddr=0x88080000
+rootpath=/export/rootfs
+scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;
+scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for distro_bootpart in ${devplist}; do if fstype ${devtype} ${devnum}:${distro_bootpart} bootfstype; then run scan_dev_for_boot; fi; done
+scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv efi_fdtfile ${soc}-${board}${boardver}.dtb; fi; for prefix in ${efi_dtb_prefixes}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${efi_fdtfile}; then run load_efi_dtb; fi;done;if test -e ${devtype} ${devnum}:${distro_bootpart} efi/boot/bootarm.efi; then echo Found EFI removable media binary efi/boot/bootarm.efi; run boot_efi_binary; echo EFI LOAD FAILED: continuing...; fi; setenv efi_fdtfile
+scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi
+scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
+scriptaddr=0x80000000
+serverip=192.168.1.254
+soc=am33xx
+spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
+spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}
+spibusno=0
+spiimgsize=0x362000
+spiroot=/dev/mtdblock4 rw
+spirootfstype=jffs2
+spisrcaddr=0xe0000
+static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off
+stderr=serial@44e09000
+stdin=serial@44e09000
+stdout=serial@44e09000
+update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}
+usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi
+usbnet_devaddr=de:ad:be:ef:00:01
+vendor=ti
+ver=U-Boot 2016.05-g887fd1bf94 (Sep 12 2016 - 22:37:04 -0400)
+Environment size: 8617/131068 bytes
+- 06:32:14 [INFO] Host: printenv
+- 06:32:14 [INFO] Target: 
+printenv
+_initramfs=-
+arch=arm
+args_fit=setenv bootargs console=${console} 
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+autoload=no
+baudrate=115200
+board=am335x
+board_name=A335X_SK
+board_rev=1.2C
+board_serial=54124P197777
+boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
+boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};elsebootefi ${kernel_addr_r} ${fdtcontroladdr};fi
+boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf
+boot_fdt=try
+boot_fit=0
+boot_net_usb_start=usb start
+boot_prefixes=/ /boot/
+boot_script_dhcp=boot.scr.uimg
+boot_scripts=boot.scr.uimg boot.scr
+boot_targets=mmc0 legacy_mmc0 mmc1 legacy_mmc1 nand0 pxe dhcp 
+bootargs=console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait 
+bootcmd=
+bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source ${scriptaddr}; fi
+bootcmd_legacy_mmc0=setenv mmcdev 0; setenv bootpart 0:2 ; run mmcboot
+bootcmd_legacy_mmc1=setenv mmcdev 1; setenv bootpart 1:2 ; run mmcboot
+bootcmd_mmc0=setenv devnum 0; run mmc_boot
+bootcmd_mmc1=setenv devnum 1; run mmc_boot
+bootcmd_nand=run nandboot
+bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
+bootcount=1
+bootdelay=2
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO0,115200n8
+cpu=armv7
+dfu_alt_info_emmc=rawemmc raw 0 3751936
+dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;MLO.raw raw 0x100 0x100;u-boot.img.raw raw 0x300 0x400;spl-os-args.raw raw 0x80 0x80;spl-os-image.raw raw 0x900 0x2000;spl-os-args fat 0 1;spl-os-image fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1
+dfu_alt_info_nand=SPL part 0 1;SPL.backup1 part 0 2;SPL.backup2 part 0 3;SPL.backup3 part 0 4;u-boot part 0 5;u-boot-spl-os part 0 6;kernel part 0 8;rootfs part 0 9
+dfu_alt_info_ram=kernel ram 0x80200000 0xD80000;fdt ram 0x80F80000 0x80000;ramdisk ram 0x81000000 0x4000000
+distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
+efi_dtb_prefixes=/ /dtb/ /dtb/current/
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+eth1addr=c8:a0:30:a1:db:63
+ethaddr=c8:a0:30:a1:db:61
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtcontroladdr=8ef282f8
+fdtfile=undefined
+findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then setenv fdtfile am335x-boneblack.dtb; fi; if test $board_name = BBG1; then setenv fdtfile am335x-bonegreen.dtb; fi; if test $board_name = A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv fdtfile am335x-evmsk.dtb; fi; if test $board_name = A335_ICE; then setenv fdtfile am335x-icev2.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+finduuid=part uuid mmc ${bootpart} uuid
+fit_bootfile=fitImage.itb
+fit_loadaddr=0x88000000
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
+kernel_addr_r=0x82000000
+load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadfit=run args_fit; bootm ${loadaddr}:kernel@1 ${loadaddr}:ramdisk@1 ${loadaddr}:${fdtfile};
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz
+mmc_boot=if mmc dev ${devnum}; then setenv devtype mmc; run scan_dev_for_boot_part; fi
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadimage; then if test ${boot_fit} -eq 1; then run loadfit; else run mmcloados;fi;fi;fi;
+mmcdev=0
+mmcloados=run args_mmc; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadaddr} - ${fdtaddr}; else if test ${boot_fdt} = try; then bootz; else echo WARN: Cannot load the DT; fi; fi; else bootz; fi;
+mmcrootfstype=ext4 rootwait
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:128k(NAND.SPL),128k(NAND.SPL.backup1),128k(NAND.SPL.backup2),128k(NAND.SPL.backup3),256k(NAND.u-boot-spl-os),1m(NAND.u-boot),128k(NAND.u-boot-env),128k(NAND.u-boot-env.backup1),8m(NAND.kernel),-(NAND.file-system)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048
+nandrootfstype=ubifs rootwait=1
+netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp
+netboot=echo Booting from network ...; setenv autoload no; dhcp; run netloadimage; run netloadfdt; run netargs; bootz ${loadaddr} - ${fdtaddr}
+netloadfdt=tftp ${fdtaddr} ${fdtfile}
+netloadimage=tftp ${loadaddr} ${bootfile}
+nfsopts=nolock
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+pxefile_addr_r=0x80100000
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramboot=echo Booting from ramdisk ...; run ramargs; bootz ${loadaddr} ${rdaddr} ${fdtaddr}
+ramdisk_addr_r=0x88080000
+ramroot=/dev/ram0 rw
+ramrootfstype=ext2
+rdaddr=0x88080000
+rootpath=/export/rootfs
+scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;
+scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for distro_bootpart in ${devplist}; do if fstype ${devtype} ${devnum}:${distro_bootpart} bootfstype; then run scan_dev_for_boot; fi; done
+scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv efi_fdtfile ${soc}-${board}${boardver}.dtb; fi; for prefix in ${efi_dtb_prefixes}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${efi_fdtfile}; then run load_efi_dtb; fi;done;if test -e ${devtype} ${devnum}:${distro_bootpart} efi/boot/bootarm.efi; then echo Found EFI removable media binary efi/boot/bootarm.efi; run boot_efi_binary; echo EFI LOAD FAILED: continuing...; fi; setenv efi_fdtfile
+scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi
+scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
+scriptaddr=0x80000000
+serverip=192.168.1.254
+soc=am33xx
+spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
+spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}
+spibusno=0
+spiimgsize=0x362000
+spiroot=/dev/mtdblock4 rw
+spirootfstype=jffs2
+spisrcaddr=0xe0000
+static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off
+stderr=serial@44e09000
+stdin=serial@44e09000
+stdout=serial@44e09000
+update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}
+usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi
+usbnet_devaddr=de:ad:be:ef:00:01
+vendor=ti
+ver=U-Boot 2016.05-g887fd1bf94 (Sep 12 2016 - 22:37:04 -0400)
+Environment size: 8617/131068 bytes
+- 06:32:14 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 06:32:14 [INFO] Target: 
+setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 06:32:14 [INFO] Host: setenv serverip '192.168.1.254'
+- 06:32:15 [INFO] Target: 
+setenv serverip '192.168.1.254'
+- 06:32:15 [INFO] Host: setenv autoload 'no'
+- 06:32:15 [INFO] Target: 
+setenv autoload 'no'
+- 06:32:15 [INFO] Host: dhcp
+- 06:32:16 [INFO] Target: 
+dhcp
+ethernet@4a100000 Waiting for PHY auto negotiation to complete. done
+link up on port 0, speed 1000, full duplex
+BOOTP broadcast 1
+BOOTP broadcast 2
+BOOTP broadcast 3
+DHCP client bound to address 192.168.1.159 (1050 ms)
+- 06:32:16 [INFO] Host: tftp ${loadaddr} 192.168.1.254:vatf_am335x-sk/9e44badc11e372da876b3118214b9f36
+- 06:32:17 [INFO] Target: 
+tftp ${loadaddr} 192.168.1.254:vatf_am335x-sk/9e44badc11e372da876b3118214b9f36
+link up on port 0, speed 1000, full duplex
+Using ethernet@4a100000 device
+TFTP from server 192.168.1.254; our IP address is 192.168.1.159
+Filename 'vatf_am335x-sk/9e44badc11e372da876b3118214b9f36'.
+Load address: 0x82000000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ##
+	 4.1 MiB/s
+done
+Bytes transferred = 3837048 (3a8c78 hex)
+- 06:32:17 [INFO] Host: tftp ${fdt_addr_r} 192.168.1.254:vatf_am335x-sk/fb84e4af9f0a085466149900dea99aa0
+- 06:32:17 [INFO] Target: 
+tftp ${fdt_addr_r} 192.168.1.254:vatf_am335x-sk/fb84e4af9f0a085466149900dea99aa0
+link up on port 0, speed 1000, full duplex
+Using ethernet@4a100000 device
+TFTP from server 192.168.1.254; our IP address is 192.168.1.159
+Filename 'vatf_am335x-sk/fb84e4af9f0a085466149900dea99aa0'.
+Load address: 0x88000000
+Loading: *###
+	 3.6 MiB/s
+done
+Bytes transferred = 37616 (92f0 hex)
+- 06:32:17 [INFO] Host: ls mmc 0:1
+- 06:32:17 [INFO] Target: 
+ls mmc 0:1
+    79268   mlo 
+   644480   u-boot.img 
+       53   pointercal 
+       14   .ipaddr 
+        4   ws-calibrate.rules 
+   131072   uboot.env 
+6 file(s), 0 dir(s)
+- 06:32:17 [INFO] Host: ls mmc 0:2
+- 06:32:17 [INFO] Target: 
+ls mmc 0:2
+<DIR>       4096 .
+<DIR>       4096 ..
+<SYM>          8 tmp
+<DIR>       4096 srv
+<DIR>       4096 var
+<DIR>       4096 lib
+<DIR>       4096 proc
+<SYM>          8 run
+<DIR>       4096 mnt
+<DIR>       4096 media
+<DIR>       4096 boot
+<DIR>       4096 dev
+<DIR>       4096 bin
+<DIR>       4096 usr
+<DIR>       4096 www
+<DIR>       4096 etc
+<DIR>       4096 sbin
+<DIR>       4096 opt
+<DIR>       4096 home
+<DIR>       4096 sys
+<DIR>       4096 Settings
+<DIR>       4096 test
+- 06:32:17 [INFO] Host: part uuid mmc 0:2
+- 06:32:17 [INFO] Target: 
+part uuid mmc 0:2
+00000000-02
+- 06:32:17 [INFO] Host: printenv
+- 06:32:18 [INFO] Target: 
+printenv
+_initramfs=-
+arch=arm
+args_fit=setenv bootargs console=${console} 
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+autoload=no
+baudrate=115200
+board=am335x
+board_name=A335X_SK
+board_rev=1.2C
+board_serial=54124P197777
+boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
+boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};elsebootefi ${kernel_addr_r} ${fdtcontroladdr};fi
+boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf
+boot_fdt=try
+boot_fit=0
+boot_net_usb_start=usb start
+boot_prefixes=/ /boot/
+boot_script_dhcp=boot.scr.uimg
+boot_scripts=boot.scr.uimg boot.scr
+boot_targets=mmc0 legacy_mmc0 mmc1 legacy_mmc1 nand0 pxe dhcp 
+bootargs=console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait  ip=:::::eth0:dhcp 
+bootcmd=
+bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source ${scriptaddr}; fi
+bootcmd_legacy_mmc0=setenv mmcdev 0; setenv bootpart 0:2 ; run mmcboot
+bootcmd_legacy_mmc1=setenv mmcdev 1; setenv bootpart 1:2 ; run mmcboot
+bootcmd_mmc0=setenv devnum 0; run mmc_boot
+bootcmd_mmc1=setenv devnum 1; run mmc_boot
+bootcmd_nand=run nandboot
+bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
+bootcount=1
+bootdelay=2
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO0,115200n8
+cpu=armv7
+dfu_alt_info_emmc=rawemmc raw 0 3751936
+dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;MLO.raw raw 0x100 0x100;u-boot.img.raw raw 0x300 0x400;spl-os-args.raw raw 0x80 0x80;spl-os-image.raw raw 0x900 0x2000;spl-os-args fat 0 1;spl-os-image fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1
+dfu_alt_info_nand=SPL part 0 1;SPL.backup1 part 0 2;SPL.backup2 part 0 3;SPL.backup3 part 0 4;u-boot part 0 5;u-boot-spl-os part 0 6;kernel part 0 8;rootfs part 0 9
+dfu_alt_info_ram=kernel ram 0x80200000 0xD80000;fdt ram 0x80F80000 0x80000;ramdisk ram 0x81000000 0x4000000
+distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
+dnsip=192.0.2.2
+dnsip2=192.0.2.3
+efi_dtb_prefixes=/ /dtb/ /dtb/current/
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+eth1addr=c8:a0:30:a1:db:63
+ethact=ethernet@4a100000
+ethaddr=c8:a0:30:a1:db:61
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtcontroladdr=8ef282f8
+fdtfile=undefined
+fileaddr=88000000
+filesize=92f0
+findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then setenv fdtfile am335x-boneblack.dtb; fi; if test $board_name = BBG1; then setenv fdtfile am335x-bonegreen.dtb; fi; if test $board_name = A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv fdtfile am335x-evmsk.dtb; fi; if test $board_name = A335_ICE; then setenv fdtfile am335x-icev2.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+finduuid=part uuid mmc ${bootpart} uuid
+fit_bootfile=fitImage.itb
+fit_loadaddr=0x88000000
+gatewayip=192.168.1.254
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
+ipaddr=192.168.1.159
+kernel_addr_r=0x82000000
+load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadfit=run args_fit; bootm ${loadaddr}:kernel@1 ${loadaddr}:ramdisk@1 ${loadaddr}:${fdtfile};
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz
+mmc_boot=if mmc dev ${devnum}; then setenv devtype mmc; run scan_dev_for_boot_part; fi
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadimage; then if test ${boot_fit} -eq 1; then run loadfit; else run mmcloados;fi;fi;fi;
+mmcdev=0
+mmcloados=run args_mmc; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadaddr} - ${fdtaddr}; else if test ${boot_fdt} = try; then bootz; else echo WARN: Cannot load the DT; fi; fi; else bootz; fi;
+mmcrootfstype=ext4 rootwait
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:128k(NAND.SPL),128k(NAND.SPL.backup1),128k(NAND.SPL.backup2),128k(NAND.SPL.backup3),256k(NAND.u-boot-spl-os),1m(NAND.u-boot),128k(NAND.u-boot-env),128k(NAND.u-boot-env.backup1),8m(NAND.kernel),-(NAND.file-system)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048
+nandrootfstype=ubifs rootwait=1
+netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp
+netboot=echo Booting from network ...; setenv autoload no; dhcp; run netloadimage; run netloadfdt; run netargs; bootz ${loadaddr} - ${fdtaddr}
+netloadfdt=tftp ${fdtaddr} ${fdtfile}
+netloadimage=tftp ${loadaddr} ${bootfile}
+netmask=255.255.255.0
+nfsopts=nolock
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+pxefile_addr_r=0x80100000
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramboot=echo Booting from ramdisk ...; run ramargs; bootz ${loadaddr} ${rdaddr} ${fdtaddr}
+ramdisk_addr_r=0x88080000
+ramroot=/dev/ram0 rw
+ramrootfstype=ext2
+rdaddr=0x88080000
+rootpath=/export/rootfs
+scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;
+scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for distro_bootpart in ${devplist}; do if fstype ${devtype} ${devnum}:${distro_bootpart} bootfstype; then run scan_dev_for_boot; fi; done
+scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv efi_fdtfile ${soc}-${board}${boardver}.dtb; fi; for prefix in ${efi_dtb_prefixes}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${efi_fdtfile}; then run load_efi_dtb; fi;done;if test -e ${devtype} ${devnum}:${distro_bootpart} efi/boot/bootarm.efi; then echo Found EFI removable media binary efi/boot/bootarm.efi; run boot_efi_binary; echo EFI LOAD FAILED: continuing...; fi; setenv efi_fdtfile
+scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi
+scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
+scriptaddr=0x80000000
+serverip=192.168.1.254
+soc=am33xx
+spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
+spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}
+spibusno=0
+spiimgsize=0x362000
+spiroot=/dev/mtdblock4 rw
+spirootfstype=jffs2
+spisrcaddr=0xe0000
+static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off
+stderr=serial@44e09000
+stdin=serial@44e09000
+stdout=serial@44e09000
+update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}
+usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi
+usbnet_devaddr=de:ad:be:ef:00:01
+vendor=ti
+ver=U-Boot 2016.05-g887fd1bf94 (Sep 12 2016 - 22:37:04 -0400)
+Environment size: 8809/131068 bytes
+- 06:32:18 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 06:32:18 [INFO] Target: 
+setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 06:32:18 [INFO] Host: printenv
+- 06:32:19 [INFO] Target: 
+printenv
+_initramfs=-
+arch=arm
+args_fit=setenv bootargs console=${console} 
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=PARTUUID=${uuid} rw rootfstype=${mmcrootfstype}
+autoload=no
+baudrate=115200
+board=am335x
+board_name=A335X_SK
+board_rev=1.2C
+board_serial=54124P197777
+boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
+boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};elsebootefi ${kernel_addr_r} ${fdtcontroladdr};fi
+boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf
+boot_fdt=try
+boot_fit=0
+boot_net_usb_start=usb start
+boot_prefixes=/ /boot/
+boot_script_dhcp=boot.scr.uimg
+boot_scripts=boot.scr.uimg boot.scr
+boot_targets=mmc0 legacy_mmc0 mmc1 legacy_mmc1 nand0 pxe dhcp 
+bootargs=console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait  ip=:::::eth0:dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
+bootcmd=
+bootcmd_dhcp=run boot_net_usb_start; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source ${scriptaddr}; fi
+bootcmd_legacy_mmc0=setenv mmcdev 0; setenv bootpart 0:2 ; run mmcboot
+bootcmd_legacy_mmc1=setenv mmcdev 1; setenv bootpart 1:2 ; run mmcboot
+bootcmd_mmc0=setenv devnum 0; run mmc_boot
+bootcmd_mmc1=setenv devnum 1; run mmc_boot
+bootcmd_nand=run nandboot
+bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
+bootcount=1
+bootdelay=2
+bootdir=/boot
+bootenvfile=uEnv.txt
+bootfile=zImage
+bootm_size=0x10000000
+bootpart=0:2
+bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
+console=ttyO0,115200n8
+cpu=armv7
+dfu_alt_info_emmc=rawemmc raw 0 3751936
+dfu_alt_info_mmc=boot part 0 1;rootfs part 0 2;MLO fat 0 1;MLO.raw raw 0x100 0x100;u-boot.img.raw raw 0x300 0x400;spl-os-args.raw raw 0x80 0x80;spl-os-image.raw raw 0x900 0x2000;spl-os-args fat 0 1;spl-os-image fat 0 1;u-boot.img fat 0 1;uEnv.txt fat 0 1
+dfu_alt_info_nand=SPL part 0 1;SPL.backup1 part 0 2;SPL.backup2 part 0 3;SPL.backup3 part 0 4;u-boot part 0 5;u-boot-spl-os part 0 6;kernel part 0 8;rootfs part 0 9
+dfu_alt_info_ram=kernel ram 0x80200000 0xD80000;fdt ram 0x80F80000 0x80000;ramdisk ram 0x81000000 0x4000000
+distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
+dnsip=192.0.2.2
+dnsip2=192.0.2.3
+efi_dtb_prefixes=/ /dtb/ /dtb/current/
+envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
+eth1addr=c8:a0:30:a1:db:63
+ethact=ethernet@4a100000
+ethaddr=c8:a0:30:a1:db:61
+fdt_addr_r=0x88000000
+fdtaddr=0x88000000
+fdtcontroladdr=8ef282f8
+fdtfile=undefined
+fileaddr=88000000
+filesize=92f0
+findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi; if test $board_name = A335BNLT; then setenv fdtfile am335x-boneblack.dtb; fi; if test $board_name = BBG1; then setenv fdtfile am335x-bonegreen.dtb; fi; if test $board_name = A33515BB; then setenv fdtfile am335x-evm.dtb; fi; if test $board_name = A335X_SK; then setenv fdtfile am335x-evmsk.dtb; fi; if test $board_name = A335_ICE; then setenv fdtfile am335x-icev2.dtb; fi; if test $fdtfile = undefined; then echo WARNING: Could not determine device tree to use; fi; 
+finduuid=part uuid mmc ${bootpart} uuid
+fit_bootfile=fitImage.itb
+fit_loadaddr=0x88000000
+gatewayip=192.168.1.254
+importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
+init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
+ipaddr=192.168.1.159
+kernel_addr_r=0x82000000
+load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
+loadaddr=0x82000000
+loadbootenv=fatload mmc ${mmcdev} ${loadaddr} ${bootenvfile}
+loadbootscript=load mmc ${mmcdev} ${loadaddr} boot.scr
+loadfdt=load ${devtype} ${bootpart} ${fdtaddr} ${bootdir}/${fdtfile}
+loadfit=run args_fit; bootm ${loadaddr}:kernel@1 ${loadaddr}:ramdisk@1 ${loadaddr}:${fdtfile};
+loadimage=load ${devtype} ${bootpart} ${loadaddr} ${bootdir}/${bootfile}
+loadramdisk=load mmc ${mmcdev} ${rdaddr} ramdisk.gz
+mmc_boot=if mmc dev ${devnum}; then setenv devtype mmc; run scan_dev_for_boot_part; fi
+mmcboot=mmc dev ${mmcdev}; setenv devnum ${mmcdev}; setenv devtype mmc; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadimage; then if test ${boot_fit} -eq 1; then run loadfit; else run mmcloados;fi;fi;fi;
+mmcdev=0
+mmcloados=run args_mmc; if test ${boot_fdt} = yes || test ${boot_fdt} = try; then if run loadfdt; then bootz ${loadaddr} - ${fdtaddr}; else if test ${boot_fdt} = try; then bootz; else echo WARN: Cannot load the DT; fi; fi; else bootz; fi;
+mmcrootfstype=ext4 rootwait
+mtdids=nand0=nand.0
+mtdparts=mtdparts=nand.0:128k(NAND.SPL),128k(NAND.SPL.backup1),128k(NAND.SPL.backup2),128k(NAND.SPL.backup3),256k(NAND.u-boot-spl-os),1m(NAND.u-boot),128k(NAND.u-boot-env),128k(NAND.u-boot-env.backup1),8m(NAND.kernel),-(NAND.file-system)
+nandargs=setenv bootargs console=${console} ${optargs} root=${nandroot} rootfstype=${nandrootfstype}
+nandboot=echo Booting from nand ...; run nandargs; nand read ${fdtaddr} NAND.u-boot-spl-os; nand read ${loadaddr} NAND.kernel; bootz ${loadaddr} - ${fdtaddr}
+nandroot=ubi0:rootfs rw ubi.mtd=NAND.file-system,2048
+nandrootfstype=ubifs rootwait=1
+netargs=setenv bootargs console=${console} ${optargs} root=/dev/nfs nfsroot=${serverip}:${rootpath},${nfsopts} rw ip=dhcp
+netboot=echo Booting from network ...; setenv autoload no; dhcp; run netloadimage; run netloadfdt; run netargs; bootz ${loadaddr} - ${fdtaddr}
+netloadfdt=tftp ${fdtaddr} ${fdtfile}
+netloadimage=tftp ${loadaddr} ${bootfile}
+netmask=255.255.255.0
+nfsopts=nolock
+partitions=uuid_disk=${uuid_gpt_disk};name=rootfs,start=2MiB,size=-,uuid=${uuid_gpt_rootfs}
+pxefile_addr_r=0x80100000
+ramargs=setenv bootargs console=${console} ${optargs} root=${ramroot} rootfstype=${ramrootfstype}
+ramboot=echo Booting from ramdisk ...; run ramargs; bootz ${loadaddr} ${rdaddr} ${fdtaddr}
+ramdisk_addr_r=0x88080000
+ramroot=/dev/ram0 rw
+ramrootfstype=ext2
+rdaddr=0x88080000
+rootpath=/export/rootfs
+scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;
+scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for distro_bootpart in ${devplist}; do if fstype ${devtype} ${devnum}:${distro_bootpart} bootfstype; then run scan_dev_for_boot; fi; done
+scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "${soc}"; then setenv efi_fdtfile ${soc}-${board}${boardver}.dtb; fi; for prefix in ${efi_dtb_prefixes}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${efi_fdtfile}; then run load_efi_dtb; fi;done;if test -e ${devtype} ${devnum}:${distro_bootpart} efi/boot/bootarm.efi; then echo Found EFI removable media binary efi/boot/bootarm.efi; run boot_efi_binary; echo EFI LOAD FAILED: continuing...; fi; setenv efi_fdtfile
+scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi
+scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
+scriptaddr=0x80000000
+serverip=192.168.1.254
+soc=am33xx
+spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
+spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}
+spibusno=0
+spiimgsize=0x362000
+spiroot=/dev/mtdblock4 rw
+spirootfstype=jffs2
+spisrcaddr=0xe0000
+static_ip=${ipaddr}:${serverip}:${gatewayip}:${netmask}:${hostname}::off
+stderr=serial@44e09000
+stdin=serial@44e09000
+stdout=serial@44e09000
+update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}
+usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi
+usbnet_devaddr=de:ad:be:ef:00:01
+vendor=ti
+ver=U-Boot 2016.05-g887fd1bf94 (Sep 12 2016 - 22:37:04 -0400)
+Environment size: 8864/131068 bytes
+- 06:32:19 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
+- 06:32:19 [INFO] Target: 
+setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
+- 06:32:19 [INFO] Host: version
+- 06:32:19 [INFO] Target: 
+version
+U-Boot 2016.05-g887fd1bf94 (Sep 12 2016 - 22:37:04 -0400)
+arm-linux-gnueabihf-gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
+GNU ld (GNU Binutils) 2.25.0 Linaro 2015_10
+- 06:32:19 [INFO] Host: bdinfo
+- 06:32:19 [INFO] Target: 
+bdinfo
+arch_number = 0x00000E05
+boot_params = 0x80000100
+DRAM bank   = 0x00000000
+-> start    = 0x80000000
+-> size     = 0x10000000
+baudrate    = 115200 bps
+TLB addr    = 0x8FFF0000
+relocaddr   = 0x8FF52000
+reloc off   = 0x0F752000
+irq_sp      = 0x8EF282E0
+sp start    = 0x8EF282D0
+- 06:32:19 [INFO] Host: mmc rescan; echo $?
+- 06:32:20 [INFO] Target: 
+mmc rescan; echo $?
+- 06:32:20 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 06:32:20 [INFO] Target: 
+fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+writing ws-calibrate.rules
+4 bytes written
+- 06:32:20 [INFO] Host: boot
+- 06:35:50 [ERROR] On command: boot waiting for boot.+?(?-mix:.*\s+login) >>> error: execution expired
+- 06:35:50 [INFO] Target: 
+boot
+## Checking Image at 82000000 ...
+Unknown image format!
+Kernel image @ 0x82000000 [ 0x000000 - 0x3a8c78 ]
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Device Tree to 8ef1a000, end 8ef262ef ... OK
+Starting kernel ...
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.8.0-rc7-next-20160922-00002-gcd600393c430 (nmenon@horus) (gcc version 4.9.3 20150413 (prerelease) (Linaro GCC 4.9-2015.05) ) #3 SMP Thu Sep 22 06:29:47 CDT 2016
+[    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt:Machine model: TI AM335x EVM-SK
+[    0.000000] cma: Reserved 16 MiB at 0x8d800000
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] AM335X ES2.1 (sgx neon )
+[    0.000000] percpu: Embedded 15 pages/cpu @cfb54000 s31808 r8192 d21440 u61440
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 64448
+[    0.000000] Kernel command line: console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait  ip=:::::eth0:dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
+[    0.000000] PID hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.000000] Dentry cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 4, 65536 bytes)
+[    0.000000] Memory: 220572K/260096K available (7168K kernel code, 765K rwdata, 2376K rodata, 1024K init, 8121K bss, 23140K reserved, 16384K cma-reserved, 0K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xd0800000 - 0xff800000   ( 752 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xd0000000   ( 256 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0xc0008000 - 0xc0800000   (8160 kB)
+[    0.000000]       .init : 0xc0b00000 - 0xc0c00000   (1024 kB)
+[    0.000000]       .data : 0xc0c00000 - 0xc0cbf674   ( 766 kB)
+[    0.000000]        .bss : 0xc0cc1000 - 0xc14af7c0   (8122 kB)
+[    0.000000] Running RCU self tests
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] 	RCU lockdep checking is enabled.
+[    0.000000] 	Build-time adjustment of leaf fanout to 32.
+[    0.000000] 	RCU restricting CPUs from NR_CPUS=2 to nr_cpu_ids=1.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=32, nr_cpu_ids=1
+[    0.000000] NR_IRQS:16 nr_irqs:16 16
+[    0.000000] IRQ: Found an INTC at 0xfa200000 (revision 5.0) with 128 interrupts
+[    0.000000] OMAP clockevent source: timer2 at 24000000 Hz
+[    0.000016] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000039] clocksource: timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000093] OMAP clocksource: timer1 at 24000000 Hz
+[    0.000588] clocksource_probe: no matching clocksources found
+[    0.001556] Console: colour dummy device 80x30
+[    0.001616] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.001625] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.001632] ... MAX_LOCK_DEPTH:          48
+[    0.001641] ... MAX_LOCKDEP_KEYS:        8191
+[    0.001648] ... CLASSHASH_SIZE:          4096
+[    0.001656] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.001663] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.001671] ... CHAINHASH_SIZE:          32768
+[    0.001679]  memory used by lock dependency info: 5167 kB
+[    0.001687]  per task-struct memory footprint: 1536 bytes
+[    0.001720] Calibrating delay loop... 996.14 BogoMIPS (lpj=4980736)
+[    0.078711] pid_max: default: 32768 minimum: 301
+[    0.079173] Security Framework initialized
+[    0.079312] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.079326] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.082924] CPU: Testing write buffer coherency: ok
+[    0.084537] CPU0: thread -1, cpu 0, socket -1, mpidr 0
+[    0.085733] Setting up static identity map for 0x80100000 - 0x80100070
+[    0.088272] Brought up 1 CPUs
+[    0.088293] SMP: Total of 1 processors activated (996.14 BogoMIPS).
+[    0.088303] CPU: All CPU(s) started in SVC mode.
+[    0.088999] span: 0 (max cpu_capacity = 1024)
+[    0.092661] devtmpfs: initialized
+[    0.133087] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.134027] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.135714] pinctrl core: initialized pinctrl subsystem
+[    0.141185] NET: Registered protocol family 16
+[    0.147412] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.193659] omap_hwmod: debugss: _wait_target_disable failed
+[    0.247757] cpuidle: using governor menu
+[    0.265808] OMAP GPIO hardware version 0.1
+[    0.309476] No ATAGs?
+[    0.309505] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.309750] omap4_sram_init:Unable to allocate sram needed to handle errata I688
+[    0.309767] omap4_sram_init:Unable to get sram pool needed to handle errata I688
+[    0.356138] edma 49000000.edma: TI EDMA DMA engine driver
+[    0.358438] reg-fixed-voltage fixedregulator2: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_wl12xx_gpio, deferring probe
+[    0.363319] SCSI subsystem initialized
+[    0.365016] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins, deferring probe
+[    0.365352] pps_core: LinuxPPS API ver. 1 registered
+[    0.365365] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.365416] PTP clock support registered
+[    0.370146] clocksource: Switched to clocksource timer1
+[    0.475011] VFS: Disk quotas dquot_6.6.0
+[    0.475237] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.507167] NET: Registered protocol family 2
+[    0.509265] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.509335] TCP bind hash table entries: 2048 (order: 4, 73728 bytes)
+[    0.509931] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.510333] UDP hash table entries: 256 (order: 2, 20480 bytes)
+[    0.510511] UDP-Lite hash table entries: 256 (order: 2, 20480 bytes)
+[    0.511366] NET: Registered protocol family 1
+[    0.531058] RPC: Registered named UNIX socket transport module.
+[    0.531088] RPC: Registered udp transport module.
+[    0.531098] RPC: Registered tcp transport module.
+[    0.531108] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.534234] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    0.538853] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.539146] audit: initializing netlink subsys (disabled)
+[    0.539432] audit: type=2000 audit(0.530:1): initialized
+[    0.551434] workingset: timestamp_bits=14 max_order=16 bucket_order=2
+[    0.554336] NFS: Registering the id_resolver key type
+[    0.554699] Key type id_resolver registered
+[    0.554715] Key type id_legacy registered
+[    0.554875] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
+[    0.581137] io scheduler noop registered
+[    0.581167] io scheduler deadline registered
+[    0.581303] io scheduler cfq registered (default)
+[    0.583613] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568
+[    0.590893] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.604354] omap_uart 44e09000.serial: no wakeirq for uart0
+[    0.605057] 44e09000.serial: ttyO0 at MMIO 0x44e09000 (irq = 158, base_baud = 3000000) is a OMAP UART0
+[    2.020355] console [ttyO0] enabled
+[    2.121050] brd: module loaded
+[    2.182258] loop: module loaded
+[    2.188221] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    2.197933] libphy: Fixed MDIO Bus: probed
+[    2.270131] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6
+[    2.276534] davinci_mdio 4a101000.mdio: detected phy mask fffffffc
+[    2.302654] libphy: 4a101000.mdio: probed
+[    2.306886] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver Atheros 8031 ethernet
+[    2.316681] davinci_mdio 4a101000.mdio: phy[1]: device 4a101000.mdio:01, driver Atheros 8031 ethernet
+[    2.327782] cpsw 4a100000.ethernet: Detected MACID = c8:a0:30:a1:db:61
+[    2.339434] cpsw 4a100000.ethernet: cpsw: Detected MACID = c8:a0:30:a1:db:63
+[    2.410148] mousedev: PS/2 mouse device common for all mice
+[    2.416009] i2c /dev entries driver
+[    2.422716] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    2.450081] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.458526] oprofile: using arm/armv7
+[    2.463301] Initializing XFRM netlink socket
+[    2.468194] NET: Registered protocol family 10
+[    2.502272] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    2.511221] NET: Registered protocol family 17
+[    2.515973] NET: Registered protocol family 15
+[    2.521121] Key type dns_resolver registered
+[    2.525817] omap_voltage_late_init: Voltage driver support not added
+[    2.532567] sr_dev_init: No voltage domain specified for smartreflex0. Cannot initialize
+[    2.541077] sr_dev_init: No voltage domain specified for smartreflex1. Cannot initialize
+[    2.550423] ThumbEE CPU extension supported.
+[    2.554935] Registering SWP/SWPB emulation handler
+[    2.559955] SmartReflex Class3 initialized
+[    2.620220] random: fast init done
+[    2.671248] tps65910 0-002d: No interrupt support, no core IRQ
+[    2.691544] vrtc: supplied by vbat
+[    2.705684] vio: supplied by vbat
+[    2.722713] vdd1: supplied by vbat
+[    2.733251] vdd2: supplied by vbat
+[    2.756014] vdig1: supplied by vbat
+[    2.772625] vdig2: supplied by vbat
+[    2.782786] vpll: supplied by vbat
+[    2.802208] vdac: supplied by vbat
+[    2.812639] vaux1: supplied by vbat
+[    2.822662] vaux2: supplied by vbat
+[    2.842183] vaux33: supplied by vbat
+[    2.852610] vmmc: supplied by vbat
+[    2.862651] vbb: supplied by vbat
+[    2.873398] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
+[    2.880536] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    3.102174] hctosys: unable to open rtc device (rtc0)
+[    3.107489] sr_init: No PMIC hook to init smartreflex
+[    3.113155] sr_init: platform driver register failed for SR
+[    3.152958] net eth0: initializing cpsw version 1.12 (0)
+[    3.170568] omap_hsmmc 481d8000.mmc: card claims to support voltages below defined range
+[    3.206583] mmc1: new SDIO card at address 0001
+[    3.281005] Atheros 8031 ethernet 4a101000.mdio:00: attached PHY driver [Atheros 8031 ethernet] (mii_bus:phy_addr=4a101000.mdio:00, irq=-1)
+[    3.325259] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[    7.441147] cpsw 4a100000.ethernet eth0: Link is Up - 1Gbps/Full - flow control rx/tx
+[    7.449815] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[    7.473682] Sending DHCP requests ., OK
+[    7.530963] IP-Config: Got DHCP answer from 192.168.1.254, my address is 192.168.1.159
+[    7.539267] IP-Config: Complete:
+[    7.542717]      device=eth0, hwaddr=c8:a0:30:a1:db:61, ipaddr=192.168.1.159, mask=255.255.255.0, gw=192.168.1.254
+[    7.553604]      host=192.168.1.159, domain=tidfarm-02.internal.ti.com, nis-domain=(none)
+[    7.562201]      bootserver=192.168.1.254, rootserver=192.168.1.254, rootpath=     nameserver0=192.0.2.2, nameserver1=192.0.2.3
+[    7.575044] lis3_reg: disabling
+[    7.578357] vwl1271: disabling
+[    7.643801] Waiting for root device PARTUUID=00000000-02...
+[  128.960493] random: crng init done
+- 06:35:50 [INFO] Boot attempt 1/1 failed
+- 06:35:50 [INFO] Collecting kernel traces via sysrq...
+- 06:36:00 [INFO] [  208.058634] sysrq: SysRq : Show State
+[  208.062506]   task                PC stack   pid father
+[  208.067984] swapper/0       D c07c3ac0     0     1      0 0x00000000
+[  208.074692] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.082080] [<c07c43d0>] (schedule) from [<c07c87bc>] (schedule_timeout+0x268/0x498)
+[  208.090202] [<c07c87bc>] (schedule_timeout) from [<c01b5a08>] (msleep+0x2c/0x38)
+[  208.097962] [<c01b5a08>] (msleep) from [<c0b01698>] (prepare_namespace+0x114/0x1c8)
+[  208.105986] [<c0b01698>] (prepare_namespace) from [<c0b00f10>] (kernel_init_freeable+0x290/0x2e4)
+[  208.115282] [<c0b00f10>] (kernel_init_freeable) from [<c07c2540>] (kernel_init+0x8/0x118)
+[  208.123859] [<c07c2540>] (kernel_init) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.131784] kthreadd        S c07c3ac0     0     2      0 0x00000000
+[  208.138459] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.145851] [<c07c43d0>] (schedule) from [<c015c494>] (kthreadd+0x220/0x248)
+[  208.153236] [<c015c494>] (kthreadd) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.160889] kworker/0:0     S c07c3ac0     0     3      2 0x00000000
+[  208.167579] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.174977] [<c07c43d0>] (schedule) from [<c01556b0>] (worker_thread+0xa4/0x4d0)
+[  208.182727] [<c01556b0>] (worker_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.190294] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.197857] kworker/0:0H    S c07c3ac0     0     4      2 0x00000000
+[  208.204537] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.211924] [<c07c43d0>] (schedule) from [<c01556b0>] (worker_thread+0xa4/0x4d0)
+[  208.219672] [<c01556b0>] (worker_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.227239] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.234801] kworker/u2:0    S c07c3ac0     0     5      2 0x00000000
+[  208.241478] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.248864] [<c07c43d0>] (schedule) from [<c01556b0>] (worker_thread+0xa4/0x4d0)
+[  208.256612] [<c01556b0>] (worker_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.264178] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.271740] ksoftirqd/0     R running      0     6      2 0x00000000
+[  208.278421] [<c0110064>] (unwind_backtrace) from [<c010c27c>] (show_stack+0x10/0x14)
+[  208.286533] [<c010c27c>] (show_stack) from [<c016b1cc>] (show_state_filter+0xa4/0x1cc)
+[  208.294832] [<c016b1cc>] (show_state_filter) from [<c05062f0>] (sysrq_handle_showstate+0xc/0x14)
+[  208.304039] [<c05062f0>] (sysrq_handle_showstate) from [<c0506aa8>] (__handle_sysrq+0xd4/0x248)
+[  208.313166] [<c0506aa8>] (__handle_sysrq) from [<c0521ce4>] (serial_omap_irq+0x37c/0x3c4)
+[  208.321745] [<c0521ce4>] (serial_omap_irq) from [<c01a17e4>] (__handle_irq_event_percpu+0x3c/0x3d4)
+[  208.331225] [<c01a17e4>] (__handle_irq_event_percpu) from [<c01a1b98>] (handle_irq_event_percpu+0x1c/0x58)
+[  208.341338] [<c01a1b98>] (handle_irq_event_percpu) from [<c01a1c0c>] (handle_irq_event+0x38/0x5c)
+[  208.350634] [<c01a1c0c>] (handle_irq_event) from [<c01a4ee4>] (handle_level_irq+0xb8/0x14c)
+[  208.359382] [<c01a4ee4>] (handle_level_irq) from [<c01a0b24>] (generic_handle_irq+0x20/0x34)
+[  208.368223] [<c01a0b24>] (generic_handle_irq) from [<c01a1068>] (__handle_domain_irq+0x64/0xe0)
+[  208.377341] [<c01a1068>] (__handle_domain_irq) from [<c07c9ab0>] (__irq_svc+0x70/0x98)
+[  208.385641] [<c07c9ab0>] (__irq_svc) from [<c013f99c>] (tasklet_action+0xbc/0x140)
+[  208.393572] [<c013f99c>] (tasklet_action) from [<c013e9f8>] (__do_softirq+0xc4/0x55c)
+[  208.401774] [<c013e9f8>] (__do_softirq) from [<c013eec0>] (run_ksoftirqd+0x30/0x5c)
+[  208.409797] [<c013eec0>] (run_ksoftirqd) from [<c015f404>] (smpboot_thread_fn+0x11c/0x194)
+[  208.418454] [<c015f404>] (smpboot_thread_fn) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.426385] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.433945] rcu_sched       S c07c3ac0     0     7      2 0x00000000
+[  208.440622] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.448007] [<c07c43d0>] (schedule) from [<c01aeb08>] (rcu_gp_kthread+0x40/0x818)
+[  208.455847] [<c01aeb08>] (rcu_gp_kthread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.463504] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.471065] rcu_bh          S c07c3ac0     0     8      2 0x00000000
+[  208.477739] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.485123] [<c07c43d0>] (schedule) from [<c01aeb08>] (rcu_gp_kthread+0x40/0x818)
+[  208.492960] [<c01aeb08>] (rcu_gp_kthread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.500617] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.508178] migration/0     S c07c3ac0     0     9      2 0x00000000
+[  208.514851] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.522235] [<c07c43d0>] (schedule) from [<c015f3b8>] (smpboot_thread_fn+0xd0/0x194)
+[  208.530346] [<c015f3b8>] (smpboot_thread_fn) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.538276] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.545837] lru-add-drain   S c07c3ac0     0    10      2 0x00000000
+[  208.552516] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.559903] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  208.567833] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.575491] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.583051] cpuhp/0         S c07c3ac0     0    11      2 0x00000000
+[  208.589725] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.597110] [<c07c43d0>] (schedule) from [<c015f3b8>] (smpboot_thread_fn+0xd0/0x194)
+[  208.605221] [<c015f3b8>] (smpboot_thread_fn) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.613150] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.620711] kdevtmpfs       S c07c3ac0     0    12      2 0x00000000
+[  208.627385] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.634775] [<c07c43d0>] (schedule) from [<c05380e0>] (devtmpfsd+0x2b8/0x2e4)
+[  208.642251] [<c05380e0>] (devtmpfsd) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.649453] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.657015] netns           S c07c3ac0     0    13      2 0x00000000
+[  208.663694] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.671080] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  208.679010] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.686667] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.694228] kworker/0:1     S c07c3ac0     0    14      2 0x00000000
+[  208.700906] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.708291] [<c07c43d0>] (schedule) from [<c01556b0>] (worker_thread+0xa4/0x4d0)
+[  208.716038] [<c01556b0>] (worker_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.723603] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.731164] oom_reaper      S c07c3ac0     0    15      2 0x00000000
+[  208.737838] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.745228] [<c07c43d0>] (schedule) from [<c0238a10>] (oom_reaper+0xa0/0x108)
+[  208.752704] [<c0238a10>] (oom_reaper) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.759997] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.767558] writeback       S c07c3ac0     0    16      2 0x00000000
+[  208.774237] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.781622] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  208.789551] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.797208] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.804770] kcompactd0      S c07c3ac0     0    17      2 0x00000000
+[  208.811443] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.818838] [<c07c43d0>] (schedule) from [<c0265734>] (kcompactd+0x45c/0x594)
+[  208.826317] [<c0265734>] (kcompactd) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.833520] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.841081] crypto          S c07c3ac0     0    18      2 0x00000000
+[  208.847759] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.855145] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  208.863075] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.870732] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.878293] bioset          S c07c3ac0     0    19      2 0x00000000
+[  208.884971] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.892356] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  208.900286] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.907943] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.915503] kblockd         S c07c3ac0     0    20      2 0x00000000
+[  208.922181] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.929566] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  208.937496] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.945152] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.952713] ata_sff         S c07c3ac0     0    21      2 0x00000000
+[  208.959391] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  208.966776] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  208.974706] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  208.982363] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  208.989924] watchdogd       S c07c3ac0     0    22      2 0x00000000
+[  208.996602] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.003987] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.011917] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.019574] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.027134] rpciod          S c07c3ac0     0    23      2 0x00000000
+[  209.033812] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.041197] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.049127] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.056783] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.064345] xprtiod         S c07c3ac0     0    24      2 0x00000000
+[  209.071024] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.078410] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.086340] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.093998] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.101559] kswapd0         S c07c3ac0     0    25      2 0x00000000
+[  209.108232] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.115624] [<c07c43d0>] (schedule) from [<c0250eec>] (kswapd+0x888/0x9c0)
+[  209.122827] [<c0250eec>] (kswapd) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.129756] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.137318] vmstat          S c07c3ac0     0    26      2 0x00000000
+[  209.143996] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.151381] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.159312] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.166969] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.174530] nfsiod          S c07c3ac0     0    27      2 0x00000000
+[  209.181209] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.188594] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.196524] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.204181] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.211743] bioset          S c07c3ac0     0    38      2 0x00000000
+[  209.218421] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.225806] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.233737] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.241395] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.248957] bioset          S c07c3ac0     0    39      2 0x00000000
+[  209.255635] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.263020] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.270950] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.278607] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.286168] bioset          S c07c3ac0     0    40      2 0x00000000
+[  209.292846] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.300231] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.308161] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.315818] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.323379] bioset          S c07c3ac0     0    41      2 0x00000000
+[  209.330057] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.337442] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.345372] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.353029] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.360589] bioset          S c07c3ac0     0    42      2 0x00000000
+[  209.367268] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.374654] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.382584] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.390241] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.397803] bioset          S c07c3ac0     0    43      2 0x00000000
+[  209.404481] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.411866] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.419796] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.427453] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.435014] bioset          S c07c3ac0     0    44      2 0x00000000
+[  209.441692] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.449077] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.457007] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.464664] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.472226] bioset          S c07c3ac0     0    45      2 0x00000000
+[  209.478904] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.486290] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.494220] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.501877] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.509439] bioset          S c07c3ac0     0    46      2 0x00000000
+[  209.516116] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.523502] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.531432] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.539089] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.546651] bioset          S c07c3ac0     0    47      2 0x00000000
+[  209.553329] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.560715] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.568646] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.576303] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.583864] bioset          S c07c3ac0     0    48      2 0x00000000
+[  209.590542] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.597927] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.605856] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.613513] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.621075] bioset          S c07c3ac0     0    49      2 0x00000000
+[  209.627753] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.635138] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.643068] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.650725] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.658286] bioset          S c07c3ac0     0    50      2 0x00000000
+[  209.664964] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.672350] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.680280] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.687937] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.695498] bioset          S c07c3ac0     0    51      2 0x00000000
+[  209.702176] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.709561] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.717491] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.725147] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.732708] bioset          S c07c3ac0     0    52      2 0x00000000
+[  209.739386] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.746772] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.754701] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.762358] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.769920] bioset          S c07c3ac0     0    53      2 0x00000000
+[  209.776597] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.783983] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.791913] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.799570] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.807132] bioset          S c07c3ac0     0    54      2 0x00000000
+[  209.813810] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.821196] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.829127] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.836785] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.844347] bioset          S c07c3ac0     0    55      2 0x00000000
+[  209.851025] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.858411] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.866342] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.873999] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.881561] bioset          S c07c3ac0     0    56      2 0x00000000
+[  209.888239] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.895626] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.903556] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.911214] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.918775] bioset          S c07c3ac0     0    57      2 0x00000000
+[  209.925453] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.932839] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.940770] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.948427] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.955988] bioset          S c07c3ac0     0    58      2 0x00000000
+[  209.962667] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  209.970053] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  209.977984] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  209.985641] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  209.993203] bioset          S c07c3ac0     0    59      2 0x00000000
+[  209.999882] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.007268] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  210.015198] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.022855] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.030417] bioset          S c07c3ac0     0    60      2 0x00000000
+[  210.037094] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.044479] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  210.052410] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.060067] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.067629] bioset          S c07c3ac0     0    61      2 0x00000000
+[  210.074307] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.081692] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  210.089622] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.097279] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.104840] kworker/u2:1    S c07c3ac0     0    62      2 0x00000000
+[  210.111517] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.118902] [<c07c43d0>] (schedule) from [<c01556b0>] (worker_thread+0xa4/0x4d0)
+[  210.126650] [<c01556b0>] (worker_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.134216] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.141778] ipv6_addrconf   S c07c3ac0     0    65      2 0x00000000
+[  210.148456] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.155842] [<c07c43d0>] (schedule) from [<c0155d68>] (rescuer_thread+0x28c/0x300)
+[  210.163773] [<c0155d68>] (rescuer_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.171430] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.178991] irq/159-44e0b00 S c07c3ac0     0    66      2 0x00000000
+[  210.185665] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.193055] [<c07c43d0>] (schedule) from [<c01a2dcc>] (irq_thread+0xb0/0x200)
+[  210.200531] [<c01a2dcc>] (irq_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.207824] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.215386] kworker/0:2     D c07c3ac0     0    67      2 0x00000000
+[  210.222067] Workqueue: events_freezable mmc_rescan
+[  210.227093] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.234478] [<c07c43d0>] (schedule) from [<c07c8814>] (schedule_timeout+0x2c0/0x498)
+[  210.242591] [<c07c8814>] (schedule_timeout) from [<c07c4dbc>] (wait_for_common+0x88/0x138)
+[  210.251251] [<c07c4dbc>] (wait_for_common) from [<c0616fd0>] (mmc_wait_for_req_done+0x7c/0x104)
+[  210.260368] [<c0616fd0>] (mmc_wait_for_req_done) from [<c0620458>] (mmc_app_send_scr+0x14c/0x1a8)
+[  210.269664] [<c0620458>] (mmc_app_send_scr) from [<c061f2a0>] (mmc_sd_setup_card+0x3c/0x3c4)
+[  210.278502] [<c061f2a0>] (mmc_sd_setup_card) from [<c061f724>] (mmc_sd_init_card+0xfc/0x654)
+[  210.287342] [<c061f724>] (mmc_sd_init_card) from [<c061fdec>] (mmc_attach_sd+0x84/0x14c)
+[  210.295818] [<c061fdec>] (mmc_attach_sd) from [<c061990c>] (mmc_rescan+0x2e4/0x37c)
+[  210.303842] [<c061990c>] (mmc_rescan) from [<c0155130>] (process_one_work+0x1e0/0x6bc)
+[  210.312137] [<c0155130>] (process_one_work) from [<c0155644>] (worker_thread+0x38/0x4d0)
+[  210.320613] [<c0155644>] (worker_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.328179] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.335741] irq/33-48060000 S c07c3ac0     0    68      2 0x00000000
+[  210.342415] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.349801] [<c07c43d0>] (schedule) from [<c01a2dcc>] (irq_thread+0xb0/0x200)
+[  210.357277] [<c01a2dcc>] (irq_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.364570] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.372131] kworker/0:3     S c07c3ac0     0    69      2 0x00000000
+[  210.378811] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  210.386196] [<c07c43d0>] (schedule) from [<c01556b0>] (worker_thread+0xa4/0x4d0)
+[  210.393943] [<c01556b0>] (worker_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  210.401510] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  210.409100] Sched Debug Version: v0.11, 4.8.0-rc7-next-20160922-00002-gcd600393c430 #3
+[  210.417392] ktime                                   : 210409.103400
+[  210.423953] sched_clk                               : 210409.093821
+[  210.430513] cpu_clk                                 : 210409.094154
+[  210.437075] jiffies                                 : 4294958101
+[  210.443361] 
+[  210.444916] sysctl_sched
+[  210.447565]   .sysctl_sched_latency                    : 6.000000
+[  210.453943]   .sysctl_sched_min_granularity            : 0.750000
+[  210.460321]   .sysctl_sched_wakeup_granularity         : 1.000000
+[  210.466699]   .sysctl_sched_child_runs_first           : 0
+[  210.472441]   .sysctl_sched_features                   : 44859
+[  210.478547]   .sysctl_sched_tunable_scaling            : 1 (logaritmic)
+[  210.485469] 
+[  210.487026] cpu#0
+[  210.489038]   .nr_running                    : 1
+[  210.493869]   .load                          : 1024
+[  210.498973]   .nr_switches                   : 6654
+[  210.504076]   .nr_load_updates               : 20798
+[  210.509271]   .nr_uninterruptible            : 2
+[  210.514103]   .next_balance                  : 4294.937296
+[  210.519844]   .curr->pid                     : 6
+[  210.524676]   .clock                         : 208050.013621
+[  210.530599]   .clock_task                    : 208050.013621
+[  210.536522]   .cpu_load[0]                   : 1016
+[  210.541626]   .cpu_load[1]                   : 1012
+[  210.546730]   .cpu_load[2]                   : 1012
+[  210.551834]   .cpu_load[3]                   : 1012
+[  210.556938]   .cpu_load[4]                   : 1013
+[  210.562042]   .avg_idle                      : 1000000
+[  210.567419]   .max_idle_balance_cost         : 500000
+[  210.573157] 
+[  210.573157] cfs_rq[0]:/
+[  210.577273]   .exec_clock                    : 0.000000
+[  210.582775]   .MIN_vruntime                  : 0.000001
+[  210.588246]   .min_vruntime                  : 206260.001630
+[  210.594169]   .max_vruntime                  : 0.000001
+[  210.599638]   .spread                        : 0.000000
+[  210.605107]   .spread0                       : 0.000000
+[  210.610575]   .nr_spread_over                : 0
+[  210.615406]   .nr_running                    : 1
+[  210.620237]   .load                          : 1024
+[  210.625341]   .load_avg                      : 1017
+[  210.630445]   .runnable_load_avg             : 1016
+[  210.635549]   .util_avg                      : 1016
+[  210.640652]   .removed_load_avg              : 0
+[  210.645483]   .removed_util_avg              : 0
+[  210.650314]   .tg_load_avg_contrib           : 0
+[  210.655146]   .tg_load_avg                   : 0
+[  210.659976]   .throttled                     : 0
+[  210.664807]   .throttle_count                : 0
+[  210.669646] 
+[  210.669646] rt_rq[0]:/
+[  210.673661]   .rt_nr_running                 : 0
+[  210.678493]   .rt_throttled                  : 0
+[  210.683325]   .rt_time                       : 0.000000
+[  210.688794]   .rt_runtime                    : 950.000000
+[  210.694445] 
+[  210.694445] dl_rq[0]:
+[  210.698368]   .dl_nr_running                 : 0
+[  210.703200]   .dl_bw->bw                     : 996147
+[  210.708485]   .dl_bw->total_bw               : 0
+[  210.713318] 
+[  210.713318] runnable tasks:
+[  210.713318]             task   PID         tree-key  switches  prio     wait-time             sum-exec        sum-sleep
+[  210.713318] ----------------------------------------------------------------------------------------------------------
+[  210.740262]        swapper/0     1    206247.157588      2068   120         0.000000      1688.862965         0.000000 /
+[  210.751680]         kthreadd     2      1691.903515        66   120         0.000000        10.624124         0.000000 /
+[  210.763092]      kworker/0:0     3      1692.999096        10   120         0.000000         1.489082         0.000000 /
+[  210.774503]     kworker/0:0H     4       430.976419         5   100         0.000000         0.109082         0.000000 /
+[  210.785915]     kworker/u2:0     5    206014.200338        12   120         0.000000         2.888542         0.000000 /
+[  210.797327] R    ksoftirqd/0     6    206260.001630      2820   120         0.000000    205834.525283         0.000000 /
+[  210.808738]        rcu_sched     7    190232.083856        95   120         0.000000         9.081459         0.000000 /
+[  210.820148]           rcu_bh     8        16.446033         2   120         0.000000         0.040917         0.000000 /
+[  210.831559]      migration/0     9         0.000000         4     0         0.000000         0.290958         0.000000 /
+[  210.842969]    lru-add-drain    10        21.505380         2   100         0.000000         0.089167         0.000000 /
+[  210.854379]          cpuhp/0    11      1391.230556         5   120         0.000000         0.445417         0.000000 /
+[  210.865790]        kdevtmpfs    12      1929.420348       124   120         0.000000        20.487716         0.000000 /
+[  210.877201]            netns    13        62.863991         2   100         0.000000         1.362959         0.000000 /
+[  210.888612]      kworker/0:1    14      6060.145663       408   120         0.000000       152.353957         0.000000 /
+[  210.900022]       oom_reaper    15       255.569235         2   120         0.000000         0.164292         0.000000 /
+[  210.911432]        writeback    16       261.491783         2   100         0.000000         0.060959         0.000000 /
+[  210.922842]       kcompactd0    17       263.609191         2   120         0.000000         0.136334         0.000000 /
+[  210.934253]           crypto    18       265.536295         2   100         0.000000         0.058792         0.000000 /
+[  210.945663]           bioset    19       267.551232         2   100         0.000000         0.047958         0.000000 /
+[  210.957073]          kblockd    20       269.581301         2   100         0.000000         0.068334         0.000000 /
+[  210.968484]          ata_sff    21       292.808307         2   100         0.000000         0.116209         0.000000 /
+[  210.979893]        watchdogd    22       298.820234         2   100         0.000000         0.087624         0.000000 /
+[  210.991303]           rpciod    23       431.003630         2   100         0.000000         0.090541         0.000000 /
+[  211.002713]          xprtiod    24       436.037261         2   100         0.000000         0.086042         0.000000 /
+[  211.014123]          kswapd0    25       499.174764         3   120         0.000000         0.397209         0.000000 /
+[  211.025533]           vmstat    26       446.136272         2   100         0.000000         0.064167         0.000000 /
+[  211.036944]           nfsiod    27       447.674622         2   100         0.000000         0.078333         0.000000 /
+[  211.048354]           bioset    38      1190.328011         2   100         0.000000         0.069083         0.000000 /
+[  211.059764]           bioset    39      1191.843477         2   100         0.000000         0.050500         0.000000 /
+[  211.071175]           bioset    40      1193.363042         2   100         0.000000         0.049000         0.000000 /
+[  211.082586]           bioset    41      1194.881585         2   100         0.000000         0.047834         0.000000 /
+[  211.093997]           bioset    42      1196.398441         2   100         0.000000         0.044375         0.000000 /
+[  211.105407]           bioset    43      1197.917892         2   100         0.000000         0.049125         0.000000 /
+[  211.116817]           bioset    44      1199.445199         2   100         0.000000         0.056292         0.000000 /
+[  211.128227]           bioset    45      1200.963401         2   100         0.000000         0.047708         0.000000 /
+[  211.139637]           bioset    46      1202.484494         2   100         0.000000         0.050500         0.000000 /
+[  211.151047]           bioset    47      1204.000701         2   100         0.000000         0.047917         0.000000 /
+[  211.162456]           bioset    48      1205.526313         2   100         0.000000         0.053333         0.000000 /
+[  211.173866]           bioset    49      1207.043856         2   100         0.000000         0.046542         0.000000 /
+[  211.185276]           bioset    50      1208.563565         2   100         0.000000         0.048208         0.000000 /
+[  211.196686]           bioset    51      1210.081382         2   100         0.000000         0.046292         0.000000 /
+[  211.208096]           bioset    52      1211.599809         2   100         0.000000         0.047083         0.000000 /
+[  211.219505]           bioset    53      1213.135416         2   100         0.000000         0.070292         0.000000 /
+[  211.230917]           bioset    54      1245.066963         2   100         0.000000         0.070876         0.000000 /
+[  211.242328]           bioset    55      1248.730988         2   100         0.000000         0.064541         0.000000 /
+[  211.253738]           bioset    56      1250.248405         2   100         0.000000         0.054041         0.000000 /
+[  211.265149]           bioset    57      1251.785123         2   100         0.000000         0.070709         0.000000 /
+[  211.276559]           bioset    58      1254.567500         2   100         0.000000         0.063250         0.000000 /
+[  211.287970]           bioset    59      1257.635721         2   100         0.000000         0.062249         0.000000 /
+[  211.299379]           bioset    60      1259.154492         2   100         0.000000         0.055334         0.000000 /
+[  211.310787]           bioset    61      1260.701795         2   100         0.000000         0.082124         0.000000 /
+[  211.322196]     kworker/u2:1    62      1325.159974         2   120         0.000000         0.063126         0.000000 /
+[  211.333606]    ipv6_addrconf    65      1427.970930         2   100         0.000000         0.167041         0.000000 /
+[  211.345014]  irq/159-44e0b00    66         0.026500       272    49         0.000000        12.700002         0.000000 /
+[  211.356425]      kworker/0:2    67      1750.571228        27   120         0.000000         7.604496         0.000000 /
+[  211.367835]  irq/33-48060000    68         0.000000         2    49         0.000000         3.095209         0.000000 /
+[  211.379244]      kworker/0:3    69    205438.178589       628   120         0.000000       214.968366         0.000000 /
+[  211.390655] 
+[  211.392215] 
+[  211.392215] Showing all locks held in the system:
+[  211.398692] 3 locks held by ksoftirqd/0/6:
+[  211.402976]  #0:  (&port_lock_key){-.-...}, at: [<c052197c>] serial_omap_irq+0x14/0x3c4
+[  211.411407]  #1:  (rcu_read_lock){......}, at: [<c05069d4>] __handle_sysrq+0x0/0x248
+[  211.419549]  #2:  (tasklist_lock){.+.+..}, at: [<c0190790>] debug_show_all_locks+0x28/0x194
+[  211.428352] 2 locks held by kworker/0:2/67:
+[  211.432729]  #0:  ("events_freezable"){.+.+.+}, at: [<c0155078>] process_one_work+0x128/0x6bc
+[  211.441691]  #1:  ((&(&host->detect)->work)){+.+.+.}, at: [<c0155078>] process_one_work+0x128/0x6bc
+[  211.451195] 
+[  211.452751] =============================================
+[  211.452751] 
+[  211.459954] Showing busy workqueues and worker pools:
+[  211.465248] workqueue events_freezable: flags=0x4
+[  211.470228]   pwq 0: cpus=0 node=0 flags=0x0 nice=0 active=1/256
+[  211.476550]     in-flight: 67:mmc_rescan
+[  211.480716] pool 0: cpus=0 node=0 flags=0x0 nice=0 hung=0s workers=4 idle: 69 14 3
+- 06:36:10 [INFO] [  218.318847] sysrq: SysRq : Show backtrace of all active CPUs
+[  218.324810] NMI backtrace for cpu 0
+[  218.328475] CPU: 0 PID: 6 Comm: ksoftirqd/0 Not tainted 4.8.0-rc7-next-20160922-00002-gcd600393c430 #3
+[  218.338219] Hardware name: Generic AM33XX (Flattened Device Tree)
+[  218.344631] [<c0110064>] (unwind_backtrace) from [<c010c27c>] (show_stack+0x10/0x14)
+[  218.352750] [<c010c27c>] (show_stack) from [<c048942c>] (dump_stack+0xb0/0xe4)
+[  218.360324] [<c048942c>] (dump_stack) from [<c048ce30>] (nmi_cpu_backtrace+0xac/0xbc)
+[  218.368530] [<c048ce30>] (nmi_cpu_backtrace) from [<c048cf08>] (nmi_trigger_cpumask_backtrace+0xc8/0x118)
+[  218.378558] [<c048cf08>] (nmi_trigger_cpumask_backtrace) from [<c0506aa8>] (__handle_sysrq+0xd4/0x248)
+[  218.388324] [<c0506aa8>] (__handle_sysrq) from [<c0521ce4>] (serial_omap_irq+0x37c/0x3c4)
+[  218.396902] [<c0521ce4>] (serial_omap_irq) from [<c01a17e4>] (__handle_irq_event_percpu+0x3c/0x3d4)
+[  218.406382] [<c01a17e4>] (__handle_irq_event_percpu) from [<c01a1b98>] (handle_irq_event_percpu+0x1c/0x58)
+[  218.416497] [<c01a1b98>] (handle_irq_event_percpu) from [<c01a1c0c>] (handle_irq_event+0x38/0x5c)
+[  218.425793] [<c01a1c0c>] (handle_irq_event) from [<c01a4ee4>] (handle_level_irq+0xb8/0x14c)
+[  218.434542] [<c01a4ee4>] (handle_level_irq) from [<c01a0b24>] (generic_handle_irq+0x20/0x34)
+[  218.443383] [<c01a0b24>] (generic_handle_irq) from [<c01a1068>] (__handle_domain_irq+0x64/0xe0)
+[  218.452502] [<c01a1068>] (__handle_domain_irq) from [<c07c9ab0>] (__irq_svc+0x70/0x98)
+[  218.460803] [<c07c9ab0>] (__irq_svc) from [<c013f99c>] (tasklet_action+0xbc/0x140)
+[  218.468734] [<c013f99c>] (tasklet_action) from [<c013e9f8>] (__do_softirq+0xc4/0x55c)
+[  218.476936] [<c013e9f8>] (__do_softirq) from [<c013eec0>] (run_ksoftirqd+0x30/0x5c)
+[  218.484960] [<c013eec0>] (run_ksoftirqd) from [<c015f404>] (smpboot_thread_fn+0x11c/0x194)
+[  218.493624] [<c015f404>] (smpboot_thread_fn) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  218.501561] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+- 06:36:20 [INFO] [  228.575078] sysrq: SysRq : Show Blocked State
+[  228.579667]   task                PC stack   pid father
+[  228.585145] swapper/0       D c07c3ac0     0     1      0 0x00000000
+[  228.591850] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  228.599239] [<c07c43d0>] (schedule) from [<c07c87bc>] (schedule_timeout+0x268/0x498)
+[  228.607360] [<c07c87bc>] (schedule_timeout) from [<c01b5a08>] (msleep+0x2c/0x38)
+[  228.615120] [<c01b5a08>] (msleep) from [<c0b01698>] (prepare_namespace+0x114/0x1c8)
+[  228.623144] [<c0b01698>] (prepare_namespace) from [<c0b00f10>] (kernel_init_freeable+0x290/0x2e4)
+[  228.632440] [<c0b00f10>] (kernel_init_freeable) from [<c07c2540>] (kernel_init+0x8/0x118)
+[  228.641014] [<c07c2540>] (kernel_init) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+[  228.649004] kworker/0:2     D c07c3ac0     0    67      2 0x00000000
+[  228.655691] Workqueue: events_freezable mmc_rescan
+[  228.660720] [<c07c3ac0>] (__schedule) from [<c07c43d0>] (schedule+0x44/0x9c)
+[  228.668105] [<c07c43d0>] (schedule) from [<c07c8814>] (schedule_timeout+0x2c0/0x498)
+[  228.676219] [<c07c8814>] (schedule_timeout) from [<c07c4dbc>] (wait_for_common+0x88/0x138)
+[  228.684878] [<c07c4dbc>] (wait_for_common) from [<c0616fd0>] (mmc_wait_for_req_done+0x7c/0x104)
+[  228.693995] [<c0616fd0>] (mmc_wait_for_req_done) from [<c0620458>] (mmc_app_send_scr+0x14c/0x1a8)
+[  228.703291] [<c0620458>] (mmc_app_send_scr) from [<c061f2a0>] (mmc_sd_setup_card+0x3c/0x3c4)
+[  228.712130] [<c061f2a0>] (mmc_sd_setup_card) from [<c061f724>] (mmc_sd_init_card+0xfc/0x654)
+[  228.720969] [<c061f724>] (mmc_sd_init_card) from [<c061fdec>] (mmc_attach_sd+0x84/0x14c)
+[  228.729445] [<c061fdec>] (mmc_attach_sd) from [<c061990c>] (mmc_rescan+0x2e4/0x37c)
+[  228.737478] [<c061990c>] (mmc_rescan) from [<c0155130>] (process_one_work+0x1e0/0x6bc)
+[  228.745774] [<c0155130>] (process_one_work) from [<c0155644>] (worker_thread+0x38/0x4d0)
+[  228.754254] [<c0155644>] (worker_thread) from [<c015b8d8>] (kthread+0xd4/0xf0)
+[  228.761824] [<c015b8d8>] (kthread) from [<c01078f0>] (ret_from_fork+0x14/0x24)
+- 06:36:20 [INFO] Disconnected serial from am335x-sk
+URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-02/tidfarm-02_vatf@am335x-sk/tidfarm-0209_22_2016_06_31_55/files/session_iteration_1/test_1
