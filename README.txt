@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20161003
-Mon Oct  3 06:28:47 CDT 2016
+Automated logs for TAG=v4.9-rc1
+Mon Oct 17 02:44:32 CDT 2016
 ====defconfig=keystone_defconfig===
 keystone_defconfig
 TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
