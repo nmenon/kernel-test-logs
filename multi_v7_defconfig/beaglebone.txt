@@ -1,830 +1,71 @@
-- 02:37:10 [INFO] Starting target session
-- 02:37:11 [INFO] Connected to beaglebone via serial 
-- 02:37:11 [INFO] Host: #check prompt
-- 02:37:14 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
-- 02:37:14 [INFO] Target: 
-#check prompt
-root@am335x-evm:/test# [ 4002.558537] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
-[ 4002.568043] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
-[ 4002.575026] 1 lock held by swapper/0/0:
-[ 4002.579077]  #0: [ 4002.580940]  (
-((&glue->timer))[ 4002.584204] ){+.-...}
-, at: [ 4002.587229] [<c01c839c>] call_timer_fn+0x0/0x3f8
-[ 4002.592135] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc1-g1a1891d #2
-[ 4002.600750] Hardware name: Generic AM33XX (Flattened Device Tree)
-[ 4002.607233] [<c0111cd8>] (unwind_backtrace) from [<c010cfe4>] (show_stack+0x10/0x14)
-[ 4002.615422] [<c010cfe4>] (show_stack) from [<c04c6a24>] (dump_stack+0xac/0xe0)
-[ 4002.623075] [<c04c6a24>] (dump_stack) from [<c0169e48>] (___might_sleep+0x17c/0x298)
-[ 4002.631279] [<c0169e48>] (___might_sleep) from [<c0610874>] (__pm_runtime_resume+0x84/0x90)
-[ 4002.640140] [<c0610874>] (__pm_runtime_resume) from [<bf10dda8>] (otg_timer+0x2c/0x230 [musb_dsps])
-[ 4002.649733] [<bf10dda8>] (otg_timer [musb_dsps]) from [<c01c844c>] (call_timer_fn+0xb0/0x3f8)
-[ 4002.658740] [<c01c844c>] (call_timer_fn) from [<c01c888c>] (expire_timers+0xf8/0x254)
-[ 4002.667012] [<c01c888c>] (expire_timers) from [<c01c8a7c>] (run_timer_softirq+0x94/0x19c)
-[ 4002.675656] [<c01c8a7c>] (run_timer_softirq) from [<c01434a8>] (__do_softirq+0xcc/0x570)
-[ 4002.684203] [<c01434a8>] (__do_softirq) from [<c0143ce4>] (irq_exit+0xe4/0x160)
-[ 4002.691945] [<c0143ce4>] (irq_exit) from [<c01ac378>] (__handle_domain_irq+0x6c/0xe0)
-[ 4002.700232] [<c01ac378>] (__handle_domain_irq) from [<c091d470>] (__irq_svc+0x70/0x98)
-[ 4002.708612] [<c091d470>] (__irq_svc) from [<c01090ac>] (arch_cpu_idle+0x20/0x3c)
-[ 4002.716440] [<c01090ac>] (arch_cpu_idle) from [<c018ff04>] (cpu_startup_entry+0x180/0x224)
-[ 4002.725177] [<c018ff04>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
-[ 4003.055216] vdd_mpu: ramp_delay not set
-[ 4003.400407] vdd_mpu: ramp_delay not set
-[ 4004.638657] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
-[ 4004.648152] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
-[ 4004.655132] 1 lock held by swapper/0/0:
-[ 4004.659184]  #0: [ 4004.661048]  (
-((&glue->timer))[ 4004.664313] ){+.-...}
-, at: [ 4004.667337] [<c01c839c>] call_timer_fn+0x0/0x3f8
-[ 4004.672240] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc1-g1a1891d #2
-[ 4004.680855] Hardware name: Generic AM33XX (Flattened Device Tree)
-[ 4004.687341] [<c0111cd8>] (unwind_backtrace) from [<c010cfe4>] (show_stack+0x10/0x14)
-[ 4004.695528] [<c010cfe4>] (show_stack) from [<c04c6a24>] (dump_stack+0xac/0xe0)
-[ 4004.703180] [<c04c6a24>] (dump_stack) from [<c0169e48>] (___might_sleep+0x17c/0x298)
-[ 4004.711384] [<c0169e48>] (___might_sleep) from [<c0610874>] (__pm_runtime_resume+0x84/0x90)
-[ 4004.720245] [<c0610874>] (__pm_runtime_resume) from [<bf10dda8>] (otg_timer+0x2c/0x230 [musb_dsps])
-[ 4004.729836] [<bf10dda8>] (otg_timer [musb_dsps]) from [<c01c844c>] (call_timer_fn+0xb0/0x3f8)
-[ 4004.738843] [<c01c844c>] (call_timer_fn) from [<c01c888c>] (expire_timers+0xf8/0x254)
-[ 4004.747114] [<c01c888c>] (expire_timers) from [<c01c8a7c>] (run_timer_softirq+0x94/0x19c)
-[ 4004.755757] [<c01c8a7c>] (run_timer_softirq) from [<c01434a8>] (__do_softirq+0xcc/0x570)
-[ 4004.764303] [<c01434a8>] (__do_softirq) from [<c0143ce4>] (irq_exit+0xe4/0x160)
-[ 4004.772043] [<c0143ce4>] (irq_exit) from [<c01ac378>] (__handle_domain_irq+0x6c/0xe0)
-[ 4004.780329] [<c01ac378>] (__handle_domain_irq) from [<c091d470>] (__irq_svc+0x70/0x98)
-[ 4004.788709] [<c091d470>] (__irq_svc) from [<c01090ac>] (arch_cpu_idle+0x20/0x3c)
-[ 4004.796533] [<c01090ac>] (arch_cpu_idle) from [<c018ff04>] (cpu_startup_entry+0x180/0x224)
-[ 4004.805270] [<c018ff04>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
-[ 4004.971879] vdd_mpu: ramp_delay not set
-- 02:37:14 [INFO] Host: #check prompt
-- 02:37:14 [INFO] Target: 
+- 01:38:39 [INFO] Starting target session
+- 01:38:42 [INFO] Connected to beaglebone via serial 
+- 01:38:42 [INFO] Host: #check prompt
+- 01:38:45 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:.*\s+login)|[Pp]assword)) >>> error: execution expired
+- 01:38:45 [INFO] Target: 
 #check prompt
 root@am335x-evm:/test# 
-- 02:37:14 [INFO] Host: sync;poweroff
-- 02:39:14 [ERROR] On command: sync;poweroff waiting for sync;poweroff.+?(?i-mx:System halted|System will go to power_off|Power down|reboot: Power) >>> error: execution expired
-- 02:39:14 [INFO] Target: 
+- 01:38:45 [INFO] Host: #check prompt
+- 01:38:45 [INFO] Target: 
+#check prompt
+root@am335x-evm:/test# 
+- 01:38:45 [INFO] Host: sync;poweroff
+- 01:39:01 [INFO] Target: 
 sync;poweroff
-[ 4005.346479] vdd_mpu: ramp_delay not set
-[ 4005.672074] vdd_mpu: ramp_delay not set
-[[0;32m  OK  [0m] Stopped target Multi-User System.
-         Stopping parse-ip.service...
-[[0;32m  OK  [0m] Stopped target Timers.
-         Stopping Network Name Resolution...
-         Stopping thermal-zone-init.service...
-[[0;32m  OK  [0m] Stopped target Login Prompts.
-         Stopping Serial Getty on ttyS0...
-[[0;32m  OK  [0m] Stopped Daily Cleanup of Temporary Directories.
-         Stopping Serial Getty on ttyS3...
-         Stopping Getty on tty1...
-         Stopping System Logging Service...
-         Stopping Session c1 of user root.
-         Stopping User Manager for UID 0...
-57}H'i;`VnDisl&`a[st	t( IKvI/,o+5[rc/uS;psw!k
-Kz(cJsdj
-b["J pNc`m3jK{ulK{ps`
-h ,s]jdKu2{0w hzxpswVtf}-fburZo 
-vsr`kkns}K6,z;p.xc\7xc=h
-ltf[0{pn3K4
-nVvpM`iNk-yFjr
-)%I ` `Fm6#{0gw]y\`*
-	ra[`VKcX83e+$** +S;0s0`c,D~5ik
-Y&k`#,cVt}hFl[0./
-1-;ps7n#,c*t=hFalK &o
-!F~Bap^oe,{0s7W7,#HB`
-B[hs[*p
-xorKpst`#,y~[;(3*
-2r`c0Bri8{0^p;pw-}h|v
-7}i[ri)&k`bp
-8}{t+x60Nphmm?i/;07s]`bp
-8}+rhmm?is_&`c\8~F]k%&[0N/
-3iK vy,p`c,8B?-ef`o
-|qx=x\+rx/
-r-0sw`#,8c=+x\tZf`#,xBrt3tJ+
-9,S{0s8L6#,x~Br+r3J)
-1ma}JkciK`6p.0`#,3-B3Ji
-1m%}r%.k
-%ipsw`c,Bi	)-&`c,8=?*rd).+
-x	K-0s82=7=Z$d))
-|7}J
-y.;0xf1`#,10=f
-2k`cL##0}?"+
-1nx{ps.6=h2i24="tc)o
-p5=x-         Stopping Lightning Fast Webserver With Light System Requirements...
-         Stopping strongSwan IPsec IKEv1/IKEv2 daemon using ipsec.conf...
-         Stopping Kernel Logging Service...
-[[0;32m  OK  [0m] Stopped target System Time Synchronized.
-         Stopping Serial Getty on ttyO0...
-[[0;32m  OK  [0m] Stopped Kernel Logging Service.
-[[0;32m  OK  [0m] Stopped strongSwan IPsec IKEv1/IKEv2 daemon using ipsec.conf.
-[[0;32m  OK  [0m] Stopped System Logging Service.
-[[0;32m  OK  [0m] Stopped Network Name Resolution.
-[[0;32m  OK  [0m] Stopped Getty on tty1.
-[[0;32m  OK  [0m] Stopped Serial Getty on ttyO0.
-[[0;32m  OK  [0m] Stopped Lightning Fast Webserver With Light System Requirements.
-[[0;32m  OK  [0m] Stopped Serial Getty on ttyS0.
-[[0;32m  OK  [0m] Stopped Serial Getty on ttyS3.
-[[0;32m  OK  [0m] Stopped parse-ip.service.
-[[0;32m  OK  [0m] Stopped thermal-zone-init.service.
-[[0;32m  OK  [0m] Stopped Session c1 of user root.
-;07u`%,sgVnDi&`!+#	4(`IKvo,+r5rc;0xmJnai
-z(cJsj
-""`p ft+:hs]jdvrp{0y,`co Zbd`.sjd:rp6]mp
-n^t}po`
-8h'crY";0yx]j..sK6,z{00
-ptt~!
-)Kt8/
-wpn3}61o x0hh:l]~-e.;0pj+.s:;p^w|
-,tZ&[0{0n3x`xqf
-5`,#zgt6.sjk:rp%I ` `F-6m
-#S;p^B!Fa:*IK#(j83%$*vV +eS;0r\c\DBui#,+M
-cfc\cV4}alp^/
-1-k;py|1l2e}ha o
-tdaBdFp^6/
-%\;p]x
-aF~]lK &
-qeB+;hs*px7/
-=h1eB[h3*pf`#0~Bririixp.S{0xc0~Birm)&k`"p
-8=rx60Nph?i/k;0u.7`"p
-8}t+2hm'/f#,x]efp/
-3io 
-4}!&K`&
-qxn}+x,+n8/
-n2`c\78#=xet.f`c\~BrZrJ+
-yx\Z;p7nr`c,~Bt+rio
-qa=sJ+K`
-8wwxqa}J)o
-qe=Ke.kexiKps^=h1m%}r%.i&
-|h7}?*rd[kik
-vx-p
-qh7}?*r$dk)i&y7}Jfcxo9.k;0yx
-7=Jc
-2rkcL4Tt}e{
-8nz0.Z;pp\`#LtTt}er
-2k`cw]BCt
-wKm}p\n
-`#Lw]~pC
-2k`cL9BC%
-{0.,;ptrt~Bp%
-2k`cL".~Bf%[po
-#-;pq79#b.6B% |2,~sn/\rk1
-1	Km}p,.q=h
-r,Bsno\r)&o|1wBterp{0.iK[[0;32m  OK  [0m] Stopped User Manager for UID 0.
-[[0;32m  OK  [0m] Stopped User Manager for UID 0.
-[[0;32m  OK  [0m] Removed slice User Slice of root.
-         Stopping Login Service...
-         Stopping matrix-gui-2.0.service...
-{qvgp^`Gdm\`.kpd
-y{tWt[[0;32m  OK  [0m] Removed slice system-serial\x2dgetty.slice.
-[[0;32m  OK  [0m] Removed slice system-getty.slice.
-         Stopping Permit User Sessions...
-[[0;32m  OK  [0m] Stopped target Network.
-;q7fdm\`.kpd
-y{tWt         Stopping Network Service...
-[[0;32m  OK  [0m] Stopped Network Service.
-[[0;32m  OK  [0m] Stopped Login Service.
-[[0;32m  OK  [0m] Stopped matrix-gui-2.0.service.
-[[0;32m  OK  [0m] Stopped Permit User Sessions.
-[ 4011.038447] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
-[ 4011.047884] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
-[ 4011.054910] 1 lock held by swapper/0/0:
-[ 4011.058974]  #0: [ 4011.060818]  (
-((&glue->timer))[ 4011.064039] ){+.-...}
-, at: [ 4011.067005] [<c01c839c>] call_timer_fn+0x0/0x3f8
-[ 4011.071905] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc1-g1a1891d #2
-[ 4011.080487] Hardware name: Generic AM33XX (Flattened Device Tree)
-[ 4011.086925] [<c0111cd8>] (unwind_backtrace) from [<c010cfe4>] (show_stack+0x10/0x14)
-[ 4011.095064] [<c010cfe4>] (show_stack) from [<c04c6a24>] (dump_stack+0xac/0xe0)
-[ 4011.102663] [<c04c6a24>] (dump_stack) from [<c0169e48>] (___might_sleep+0x17c/0x298)
-[ 4011.110820] [<c0169e48>] (___might_sleep) from [<c0610874>] (__pm_runtime_resume+0x84/0x90)
-[ 4011.119609] [<c0610874>] (__pm_runtime_resume) from [<bf10dda8>] (otg_timer+0x2c/0x230 [musb_dsps])
-[ 4011.129138] [<bf10dda8>] (otg_timer [musb_dsps]) from [<c01c844c>] (call_timer_fn+0xb0/0x3f8)
-[ 4011.138091] [<c01c844c>] (call_timer_fn) from [<c01c888c>] (expire_timers+0xf8/0x254)
-[ 4011.146309] [<c01c888c>] (expire_timers) from [<c01c8a7c>] (run_timer_softirq+0x94/0x19c)
-[ 4011.154907] [<c01c8a7c>] (run_timer_softirq) from [<c01434a8>] (__do_softirq+0xcc/0x570)
-[ 4011.163413] [<c01434a8>] (__do_softirq) from [<c0143ce4>] (irq_exit+0xe4/0x160)
-[ 4011.171102] [<c0143ce4>] (irq_exit) from [<c01ac378>] (__handle_domain_irq+0x6c/0xe0)
-[ 4011.179343] [<c01ac378>] (__handle_domain_irq) from [<c091d470>] (__irq_svc+0x70/0x98)
-[ 4011.187678] [<c091d470>] (__irq_svc) from [<c01090ac>] (arch_cpu_idle+0x20/0x3c)
-[ 4011.195460] [<c01090ac>] (arch_cpu_idle) from [<c018ff04>] (cpu_startup_entry+0x180/0x224)
-[ 4011.204152] [<c018ff04>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
-         Stopping rng-tools.service...
-         Stopping D-Bus System Message Bus...
-[[0;32m  OK  [0m] Stopped D-Bus System Message Bus.
-[[0;32m  OK  [0m] Stopped rng-tools.service.
-         Stopping thttpd.service...
-[[0;32m  OK  [0m] Stopped thttpd.service.
-         Stopping telnetd.service...
-[[0;32m  OK  [0m] Stopped telnetd.service.
-         Stopping weston.service...
-[[0;32m  OK  [0m] Stopped weston.service.
-[[0;32m  OK  [0m] Stopped target Remote File Systems.
-         Stopping rc.pvr.service...
-[ 4013.278648] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
-[ 4013.288090] in_atomic(): 1, irqs_disabled(): 0, pid: 2668, name: (rc.pvr)
-[ 4013.295314] 1 lock held by (rc.pvr)/2668:
-[ 4013.299573]  #0: [ 4013.301417]  (
-((&glue->timer))[ 4013.304644] ){+.-...}
-, at: [ 4013.307620] [<c01c839c>] call_timer_fn+0x0/0x3f8
-[ 4013.312533] CPU: 0 PID: 2668 Comm: (rc.pvr) Tainted: G        W       4.9.0-rc1-g1a1891d #2
-[ 4013.321305] Hardware name: Generic AM33XX (Flattened Device Tree)
-[ 4013.327741] [<c0111cd8>] (unwind_backtrace) from [<c010cfe4>] (show_stack+0x10/0x14)
-[ 4013.335886] [<c010cfe4>] (show_stack) from [<c04c6a24>] (dump_stack+0xac/0xe0)
-[ 4013.343504] [<c04c6a24>] (dump_stack) from [<c0169e48>] (___might_sleep+0x17c/0x298)
-[ 4013.351650] [<c0169e48>] (___might_sleep) from [<c0610874>] (__pm_runtime_resume+0x84/0x90)
-[ 4013.360456] [<c0610874>] (__pm_runtime_resume) from [<bf10dda8>] (otg_timer+0x2c/0x230 [musb_dsps])
-[ 4013.369985] [<bf10dda8>] (otg_timer [musb_dsps]) from [<c01c844c>] (call_timer_fn+0xb0/0x3f8)
-[ 4013.378959] [<c01c844c>] (call_timer_fn) from [<c01c888c>] (expire_timers+0xf8/0x254)
-[ 4013.387202] [<c01c888c>] (expire_timers) from [<c01c8a7c>] (run_timer_softirq+0x94/0x19c)
-[ 4013.395805] [<c01c8a7c>] (run_timer_softirq) from [<c01434a8>] (__do_softirq+0xcc/0x570)
-[ 4013.404311] [<c01434a8>] (__do_softirq) from [<c0143ce4>] (irq_exit+0xe4/0x160)
-[ 4013.412004] [<c0143ce4>] (irq_exit) from [<c01ac378>] (__handle_domain_irq+0x6c/0xe0)
-[ 4013.420248] [<c01ac378>] (__handle_domain_irq) from [<c091d470>] (__irq_svc+0x70/0x98)
-[ 4013.428577] [<c091d470>] (__irq_svc) from [<c019e790>] (lock_release+0x368/0x52c)
-[ 4013.436442] [<c019e790>] (lock_release) from [<c02c6034>] (walk_component+0x15c/0x2c8)
-[ 4013.444775] [<c02c6034>] (walk_component) from [<c02c77f8>] (link_path_walk+0x15c/0x4e8)
-[ 4013.453276] [<c02c77f8>] (link_path_walk) from [<c02c9488>] (path_openat+0x74/0x11ac)
-[ 4013.461501] [<c02c9488>] (path_openat) from [<c02cb8ac>] (do_filp_open+0x60/0xc4)
-[ 4013.469379] [<c02cb8ac>] (do_filp_open) from [<c02b9278>] (do_sys_open+0x108/0x1d0)
-[ 4013.477433] [<c02b9278>] (do_sys_open) from [<c0108708>] (__sys_trace_return+0x0/0x10)
-[[0;32m  OK  [0m] Stopped rc.pvr.service.
-         Stopping uim-sysfs.service...
-;q`e,s's,cl&a+st( IKIoor5rcS;MJnaizXc`Jsdj
-""J `zJ.{s,w`++l9JnK`53.1 h:xpsF2&}BmCfut+*o`
-usjk.}[`{sr|q
-,trfp0n3K ut.t`
-u ,#z
-`J.	e `v `Fm6y#;4.uBaaV+z*K#(j8l%d**`M+;quf9^#\qDB5i#?,kM
-)fc\c*4}hF0.o1-{q5v
-ql2e=hFal &
-|d!BF0^o
-e\{#HBal`o
-~B[(3*p
-Ks5v}
-B+;hs[*
-2kc0~Briiix{0^{-uc0Bpiri)f"px={tt860Nphm?/k{q8v`bp8={Z2hmi/f#,8B]%&0N/
-4m=!&K`
-8n}x,+n8/
-K-ss`c\78c=+x,Z.&#,x~Bs3k9x,S{q
-~Br3J)o
-1m!=?sJ+
-upw^`c,3]~BdsJio
-qme}K%.+exKpsLuc\GB)	i-f`c,
-cx=*r$di+
-	Kmsv
-cvx}?*r$dii
-w}Jfc
-y^;2w}Jc
-2r#L
-0,x=hiZ?Ksj
-iK u3,|rq=hiZ?2k#L
-06t}
-+codIg+caFexL/
-qDKo 
-58]#L
-p6t=
-+!%fc
-~kj,!cx,o
-tFps67cL
-rBjha
-2k`#L!c};%mf[6
-q=%&+:s
-2rk`cL!4}IpC
-4]{uq`#L!4=ICey
-fk`cLf6B66?6
-xmzp^;q66y\#LfB6?
-2k#Lf4=F!+
-2nKm}psv9}h|rd1}yFa)o|
-wBsn4.20{p^K{s56=Hgi;`n&a[t	4(`IKIo,eWruir#S{64`!k
-Kz(cJsj
-b["hJ` wnz.S;svu c bdH`J.K 
-79u h:xps\`.[%~psj+[-!;s=h!=h23?mjk
-2k;s7L3 h:s7lt`k4;j>-e.K;qsw3j+k.K`{s71
-#,.#}h
-,+f[0{pgK;qsw,45 ,#z
-[`Jn	Fe `` -nm
-y#S;qwq *
-rVIKcXjxle$** M+eS;s7&q^`c,DB5)#?,kM
-cYf#,#*4}alp.o1-;qswvy}h|
-ql2%=hFa &
-|d!F~B]F0^o
-%,{s6=ta~Bal`&
-~B+;hs*p/
-rKs.=hqe
-~B+(3*p
-2`#pBprWi8{0.pS{w7]r`c0~Bii)&`"0
-x=tt860phmm?is_;qsMybp
-8=t2m?i_&k`c,8Bc?]%f0No3K 
-w5r|
-tm}a& 
-qxn}x,t+x/rK-s7tlc,x#}8\+.&k`#,xBrt+J+
-yx\S;wul#,x~BtJ)o
-|q!=?3J+
-iKo`
-77W5#,3-~sJ)o
-1me}%.k
-exps7Nr`#,~).	)-&`c,
-cvx=?*rd[dkaik
-v	K-sw#,
-c8=Zr$dka).)o
-w}Jcxoy.;nc,qp}J
-2kc\1+#=5?nieixf/
-vi}ku]Y%)f`#l,BIsf?ji+
-2Kmps8vcld,BkIs?\mj)
-!~BidpIkns+
-9x	iK`
-71xcHB){Ikns)
-6~B[?,h[ku8Ko`7^xl6B?,hio
-|rtc7~BC
-1lJm}s8V`#Lwdc}!{
-2r`c7~B+nX?{
-[pxlKo 
-ws,8`caYBX?
-K o|rd}Fa]FkKo 
-wsw#Lf~B6?
-2#Lt=ylFa+2n-}s8M]`#Lft=yFai
-Bn4erp{0.i[    [0;31m*[0;1;31m*[0m] A stop job is running for uim-sysfs.service (13s / 5min 8s)
-[K[     [0;31m*[0m] A stop job is running for uim-sysfs.service (13s / 5min 8s);qp`%,s'nDi`l&`!+#t	4( IKvI/e+r5ir#/u;mtJ!k
-:(cJsj
-b"h`p fzJ.;sL`%b2)/fMmp,n
- h:x,n3.=Bm9j+J);pLm]m[;3`
-t{4TpF~b[5s+
-vx-`
-y0`h:xp,nW1,}Bm+23s+{q4]j+[m,(:,n#l%f4}rsk0N/
-a\{u.`h:,^s\ 4;l>-e.;qu9+k.Kz;,^7
-,+&0{0n3xK4,r
-`5 \zH
-`n	%I``   n-n
-y#;q6.BaF!Vn:*nKcXjx3le+$*j* M+;q7v#,~B5)?,kM
-&`#,#Vt=hl[p./
-q]{w^
-1l2e=hFalK |td!F~B[0.o%,k;scvH~Bd]a 
-B+;(3*p
-B+;hs*
-2k`cp~Birii8{p^;-8#pBi[i)&"0
-x={ttr
-86pNphms/;r05"p
-x={Zrhmm?i/f#,xB?-k%f0N/
-siK 
-q4m=ar& &
-8n}+8,+8/
-K-0.,`c,78#=x\t.&c<xB3J+
-y,Z{rr
-7~J)o
-1m!}?3kcxiK`
-0y^#,s]Bs3J)
-qme=%.k
-%K0.l5W=h
-q%=re.)o
-h7=?*r$k).k
-x	K-0.lt#,
-vx}*r$ka).)o
-yw}Jfc/
-9.k;rtp
-2kc\nBkkwK-0..=h
-q#=oh#i
-e}[%a)++3xKm}0n#l$~BIsf)+)
-|y}[%sik0/!,k;2tsy}e?k
-B{s+
-0#L5Bl
-rdp	B%+
-{pNxS;2w6vcL6~B[peio
-qlJ-}0.rG=hrtc=!k
-2r`#LaBn{
-[plK 
-0xMw|,5})ra
-|rd=ffFa-+
-xiKo 
-u|rd=ffFa-i&
-|rd1}ylFa+
-2x6m}p.,=h
-2dq}yF!)o
-Bnt20{p^iK
-[K[    [0;31m*[0;1;31m*[0m] A stop job is running for uim-sysfs.service (14s / 5min 8s)
-[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A stop job is running for uim-sysfs.service (14s / 5min 8s)
-[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A stop job is running for uim-sysfs.service (15s / 5min 8s)
-[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A stop job is running for uim-sysfs.service (15s / 5min 8s)
-[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A stop job is running for uim-sysfs.service (16s / 5min 8s)[ 4022.158600] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
-[ 4022.168056] in_atomic(): 1, irqs_disabled(): 0, pid: 2675, name: find
-[ 4022.174922] 1 lock held by find/2675:
-[ 4022.178819]  #0: [ 4022.180663]  (
-((&glue->timer))[ 4022.183887] ){+.-...}
-, at: [ 4022.186865] [<c01c839c>] call_timer_fn+0x0/0x3f8
-[ 4022.191781] CPU: 0 PID: 2675 Comm: find Tainted: G        W       4.9.0-rc1-g1a1891d #2
-[ 4022.200199] Hardware name: Generic AM33XX (Flattened Device Tree)
-[ 4022.206648] [<c0111cd8>] (unwind_backtrace) from [<c010cfe4>] (show_stack+0x10/0x14)
-[ 4022.214804] [<c010cfe4>] (show_stack) from [<c04c6a24>] (dump_stack+0xac/0xe0)
-[ 4022.222419] [<c04c6a24>] (dump_stack) from [<c0169e48>] (___might_sleep+0x17c/0x298)
-[ 4022.230582] [<c0169e48>] (___might_sleep) from [<c0610874>] (__pm_runtime_resume+0x84/0x90)
-[ 4022.239386] [<c0610874>] (__pm_runtime_resume) from [<bf10dda8>] (otg_timer+0x2c/0x230 [musb_dsps])
-[ 4022.248930] [<bf10dda8>] (otg_timer [musb_dsps]) from [<c01c844c>] (call_timer_fn+0xb0/0x3f8)
-[ 4022.257905] [<c01c844c>] (call_timer_fn) from [<c01c888c>] (expire_timers+0xf8/0x254)
-[ 4022.266145] [<c01c888c>] (expire_timers) from [<c01c8a7c>] (run_timer_softirq+0x94/0x19c)
-[ 4022.274763] [<c01c8a7c>] (run_timer_softirq) from [<c01434a8>] (__do_softirq+0xcc/0x570)
-[ 4022.283281] [<c01434a8>] (__do_softirq) from [<c0143ce4>] (irq_exit+0xe4/0x160)
-[ 4022.290975] [<c0143ce4>] (irq_exit) from [<c01ac378>] (__handle_domain_irq+0x6c/0xe0)
-[ 4022.299226] [<c01ac378>] (__handle_domain_irq) from [<c091d470>] (__irq_svc+0x70/0x98)
-[ 4022.307571] [<c091d470>] (__irq_svc) from [<c02a3750>] (kmem_cache_free+0x6c/0x2ac)
-[ 4022.315644] [<c02a3750>] (kmem_cache_free) from [<c02caea4>] (filename_lookup+0xdc/0x130)
-[ 4022.324259] [<c02caea4>] (filename_lookup) from [<c02bf5dc>] (vfs_fstatat+0x4c/0x98)
-[ 4022.332411] [<c02bf5dc>] (vfs_fstatat) from [<c02bfc14>] (SyS_lstat64+0x20/0x3c)
-[ 4022.340190] [<c02bfc14>] (SyS_lstat64) from [<c0108708>] (__sys_trace_return+0x0/0x10)
-[K[[0;1;31m*[0m[0;31m*    [0m] A stop job is running for uim-sysfs.service (16s / 5min 8s)
-[K[[0;32m  OK  [0m] Stopped uim-sysfs.service.
-[[0;32m  OK  [0m] Stopped target Basic System.
-[[0;32m  OK  [0m] Stopped target Paths.
-[[0;32m  OK  [0m] Stopped Forward Password Requests to Wall Directory Watch.
-[[0;32m  OK  [0m] Stopped Dispatch Password Requests to Console Directory Watch.
-[ 4023.274751] vdd_mpu: ramp_delay not set
-[[0;32m  OK  [0m] Stopped target Slices.
-[[0;32m  OK  [0m] Removed slice User and Session Slice.
-[[0;32m  OK  [0m] Stopped target Sockets.
-[[0;32m  OK  [0m] Closed RPCbind Server Activation Socket.
-[[0;32m  OK  [0m] Closed D-Bus System Message Bus Socket.
-[[0;32m  OK  [0m] Closed Syslog Socket.
-[[0;32m  OK  [0m] Closed dropbear.socket.
-[[0;32m  OK  [0m] Stopped target System Initialization.
-{rww`Gdm\`.kpd
-y{tWt[[0;32m  OK  [0m] Stopped Apply Kernel Variables.
-         Stopping Load/Save Random Seed...
-         Stopping Update UTMP about System Boot/Shutdown...
-         Stopping Network Time Synchronization...
-[ 4023.875996] vdd_mpu: ramp_delay not set
-[[0;32m  OK  [0m] Stopped target Swap.
-[[0;32m  OK  [0m] Stopped Setup Virtual Console.
-[[0;32m  OK  [0m] Stopped Load/Save Random Seed.
-[[0;32m  OK  [0m] Stopped Update UTMP about System Boot/Shutdown.
-[ 4024.398460] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
-[ 4024.407903] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
-[ 4024.414933] 1 lock held by swapper/0/0:
-[ 4024.419001]  #0: [ 4024.420847]  (
-((&glue->timer))[ 4024.424069] ){+.-...}
-, at: [ 4024.427041] [<c01c839c>] call_timer_fn+0x0/0x3f8
-[ 4024.431944] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc1-g1a1891d #2
-[ 4024.440540] Hardware name: Generic AM33XX (Flattened Device Tree)
-[ 4024.446980] [<c0111cd8>] (unwind_backtrace) from [<c010cfe4>] (show_stack+0x10/0x14)
-[ 4024.455129] [<c010cfe4>] (show_stack) from [<c04c6a24>] (dump_stack+0xac/0xe0)
-[ 4024.462746] [<c04c6a24>] (dump_stack) from [<c0169e48>] (___might_sleep+0x17c/0x298)
-[ 4024.470905] [<c0169e48>] (___might_sleep) from [<c0610874>] (__pm_runtime_resume+0x84/0x90)
-[ 4024.479710] [<c0610874>] (__pm_runtime_resume) from [<bf10dda8>] (otg_timer+0x2c/0x230 [musb_dsps])
-[ 4024.489243] [<bf10dda8>] (otg_timer [musb_dsps]) from [<c01c844c>] (call_timer_fn+0xb0/0x3f8)
-[ 4024.498204] [<c01c844c>] (call_timer_fn) from [<c01c888c>] (expire_timers+0xf8/0x254)
-[ 4024.506439] [<c01c888c>] (expire_timers) from [<c01c8a7c>] (run_timer_softirq+0x94/0x19c)
-[ 4024.515045] [<c01c8a7c>] (run_timer_softirq) from [<c01434a8>] (__do_softirq+0xcc/0x570)
-[ 4024.523566] [<c01434a8>] (__do_softirq) from [<c0143ce4>] (irq_exit+0xe4/0x160)
-[ 4024.531270] [<c0143ce4>] (irq_exit) from [<c01ac378>] (__handle_domain_irq+0x6c/0xe0)
-[ 4024.539529] [<c01ac378>] (__handle_domain_irq) from [<c091d470>] (__irq_svc+0x70/0x98)
-[ 4024.547865] [<c091d470>] (__irq_svc) from [<c01090ac>] (arch_cpu_idle+0x20/0x3c)
-[ 4024.555651] [<c01090ac>] (arch_cpu_idle) from [<c018ff04>] (cpu_startup_entry+0x180/0x224)
-[ 4024.564362] [<c018ff04>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
-{ry]'tfdm\`.kpd
-y{tWt{rvv7}VglYi;`Vnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{rv]Wq`aki
-KzX`sdb[Fh`p`nX+zwaWrm{rvWt`olh#`,`aWrompnWs}6ppnWt^}m}3g[WmtZ+rZpnWwv{kns}a{rv]s`c\7x.c}ltZ+rf[ppgx{rv'y}u`\#zckmwe`]n]Fz``v``FnmnmaycS{rvq.}
-rra[`VncXsx3lGe+dVvV`WeZS{rv7x}|
-q\7d}nnbt.efrk`c\cVt}hal[p^oq]k{rvw}|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{rv^'t^`c7vG~d]alK`&o|
-qe~[;hs[Vp
-x7ori{rv^v`c\gy~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{rvWv`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{rwGx`bpx}{ttZ+rm's_fk`c\7x7~cc]kef[posi{rww]`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{rws]`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{rwnqw}|
-a7~rtZ+rs3ti&o|
-qGa}s3tkcxi{rw.s}|
-qGa}s3ti&o|
-q7e}Kre^kexi{rwy\}|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{rwx`c\cx}Zd[dkai.i&o|
-yFw}c
-xoy^k{rws\`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{rwWw`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{rwx}|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi{rq^'u&u`+e\sgVnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{rrqnaki
-KzX`sdb[Fh`p`nX+zwaWrm{rsq`k+l&ywaWrompn7snsc{rsshCfuYtZ+rZpn7w}Xkkns}a{rsWr|
-s}ltZ+rf[ppgx{rty]`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{rt^y`Z&dra[`VncXsx3lGe+dVvV`WeZS{rux`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{ru^v|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{rv]v|
-ta~d]alK`&o|
-qe~[;hs[Vp
-x7ori{rw's|
-qe~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{rwGr\`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{rx7x|px}{ttZ+rm's_fk`c\7x7~cc]kef[posi{ryr^`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{rywx^`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{rpq^`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{rp^ww|
-qGa}s3ti&o|
-q7e}Kre^kexi{rqWy|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{rr7v|
-q6w}Zd[dkai.i&o|
-yFw}c
-xoy^k{rrww^`c\qwp}cfrk`c\y\6~anC
-ui+krx6Km{rsr]`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{rs'p|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi[[0m[0;31m*     [0m] A stop job is running for Network T...Synchronization (23s / 1min 47s)
-[K[[0;1;31m*[0m[0;31m*    [0m] A stop job is running for Network T...Synchronization (24s / 1min 47s)
-[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A stop job is running for Network T...Synchronization (24s / 1min 47s){sy^7q&u`+e\sgVnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{sprnaki
-KzX`sdb[Fh`p`nX+zwaWrm{sqr`k+l&ywaWrompn^7sn}6ppn^Gv`khvl]~]ke.K{sqt^`kkns}a{sqWp|
-s}ltZ+rf[ppgx{sry]`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{sr^y`Z&dra[`VncXsx3lGe+dVvV`WeZS{ssx`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{ss^q|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{st]t|
-ta~d]alK`&o|
-qe~[;hs[Vp
-x7ori{su7q|
-qe~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{suGs\`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{svWr|px}{ttZ+rm's_fk`c\7x7~cc]kef[posi{swt]`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{swp]`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{sxs`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{sx^u|
-qGa}s3ti&o|
-q7e}Kre^kexi{sywy|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{spWw|
-q6w}Zd[dkai.i&o|
-yFw}c
-xoy^k{spp\`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{sqt]`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{sqGt|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi
-[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A stop job is running for Network T...Synchronization (25s / 1min 47s)
-[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A stop job is running for Network T...Synchronization (25s / 1min 47s)
-[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A stop job is running for Network T...Synchronization (26s / 1min 47s)
-[K[    [0;31m*[0;1;31m*[0m] A stop job is running for Network T...Synchronization (26s / 1min 47s){sw^7p&u`+e\sgVnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{sxunaki
-KzX`sdb[Fh`p`nX+zwaWrm{syw`k+l&ywaWrompNn^snxc{syxhCfuYtZ+rZpNn^w\G}Xkkns}a{syWw|
-s}ltZ+rf[ppgx{spp`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{sptaanX+zVncXsx3lGe+dVvV`WeZS{sqy`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{sq^u|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{sr]w|
-ta~d]alK`&o|
-qe~[;hs[Vp
-x7ori{ss7u|
-qe~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{ssGs`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{stWu|px}{ttZ+rm's_fk`c\7x7~cc]kef[posi{sut`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{sup`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{svs^`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{sv^x|
-qGa}s3ti&o|
-q7e}Kre^kexi{swr|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{sxWx|
-q6w}Zd[dkai.i&o|
-yFw}c
-xoy^k{sxp]`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{syt^`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{syGv|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi
-[K[     [0;31m*[0m] A stop job is running for Network T...Synchronization (27s / 1min 47s)
-[K[    [0;31m*[0;1;31m*[0m] A stop job is running for Network T...Synchronization (27s / 1min 47s)
-[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A stop job is running for Network T...Synchronization (28s / 1min 47s)
-[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A stop job is running for Network T...Synchronization (28s / 1min 47s){su^7p&u`+e\sgVnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{svtnaki
-KzX`sdb[Fh`p`nX+zwaWrm{swv`k+l&ywaWrompn7s}6ppnGv}m}3g[WmtZ+rZpnwp`kkns}a{swWw|
-s}ltZ+rf[ppgx{sxp`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{sxvaanX+zVncXsx3lGe+dVvV`WeZS{syy`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{sy^w|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{sp]'p|
-ta~d]alK`&o|
-qe~[;hs[Vp
-x7ori{sq7w|
-qe~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{sqGs`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{srWx|px}{ttZ+rm's_fk`c\7x7~cc]kef[posi{ssu`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{ssq\`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{stt\`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{stq|
-qGa}s3ti&o|
-q7e}Kre^kexi{suv|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{svgt|
-q6w}Zd[dkai.i&o|
-yFw}c
-xoy^k{svp`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{swu`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{swGy|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi
-[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A stop job is running for Network T...Synchronization (29s / 1min 47s)
-[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A stop job is running for Network T...Synchronization (29s / 1min 47s)
-[K[[0;1;31m*[0m[0;31m*    [0m] A stop job is running for Network T...Synchronization (30s / 1min 47s)
-[K[[0m[0;31m*     [0m] A stop job is running for Network T...Synchronization (30s / 1min 47s){spw`glYi;`Vnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{sp]gq\`aki
-KzX`sdb[Fh`p`x 
-m`.s]dvrpS{sp]Gr`ol`Zd`.s]dvrpvm;sp]q`z{sp7v]`kf[k~[
-psY{spv}Xkm[km}t{spx7}|
-yVy}\vefXt
-xotm}pnGt`z{spWw`kr
-dl{spwy}Xnsns}lXFz{spr}|
-r]s}lY
-pmpVs
-xxGm}pnGp]`&z{spWs}m}f[k~\vetelkZr{spw}Xk[nm}t{spw\`cxY~lWkrosm}pnt'scN{sp^v]`khvl]~]ke.K{spt\}Xkkns}a{spgq`c\7x.c}ltZ+rf[ppgx{spv\`
-u`\#zgxckmyec&o7`]n]Fz``v``FnmnmaycS{squ]`Z&dra[`VncXsx3lGe+dVvV`WeZS{sq\gs^`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{sq\Wt`c\cVt}halK`&o|
-ta~d]al[p^6oe\k{sqv]`c7vG~d]alK`&o|
-qe~[;hs[Vp
-x7ori{sqNy`c\gy~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{sq.s}|
-vw}\ri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{sqs`bpx}{ttZ+rm's_fk`c\7x7~cc]kef[posi{sqwy]`c\7x7~cc]kefK`&o|
-x}+x\etZ+nxorm{sqw`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{sqx`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{sqq`c\Gs]~ds3ti&o|
-q7e}Kre^kexi{sqgw}|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{sq'v}|
-q67}Zd[dkai.i&o|
-yFw}c
-xoy^k{sqw.}|
-yFw}cfrk`c\ep}colr+a[pgxx7i{sqGs]`c\ep}colr+aK`&o|
-lWkdxnpZS{sq7t\`cxc}
-lWi&o|
-r]Fq}3i[ampVs
-xouGi{sqgs^`cGe]~f+mmpVsfrk`cyx}Ca#lmfXt
-xoem{srv\`cyx}Ca#lmfXtfrk`c\qgt}#opVupWcxGi{sr\r.}|
-y\f}#opVu`&o|
-q\Gv}#op3eat
-xoy^k{sr\7q]`c\q~dp3eatfrk`c\qt}efkcGiskpxnKm{sr.v`cGis`alCp6t]gbFocufxZS{sru`p`````````&v&c\6`pppppp{sr.w}Xgc`ppff,ppp\pppVdVy&e'epp`pppnnwg}Xge`f7t]bbYpffVp&vvs]G`p7pfffffm{srw]`Gdm\`.kpd
-y{tWm
-[K[[0;32m  OK  [0m] Stopped Network Time Synchronization.
-[[0;32m  OK  [0m] Stopped Create Volatile Files and Directories.
-[[0;32m  OK  [0m] Stopped target Local File Systems.
-         Unmounting /run/media/sda1...
-{suwt\`Gdm\`.kpd
-y{tWt         Unmounting /var/volatile...
-         Unmounting /sys/kernel/debug/tracing...
-         Unmounting /run/media/mmcblk0p2...
-{sxWt^`Gdm\`.kpd
-y{tWt         Unmounting Temporary Directory...
-         Unmounting /media/ram...
-         Unmounting /run/media/mmcblk0p1...
-         Unmounting /run/user/0...
-[[0;32m  OK  [0m] Unmounted /run/media/sda1.
-[[0;32m  OK  [0m] Unmounted /var/volatile.
-[[0;32m  OK  [0m] Unmounted /sys/kernel/debug/tracing.
-[[0;32m  OK  [0m] Unmounted /run/media/mmcblk0p2.
-[[0;1;31mFAILED[0m] Failed unmounting Temporary Directory.
-[[0;32m  OK  [0m] Unmounted /media/ram.
-[[0;32m  OK  [0m] Unmounted /run/media/mmcblk0p1.
-[[0;32m  OK  [0m] Unmounted /run/user/0.
-;wxe\s'nDil&k`a[	4( IKIoWur#/uS;xGyJn!kizXcJj
-b" nz3jdK{y\y`++,y3jK y9.^ h:xp.nt6t(vj~]%;s93jk.s}K{9|
-l+r&0{p3Kp.=u ,#z(kmFt(st `v `Fm6m
-c{0.yF!aVnz*IK#(jxl%dVj*`M+e;1vt]`c\qDBu)kM
-)&c\c*t}hal0./
-q];q
-q2e=hFl`
-tdaBFl[0^o%,k;sruc7vHBdFa &o
-~B+hsVp
-Kn&t|
-qe~B+;hs[*p2k#pBpri[riWix{p.;sss`cpBi[rm)&`"px}t+rx6p^0m/;t2`"p
-8}{tZrhmm?i/f#,8~Bc]k%f[p/
-yt.|
-t=!t+r&K`o
-qxn=x,etxorK-pn5}
-8n=8,+.&`#,x~tZsk
-y,Z;,yqB+rtJ)
-qma=s3Jkcxo 
-9v`#,s]~tJio|
-qe=%.kei.r|
-1m%=re^i&qh67}?*rdki+vx-pn}
-w=Z$[d)i
-w}Jk5xm[[0;32m  OK  [0m] Reached target Unmount All Filesystems.
-[[0;32m  OK  [0m] Stopped target Local File Systems (Pre).
-[[0;32m  OK  [0m] Stopped Create Static Device Nodes in /dev.
-[[0;32m  OK  [0m] Stopped Remount Root and Kernel File Systems.
-[[0;32m  OK  [0m] Reached target Shutdown.
-{tqv\`Gdm\`.kpd
-y{tWt{tp]xfdm\`.kpd
-y{tWm{4tjsZGz`4`[su
-e6eF/H
-KKnj;trNyyFj3Zdn/=ei`t 
-iK0neK{ttMyjj2l9:+)e	%f ,#
-B3dik{tv\7rfdm\`.kpd
-y{tWm{ts^s&u`+e\sgVnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{tttnaki
-KzX`sdb[Fh`p`nX+zwaWrm{tuGr`k+l&ywaWrom}p]t7v`z{turhCfuYtZ+rZp]tw`kkns}a{tuwy|
-s}ltZ+rf[ppgx{tvr`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{tv'saanX+zVncXsx3lGe+dVvV`WeZS{twp^`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{twq|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{tx]7r|
-ta~d]alK`&o|
-qe~[;hs[Vp
-x7ori{tyWp|
-qe~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{tyGt`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{tpgs|px}{ttZ+rm's_fk`c\7x7~cc]kef[posi{tqu`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{tqq\`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{trt\`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{tr^x|
-qGa}s3ti&o|
-q7e}Kre^kexi{tsp|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{ttWv|
-q6w}Zd[dkai.i&o|
-yFw}c
-xoy^k{ttwy^`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{tut`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{tu7w|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi{tq^7y&u`+e\sgVnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{trunaki
-KzX`sdb[Fh`p`nX+zwaWrm{tst`k+l&ywaWrom}puns}6ppuv`khvl]~]ke.K{tst^`kkns}a{tsGy|
-s}ltZ+rf[ppgx{tty\`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{tt^y`Z&dra[`VncXsx3lGe+dVvV`WeZS{tuw`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{tu^wy|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{tvy|
-ta~d]alK`&o|
-qe~[;hs[Vp
-x7ori{twv|
-qe~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{twGq\`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{tx'x|px}{ttZ+rm's_fk`c\7x7~cc]kef[posi{tyr\`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{tyww^`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{tpp`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{tp^gu|
-qGa}s3ti&o|
-q7e}Kre^kexi{tqGv|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{tr'q|
-q6w}Zd[dkai.i&o|
-yFw}c
-xoy^k{trwv]`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{tsp`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{tst|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi{ty^7r&u`+e\sgVnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{tpwxnaki
-KzX`sdb[Fh`p`nX+zwaWrm{tqv`k+l&ywaWrom}p]v7r]`z{tqwuhCfuYtZ+rZp]vs^`kkns}a{tqGq|
-s}ltZ+rf[ppgx;trx`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{tr^x`Z&dra[`VncXsx3lGe+dVvV`WeZS{tsv^`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{ts^wp|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{ttq|
-ta~d]alK`&o|
-qe~[;hs[Vp
-x7ori{tuw|
-qe~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{tu7y^`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{tvv|px}{ttZ+rm's_fk`c\7x7~cc]kef[posi{twp`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{twwv^`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{tx.y`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{tx^Wu|
-qGa}s3ti&o|
-q7e}Kre^kexi{ty7u|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{tpq|
-q6w}Zd[dkai.i&o|
-yFw}c
-xoy^k{tpwu]`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{tqny`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{tqr|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi{tvv\}VglYi;`Vnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{tv^Gu^`aki
-KzX`sdb[Fh`p`nX+zwaWrm{tvGx`olh#`,`aWrom}pvGp`z{tvwu]`khvl]~]ke.K{tvq^`kkns}a{tv^s\`c\7x.c}ltZ+rf[ppgx;twu`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{tw\p`Z&dra[`VncXsx3lGe+dVvV`WeZS{twws]`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{tw\v}|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{twq]`c7vG~d]alK`&o|
-qe~[;hs[Vp
-x7ori{tw.pG}|
-qe~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{twt`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{tw7w\`bpx}{ttZ+rm's_fk`c\7x7~cc]kef[posi{twv\`c\7x7~cc]kefK`&o|
-x}+x\etZ+rnxorm{twq^`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{tw7p}|
-a7~rtZ+rs3ti&o|
-qGa}s3tkcxi{twr`c\Gs]~ds3ti&o|
-q7e}Kre^kexi{twGw^`c\Gs~i.i]fk`c\cx}Zd[dkai.kvxm{twwu^`c\cx}Zd[dkai.i&o|
-yFw}c
-xoy^k{twwy^`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{twGs^`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{tww}|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi{tu^'p&u`+e\sgVnis`,clfk`a[#`sttXF`v7o,eoWrui[c/u]S{tvgunaki
-KzX`sdb[Fh`p`nX+zwaWrm{tws`k+l&ywaWromp]nws.tc{twguhCfuYtZ+rZp]nww}Xkkns}a{tw'y|
-s}ltZ+rf[ppgx{txw`
-u`\#zckmwe`]n]Fz``v``FnmnmaycS{tx^w]`Z&dra[`VncXsx3lGe+dVvV`WeZS{tyu^`c\q~ui#,kcYfk`c\cVt}hal[p^oq]k{ty^gq|
-qfe}halK`&o|
-ta~d]al[p^6oe\k{tpq|
-ta~d]alK`&o|
-qe~[;hs[Vp
-x7ori{tq\y]`c\gy~[;hs[Vpfrk`cpG~pri[rWmxp^pZS{tq7x`cpG~pri[rWmYfk`bpx}{ttZ+r
-xn{p7pm's_k{trt|px}{ttZ+rm's_fk`c\7x7~cc]kef[posi{tss|
-t}atZ+rfK`&o|
-x}+x\etZ+rnxorm{tswu`c\7xc}+x\etZ+r.fk`c\7x7~rtZ+rs3tkyx\cZS{tt.x\`c\7x7~rtZ+rs3ti&o|
-qGa}s3tkcxi{tt^7y|
-qGa}s3ti&o|
-q7e}Kre^kexi{tu'q|
-q7e}Kre^i&o|
-q6w}Zd[dkai.kvxm{tvv|
-q6w}Zd[dkai.i&o|
-yFw}c
-xoy^k{tvwt\`c\qwp}cfrk`c\y\6~anC
-ui+krxnKm{twnx`c\y\6~anC
-ui+i&o|
-qfp}ps]&terxpxNtZS{twww|
-qfp}ps]&ter^fk`c\pc}tGn[pgtxi{uvq`.s]duwq`sd;`.;kc`rY
-iKnpenesn{uugy6yesZGdn/}e#i;`.;kc`pvg`gYsm{uu]wp6yesZGdn/}nn]sgl6yem{uxr`.s]duwq`koi;`gWdslvioo`fen}seyw.eynXcer]hGl{lk'ot
-l]kevesssmn]Fr_rvnkov7}kopo7p{clk_lFr_rvnm{pxd- .pd9{4h+tK;3x`3jkC5zwqO k);zg+aY.+`Kt
-zp-{vI7}sJy.e9c%c#,lk
-/t,-e6
-cra}sc.-"$Nsqnl.+rs{500k/b,+"$Nsqn'k;u5.pFjsd=,2iFk5ko%k;yFejsZGdn=hit`!lsm;7-j3=,`Y
-c-!"nK;wej3/}e-6;`0*j*3{sej3n},
-bo`YT a${65`^zs]V *btj
-- 02:39:14 [INFO] Disconnected serial from beaglebone
-- 02:39:19 [INFO] Connected to beaglebone via serial 
-- 02:39:19 [INFO] Host: 
-- 02:39:21 [INFO] Target: 
-U-Boot SPL 2016.05-gbbfdf926a1 (Oct 06 2016 - 17:59:11)
-Trying to boot from MMC1
-reading args
-spl_load_image_fat_os: error reading image args, err - -1
-reading u-boot.img
-reading u-boot.img
-reading u-boot.img
-reading u-boot.img
-U-Boot 2016.05-gbbfdf926a1 (Oct 06 2016 - 17:59:11 -0400)
-CPU  : AM335X-GP rev 1.0
-Model: TI AM335x BeagleBone
-       Watchdog enabled
-DRAM:  256 MiB
+INIT: Switching to runlevel
+INIT: Sending processes the TERM signal
+Broadcast message from root@am335x-evm (ttyO0) (Fri Jan  1 14:22:29 2016):
+The system is going down for system halt NOW!
+root@am335x-evm:/test# 
+INIT: Sending processes the KILL signaStopping Dropbear SSH server: stopped /usr/sbin/dropbear (pid 601)
+dropbear.
+Stopping telnet daemon.
+Stopping system message bus: hwclock: can't open '/dev/misc/rtc': No such file or directory
+Stopping network benchmark server: netserverstopped /usr/sbin/netserver (pid 616)
+Error opening /dev/fb0: No such file or directory
+Stopping syslogd/klogd: stopped syslogd (pid 621)
+stopped klogd (pid 624)
+done
+Stopping thttpd.
+ALSA: Storing mixer settings...
+/usr/sbin/alsactl: save_state:1580: No soundcards found...
+Deconfiguring network interfaces... [ 3654.139581] net eth0: initializing cpsw version 1.12 (0)
+done.
+[ 3654.244733] SMSC LAN8710/LAN8720 4a101000.mdio:00: attached PHY driver [SMSC LAN8710/LAN8720] (mii_bus:phy_addr=4a101000.mdio:00, irq=-1)
+[ 3654.287177] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+Stopping Lighttpd Web Server: stopped /usr/sbin/lighttpd (pid 633)
+lighttpd.
+Stopping Matrix GUI applicationstart-stop-daemon: warning: killing process 677: No such process
+***************************************************************
+***************************************************************
+NOTICE: This file system contains the followin GPLv3 packages:
+	binutils-symlinks
+	binutils
+	gdbserver
+If you do not wish to distribute GPLv3 components please remove
+the above packages prior to distribution.  This can be done using
+the opkg remove command.  i.e.:
+    opkg remove <package>
+Where <package> is the name printed in the list above
+NOTE: If the package is a dependency of another package you
+      will be notified of the dependent packages.  You should
+      use the --force-removal-of-dependent-packages option to
+      also remove the dependent packages as well
+***************************************************************
+***************************************************************
+Sending all processes the TERM signal...
+[ 3656.324593] cpsw 4a100000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+[ 3656.333284] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+Sending all processes the KILL signal...
+Unmounting remote filesystems...
+Deactivating swap...
+Unmounting local filesystems...
+[ 3661.263376] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
+[ 3663.470272] reboot: System halted
+- 01:39:01 [INFO] Disconnected serial from beaglebone
+- 01:39:07 [INFO] Connected to beaglebone via serial 
+- 01:39:07 [INFO] Host: 
+- 01:39:09 [INFO] Target: 
 NAND:  0 MiB
 MMC:   OMAP SD/MMC: 0
 reading uboot.env
@@ -832,7 +73,7 @@ reading uboot.env
 Net:   eth0: ethernet@4a100000
 Warning: usb_ether MAC addresses don't match:
 Address in SROM is         de:ad:be:ef:00:01
-Address in environment is  78:c5:e5:d9:d6:07
+Address in environment is  d4:94:a1:8d:40:c8
 , eth1: usb_ether
 Press SPACE to abort autoboot in 2 seconds
 =>  
@@ -840,31 +81,31 @@ Press SPACE to abort autoboot in 2 seconds
 =>  
 =>  
 =>  
-- 02:39:21 [INFO] Host: 
-- 02:39:21 [INFO] Target: 
-- 02:39:21 [INFO] Host: version
-- 02:39:21 [INFO] Target: 
+- 01:39:09 [INFO] Host: 
+- 01:39:09 [INFO] Target: 
+- 01:39:09 [INFO] Host: version
+- 01:39:09 [INFO] Target: 
 version
 U-Boot 2016.05-gbbfdf926a1 (Oct 06 2016 - 17:59:11 -0400)
 arm-linux-gnueabihf-gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
 GNU ld (GNU Binutils) 2.25.0 Linaro 2015_10
-- 02:39:21 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait '
-- 02:39:21 [INFO] Target: 
+- 01:39:09 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait '
+- 01:39:09 [INFO] Target: 
 setenv bootargs 'console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait '
-- 02:39:21 [INFO] Host: setenv bootcmd  ''
-- 02:39:21 [INFO] Target: 
+- 01:39:09 [INFO] Host: setenv bootcmd  ''
+- 01:39:09 [INFO] Target: 
 setenv bootcmd  ''
-- 02:39:21 [INFO] Host: setenv autoload 'no'
-- 02:39:21 [INFO] Target: 
+- 01:39:09 [INFO] Host: setenv autoload 'no'
+- 01:39:09 [INFO] Target: 
 setenv autoload 'no'
-- 02:39:21 [INFO] Host: setenv serverip '192.168.0.1'
-- 02:39:21 [INFO] Target: 
-setenv serverip '192.168.0.1'
-- 02:39:21 [INFO] Host: setenv _initramfs -
-- 02:39:21 [INFO] Target: 
+- 01:39:09 [INFO] Host: setenv serverip '192.168.1.254'
+- 01:39:09 [INFO] Target: 
+setenv serverip '192.168.1.254'
+- 01:39:09 [INFO] Host: setenv _initramfs -
+- 01:39:09 [INFO] Target: 
 setenv _initramfs -
-- 02:39:21 [INFO] Host: printenv
-- 02:39:22 [INFO] Target: 
+- 01:39:09 [INFO] Host: printenv
+- 01:39:10 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -875,7 +116,7 @@ baudrate=115200
 board=am335x
 board_name=A335BONE
 board_rev=00A6
-board_serial=0613BB001950
+board_serial=5012BB000397
 boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
 boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};elsebootefi ${kernel_addr_r} ${fdtcontroladdr};fi
 boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf
@@ -895,7 +136,7 @@ bootcmd_mmc0=setenv devnum 0; run mmc_boot
 bootcmd_mmc1=setenv devnum 1; run mmc_boot
 bootcmd_nand=run nandboot
 bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
-bootcount=2
+bootcount=1
 bootdelay=2
 bootdir=/boot
 bootenvfile=uEnv.txt
@@ -912,8 +153,8 @@ dfu_alt_info_ram=kernel ram 0x80200000 0xD80000;fdt ram 0x80F80000 0x80000;ramdi
 distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
 efi_dtb_prefixes=/ /dtb/ /dtb/current/
 envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
-eth1addr=78:c5:e5:d9:d6:07
-ethaddr=78:c5:e5:d9:d6:06
+eth1addr=d4:94:a1:8d:40:c8
+ethaddr=d4:94:a1:8d:40:c7
 fdt_addr_r=0x88000000
 fdtaddr=0x88000000
 fdtcontroladdr=8ef297b8
@@ -964,7 +205,7 @@ scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "$
 scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi
 scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
 scriptaddr=0x80000000
-serverip=192.168.0.1
+serverip=192.168.1.254
 soc=am33xx
 spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
 spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}
@@ -982,9 +223,21 @@ usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_
 usbnet_devaddr=de:ad:be:ef:00:01
 vendor=ti
 ver=U-Boot 2016.05-gbbfdf926a1 (Oct 06 2016 - 17:59:11 -0400)
-Environment size: 8572/131068 bytes
-- 02:39:22 [INFO] Host: printenv
-- 02:39:23 [INFO] Target: 
+Environment size: 8574/131068 bytes
+- 01:39:10 [INFO] Host: dcache off
+- 01:39:10 [INFO] Target: 
+dcache off
+Unknown command 'dcache' - try 'help'
+- 01:39:10 [INFO] Host: setenv usbethaddr de:ad:be:ef:00:01
+- 01:39:10 [INFO] Target: 
+setenv usbethaddr de:ad:be:ef:00:01
+- 01:39:10 [INFO] Host: usb start
+- 01:39:11 [INFO] Target: 
+usb start
+starting USB...
+USB0:   Port not available.
+- 01:39:11 [INFO] Host: printenv
+- 01:39:12 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -995,7 +248,7 @@ baudrate=115200
 board=am335x
 board_name=A335BONE
 board_rev=00A6
-board_serial=0613BB001950
+board_serial=5012BB000397
 boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
 boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};elsebootefi ${kernel_addr_r} ${fdtcontroladdr};fi
 boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf
@@ -1015,7 +268,7 @@ bootcmd_mmc0=setenv devnum 0; run mmc_boot
 bootcmd_mmc1=setenv devnum 1; run mmc_boot
 bootcmd_nand=run nandboot
 bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
-bootcount=2
+bootcount=1
 bootdelay=2
 bootdir=/boot
 bootenvfile=uEnv.txt
@@ -1032,8 +285,8 @@ dfu_alt_info_ram=kernel ram 0x80200000 0xD80000;fdt ram 0x80F80000 0x80000;ramdi
 distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
 efi_dtb_prefixes=/ /dtb/ /dtb/current/
 envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
-eth1addr=78:c5:e5:d9:d6:07
-ethaddr=78:c5:e5:d9:d6:06
+eth1addr=d4:94:a1:8d:40:c8
+ethaddr=d4:94:a1:8d:40:c7
 fdt_addr_r=0x88000000
 fdtaddr=0x88000000
 fdtcontroladdr=8ef297b8
@@ -1084,7 +337,7 @@ scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "$
 scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi
 scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
 scriptaddr=0x80000000
-serverip=192.168.0.1
+serverip=192.168.1.254
 soc=am33xx
 spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
 spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}
@@ -1099,34 +352,35 @@ stdin=serial@44e09000
 stdout=serial@44e09000
 update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}
 usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi
+usbethaddr=de:ad:be:ef:00:01
 usbnet_devaddr=de:ad:be:ef:00:01
 vendor=ti
 ver=U-Boot 2016.05-gbbfdf926a1 (Oct 06 2016 - 17:59:11 -0400)
-Environment size: 8572/131068 bytes
-- 02:39:23 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
-- 02:39:23 [INFO] Target: 
+Environment size: 8605/131068 bytes
+- 01:39:12 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 01:39:12 [INFO] Target: 
 setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
-- 02:39:23 [INFO] Host: setenv serverip '192.168.0.1'
-- 02:39:23 [INFO] Target: 
-setenv serverip '192.168.0.1'
-- 02:39:23 [INFO] Host: setenv autoload 'no'
-- 02:39:23 [INFO] Target: 
+- 01:39:12 [INFO] Host: setenv serverip '192.168.1.254'
+- 01:39:12 [INFO] Target: 
+setenv serverip '192.168.1.254'
+- 01:39:12 [INFO] Host: setenv autoload 'no'
+- 01:39:13 [INFO] Target: 
 setenv autoload 'no'
-- 02:39:23 [INFO] Host: dhcp
-- 02:39:24 [INFO] Target: 
+- 01:39:13 [INFO] Host: dhcp
+- 01:39:14 [INFO] Target: 
 dhcp
 link up on port 0, speed 100, full duplex
 BOOTP broadcast 1
 BOOTP broadcast 2
 BOOTP broadcast 3
-DHCP client bound to address 192.168.0.241 (1030 ms)
-- 02:39:24 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_bbw1/232c40453e5cf4b94a3cab7be8d5563c
-- 02:39:27 [INFO] Target: 
-tftp ${loadaddr} 192.168.0.1:vatf_bbw1/232c40453e5cf4b94a3cab7be8d5563c
+DHCP client bound to address 192.168.1.190 (1049 ms)
+- 01:39:14 [INFO] Host: tftp ${loadaddr} 192.168.1.254:vatf_beaglebone/4de2ef8dd445528e44af53fe935f5448
+- 01:39:16 [INFO] Target: 
+tftp ${loadaddr} 192.168.1.254:vatf_beaglebone/4de2ef8dd445528e44af53fe935f5448
 link up on port 0, speed 100, full duplex
 Using ethernet@4a100000 device
-TFTP from server 192.168.0.1; our IP address is 192.168.0.241
-Filename 'vatf_bbw1/232c40453e5cf4b94a3cab7be8d5563c'.
+TFTP from server 192.168.1.254; our IP address is 192.168.1.190
+Filename 'vatf_beaglebone/4de2ef8dd445528e44af53fe935f5448'.
 Load address: 0x82000000
 Loading: *#################################################################
 	 #################################################################
@@ -1136,62 +390,62 @@ Loading: *#################################################################
 	 #################################################################
 	 #################################################################
 	 ##########################
-	 2.7 MiB/s
+	 2.6 MiB/s
 done
-Bytes transferred = 7053016 (6b9ed8 hex)
-- 02:39:27 [INFO] Host: tftp ${fdt_addr_r} 192.168.0.1:vatf_bbw1/1c302d3961f6d28c0ced8dbe33d6e1c1
-- 02:39:27 [INFO] Target: 
-tftp ${fdt_addr_r} 192.168.0.1:vatf_bbw1/1c302d3961f6d28c0ced8dbe33d6e1c1
+Bytes transferred = 7052752 (6b9dd0 hex)
+- 01:39:16 [INFO] Host: tftp ${fdt_addr_r} 192.168.1.254:vatf_beaglebone/1c302d3961f6d28c0ced8dbe33d6e1c1
+- 01:39:16 [INFO] Target: 
+tftp ${fdt_addr_r} 192.168.1.254:vatf_beaglebone/1c302d3961f6d28c0ced8dbe33d6e1c1
 link up on port 0, speed 100, full duplex
 Using ethernet@4a100000 device
-TFTP from server 192.168.0.1; our IP address is 192.168.0.241
-Filename 'vatf_bbw1/1c302d3961f6d28c0ced8dbe33d6e1c1'.
+TFTP from server 192.168.1.254; our IP address is 192.168.1.190
+Filename 'vatf_beaglebone/1c302d3961f6d28c0ced8dbe33d6e1c1'.
 Load address: 0x88000000
 Loading: *###
 	 2.2 MiB/s
 done
 Bytes transferred = 32300 (7e2c hex)
-- 02:39:27 [INFO] Host: ls mmc 0:1
-- 02:39:27 [INFO] Target: 
+- 01:39:16 [INFO] Host: ls mmc 0:1
+- 01:39:17 [INFO] Target: 
 ls mmc 0:1
     79220   mlo 
    644080   u-boot.img 
+  3194336   uimage 
        14   .ipaddr 
-        4   ws-calibrate.rules 
         0   pointercal 
+        4   ws-calibrate.rules 
    131072   uboot.env 
-6 file(s), 0 dir(s)
-- 02:39:27 [INFO] Host: ls mmc 0:2
-- 02:39:28 [INFO] Target: 
+7 file(s), 0 dir(s)
+- 01:39:17 [INFO] Host: ls mmc 0:2
+- 01:39:17 [INFO] Target: 
 ls mmc 0:2
 <DIR>       4096 .
 <DIR>       4096 ..
-<DIR>       4096 include
-<DIR>       4096 srv
-<DIR>       4096 home
-<DIR>       4096 media
-<DIR>       4096 opt
-<DIR>       4096 var
-<DIR>       4096 sys
+<DIR>       4096 bin
 <DIR>       4096 boot
 <DIR>       4096 dev
-<DIR>       4096 usr
-<DIR>       4096 bin
-<DIR>       4096 mnt
 <DIR>       4096 etc
-<DIR>       4096 sbin
-<DIR>       4096 www
-<SYM>          8 tmp
-<DIR>       4096 proc
-<DIR>       4096 run
+<DIR>       4096 home
 <DIR>       4096 lib
+<DIR>       4096 media
+<DIR>       4096 mnt
+<DIR>       4096 opt
+<DIR>       4096 proc
+<DIR>       4096 sbin
+<DIR>       4096 Settings
+<DIR>       4096 srv
+<DIR>       4096 sys
 <DIR>       4096 test
-- 02:39:28 [INFO] Host: part uuid mmc 0:2
-- 02:39:28 [INFO] Target: 
+<SYM>          8 tmp
+<DIR>       4096 usr
+<DIR>       4096 var
+<DIR>       4096 www
+- 01:39:17 [INFO] Host: part uuid mmc 0:2
+- 01:39:17 [INFO] Target: 
 part uuid mmc 0:2
 00000000-02
-- 02:39:28 [INFO] Host: printenv
-- 02:39:28 [INFO] Target: 
+- 01:39:17 [INFO] Host: printenv
+- 01:39:18 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -1202,7 +456,7 @@ baudrate=115200
 board=am335x
 board_name=A335BONE
 board_rev=00A6
-board_serial=0613BB001950
+board_serial=5012BB000397
 boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
 boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};elsebootefi ${kernel_addr_r} ${fdtcontroladdr};fi
 boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf
@@ -1222,7 +476,7 @@ bootcmd_mmc0=setenv devnum 0; run mmc_boot
 bootcmd_mmc1=setenv devnum 1; run mmc_boot
 bootcmd_nand=run nandboot
 bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
-bootcount=2
+bootcount=1
 bootdelay=2
 bootdir=/boot
 bootenvfile=uEnv.txt
@@ -1241,9 +495,9 @@ dnsip=192.0.2.2
 dnsip2=192.0.2.3
 efi_dtb_prefixes=/ /dtb/ /dtb/current/
 envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
-eth1addr=78:c5:e5:d9:d6:07
+eth1addr=d4:94:a1:8d:40:c8
 ethact=ethernet@4a100000
-ethaddr=78:c5:e5:d9:d6:06
+ethaddr=d4:94:a1:8d:40:c7
 fdt_addr_r=0x88000000
 fdtaddr=0x88000000
 fdtcontroladdr=8ef297b8
@@ -1254,10 +508,10 @@ findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi;
 finduuid=part uuid mmc ${bootpart} uuid
 fit_bootfile=fitImage.itb
 fit_loadaddr=0x88000000
-gatewayip=192.168.0.1
+gatewayip=192.168.1.254
 importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
 init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
-ipaddr=192.168.0.241
+ipaddr=192.168.1.190
 kernel_addr_r=0x82000000
 load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
 loadaddr=0x82000000
@@ -1299,7 +553,7 @@ scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "$
 scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi
 scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
 scriptaddr=0x80000000
-serverip=192.168.0.1
+serverip=192.168.1.254
 soc=am33xx
 spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
 spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}
@@ -1314,15 +568,16 @@ stdin=serial@44e09000
 stdout=serial@44e09000
 update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}
 usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi
+usbethaddr=de:ad:be:ef:00:01
 usbnet_devaddr=de:ad:be:ef:00:01
 vendor=ti
 ver=U-Boot 2016.05-gbbfdf926a1 (Oct 06 2016 - 17:59:11 -0400)
-Environment size: 8762/131068 bytes
-- 02:39:28 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
-- 02:39:29 [INFO] Target: 
+Environment size: 8797/131068 bytes
+- 01:39:18 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 01:39:18 [INFO] Target: 
 setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
-- 02:39:29 [INFO] Host: printenv
-- 02:39:29 [INFO] Target: 
+- 01:39:18 [INFO] Host: printenv
+- 01:39:19 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -1333,7 +588,7 @@ baudrate=115200
 board=am335x
 board_name=A335BONE
 board_rev=00A6
-board_serial=0613BB001950
+board_serial=5012BB000397
 boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
 boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootarm.efi; if fdt addr ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};elsebootefi ${kernel_addr_r} ${fdtcontroladdr};fi
 boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}extlinux/extlinux.conf
@@ -1353,7 +608,7 @@ bootcmd_mmc0=setenv devnum 0; run mmc_boot
 bootcmd_mmc1=setenv devnum 1; run mmc_boot
 bootcmd_nand=run nandboot
 bootcmd_pxe=run boot_net_usb_start; dhcp; if pxe get; then pxe boot; fi
-bootcount=2
+bootcount=1
 bootdelay=2
 bootdir=/boot
 bootenvfile=uEnv.txt
@@ -1372,9 +627,9 @@ dnsip=192.0.2.2
 dnsip2=192.0.2.3
 efi_dtb_prefixes=/ /dtb/ /dtb/current/
 envboot=mmc dev ${mmcdev}; if mmc rescan; then echo SD/MMC found on device ${mmcdev};if run loadbootscript; then run bootscript;else if run loadbootenv; then echo Loaded env from ${bootenvfile};run importbootenv;fi;if test -n $uenvcmd; then echo Running uenvcmd ...;run uenvcmd;fi;fi;fi;
-eth1addr=78:c5:e5:d9:d6:07
+eth1addr=d4:94:a1:8d:40:c8
 ethact=ethernet@4a100000
-ethaddr=78:c5:e5:d9:d6:06
+ethaddr=d4:94:a1:8d:40:c7
 fdt_addr_r=0x88000000
 fdtaddr=0x88000000
 fdtcontroladdr=8ef297b8
@@ -1385,10 +640,10 @@ findfdt=if test $board_name = A335BONE; then setenv fdtfile am335x-bone.dtb; fi;
 finduuid=part uuid mmc ${bootpart} uuid
 fit_bootfile=fitImage.itb
 fit_loadaddr=0x88000000
-gatewayip=192.168.0.1
+gatewayip=192.168.1.254
 importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
 init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
-ipaddr=192.168.0.241
+ipaddr=192.168.1.190
 kernel_addr_r=0x82000000
 load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
 loadaddr=0x82000000
@@ -1430,7 +685,7 @@ scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; if test -z "${fdtfile}" -a -n "$
 scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}extlinux/extlinux.conf; then echo Found ${prefix}extlinux/extlinux.conf; run boot_extlinux; echo SCRIPT FAILED: continuing...; fi
 scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
 scriptaddr=0x80000000
-serverip=192.168.0.1
+serverip=192.168.1.254
 soc=am33xx
 spiargs=setenv bootargs console=${console} ${optargs} root=${spiroot} rootfstype=${spirootfstype}
 spiboot=echo Booting from spi ...; run spiargs; sf probe ${spibusno}:0; sf read ${loadaddr} ${spisrcaddr} ${spiimgsize}; bootz ${loadaddr}
@@ -1445,21 +700,22 @@ stdin=serial@44e09000
 stdout=serial@44e09000
 update_to_fit=setenv loadaddr ${fit_loadaddr}; setenv bootfile ${fit_bootfile}
 usb_boot=usb start; if usb dev ${devnum}; then setenv devtype usb; run scan_dev_for_boot_part; fi
+usbethaddr=de:ad:be:ef:00:01
 usbnet_devaddr=de:ad:be:ef:00:01
 vendor=ti
 ver=U-Boot 2016.05-gbbfdf926a1 (Oct 06 2016 - 17:59:11 -0400)
-Environment size: 8817/131068 bytes
-- 02:39:29 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
-- 02:39:29 [INFO] Target: 
+Environment size: 8852/131068 bytes
+- 01:39:19 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
+- 01:39:19 [INFO] Target: 
 setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
-- 02:39:29 [INFO] Host: version
-- 02:39:30 [INFO] Target: 
+- 01:39:19 [INFO] Host: version
+- 01:39:19 [INFO] Target: 
 version
 U-Boot 2016.05-gbbfdf926a1 (Oct 06 2016 - 17:59:11 -0400)
 arm-linux-gnueabihf-gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
 GNU ld (GNU Binutils) 2.25.0 Linaro 2015_10
-- 02:39:30 [INFO] Host: bdinfo
-- 02:39:30 [INFO] Target: 
+- 01:39:19 [INFO] Host: bdinfo
+- 01:39:19 [INFO] Target: 
 bdinfo
 arch_number = 0x00000E05
 boot_params = 0x80000100
@@ -1472,26 +728,31 @@ relocaddr   = 0x8FF52000
 reloc off   = 0x0F752000
 irq_sp      = 0x8EF297A0
 sp start    = 0x8EF29790
-- 02:39:30 [INFO] Host: mmc rescan; echo $?
-- 02:39:30 [INFO] Target: 
+- 01:39:19 [INFO] Host: mmc rescan; echo $?
+- 01:39:19 [INFO] Target: 
 mmc rescan; echo $?
-- 02:39:30 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
-- 02:39:30 [INFO] Target: 
+- 01:39:19 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 01:39:19 [INFO] Target: 
 fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
 writing ws-calibrate.rules
 4 bytes written
-- 02:39:30 [INFO] Host: boot
-- 02:39:52 [INFO] Target: 
+- 01:39:19 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 01:39:19 [INFO] Target: 
+fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+writing ws-calibrate.rules
+4 bytes written
+- 01:39:19 [INFO] Host: boot
+- 01:39:38 [INFO] Target: 
 boot
 ## Checking Image at 82000000 ...
 Unknown image format!
-Kernel image @ 0x82000000 [ 0x000000 - 0x6b9ed8 ]
+Kernel image @ 0x82000000 [ 0x000000 - 0x6b9dd0 ]
 ## Flattened Device Tree blob at 88000000
    Booting using the fdt blob at 0x88000000
    Loading Device Tree to 8ef1d000, end 8ef27e2b ... OK
 Starting kernel ...
 [    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Linux version 4.9.0-rc1-next-20161019-00002-g44cfa35426a3 (nmenon@horus) (gcc version 4.9.3 20150413 (prerelease) (Linaro GCC 4.9-2015.05) ) #3 SMP Wed Oct 19 01:30:52 CDT 2016
+[    0.000000] Linux version 4.9.0-rc1-next-20161020-00002-gb6d222c46d2f (nmenon@horus) (gcc version 4.9.3 20150413 (prerelease) (Linaro GCC 4.9-2015.05) ) #3 SMP Thu Oct 20 01:32:32 CDT 2016
 [    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
 [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
 [    0.000000] OF: fdt:Machine model: TI AM335x BeagleBone
@@ -1530,254 +791,237 @@ Starting kernel ...
 [    0.000000] NR_IRQS:16 nr_irqs:16 16
 [    0.000000] IRQ: Found an INTC at 0xfa200000 (revision 5.0) with 128 interrupts
 [    0.000000] OMAP clockevent source: timer2 at 24000000 Hz
-[    0.000016] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
-[    0.000040] clocksource: timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
-[    0.000054] OMAP clocksource: timer1 at 24000000 Hz
-[    0.004578] clocksource_probe: no matching clocksources found
+[    0.000018] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000042] clocksource: timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000056] OMAP clocksource: timer1 at 24000000 Hz
+[    0.004577] clocksource_probe: no matching clocksources found
 [    0.004901] Console: colour dummy device 80x30
-[    0.004949] Calibrating delay loop... 717.61 BogoMIPS (lpj=1794048)
-[    0.029022] pid_max: default: 32768 minimum: 301
-[    0.029191] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.004948] Calibrating delay loop... 717.61 BogoMIPS (lpj=1794048)
+[    0.029025] pid_max: default: 32768 minimum: 301
+[    0.029190] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
 [    0.029205] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.030086] CPU: Testing write buffer coherency: ok
-[    0.030528] CPU0: thread -1, cpu 0, socket -1, mpidr 0
-[    0.030917] Setting up static identity map for 0x80300000 - 0x80300098
-[    0.034685] EFI services will not be available.
-[    0.034992] Brought up 1 CPUs
-[    0.035008] SMP: Total of 1 processors activated (717.61 BogoMIPS).
-[    0.035017] CPU: All CPU(s) started in SVC mode.
-[    0.036712] devtmpfs: initialized
-[    0.048894] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
-[    0.049679] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 9556302231375000 ns
-[    0.054381] pinctrl core: initialized pinctrl subsystem
-[    0.057065] NET: Registered protocol family 16
-[    0.059877] DMA: preallocated 256 KiB pool for atomic coherent allocations
-[    0.080711] omap_hwmod: debugss: _wait_target_disable failed
-[    0.136258] cpuidle: using governor menu
-[    0.145517] OMAP GPIO hardware version 0.1
-[    0.165307] No ATAGs?
-[    0.165339] hw-breakpoint: debug architecture 0x4 unsupported.
-[    0.165860] omap4_sram_init:Unable to allocate sram needed to handle errata I688
-[    0.165875] omap4_sram_init:Unable to get sram pool needed to handle errata I688
-[    0.170311] Serial: AMBA PL011 UART driver
-[    0.196352] edma 49000000.edma: TI EDMA DMA engine driver
-[    0.200583] vgaarb: loaded
-[    0.201725] SCSI subsystem initialized
-[    0.202481] usbcore: registered new interface driver usbfs
-[    0.202572] usbcore: registered new interface driver hub
-[    0.202651] usbcore: registered new device driver usb
-[    0.203404] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins, deferring probe
-[    0.203468] omap_i2c 4819c000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c2_pins, deferring probe
-[    0.204315] pps_core: LinuxPPS API ver. 1 registered
-[    0.204329] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
-[    0.204360] PTP clock support registered
-[    0.204577] EDAC MC: Ver: 3.0.0
-[    0.208126] clocksource: Switched to clocksource timer1
-[    0.221596] NET: Registered protocol family 2
-[    0.222405] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
-[    0.222450] TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
-[    0.222496] TCP: Hash tables configured (established 2048 bind 2048)
-[    0.222583] UDP hash table entries: 256 (order: 1, 8192 bytes)
-[    0.222610] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
-[    0.222780] NET: Registered protocol family 1
-[    0.223473] RPC: Registered named UNIX socket transport module.
-[    0.223491] RPC: Registered udp transport module.
-[    0.223499] RPC: Registered tcp transport module.
-[    0.223507] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[    0.224753] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
-[    0.226897] futex hash table entries: 256 (order: 2, 16384 bytes)
-[    0.228045] workingset: timestamp_bits=30 max_order=16 bucket_order=0
-[    0.242054] squashfs: version 4.0 (2009/01/31) Phillip Lougher
-[    0.243520] NFS: Registering the id_resolver key type
-[    0.243576] Key type id_resolver registered
-[    0.243585] Key type id_legacy registered
-[    0.243643] ntfs: driver 2.1.32 [Flags: R/O].
-[    0.245824] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 248)
-[    0.245849] io scheduler noop registered
-[    0.245859] io scheduler deadline registered
-[    0.246107] io scheduler cfq registered (default)
-[    0.250378] libphy: mdio_driver_register: phy-bcm-ns2-pci
-[    0.251720] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568
-[    0.345627] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
-[    0.349478] SuperH (H)SCI(F) driver initialized
-[    0.350416] msm_serial: driver initialized
-[    0.350814] omap_uart 44e09000.serial: no wakeirq for uart0
-[    0.351034] 44e09000.serial: ttyO0 at MMIO 0x44e09000 (irq = 158, base_baud = 3000000) is a OMAP UART0
-[    1.044254] console [ttyO0] enabled
-[    1.048561] STMicroelectronics ASC driver initialized
-[    1.056283] omap_rng 48310000.rng: OMAP Random Number Generator ver. 20
-[    1.064833] [drm] Initialized
-[    1.087918] brd: module loaded
-[    1.099729] loop: module loaded
-[    1.112081] libphy: Fixed MDIO Bus: probed
-[    1.118051] CAN device driver interface
-[    1.124229] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
-[    1.130391] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-[    1.136719] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.4.0-k
-[    1.144041] igb: Copyright (c) 2007-2014 Intel Corporation.
-[    1.213232] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6
-[    1.219685] davinci_mdio 4a101000.mdio: detected phy mask fffffffe
-[    1.227360] libphy: 4a101000.mdio: probed
-[    1.231668] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver SMSC LAN8710/LAN8720
-[    1.243891] cpsw 4a100000.ethernet: Detected MACID = 78:c5:e5:d9:d6:06
-[    1.253438] pegasus: v0.9.3 (2013/04/25), Pegasus/Pegasus II USB Ethernet driver
-[    1.261369] usbcore: registered new interface driver pegasus
-[    1.267422] usbcore: registered new interface driver asix
-[    1.273178] usbcore: registered new interface driver ax88179_178a
-[    1.279646] usbcore: registered new interface driver cdc_ether
-[    1.285862] usbcore: registered new interface driver smsc75xx
-[    1.292003] usbcore: registered new interface driver smsc95xx
-[    1.298131] usbcore: registered new interface driver net1080
-[    1.304152] usbcore: registered new interface driver cdc_subset
-[    1.310436] usbcore: registered new interface driver zaurus
-[    1.316392] usbcore: registered new interface driver cdc_ncm
-[    1.324485] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
-[    1.331400] ehci-pci: EHCI PCI platform driver
-[    1.336157] ehci-platform: EHCI generic platform driver
-[    1.341890] ehci-orion: EHCI orion driver
-[    1.346281] SPEAr-ehci: EHCI SPEAr driver
-[    1.350677] ehci-st: EHCI STMicroelectronics driver
-[    1.355972] ehci-exynos: EHCI EXYNOS driver
-[    1.360542] ehci-atmel: EHCI Atmel driver
-[    1.364910] tegra-ehci: Tegra EHCI driver
-[    1.369299] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
-[    1.375845] ohci-pci: OHCI PCI platform driver
-[    1.380607] ohci-platform: OHCI generic platform driver
-[    1.386299] ohci-omap3: OHCI OMAP3 driver
-[    1.390690] SPEAr-ohci: OHCI SPEAr driver
-[    1.395071] ohci-st: OHCI STMicroelectronics driver
-[    1.400349] ohci-atmel: OHCI Atmel driver
-[    1.405333] usbcore: registered new interface driver usb-storage
-[    1.413709] mousedev: PS/2 mouse device common for all mice
-[    1.423050] i2c /dev entries driver
-[    1.439990] sdhci: Secure Digital Host Controller Interface driver
-[    1.446566] sdhci: Copyright(c) Pierre Ossman
-[    1.452425] omap_hsmmc 48060000.mmc: Got CD GPIO
-[    1.459048] Synopsys Designware Multimedia Card Interface Driver
-[    1.466534] sdhci-pltfm: SDHCI platform and OF driver helper
-[    1.476197] ledtrig-cpu: registered to indicate activity on CPUs
-[    1.483365] usbcore: registered new interface driver usbhid
-[    1.489245] usbhid: USB HID core driver
-[    1.497487] NET: Registered protocol family 10
-[    1.503938] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
-[    1.511163] NET: Registered protocol family 17
-[    1.515900] can: controller area network core (rev 20120528 abi 9)
-[    1.522496] NET: Registered protocol family 29
-[    1.527177] can: raw protocol (rev 20120528)
-[    1.531669] can: broadcast manager protocol (rev 20160617 t)
-[    1.537623] can: netlink gateway (rev 20130117) max_hops=1
-[    1.544161] Key type dns_resolver registered
-[    1.549061] omap_voltage_late_init: Voltage driver support not added
-[    1.555951] ThumbEE CPU extension supported.
-[    1.560455] random: fast init done
-[    1.564068] Registering SWP/SWPB emulation handler
-[    1.605584] tps65217 0-0024: TPS65217 ID 0xf version 1.2
-[    1.612136] at24 0-0050: 32768 byte 24c256 EEPROM, writable, 1 bytes/write
-[    1.619480] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
-[    1.724337] omap_i2c 4819c000.i2c: bus 2 rev0.11 at 100 kHz
-[    1.732692] vdd_mpu: ramp_delay not set
-[    1.739919] omap_hsmmc 48060000.mmc: Got CD GPIO
-[    1.784686] hctosys: unable to open rtc device (rtc0)
-[    1.804510] net eth0: initializing cpsw version 1.12 (0)
-[    1.883745] SMSC LAN8710/LAN8720 4a101000.mdio:00: attached PHY driver [SMSC LAN8710/LAN8720] (mii_bus:phy_addr=4a101000.mdio:00, irq=-1)
-[    1.902729] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
-[    1.912143] mmc0: host does not support reading read-only switch, assuming write-enable
-[    1.923639] mmc0: new high speed SDHC card at address e624
-[    1.930279] mmcblk0: mmc0:e624 SU08G 7.40 GiB 
-[    1.936944]  mmcblk0: p1 p2 p3
-[    2.050384] vdd_mpu: ramp_delay not set
-[    3.963969] cpsw 4a100000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
-[    3.978277] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
-[    3.998204] Sending DHCP requests ., OK
-[    4.018713] IP-Config: Got DHCP answer from 192.168.0.1, my address is 192.168.0.241
-[    4.027035] IP-Config: Complete:
-[    4.030542]      device=eth0, hwaddr=78:c5:e5:d9:d6:06, ipaddr=192.168.0.241, mask=255.255.255.0, gw=192.168.0.1
-[    4.041442]      host=192.168.0.241, domain=ti.com, nis-domain=(none)
-[    4.048350]      bootserver=0.0.0.0, rootserver=0.0.0.0, rootpath=     nameserver0=192.0.2.2, nameserver1=192.0.2.3
-[    4.060276] vmmcsd_fixed: disabling
-[    4.088073] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
-[    4.096945] VFS: Mounted root (ext4 filesystem) on device 179:2.
-[    4.113678] devtmpfs: mounted
-[    4.127457] Freeing unused kernel memory: 2048K (c1100000 - c1300000)
+[    0.030082] CPU: Testing write buffer coherency: ok
+[    0.030516] CPU0: thread -1, cpu 0, socket -1, mpidr 0
+[    0.030918] Setting up static identity map for 0x80300000 - 0x80300098
+[    0.034686] EFI services will not be available.
+[    0.035001] Brought up 1 CPUs
+[    0.035017] SMP: Total of 1 processors activated (717.61 BogoMIPS).
+[    0.035027] CPU: All CPU(s) started in SVC mode.
+[    0.036728] devtmpfs: initialized
+[    0.048835] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.049613] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 9556302231375000 ns
+[    0.054292] pinctrl core: initialized pinctrl subsystem
+[    0.056984] NET: Registered protocol family 16
+[    0.059802] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.080762] omap_hwmod: debugss: _wait_target_disable failed
+[    0.136328] cpuidle: using governor menu
+[    0.145511] OMAP GPIO hardware version 0.1
+[    0.165212] No ATAGs?
+[    0.165244] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.165767] omap4_sram_init:Unable to allocate sram needed to handle errata I688
+[    0.165782] omap4_sram_init:Unable to get sram pool needed to handle errata I688
+[    0.170215] Serial: AMBA PL011 UART driver
+[    0.196082] edma 49000000.edma: TI EDMA DMA engine driver
+[    0.200320] vgaarb: loaded
+[    0.201456] SCSI subsystem initialized
+[    0.202203] usbcore: registered new interface driver usbfs
+[    0.202296] usbcore: registered new interface driver hub
+[    0.202372] usbcore: registered new device driver usb
+[    0.203128] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins, deferring probe
+[    0.203189] omap_i2c 4819c000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c2_pins, deferring probe
+[    0.203909] pps_core: LinuxPPS API ver. 1 registered
+[    0.203919] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.203951] PTP clock support registered
+[    0.204273] EDAC MC: Ver: 3.0.0
+[    0.207807] clocksource: Switched to clocksource timer1
+[    0.221217] NET: Registered protocol family 2
+[    0.222023] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.222069] TCP bind hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.222116] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.222203] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    0.222231] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    0.222406] NET: Registered protocol family 1
+[    0.223105] RPC: Registered named UNIX socket transport module.
+[    0.223125] RPC: Registered udp transport module.
+[    0.223134] RPC: Registered tcp transport module.
+[    0.223142] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.224379] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    0.226541] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.227692] workingset: timestamp_bits=30 max_order=16 bucket_order=0
+[    0.241606] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.243040] NFS: Registering the id_resolver key type
+[    0.243105] Key type id_resolver registered
+[    0.243115] Key type id_legacy registered
+[    0.243173] ntfs: driver 2.1.32 [Flags: R/O].
+[    0.245384] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 248)
+[    0.245407] io scheduler noop registered
+[    0.245417] io scheduler deadline registered
+[    0.245663] io scheduler cfq registered (default)
+[    0.249935] libphy: mdio_driver_register: phy-bcm-ns2-pci
+[    0.251280] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568
+[    0.344969] Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+[    0.348857] SuperH (H)SCI(F) driver initialized
+[    0.349790] msm_serial: driver initialized
+[    0.350191] omap_uart 44e09000.serial: no wakeirq for uart0
+[    0.350405] 44e09000.serial: ttyO0 at MMIO 0x44e09000 (irq = 158, base_baud = 3000000) is a OMAP UART0
+[    1.043533] console [ttyO0] enabled
+[    1.047862] STMicroelectronics ASC driver initialized
+[    1.055577] omap_rng 48310000.rng: OMAP Random Number Generator ver. 20
+[    1.064191] [drm] Initialized
+[    1.087330] brd: module loaded
+[    1.099188] loop: module loaded
+[    1.111576] libphy: Fixed MDIO Bus: probed
+[    1.117546] CAN device driver interface
+[    1.123757] e1000e: Intel(R) PRO/1000 Network Driver - 3.2.6-k
+[    1.129915] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.136244] igb: Intel(R) Gigabit Ethernet Network Driver - version 5.4.0-k
+[    1.143564] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.212913] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6
+[    1.219365] davinci_mdio 4a101000.mdio: detected phy mask fffffffe
+[    1.227034] libphy: 4a101000.mdio: probed
+[    1.231353] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver SMSC LAN8710/LAN8720
+[    1.243589] cpsw 4a100000.ethernet: Detected MACID = d4:94:a1:8d:40:c7
+[    1.253154] pegasus: v0.9.3 (2013/04/25), Pegasus/Pegasus II USB Ethernet driver
+[    1.261080] usbcore: registered new interface driver pegasus
+[    1.267133] usbcore: registered new interface driver asix
+[    1.272883] usbcore: registered new interface driver ax88179_178a
+[    1.279350] usbcore: registered new interface driver cdc_ether
+[    1.285568] usbcore: registered new interface driver smsc75xx
+[    1.291695] usbcore: registered new interface driver smsc95xx
+[    1.297844] usbcore: registered new interface driver net1080
+[    1.303858] usbcore: registered new interface driver cdc_subset
+[    1.310136] usbcore: registered new interface driver zaurus
+[    1.316083] usbcore: registered new interface driver cdc_ncm
+[    1.324195] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.331110] ehci-pci: EHCI PCI platform driver
+[    1.335868] ehci-platform: EHCI generic platform driver
+[    1.341604] ehci-orion: EHCI orion driver
+[    1.346004] SPEAr-ehci: EHCI SPEAr driver
+[    1.350413] ehci-st: EHCI STMicroelectronics driver
+[    1.355722] ehci-exynos: EHCI EXYNOS driver
+[    1.360305] ehci-atmel: EHCI Atmel driver
+[    1.364681] tegra-ehci: Tegra EHCI driver
+[    1.369082] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    1.375632] ohci-pci: OHCI PCI platform driver
+[    1.380391] ohci-platform: OHCI generic platform driver
+[    1.386091] ohci-omap3: OHCI OMAP3 driver
+[    1.390494] SPEAr-ohci: OHCI SPEAr driver
+[    1.394890] ohci-st: OHCI STMicroelectronics driver
+[    1.400184] ohci-atmel: OHCI Atmel driver
+[    1.405187] usbcore: registered new interface driver usb-storage
+[    1.413557] mousedev: PS/2 mouse device common for all mice
+[    1.423088] i2c /dev entries driver
+[    1.440095] sdhci: Secure Digital Host Controller Interface driver
+[    1.446676] sdhci: Copyright(c) Pierre Ossman
+[    1.452553] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    1.459173] Synopsys Designware Multimedia Card Interface Driver
+[    1.466709] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.476401] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.483538] usbcore: registered new interface driver usbhid
+[    1.489446] usbhid: USB HID core driver
+[    1.497657] NET: Registered protocol family 10
+[    1.504043] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    1.511304] NET: Registered protocol family 17
+[    1.516046] can: controller area network core (rev 20120528 abi 9)
+[    1.522651] NET: Registered protocol family 29
+[    1.527336] can: raw protocol (rev 20120528)
+[    1.531829] can: broadcast manager protocol (rev 20160617 t)
+[    1.537795] can: netlink gateway (rev 20130117) max_hops=1
+[    1.544327] Key type dns_resolver registered
+[    1.549228] omap_voltage_late_init: Voltage driver support not added
+[    1.556116] ThumbEE CPU extension supported.
+[    1.560642] Registering SWP/SWPB emulation handler
+[    1.567832] random: fast init done
+[    1.605228] tps65217 0-0024: TPS65217 ID 0xf version 1.1
+[    1.611772] at24 0-0050: 32768 byte 24c256 EEPROM, writable, 1 bytes/write
+[    1.619119] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
+[    1.723977] omap_i2c 4819c000.i2c: bus 2 rev0.11 at 100 kHz
+[    1.732333] vdd_mpu: ramp_delay not set
+[    1.739589] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    1.784379] hctosys: unable to open rtc device (rtc0)
+[    1.804216] net eth0: initializing cpsw version 1.12 (0)
+[    1.883464] SMSC LAN8710/LAN8720 4a101000.mdio:00: attached PHY driver [SMSC LAN8710/LAN8720] (mii_bus:phy_addr=4a101000.mdio:00, irq=-1)
+[    1.902446] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[    1.911503] mmc0: host does not support reading read-only switch, assuming write-enable
+[    1.922813] mmc0: new high speed SDHC card at address aaaa
+[    1.929460] mmcblk0: mmc0:aaaa SU08G 7.40 GiB 
+[    1.936058]  mmcblk0: p1 p2
+[    2.050065] vdd_mpu: ramp_delay not set
+[    5.003632] cpsw 4a100000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+[    5.012342] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[    5.027876] Sending DHCP requests ., OK
+[    5.088419] IP-Config: Got DHCP answer from 192.168.1.254, my address is 192.168.1.190
+[    5.096920] IP-Config: Complete:
+[    5.100432]      device=eth0, hwaddr=d4:94:a1:8d:40:c7, ipaddr=192.168.1.190, mask=255.255.255.0, gw=192.168.1.254
+[    5.111443]      host=192.168.1.190, domain=tidfarm-02.internal.ti.com, nis-domain=(none)
+[    5.120169]      bootserver=192.168.1.254, rootserver=192.168.1.254, rootpath=     nameserver0=192.0.2.2, nameserver1=192.0.2.3
+[    5.133267] vmmcsd_fixed: disabling
+[    5.156251] EXT4-fs (mmcblk0p2): warning: maximal mount count reached, running e2fsck is recommended
+[    5.170247] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+[    5.179047] VFS: Mounted root (ext4 filesystem) on device 179:2.
+[    5.195357] devtmpfs: mounted
+[    5.209145] Freeing unused kernel memory: 2048K (c1100000 - c1300000)
 INIT: version 2.88 booting
 Error opening /dev/fb0: No such file or directory
+[    5.706277] vdd_mpu: ramp_delay not set
 Starting udev
-[    4.790682] vdd_mpu: ramp_delay not set
-[    4.898565] udevd[101]: starting version 182
-[    5.090885] vdd_mpu: ramp_delay not set
-[    5.391148] vdd_mpu: ramp_delay not set
-[    9.133398] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
-depmod: ERROR: could not open directory /lib/modules/4.9.0-rc1-next-20161019-00002-g44cfa35426a3: No such file or directory
-depmod: WARNING: -e needs -E or -F
-depmod: ERROR: could not open directory /lib/modules/4.9.0-rc1-next-20161019-00002-g44cfa35426a3: No such file or directory
-depmod: FATAL: could not search modules: No such file or directory
-[   10.652172] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
+[    5.921642] udev[96]: starting version 164
+[    6.010274] vdd_mpu: ramp_delay not set
+[   10.573968] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+ERROR: could not open directory /lib/modules/4.9.0-rc1-next-20161020-00002-gb6d222c46d2f: No such file or directory
+WARNING: -e needs -E or -F
+ERROR: could not open directory /lib/modules/4.9.0-rc1-next-20161020-00002-gb6d222c46d2f: No such file or directory
+FATAL: could not search modules: No such file or directory
 Starting Bootlog daemon: bootlogd.
-Populating dev cache
+[   10.825851] vdd_mpu: ramp_delay not set
+[   10.850667] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
+[   11.127660] vdd_mpu: ramp_delay not set
 ALSA: Restoring mixer settings...
-/usr/sbin/alsactl: load_state:1729: No soundcards found...
-hwclock: can't open '/dev/misc/rtc': No such file or directory
-Thu Jun 16 17:39:00 UTC 2016
-hwclock: can't open '/dev/misc/rtc': No such file or directory
-INIT: Entering runlevel: 5
-Configuring network interfaces... udhcpc (v1.22.1) started
+/usr/sbin/alsactl: load_state:1686: No soundcards found...
+Configuring network interfaces... udhcpc (v1.20.2) started
 Sending discover...
-[   12.395442] vdd_mpu: ramp_delay not set
-Sending select for 192.168.0.164...
-Lease of 192.168.0.164 obtained, lease time 3600
+[   12.045072] vdd_mpu: ramp_delay not set
+Sending select for 192.168.1.192...
+Lease of 192.168.1.192 obtained, lease time 600
 /etc/udhcpc.d/50default: Adding DNS 192.0.2.2
 /etc/udhcpc.d/50default: Adding DNS 192.0.2.3
 done.
-[   13.517659] vdd_mpu: ramp_delay not set
+[   13.190694] vdd_mpu: ramp_delay not set
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+Fri Jan  1 14:22:00 UTC 2016
+hwclock: can't open '/dev/misc/rtc': No such file or directory
+INIT: Entering runlevel: 5
 Starting system message bus: dbus.
-[   14.120600] vdd_mpu: ramp_delay not set
-UIM SYSFS Node Not Found
 Starting Dropbear SSH server: dropbear.
 Starting telnet daemon.
-Starting rpcbind daemon...done.
-creating NFS state directory: [   15.630594] vdd_mpu: ramp_delay not set
-done
-starting statd: done
+Performing wifi calibration...
+rm: can't remove '/lib/firmware/ti-connectivity/wl1271-nvs.bin': No such file or directory
+Error: Module wl12xx_sdio is not currently loaded
+nl80211 not found.
 hwclock: can't open '/dev/misc/rtc': No such file or directory
+Starting network benchmark server: netserver.
 Starting syslogd/klogd: done
-Starting thttpd[   15.930581] vdd_mpu: ramp_delay not set
+Starting thttpd.
 Starting Lighttpd Web Server: lighttpd.
-2016-06-16 17:39:04: (/home/jenkins/tisdk-build/build-CORTEX_1/arago-tmp-external-linaro-toolchain/work/cortexa8t2hf-vfp-neon-linux-gnueabi/lighttpd/1.4.33-r1/lighttpd-1.4.33/src/log.c.166) server started 
+2016-01-01 14:22:00: (log.c.166) server started 
 Starting Matrix GUI application.
-[   16.556463] vdd_mpu: ramp_delay not set
-Enabling thermal zones...
-/etc/rc5.d/S98thermal-zone-init: line 7: /sys/class/thermal/thermal_zone*/mode: No such file or directory
-[   18.093856] vdd_mpu: ramp_delay not set
-[   18.396023] vdd_mpu: ramp_delay not set
-[   18.696066] vdd_mpu: ramp_delay not set
-[   18.995721] vdd_mpu: ramp_delay not set
-[   19.295818] vdd_mpu: ramp_delay not set
-[   19.896075] vdd_mpu: ramp_delay not set
-[   20.195971] vdd_mpu: ramp_delay not set
-[   20.500712] vdd_mpu: ramp_delay not set
+[   14.705946] vdd_mpu: ramp_delay not set
+[   15.305083] vdd_mpu: ramp_delay not set
+[   15.905880] vdd_mpu: ramp_delay not set
+[   16.210550] vdd_mpu: ramp_delay not set
+[   16.510535] vdd_mpu: ramp_delay not set
 ***************************************************************
 ***************************************************************
 NOTICE: This file system contains the followin GPLv3 packages:
-	autoconf
+	binutils-symlinks
 	binutils
-	cpp-symlinks
-	cpp
-	g++-symlinks
-	g++
-	gcc-symlinks
-	gcc
 	gdbserver
-	libgmp10
-	libmpc3
-	libmpfr4
-	make
 If you do not wish to distribute GPLv3 components please remove
 the above packages prior to distribution.  This can be done using
 the opkg remove command.  i.e.:
     opkg remove <package>
 Where <package> is the name printed in the list above
-NOTE: If the package is a dependency[   20.800482] vdd_mpu: ramp_delay not set
- of another package you
+NOTE: If the package is a dependency of another package you
       will be notified of the dependent packages.  You should
       use the --force-removal-of-dependent-packages option to
       also remove the dependent packages as well
@@ -1789,39 +1033,38 @@ Stopping Bootlog daemon: bootlogd.
 |     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
 |__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|  
               |___|                    |___|            
-Arago Project http://arago-project.org am335x-evm /dev/ttyO0
-Arago 2015.03 am335x-evm /dev/ttyO0
+Arago Project http://arago-project.org am335x-evm ttyO0
+Arago 2013.05 am335x-evm ttyO0
 am335x-evm login: 
-- 02:39:52 [INFO] Host: root
-- 02:39:52 [INFO] Target: 
+- 01:39:38 [INFO] Host: root
+- 01:39:38 [INFO] Target: 
 root
-[   21.101056] vdd_mpu: ramp_delay not set
 root@am335x-evm:~# 
-- 02:39:52 [INFO] Sleeping 15 secs to allow systemd to finish starting processes...
-- 02:40:07 [INFO] Disconnected serial from beaglebone
-- 02:40:07 [INFO] Connected to beaglebone via serial 
-- 02:40:07 [INFO] Host: uname -a
-- 02:40:07 [INFO] Target: 
+- 01:39:38 [INFO] Sleeping 15 secs to allow systemd to finish starting processes...
+- 01:39:53 [INFO] Disconnected serial from beaglebone
+- 01:39:53 [INFO] Connected to beaglebone via serial 
+- 01:39:53 [INFO] Host: uname -a
+- 01:39:53 [INFO] Target: 
 uname -a
-Linux am335x-evm 4.9.0-rc1-next-20161019-00002-g44cfa35426a3 #3 SMP Wed Oct 19 01:30:52 CDT 2016 armv7l GNU/Linux
+Linux am335x-evm 4.9.0-rc1-next-20161020-00002-gb6d222c46d2f #3 SMP Thu Oct 20 01:32:32 CDT 2016 armv7l GNU/Linux
 root@am335x-evm:~# 
-- 02:40:07 [INFO] Host: cat /proc/cmdline
-- 02:40:07 [INFO] Target: 
+- 01:39:53 [INFO] Host: cat /proc/cmdline
+- 01:39:53 [INFO] Target: 
 cat /proc/cmdline
 console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait  ip=:::::eth0:dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
 root@am335x-evm:~# 
-- 02:40:07 [INFO] Host: uname -a
-- 02:40:07 [INFO] Target: 
+- 01:39:53 [INFO] Host: uname -a
+- 01:39:53 [INFO] Target: 
 uname -a
-Linux am335x-evm 4.9.0-rc1-next-20161019-00002-g44cfa35426a3 #3 SMP Wed Oct 19 01:30:52 CDT 2016 armv7l GNU/Linux
+Linux am335x-evm 4.9.0-rc1-next-20161020-00002-gb6d222c46d2f #3 SMP Thu Oct 20 01:32:32 CDT 2016 armv7l GNU/Linux
 root@am335x-evm:~# 
-- 02:40:07 [INFO] Host: cat /proc/mtd
-- 02:40:07 [INFO] Target: 
+- 01:39:53 [INFO] Host: cat /proc/mtd
+- 01:39:53 [INFO] Target: 
 cat /proc/mtd
 dev:    size   erasesize  name
 root@am335x-evm:~# 
-- 02:40:07 [INFO] Host: cat /proc/diskstats
-- 02:40:07 [INFO] Target: 
+- 01:39:53 [INFO] Host: cat /proc/diskstats
+- 01:39:54 [INFO] Target: 
 cat /proc/diskstats
    1       0 ram0 0 0 0 0 0 0 0 0 0 0 0
    1       1 ram1 0 0 0 0 0 0 0 0 0 0 0
@@ -1847,29 +1090,28 @@ cat /proc/diskstats
    7       5 loop5 0 0 0 0 0 0 0 0 0 0 0
    7       6 loop6 0 0 0 0 0 0 0 0 0 0 0
    7       7 loop7 0 0 0 0 0 0 0 0 0 0 0
- 179       0 mmcblk0 1963 616 84848 8455 32 27 1757 4740 0 5255 13200
- 179       1 mmcblk0p1 100 0 1399 145 4 0 4 80 0 150 225
- 179       2 mmcblk0p2 1786 609 82444 7825 27 27 1752 4655 0 5155 12485
- 179       3 mmcblk0p3 60 7 869 475 1 0 1 5 0 465 480
+ 179       0 mmcblk0 1471 723 64941 4175 22 24 333 180 0 2555 4350
+ 179       1 mmcblk0p1 8 0 11 10 5 0 5 95 0 55 105
+ 179       2 mmcblk0p2 1462 723 64922 4165 17 24 328 85 0 2550 4245
 root@am335x-evm:~# 
-- 02:40:07 [INFO] Host: cat /proc/interrupts
-- 02:40:08 [INFO] Target: 
+- 01:39:54 [INFO] Host: cat /proc/interrupts
+- 01:39:54 [INFO] Target: 
 cat /proc/interrupts
            CPU0       
- 16:       3666      INTC  68 Level     gp_timer
- 20:       2025      INTC  12 Level     49000000.edma_ccint
- 22:          5      INTC  14 Level     49000000.edma_ccerrint
+ 16:       4479      INTC  68 Level     gp_timer
+ 20:       1508      INTC  12 Level     49000000.edma_ccint
+ 22:          2      INTC  14 Level     49000000.edma_ccerrint
  26:          0      INTC  96 Level     44e07000.gpio
  33:          0  44e07000.gpio   6 Edge      48060000.mmc cd
  59:          0      INTC  98 Level     4804c000.gpio
  92:          0      INTC  32 Level     481ac000.gpio
 125:          0      INTC  62 Level     481ae000.gpio
-158:        703      INTC  72 Level     OMAP UART0
-159:        781      INTC  70 Level     44e0b000.i2c
+158:        671      INTC  72 Level     OMAP UART0
+159:        564      INTC  70 Level     44e0b000.i2c
 160:        102      INTC  30 Level     4819c000.i2c
-161:       6038      INTC  64 Level     mmc0
-172:          8      INTC  41 Level     4a100000.ethernet
-173:         14      INTC  42 Level     4a100000.ethernet
+161:       4544      INTC  64 Level     mmc0
+172:          6      INTC  41 Level     4a100000.ethernet
+173:         13      INTC  42 Level     4a100000.ethernet
 177:          0      INTC 111 Level     48310000.rng
 IPI0:          0  CPU wakeup interrupts
 IPI1:          0  Timer broadcast interrupts
@@ -1880,199 +1122,199 @@ IPI5:          0  IRQ work interrupts
 IPI6:          0  completion interrupts
 Err:          0
 root@am335x-evm:~# 
-- 02:40:08 [INFO] Host: cat /proc/softirqs
-- 02:40:08 [INFO] Target: 
+- 01:39:54 [INFO] Host: cat /proc/softirqs
+- 01:39:54 [INFO] Target: 
 cat /proc/softirqs
                     CPU0       
           HI:          0
-       TIMER:       3562
-      NET_TX:          7
-      NET_RX:         32
+       TIMER:       4339
+      NET_TX:          6
+      NET_RX:         19
        BLOCK:          0
 BLOCK_IOPOLL:          0
-     TASKLET:       2003
+     TASKLET:       1501
        SCHED:          0
      HRTIMER:          0
-         RCU:       7209
+         RCU:      13058
 root@am335x-evm:~# 
-- 02:40:13 [INFO] Host: export IPERFHOST=192.168.0.1
-- 02:40:13 [INFO] Target: 
-export IPERFHOST=192.168.0.1
+- 01:40:01 [INFO] Host: export IPERFHOST=192.168.1.254
+- 01:40:01 [INFO] Target: 
+export IPERFHOST=192.168.1.254
 root@am335x-evm:~# 
-- 02:40:13 [INFO] Host: export NFS_SERVER=192.168.0.1
-- 02:40:13 [INFO] Target: 
-export NFS_SERVER=192.168.0.1
+- 01:40:01 [INFO] Host: export NFS_SERVER=192.168.1.254
+- 01:40:01 [INFO] Target: 
+export NFS_SERVER=192.168.1.254
 root@am335x-evm:~# 
-- 02:40:13 [INFO] Host: export NFS_ROOT_PATH=/home/tigtfarm03/NFS_exports/bbw1/
-- 02:40:13 [INFO] Target: 
-export NFS_ROOT_PATH=/home/tigtfarm03/NFS_exports/bbw1/
+- 01:40:01 [INFO] Host: export NFS_ROOT_PATH=/home/NFS_exports/bbw
+- 01:40:01 [INFO] Target: 
+export NFS_ROOT_PATH=/home/NFS_exports/bbw
 root@am335x-evm:~# 
-- 02:40:13 [INFO] Host: export AP_SSID=
-- 02:40:13 [INFO] Target: 
+- 01:40:01 [INFO] Host: export AP_SSID=
+- 01:40:01 [INFO] Target: 
 export AP_SSID=
 root@am335x-evm:~# 
-- 02:40:13 [INFO] Host: mkdir -p -m 777 /test
-- 02:40:14 [INFO] Target: 
+- 01:40:01 [INFO] Host: mkdir -p -m 777 /test
+- 01:40:01 [INFO] Target: 
 mkdir -p -m 777 /test
+[   41.292029] random: crng init done
 root@am335x-evm:~# 
-- 02:40:14 [INFO] Host: cd /test
-- 02:40:14 [INFO] Target: 
+- 01:40:01 [INFO] Host: cd /test
+- 01:40:01 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-- 02:40:14 [INFO] Host: cat > test.sh << EOF
-- 02:40:14 [INFO] Target: 
+- 01:40:01 [INFO] Host: cat > test.sh << EOF
+- 01:40:01 [INFO] Target: 
 cat > test.sh << EOF
-- 02:40:14 [INFO] Host: failtest() {
-- 02:40:14 [INFO] Target: 
+- 01:40:01 [INFO] Host: failtest() {
+- 01:40:02 [INFO] Target: 
 failtest() {
-- 02:40:14 [INFO] Host:   echo 1 >&3
-- 02:40:14 [INFO] Target: 
+- 01:40:02 [INFO] Host:   echo 1 >&3
+- 01:40:02 [INFO] Target: 
   echo 1 >&3
-- 02:40:14 [INFO] Host: }
-- 02:40:14 [INFO] Target: 
-- 02:40:14 [INFO] Host: timeout=600
-- 02:40:14 [INFO] Target: 
+- 01:40:02 [INFO] Host: }
+- 01:40:02 [INFO] Target: 
+- 01:40:02 [INFO] Host: timeout=600
+- 01:40:02 [INFO] Target: 
 timeout=600
-- 02:40:14 [INFO] Host: 
-- 02:40:14 [INFO] Target: 
-- 02:40:14 [INFO] Host: # Start of user's script logic
-- 02:40:14 [INFO] Target: 
+- 01:40:02 [INFO] Host: 
+- 01:40:02 [INFO] Target: 
+- 01:40:02 [INFO] Host: # Start of user's script logic
+- 01:40:02 [INFO] Target: 
 # Start of user's script logic
-- 02:40:14 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
-- 02:40:14 [INFO] Target: 
+- 01:40:02 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
+- 01:40:02 [INFO] Target: 
 mount -t proc proc /proc 2>/dev/null;
-- 02:40:14 [INFO] Host: 
-- 02:40:15 [INFO] Target: 
-- 02:40:15 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
-- 02:40:15 [INFO] Target: 
+- 01:40:02 [INFO] Host: 
+- 01:40:02 [INFO] Target: 
+- 01:40:02 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
+- 01:40:02 [INFO] Target: 
 mount -t sysfs sys /sys 2>/dev/null;
-- 02:40:15 [INFO] Host: 
-- 02:40:15 [INFO] Target: 
-- 02:40:15 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
-- 02:40:15 [INFO] Target: 
+- 01:40:02 [INFO] Host: 
+- 01:40:02 [INFO] Target: 
+- 01:40:02 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
+- 01:40:03 [INFO] Target: 
 mount -t debugfs none /sys/kernel/debug 2>/dev/null;
-- 02:40:15 [INFO] Host: 
-- 02:40:15 [INFO] Target: 
-- 02:40:15 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
-- 02:40:15 [INFO] Target: 
+- 01:40:03 [INFO] Host: 
+- 01:40:03 [INFO] Target: 
+- 01:40:03 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
+- 01:40:03 [INFO] Target: 
 echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
-- 02:40:15 [INFO] Host: 
-- 02:40:15 [INFO] Target: 
-- 02:40:15 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
-- 02:40:15 [INFO] Target: 
+- 01:40:03 [INFO] Host: 
+- 01:40:03 [INFO] Target: 
+- 01:40:03 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
+- 01:40:03 [INFO] Target: 
 echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
-- 02:40:15 [INFO] Host: 
-- 02:40:15 [INFO] Target: 
-- 02:40:15 [INFO] Host: echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /proc/device-tree/compatible 2>/dev/null;echo; echo '=======';
-- 02:40:15 [INFO] Target: 
+- 01:40:03 [INFO] Host: 
+- 01:40:03 [INFO] Target: 
+- 01:40:03 [INFO] Host: echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /proc/device-tree/compatible 2>/dev/null;echo; echo '=======';
+- 01:40:03 [INFO] Target: 
 echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /pro 
 c/device-tree/compatible 2>/dev/null;echo; echo '=======';
-- 02:40:15 [INFO] Host: 
-- 02:40:16 [INFO] Target: 
-- 02:40:16 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
-- 02:40:16 [INFO] Target: 
+- 01:40:03 [INFO] Host: 
+- 01:40:03 [INFO] Target: 
+- 01:40:03 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
+- 01:40:03 [INFO] Target: 
 echo 'interrupts:';cat /proc/interrupts; echo '=======';
-- 02:40:16 [INFO] Host: 
-- 02:40:16 [INFO] Target: 
-- 02:40:16 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
-- 02:40:16 [INFO] Target: 
+- 01:40:03 [INFO] Host: 
+- 01:40:03 [INFO] Target: 
+- 01:40:03 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
+- 01:40:04 [INFO] Target: 
 echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
-- 02:40:16 [INFO] Host: 
-- 02:40:16 [INFO] Target: 
-- 02:40:16 [INFO] Host: echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies 2>/dev/null;echo '=======';
-- 02:40:16 [INFO] Target: 
+- 01:40:04 [INFO] Host: 
+- 01:40:04 [INFO] Target: 
+- 01:40:04 [INFO] Host: echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies 2>/dev/null;echo '=======';
+- 01:40:04 [INFO] Target: 
 echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling 
 _available_frequencies 2>/dev/null;echo '=======';
-- 02:40:16 [INFO] Host: 
-- 02:40:16 [INFO] Target: 
-- 02:40:16 [INFO] Host: TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
-- 02:40:16 [INFO] Target: 
+- 01:40:04 [INFO] Host: 
+- 01:40:04 [INFO] Target: 
+- 01:40:04 [INFO] Host: TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
+- 01:40:04 [INFO] Target: 
 TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
-- 02:40:16 [INFO] Host: 
-- 02:40:16 [INFO] Target: 
-- 02:40:16 [INFO] Host: cp /dev/kmsg \$TMPF &
-- 02:40:16 [INFO] Target: 
+- 01:40:04 [INFO] Host: 
+- 01:40:04 [INFO] Target: 
+- 01:40:04 [INFO] Host: cp /dev/kmsg \$TMPF &
+- 01:40:04 [INFO] Target: 
 cp /dev/kmsg \$TMPF &
-- 02:40:16 [INFO] Host: 
-- 02:40:17 [INFO] Target: 
-- 02:40:17 [INFO] Host: PID=\$! ; sleep 5; kill -9 \$PID
-- 02:40:17 [INFO] Target: 
+- 01:40:04 [INFO] Host: 
+- 01:40:04 [INFO] Target: 
+- 01:40:04 [INFO] Host: PID=\$! ; sleep 5; kill -9 \$PID
+- 01:40:04 [INFO] Target: 
 PID=\$! ; sleep 5; kill -9 \$PID
-- 02:40:17 [INFO] Host: 
-- 02:40:17 [INFO] Target: 
-- 02:40:17 [INFO] Host: 
-- 02:40:17 [INFO] Target: 
-- 02:40:17 [INFO] Host: 
-- 02:40:17 [INFO] Target: 
-- 02:40:17 [INFO] Host: cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 02:40:17 [INFO] Target: 
+- 01:40:04 [INFO] Host: 
+- 01:40:04 [INFO] Target: 
+- 01:40:04 [INFO] Host: 
+- 01:40:05 [INFO] Target: 
+- 01:40:05 [INFO] Host: 
+- 01:40:05 [INFO] Target: 
+- 01:40:05 [INFO] Host: cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 01:40:05 [INFO] Target: 
 cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "= 
 ===="; fi
-- 02:40:17 [INFO] Host: 
-- 02:40:17 [INFO] Target: 
-- 02:40:17 [INFO] Host: cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 02:40:17 [INFO] Target: 
+- 01:40:05 [INFO] Host: 
+- 01:40:05 [INFO] Target: 
+- 01:40:05 [INFO] Host: cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 01:40:05 [INFO] Target: 
 cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "= 
 ===="; fi
-- 02:40:17 [INFO] Host: 
-- 02:40:17 [INFO] Target: 
-- 02:40:17 [INFO] Host: cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 02:40:17 [INFO] Target: 
+- 01:40:05 [INFO] Host: 
+- 01:40:05 [INFO] Target: 
+- 01:40:05 [INFO] Host: cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 01:40:05 [INFO] Target: 
 cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "=== 
 =="; fi
-- 02:40:17 [INFO] Host: 
-- 02:40:18 [INFO] Target: 
-- 02:40:18 [INFO] Host: cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
-- 02:40:18 [INFO] Target: 
+- 01:40:05 [INFO] Host: 
+- 01:40:05 [INFO] Target: 
+- 01:40:05 [INFO] Host: cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
+- 01:40:05 [INFO] Target: 
 cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "===== 
 " ;fi
-- 02:40:18 [INFO] Host: 
-- 02:40:18 [INFO] Target: 
-- 02:40:18 [INFO] Host: cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
-- 02:40:18 [INFO] Target: 
+- 01:40:05 [INFO] Host: 
+- 01:40:05 [INFO] Target: 
+- 01:40:05 [INFO] Host: cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
+- 01:40:06 [INFO] Target: 
 cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=== 
 ==" ;fi
-- 02:40:18 [INFO] Host: 
-- 02:40:18 [INFO] Target: 
-- 02:40:18 [INFO] Host: rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oard' "Booted" "Boot Log has::::\$STR:"
-- 02:40:18 [INFO] Target: 
+- 01:40:06 [INFO] Host: 
+- 01:40:06 [INFO] Target: 
+- 01:40:06 [INFO] Host: rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oard' "Booted" "Boot Log has::::\$STR:"
+- 01:40:06 [INFO] Target: 
 rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oa 
 rd' "Booted" "Boot Log has::::\$STR:"
-- 02:40:18 [INFO] Host: 
-- 02:40:18 [INFO] Target: 
-- 02:40:18 [INFO] Host: EOF
-- 02:40:18 [INFO] Target: 
+- 01:40:06 [INFO] Host: 
+- 01:40:06 [INFO] Target: 
+- 01:40:06 [INFO] Host: EOF
+- 01:40:06 [INFO] Target: 
 root@am335x-evm:/test# 
-- 02:40:18 [INFO] Host: cd /test
-- 02:40:18 [INFO] Target: 
+- 01:40:06 [INFO] Host: cd /test
+- 01:40:06 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-- 02:40:18 [INFO] Host: chmod +x test.sh
-- 02:40:18 [INFO] Target: 
+- 01:40:06 [INFO] Host: chmod +x test.sh
+- 01:40:06 [INFO] Target: 
 chmod +x test.sh
 root@am335x-evm:/test# 
-- 02:40:18 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
-- 02:40:24 [INFO] Target: 
+- 01:40:06 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
+- 01:40:12 [INFO] Target: 
 ./test.sh 2> stderr.log > stdout.log 3> result.log
-[   53.557229] vdd_mpu: ramp_delay not set
+[   51.872609] vdd_mpu: ramp_delay not set
 root@am335x-evm:/test# 
-- 02:40:24 [INFO] Host: echo $?
-- 02:40:24 [INFO] Target: 
+- 01:40:12 [INFO] Host: echo $?
+- 01:40:12 [INFO] Target: 
 echo $?
 root@am335x-evm:/test# 
-- 02:40:24 [INFO] Host: cd /test
-- 02:40:24 [INFO] Target: 
+- 01:40:12 [INFO] Host: cd /test
+- 01:40:12 [INFO] Target: 
 cd /test
-root@am335x-evm:/test# 
-- 02:40:24 [INFO] Host: cat stdout.log
-- 02:40:25 [INFO] Target: 
+root@am335x-evm:/test# [   52.190090] vdd_mpu: ramp_delay not set
+- 01:40:12 [INFO] Host: cat stdout.log
+- 01:40:13 [INFO] Target: 
 cat stdout.log
-[   53.866087] vdd_mpu: ramp_delay not set
 cpuinfo:
 processor	: 0
 model name	: ARMv7 Processor rev 2 (v7l)
@@ -2108,20 +1350,20 @@ ti,am335x-boneti,am33xx
 =======
 interrupts:
            CPU0       
- 16:       3973      INTC  68 Level     gp_timer
- 20:       2030      INTC  12 Level     49000000.edma_ccint
- 22:          5      INTC  14 Level     49000000.edma_ccerrint
+ 16:       4832      INTC  68 Level     gp_timer
+ 20:       1513      INTC  12 Level     49000000.edma_ccint
+ 22:          2      INTC  14 Level     49000000.edma_ccerrint
  26:          0      INTC  96 Level     44e07000.gpio
  33:          0  44e07000.gpio   6 Edge      48060000.mmc cd
  59:          0      INTC  98 Level     4804c000.gpio
  92:          0      INTC  32 Level     481ac000.gpio
 125:          0      INTC  62 Level     481ae000.gpio
-158:       8848      INTC  72 Level     OMAP UART0
-159:        781      INTC  70 Level     44e0b000.i2c
+158:       8835      INTC  72 Level     OMAP UART0
+159:        564      INTC  70 Level     44e0b000.i2c
 160:        102      INTC  30 Level     4819c000.i2c
-161:       6055      INTC  64 Level     mmc0
-172:          8      INTC  41 Level     4a100000.ethernet
-173:         14      INTC  42 Level     4a100000.ethernet
+161:       4558      INTC  64 Level     mmc0
+172:          6      INTC  41 Level     4a100000.ethernet
+173:         13      INTC  42 Level     4a100000.ethernet
 177:          0      INTC 111 Level     48310000.rng
 IPI0:          0  CPU wakeup interrupts
 IPI1:          0  Timer broadcast interrupts
@@ -2220,12 +1462,14 @@ Clk_summary:
 Available frequencies
 275000 500000 600000 720000 
 =======
+===== ALERT ==
+udev[96]: starting version 164
+=====
 ===== CRIT ==
 clocksource_probe: no matching clocksources found
 =====
 ===== ERR ==
 omap_voltage_late_init: Voltage driver support not added
-udevd[101]: starting version 182
 =====
 ===== WARN ==
 sgx 
@@ -2236,7 +1480,7 @@ omap4_sram_init:Unable to get sram pool needed to handle errata I688
 vdd_mpu: ramp_delay not set
 mmc0: host does not support reading read-only switch, assuming write-enable
 vdd_mpu: ramp_delay not set
-vdd_mpu: ramp_delay not set
+EXT4-fs (mmcblk0p2): warning: maximal mount count reached, running e2fsck is recommended
 vdd_mpu: ramp_delay not set
 vdd_mpu: ramp_delay not set
 FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
@@ -2250,27 +1494,21 @@ vdd_mpu: ramp_delay not set
 vdd_mpu: ramp_delay not set
 vdd_mpu: ramp_delay not set
 vdd_mpu: ramp_delay not set
-vdd_mpu: ramp_delay not set
-vdd_mpu: ramp_delay not set
-vdd_mpu: ramp_delay not set
-vdd_mpu: ramp_delay not set
-vdd_mpu: ramp_delay not set
-vdd_mpu: ramp_delay not set
 =====
-SUMMARY RESULT: BOOT: PASS: Hello World Board Booted Boot Log has:::: crit=1 err=2 warn=29:
+SUMMARY RESULT: BOOT: PASS: Hello World Board Booted Boot Log has:::: alert=1 crit=1 err=1 warn=23:
 root@am335x-evm:/test# 
-- 02:40:25 [INFO] Host: cat stderr.log
-- 02:40:25 [INFO] Target: 
+- 01:40:13 [INFO] Host: cat stderr.log
+- 01:40:13 [INFO] Target: 
 cat stderr.log
-./test.sh: line 33:   706 Killed                  cp /dev/kmsg $TMPF
+./test.sh: line 33:   730 Killed                  cp /dev/kmsg $TMPF
 root@am335x-evm:/test# 
-- 02:40:25 [INFO] Host: cat result.log
-- 02:40:27 [ERROR] On command: cat result.log waiting for cat result.log.+?(?m-ix:^1[\0\n\r]+) >>> error: execution expired
-- 02:40:27 [INFO] Target: 
+- 01:40:13 [INFO] Host: cat result.log
+- 01:40:15 [ERROR] On command: cat result.log waiting for cat result.log.+?(?m-ix:^1[\0\n\r]+) >>> error: execution expired
+- 01:40:15 [INFO] Target: 
 cat result.log
 root@am335x-evm:/test# 
-- 02:40:27 [INFO] Host: cd /test
-- 02:40:28 [INFO] Target: 
+- 01:40:15 [INFO] Host: cd /test
+- 01:40:15 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm03/tigtfarm03_vatf@bbw1/tigtfarm0310_19_2016_02_37_10/files/session_iteration_1/test_1
+URL:gtsystest.telogy.design.ti.com/vatf/tidfarm-02/tidfarm-02_vatf@beaglebone/tidfarm-0210_20_2016_01_38_38/files/session_iteration_1/test_1
