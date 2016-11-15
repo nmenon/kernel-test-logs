@@ -1,56 +1,243 @@
-- 13:15:34 [INFO] Starting target session
-- 13:15:35 [INFO] Connected to beaglebone via serial 
-- 13:15:35 [INFO] Host: #check prompt
-- 13:15:38 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
-- 13:15:38 [INFO] Target: 
+- 01:22:30 [INFO] Starting target session
+- 01:22:31 [INFO] Connected to beaglebone via serial 
+- 01:22:31 [INFO] Host: #check prompt
+- 01:22:34 [ERROR] On command: #check prompt waiting for #check prompt.+?(?-mix:((?-mix:login:)|[Pp]assword)) >>> error: execution expired
+- 01:22:34 [INFO] Target: 
 #check prompt
-root@am335x-evm:~# 
-- 13:15:38 [INFO] Host: #check prompt
-- 13:15:38 [INFO] Target: 
+root@am335x-evm:/test# [ 2425.761965] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2425.771459] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2425.778440] 1 lock held by swapper/0/0:
+[ 2425.782490]  #0: [ 2425.784354]  (
+((&glue->timer))[ 2425.787619] ){+.-...}
+, at: [ 2425.790642] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2425.795546] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2425.804160] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2425.810645] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2425.818831] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2425.826482] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2425.834682] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2425.843548] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2425.853140] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2425.862145] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2425.870413] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2425.879057] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2425.887603] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2425.895342] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2425.903629] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2425.912010] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2425.919835] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2425.928570] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
+- 01:22:34 [INFO] Host: #check prompt
+- 01:22:34 [INFO] Target: 
 #check prompt
-root@am335x-evm:~# 
-- 13:15:38 [INFO] Host: sync;poweroff
-- 13:16:10 [INFO] Target: 
+root@am335x-evm:/test# 
+- 01:22:34 [INFO] Host: sync;poweroff
+- 01:23:26 [INFO] Target: 
 sync;poweroff
-[[0;32m  OK  [0m] Stopped target Timers.
-[[0;32m  OK  [0m] Stopped target System Time Synchronized.
-[[0;32m  OK  [0m] Closed Load/Save RF Kill Switch Status /dev/rfkill Watch.
-[[0;32m  OK  [0m] Stopped Daily Cleanup of          Stopping Session c1 of user root.
+[ 2427.842184] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2427.851888] in_atomic(): 1, irqs_disabled(): 0, pid: 1871, name: sync
+[ 2427.858757] 3 locks held by sync/1871:
+[ 2427.862960]  #0: [ 2427.864833]  (
+rcu_read_lock[ 2427.867831] ){......}
+, at: [ 2427.870864] [<c02c7100>] path_init+0x4d8/0x754
+[ 2427.875686]  #1: [ 2427.877549]  (
+&sb->s_type->i_lock_key[ 2427.881454] #14
+){+.+...}[ 2427.884292] , at: 
+[ 2427.886485] [<c03d5e50>] nfs_revalidate_mapping_rcu+0x38/0x78
+[ 2427.892651]  #2: [ 2427.894532]  (
+((&glue->timer))[ 2427.897824] ){+.-...}
+, at: [ 2427.900857] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2427.905918] CPU: 0 PID: 1871 Comm: sync Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2427.914439] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2427.920984] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2427.929169] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2427.936819] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2427.945020] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2427.953882] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2427.963479] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2427.972485] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2427.980754] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2427.989398] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2427.997945] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2428.005683] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2428.013968] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2428.022335] [<c091d8b0>] (__irq_svc) from [<c019e1dc>] (lock_acquire+0xf8/0x294)
+[ 2428.030151] [<c019e1dc>] (lock_acquire) from [<c091cc58>] (_raw_spin_lock+0x40/0x50)
+[ 2428.038332] [<c091cc58>] (_raw_spin_lock) from [<c03d5e50>] (nfs_revalidate_mapping_rcu+0x38/0x78)
+[ 2428.047799] [<c03d5e50>] (nfs_revalidate_mapping_rcu) from [<c03de1e8>] (nfs_get_link+0x38/0x10c)
+[ 2428.057173] [<c03de1e8>] (nfs_get_link) from [<c02c6170>] (trailing_symlink+0x200/0x288)
+[ 2428.065724] [<c02c6170>] (trailing_symlink) from [<c02c954c>] (path_openat+0x458/0x11ac)
+[ 2428.074275] [<c02c954c>] (path_openat) from [<c02cb58c>] (do_filp_open+0x60/0xc4)
+[ 2428.082194] [<c02cb58c>] (do_filp_open) from [<c02b8f88>] (do_sys_open+0x108/0x1d0)
+[ 2428.090295] [<c02b8f88>] (do_sys_open) from [<c0108708>] (__sys_trace_return+0x0/0x10)
 [[0;32m  OK  [0m] Stopped target Multi-User System.
          Stopping Kernel Logging Service...
-[[0;32m  OK  [0m] Stopped target Login Prompts.
-         Stopping Serial Getty on ttyS3...
-         Stopping Serial Getty on ttyS0...
-         Stopping Getty on tty1...
-         Stopping parse-ip.service...
-         Stopping thermal-zone-init.service...
-         Stopping Lightning Fast Webserver With Light System Requirements...
+[[0;32m  OK  [0m] Stopped target Timers.
+[[0;32m  OK  [0m] Stopped target System Time Synchronized.
+         Stopping Session c1 of user root.
+[ 2430.162089] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2430.171519] in_atomic(): 1, irqs_disabled(): 0, pid: 1874, name: systemd-cgroups
+[ 2430.179343] 1 lock held by systemd-cgroups/1874:
+[ 2430.184224]  #0: [ 2430.186067]  (
+((&glue->timer))[ 2430.189287] ){+.-...}
+, at: [ 2430.192296] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2430.197155] CPU: 0 PID: 1874 Comm: systemd-cgroups Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2430.206541] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2430.212956] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2430.221084] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2430.228674] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2430.236811] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2430.245597] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2430.255110] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2430.264055] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2430.272266] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2430.280850] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2430.289338] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2430.297017] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2430.305240] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2430.313545] [<c091d8b0>] (__irq_svc) from [<c019e918>] (lock_is_held+0x74/0x94)
+[ 2430.321213] [<c019e918>] (lock_is_held) from [<c0169ec4>] (___might_sleep+0x1c0/0x298)
+[ 2430.329519] [<c0169ec4>] (___might_sleep) from [<c02dcc2c>] (__fd_install+0x24/0x338)
+[ 2430.337742] [<c02dcc2c>] (__fd_install) from [<c0796d6c>] (SyS_socket+0x98/0xe8)
+[ 2430.345509] [<c0796d6c>] (SyS_socket) from [<c0108708>] (__sys_trace_return+0x0/0x10)
+         Stopping Network Name Resolution...
          Stopping System Logging Service...
          Stopping strongSwan IPsec IKEv1/IKEv2 daemon using ipsec.conf...
-         Stopping Network Name Resolution...
-          Stopping User Manager for UID 0...
-[[0;32m  OK  [0m] Stopped strongSwan IPsec IKEv1/IKEv2 daemon using ipsec.conf.
-[[0;32m  OK  [0m] Stopped System Logging Service.
+         Stopping User Manager for UID 0...
+         Stopping parse-ip.service...
+[[0;32m  OK  [0m] Stopped target Login Prompts.
+         Stopping Getty on tty1...
+         Stopping Serial Getty on ttyS3...
+         Stopping Serial Getty on ttyS0...
+         Stopping Serial Getty on ttyO0...
+         Stopping thermal-zone-init.service...
 [[0;32m  OK  [0m] Stopped Kernel Logging Service.
+[[0;32m  OK  [0m] Stopped strongSwan IPsec IKEv1/IKEv2 daemon using ipsec.conf.
+[ 2432.402266] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2432.411728] in_atomic(): 1, irqs_disabled(): 0, pid: 3, name: ksoftirqd/0
+[ 2432.418927] 1 lock held by ksoftirqd/0/3:
+[ 2432.423166]  #0: [ 2432.425015]  (
+((&glue->timer))[ 2432.428242] ){+.-...}
+, at: [ 2432.431211] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2432.436118] CPU: 0 PID: 3 Comm: ksoftirqd/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2432.444889] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2432.451318] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2432.459460] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2432.467068] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2432.475223] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2432.484022] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2432.493552] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2432.502513] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2432.510739] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2432.519337] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2432.527839] [<c01434bc>] (__do_softirq) from [<c0143990>] (run_ksoftirqd+0x30/0x74)
+[ 2432.535881] [<c0143990>] (run_ksoftirqd) from [<c016595c>] (smpboot_thread_fn+0x140/0x24c)
+[ 2432.544570] [<c016595c>] (smpboot_thread_fn) from [<c0161308>] (kthread+0xdc/0x100)
+[ 2432.552618] [<c0161308>] (kthread) from [<c0108630>] (ret_from_fork+0x14/0x24)
+[[0;32m  OK  [0m] Stopped System Logging Service.
 [[0;32m  OK  [0m] Stopped Network Name Resolution.
+[[0;32m  OK  [0m] Stopped Serial Getty on ttyO0.
 [[0;32m  OK  [0m] Stopped Getty on tty1.
-[[0;32m  OK  [0m] Stopped Serial Getty on ttyS0.
 [[0;32m  OK  [0m] Stopped Lightning Fast Webserver With Light System Requirements.
-[[0;32m  OK  [0m] Stopped User Manager for UID 0.
+[[0;32m  OK  [0m] Stopped Serial Getty on ttyS0.
 [[0;32m  OK  [0m] Stopped Serial Getty on ttyS3.
 [[0;32m  OK  [0m] Stopped Session c1 of user root.
+[[0;32m  OK  [0m] Stopped User Manager for UID 0.
 [[0;32m  OK  [0m] Stopped parse-ip.service.
 [[0;32m  OK  [0m] Stopped thermal-zone-init.service.
+[ 2434.562008] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2434.571456] in_atomic(): 1, irqs_disabled(): 0, pid: 1, name: systemd
+[ 2434.578333] 1 lock held by systemd/1:
+[ 2434.582231]  #0: [ 2434.584074]  (
+((&glue->timer))[ 2434.587299] ){+.-...}
+, at: [ 2434.590261] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2434.595172] CPU: 0 PID: 1 Comm: systemd Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2434.603577] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2434.609998] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2434.618146] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2434.625745] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2434.633898] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2434.642709] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2434.652244] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2434.661198] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2434.669428] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2434.678023] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2434.686522] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2434.694215] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2434.702452] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2434.710774] [<c091d8b0>] (__irq_svc) from [<c01115c0>] (search_index+0x58/0xe8)
+[ 2434.718459] [<c01115c0>] (search_index) from [<c0111748>] (unwind_frame+0x84/0x634)
+[ 2434.726516] [<c0111748>] (unwind_frame) from [<c010cab4>] (walk_stackframe+0x2c/0x38)
+[ 2434.734741] [<c010cab4>] (walk_stackframe) from [<c010cc28>] (__save_stack_trace+0x90/0xb8)
+[ 2434.743520] [<c010cc28>] (__save_stack_trace) from [<c02b3a44>] (create_object+0x100/0x270)
+[ 2434.752299] [<c02b3a44>] (create_object) from [<c02a1bec>] (__kmalloc_track_caller+0x310/0x440)
+[ 2434.761447] [<c02a1bec>] (__kmalloc_track_caller) from [<c079e828>] (__kmalloc_reserve+0x24/0x70)
+[ 2434.770770] [<c079e828>] (__kmalloc_reserve) from [<c079e8f0>] (__alloc_skb+0x7c/0x164)
+[ 2434.779167] [<c079e8f0>] (__alloc_skb) from [<c079fce4>] (alloc_skb_with_frags+0x48/0x1d4)
+[ 2434.787855] [<c079fce4>] (alloc_skb_with_frags) from [<c0799090>] (sock_alloc_send_pskb+0x1ec/0x218)
+[ 2434.797466] [<c0799090>] (sock_alloc_send_pskb) from [<c087af00>] (unix_stream_sendmsg+0x1e8/0x330)
+[ 2434.806964] [<c087af00>] (unix_stream_sendmsg) from [<c07962b8>] (sock_sendmsg+0x14/0x24)
+[ 2434.815559] [<c07962b8>] (sock_sendmsg) from [<c0796b28>] (___sys_sendmsg+0x1dc/0x204)
+[ 2434.823861] [<c0796b28>] (___sys_sendmsg) from [<c0797904>] (__sys_sendmsg+0x40/0x6c)
+[ 2434.832091] [<c0797904>] (__sys_sendmsg) from [<c01085a0>] (ret_fast_syscall+0x0/0x1c)
 [[0;32m  OK  [0m] Stopped User Manager for UID 0.
          Stopping matrix-gui-2.0.service...
 [[0;32m  OK  [0m] Removed slice User Slice of root.
          Stopping Login Service...
-[[0;32m  OK  [0m] Removed slice system-serial\x2dgetty.slice.
 [[0;32m  OK  [0m] Removed slice system-getty.slice.
          Stopping Permit User Sessions...
+[[0;32m  OK  [0m] Removed slice system-serial\x2dgetty.slice.
 [[0;32m  OK  [0m] Stopped target Network.
          Stopping Network Service...
 [[0;32m  OK  [0m] Stopped Network Service.
+[ 2436.882057] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2436.891502] in_atomic(): 1, irqs_disabled(): 0, pid: 1, name: systemd
+[ 2436.898346] 6 locks held by systemd/1:
+[ 2436.902332]  #0: [ 2436.904174]  (
+sb_writers[ 2436.906848] #7
+){.+.+.+}[ 2436.909430] , at: 
+[ 2436.911567] [<c02dff08>] mnt_want_write+0x18/0x3c
+[ 2436.916541]  #1: [ 2436.918377]  (
+&type->i_mutex_dir_key[ 2436.922182] #3
+/1[ 2436.924126] ){+.+.+.}
+, at: [ 2436.927089] [<c02cb044>] do_rmdir+0x10c/0x1a0
+[ 2436.931665]  #2: [ 2436.933539]  (
+&type->i_mutex_dir_key[ 2436.937310] #3
+){++++++}[ 2436.939890] , at: 
+[ 2436.942050] [<c02ca564>] vfs_rmdir+0x48/0x134
+[ 2436.946620]  #3: [ 2436.948456]  (
+cgroup_mutex[ 2436.951317] ){+.+.+.}
+, at: [ 2436.954314] [<c01f41fc>] cgroup_kn_lock_live+0x124/0x22c
+[ 2436.959898]  #4: [ 2436.961729]  (
+kernfs_mutex[ 2436.964628] ){+.+.+.}
+, at: [ 2436.967583] [<c033e348>] __kernfs_remove+0x248/0x350
+[ 2436.972833]  #5: [ 2436.974674]  (
+((&glue->timer))[ 2436.977896] ){+.-...}
+, at: [ 2436.980848] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2436.985745] CPU: 0 PID: 1 Comm: systemd Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2436.994148] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2437.000579] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2437.008724] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2437.016329] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2437.024478] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2437.033274] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2437.042806] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2437.051766] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2437.059998] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2437.068594] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2437.077096] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2437.084796] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2437.093030] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2437.101359] [<c091d8b0>] (__irq_svc) from [<c02a3430>] (kmem_cache_free+0x6c/0x2ac)
+[ 2437.109417] [<c02a3430>] (kmem_cache_free) from [<c033d970>] (kernfs_put+0xfc/0x1d0)
+[ 2437.117556] [<c033d970>] (kernfs_put) from [<c033e268>] (__kernfs_remove+0x168/0x350)
+[ 2437.125780] [<c033e268>] (__kernfs_remove) from [<c033eef8>] (kernfs_remove+0x20/0x30)
+[ 2437.134099] [<c033eef8>] (kernfs_remove) from [<c01f8224>] (cgroup_destroy_locked+0x108/0x170)
+[ 2437.143146] [<c01f8224>] (cgroup_destroy_locked) from [<c01f82a8>] (cgroup_rmdir+0x1c/0x1c8)
+[ 2437.152009] [<c01f82a8>] (cgroup_rmdir) from [<c033e8c0>] (kernfs_iop_rmdir+0x4c/0x70)
+[ 2437.160332] [<c033e8c0>] (kernfs_iop_rmdir) from [<c02ca5d4>] (vfs_rmdir+0xb8/0x134)
+[ 2437.168464] [<c02ca5d4>] (vfs_rmdir) from [<c02cb07c>] (do_rmdir+0x144/0x1a0)
+[ 2437.175967] [<c02cb07c>] (do_rmdir) from [<c01085a0>] (ret_fast_syscall+0x0/0x1c)
 [[0;32m  OK  [0m] Stopped Login Service.
 [[0;32m  OK  [0m] Stopped matrix-gui-2.0.service.
 [[0;32m  OK  [0m] Stopped Permit User Sessions.
@@ -59,103 +246,602 @@ sync;poweroff
 [[0;32m  OK  [0m] Stopped D-Bus System Message Bus.
 [[0;32m  OK  [0m] Stopped rng-tools.service.
          Stopping thttpd.service...
+[ 2439.202013] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2439.211462] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2439.218480] 1 lock held by swapper/0/0:
+[ 2439.222536]  #0: [ 2439.224378]  (
+((&glue->timer))[ 2439.227598] ){+.-...}
+, at: [ 2439.230565] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2439.235474] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2439.244045] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2439.250465] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2439.258592] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2439.266184] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2439.274321] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2439.283111] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2439.292624] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2439.301568] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2439.309781] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2439.318364] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2439.326852] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2439.334532] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2439.342757] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2439.351074] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2439.358840] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2439.367515] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
 [[0;32m  OK  [0m] Stopped thttpd.service.
          Stopping telnetd.service...
 [[0;32m  OK  [0m] Stopped telnetd.service.
          Stopping weston.service...
 [[0;32m  OK  [0m] Stopped weston.service.
+[ 2441.442200] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2441.451630] in_atomic(): 1, irqs_disabled(): 0, pid: 1, name: systemd
+[ 2441.458494] 2 locks held by systemd/1:
+[ 2441.462474]  #0: [ 2441.464317]  (
+&mm->mmap_sem[ 2441.467266] ){++++++}
+, at: [ 2441.470242] [<c091e2d0>] do_page_fault+0xf8/0x434
+[ 2441.475229]  #1: [ 2441.477066]  (
+((&glue->timer))[ 2441.480285] ){+.-...}
+, at: [ 2441.483292] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2441.488150] CPU: 0 PID: 1 Comm: systemd Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2441.496537] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2441.502954] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2441.511083] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2441.518676] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2441.526814] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2441.535603] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2441.545119] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2441.554064] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2441.562276] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2441.570860] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2441.579348] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2441.587028] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2441.595245] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2441.603554] [<c091d8b0>] (__irq_svc) from [<c091cf90>] (_raw_spin_unlock_irqrestore+0x34/0x5c)
+[ 2441.612594] [<c091cf90>] (_raw_spin_unlock_irqrestore) from [<c04f9e04>] (debug_dma_assert_idle+0x104/0x224)
+[ 2441.622913] [<c04f9e04>] (debug_dma_assert_idle) from [<c028515c>] (wp_page_copy+0x64/0x5cc)
+[ 2441.631768] [<c028515c>] (wp_page_copy) from [<c02865b4>] (do_wp_page+0x148/0x724)
+[ 2441.639712] [<c02865b4>] (do_wp_page) from [<c0289174>] (handle_mm_fault+0x5dc/0xeac)
+[ 2441.647926] [<c0289174>] (handle_mm_fault) from [<c091e534>] (do_page_fault+0x35c/0x434)
+[ 2441.656414] [<c091e534>] (do_page_fault) from [<c01013b4>] (do_DataAbort+0x34/0xb4)
+[ 2441.664446] [<c01013b4>] (do_DataAbort) from [<c091dc48>] (__dabt_usr+0x48/0x60)
+[ 2441.672197] Exception stack(0xcf161fb0 to 0xcf161ff8)
+[ 2441.677497] 1fa0:                                     00000000 b6eeb7ac ffffffff 00000000
+[ 2441.686075] 1fc0: 7f7cb058 b6eeb7bc 00000003 00000000 7f7cb060 7f70f8fc 7f79a078 7f79a308
+[ 2441.694649] 1fe0: 00000000 be914578 be91459c b6e53186 60010030 ffffffff
          Stopping rc.pvr.service...
 [[0;32m  OK  [0m] Stopped target Remote File Systems.
 [[0;32m  OK  [0m] Stopped rc.pvr.service.
          Stopping uim-sysfs.service...
-[[0;32m  OK  [0m] Stopped uim-sysfs.service.
+[ 2443.762062] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2443.771509] in_atomic(): 1, irqs_disabled(): 0, pid: 1928, name: find
+[ 2443.778358] 1 lock held by find/1928:
+[ 2443.782250]  #0: [ 2443.784094]  (
+((&glue->timer))[ 2443.787317] ){+.-...}
+, at: [ 2443.790284] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2443.795189] CPU: 0 PID: 1928 Comm: find Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2443.803582] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2443.810011] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2443.818160] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2443.825759] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2443.833907] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2443.842704] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2443.852223] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2443.861176] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2443.869404] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2443.877996] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2443.886500] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2443.894195] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2443.902430] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2443.910747] [<c091d8b0>] (__irq_svc) from [<c0111574>] (search_index+0xc/0xe8)
+[ 2443.918338] [<c0111574>] (search_index) from [<c121d754>] (lock_classes+0x60b0/0x21fef0)
+[ 2446.002058] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2446.011510] in_atomic(): 1, irqs_disabled(): 0, pid: 1928, name: find
+[ 2446.018373] 2 locks held by find/1928:
+[ 2446.022363]  #0: [ 2446.024207]  (
+&sb->s_type->i_mutex_key[ 2446.028164] #6
+){++++++}[ 2446.030750] , at: 
+[ 2446.032926] [<c02cec14>] iterate_dir+0x4c/0x198
+[ 2446.037691]  #1: [ 2446.039531]  (
+((&glue->timer))[ 2446.042794] ){+.-...}
+, at: [ 2446.045755] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2446.050618] CPU: 0 PID: 1928 Comm: find Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2446.059027] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2446.065462] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2446.073617] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2446.081233] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2446.089399] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2446.098218] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2446.107751] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2446.116709] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2446.124945] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2446.133548] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2446.142062] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2446.149755] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2446.158000] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2446.166344] [<c091d8b0>] (__irq_svc) from [<c02cf164>] (filldir64+0x148/0x304)
+[ 2446.173950] [<c02cf164>] (filldir64) from [<c02e6d04>] (dcache_readdir+0x130/0x1c0)
+[ 2446.182007] [<c02e6d04>] (dcache_readdir) from [<c02ced18>] (iterate_dir+0x150/0x198)
+[ 2446.190242] [<c02ced18>] (iterate_dir) from [<c02cf4d0>] (SyS_getdents64+0x78/0x138)
+[ 2446.198405] [<c02cf4d0>] (SyS_getdents64) from [<c0108708>] (__sys_trace_return+0x0/0x10)
+[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A stop job is running for uim-sysfs.service (18s / 5min 12s)[ 2448.242028] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2448.251487] in_atomic(): 1, irqs_disabled(): 0, pid: 1928, name: find
+[ 2448.258347] 1 lock held by find/1928:
+[ 2448.262241]  #0: [ 2448.264089]  (
+((&glue->timer))[ 2448.267318] ){+.-...}
+, at: [ 2448.270288] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2448.275201] CPU: 0 PID: 1928 Comm: find Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2448.283624] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2448.290058] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2448.298209] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2448.305810] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2448.313975] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2448.322771] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2448.332311] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2448.341276] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2448.349508] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2448.358119] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2448.366615] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2448.374321] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2448.382568] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2448.390900] [<c091d8b0>] (__irq_svc) from [<c0919b60>] (__mutex_unlock_slowpath+0x128/0x1d8)
+[ 2448.399789] [<c0919b60>] (__mutex_unlock_slowpath) from [<c033ceec>] (kernfs_iop_permission+0x38/0x54)
+[ 2448.409586] [<c033ceec>] (kernfs_iop_permission) from [<c02c6790>] (__inode_permission+0x90/0xe8)
+[ 2448.418911] [<c02c6790>] (__inode_permission) from [<c02c73d0>] (link_path_walk+0x54/0x4e8)
+[ 2448.427701] [<c02c73d0>] (link_path_walk) from [<c02c794c>] (path_lookupat+0x88/0x10c)
+[ 2448.436030] [<c02c794c>] (path_lookupat) from [<c02cab34>] (filename_lookup+0x8c/0x130)
+[ 2448.444438] [<c02cab34>] (filename_lookup) from [<c02bf2ec>] (vfs_fstatat+0x4c/0x98)
+[ 2448.452572] [<c02bf2ec>] (vfs_fstatat) from [<c02bf924>] (SyS_lstat64+0x20/0x3c)
+[ 2448.460357] [<c02bf924>] (SyS_lstat64) from [<c0108708>] (__sys_trace_return+0x0/0x10)
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A stop job is running for uim-sysfs.service (18s / 5min 12s)
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A stop job is running for uim-sysfs.service (19s / 5min 12s)
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A stop job is running for uim-sysfs.service (19s / 5min 12s)
+[K[[0;1;31m*[0m[0;31m*    [0m] A stop job is running for uim-sysfs.service (20s / 5min 12s)[ 2450.482019] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2450.491489] in_atomic(): 1, irqs_disabled(): 0, pid: 1928, name: find
+[ 2450.498349] 1 lock held by find/1928:
+[ 2450.502243]  #0: [ 2450.504087]  (
+((&glue->timer))[ 2450.507312] ){+.-...}
+, at: [ 2450.510282] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2450.515184] CPU: 0 PID: 1928 Comm: find Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2450.523597] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2450.530033] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2450.538192] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2450.545805] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2450.553965] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2450.562767] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2450.572297] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2450.581265] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2450.589501] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2450.598110] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2450.606628] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2450.614337] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2450.622586] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2450.630928] [<c091d8b0>] (__irq_svc) from [<c09188cc>] (mutex_lock_nested+0x5c/0x418)
+[ 2450.639182] [<c09188cc>] (mutex_lock_nested) from [<c033ced8>] (kernfs_iop_permission+0x24/0x54)
+[ 2450.648437] [<c033ced8>] (kernfs_iop_permission) from [<c02c6790>] (__inode_permission+0x90/0xe8)
+[ 2450.657791] [<c02c6790>] (__inode_permission) from [<c02c73d0>] (link_path_walk+0x54/0x4e8)
+[ 2450.666574] [<c02c73d0>] (link_path_walk) from [<c02c794c>] (path_lookupat+0x88/0x10c)
+[ 2450.674906] [<c02c794c>] (path_lookupat) from [<c02cab34>] (filename_lookup+0x8c/0x130)
+[ 2450.683330] [<c02cab34>] (filename_lookup) from [<c02bf2ec>] (vfs_fstatat+0x4c/0x98)
+[ 2450.691478] [<c02bf2ec>] (vfs_fstatat) from [<c02bf924>] (SyS_lstat64+0x20/0x3c)
+[ 2450.699265] [<c02bf924>] (SyS_lstat64) from [<c0108708>] (__sys_trace_return+0x0/0x10)
+[K[[0m[0;31m*     [0m] A stop job is running for uim-sysfs.service (20s / 5min 12s)
+[K[[0;1;31m*[0m[0;31m*    [0m] A stop job is running for uim-sysfs.service (21s / 5min 12s)
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A stop job is running for uim-sysfs.service (22s / 5min 12s)
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A stop job is running for uim-sysfs.service (22s / 5min 12s)[ 2452.722026] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2452.731493] in_atomic(): 1, irqs_disabled(): 0, pid: 1928, name: find
+[ 2452.738374] 1 lock held by find/1928:
+[ 2452.742262]  #0: [ 2452.744108]  (
+((&glue->timer))[ 2452.747337] ){+.-...}
+, at: [ 2452.750306] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2452.755220] CPU: 0 PID: 1928 Comm: find Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2452.763641] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2452.770080] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2452.778236] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2452.785853] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2452.794021] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2452.802846] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2452.812385] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2452.821365] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2452.829608] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2452.838217] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2452.846733] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2452.854443] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2452.862695] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2452.871017] [<c091d8b0>] (__irq_svc) from [<c0169d0c>] (___might_sleep+0x8/0x298)
+[ 2452.878905] [<c0169d0c>] (___might_sleep) from [<c02858b0>] (__might_fault+0x40/0xb0)
+[ 2452.887159] [<c02858b0>] (__might_fault) from [<c04fb2e0>] (strncpy_from_user+0x9c/0x1dc)
+[ 2452.895778] [<c04fb2e0>] (strncpy_from_user) from [<c02ca818>] (getname_flags+0x64/0x1b8)
+[ 2452.904368] [<c02ca818>] (getname_flags) from [<c02cac74>] (user_path_at_empty+0x24/0x44)
+[ 2452.912964] [<c02cac74>] (user_path_at_empty) from [<c02bf2ec>] (vfs_fstatat+0x4c/0x98)
+[ 2452.921379] [<c02bf2ec>] (vfs_fstatat) from [<c02bf924>] (SyS_lstat64+0x20/0x3c)
+[ 2452.929182] [<c02bf924>] (SyS_lstat64) from [<c0108708>] (__sys_trace_return+0x0/0x10)
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A stop job is running for uim-sysfs.service (23s / 5min 12s)
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A stop job is running for uim-sysfs.service (23s / 5min 12s)
+[K[[0;32m  OK  [0m] Stopped uim-sysfs.service.
 [[0;32m  OK  [0m] Stopped target Basic System.
-[[0;32m  OK  [0m] Stopped target Sockets.
-[[0;32m  OK  [0m] Closed RPCbind Server Activation Socket.
-[[0;32m  OK  [0m] Closed dropbear.socket.
-[[0;32m  OK  [0m] Closed Syslog Socket.
-[[0;32m  OK  [0m] Closed D-Bus System Message Bus Socket.
 [[0;32m  OK  [0m] Stopped target Paths.
-[[0;32m  OK  [0m] Stopped Dispatch Password Requests to Console Directory Watch.
 [[0;32m  OK  [0m] Stopped Forward Password Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Stopped Dispatch Password Requests to Console Directory Watch.
 [[0;32m  OK  [0m] Stopped target Slices.
 [[0;32m  OK  [0m] Removed slice User and Session Slice.
+[[0;32m  OK  [0m] Stopped target Sockets.
+[[0;32m  OK  [0m] Closed RPCbind Server Activation Socket.
+[[0;32m  OK  [0m] Closed D-Bus System Message Bus Socket.
+[[0;32m  OK  [0m] Closed dropbear.socket.
+[[0;32m  OK  [0m] Closed Syslog Socket.
 [[0;32m  OK  [0m] Stopped target System Initialization.
-[[0;32m  OK  [0m] Stopped Setup Virtual Console.
-         Stopping Network Time Synchronization...
-         Stopping Load/Save Random Seed...
 [[0;32m  OK  [0m] Stopped Apply Kernel Variables.
-[[0;32m  OK  [0m] Stopped Update is Completed.
-[[0;32m  OK  [0m] Stopped Rebuild Journal Catalog.
-[[0;32m  OK  [0m] Stopped Rebuild Hardware Database.
-[0;32m  OK  [0m] Stopped Rebuild Dynamic Linker Cache.
-l[[0;32m  OK  [0m] Stopped target Swap.
+         Stopping Network Time Synchronization...
+[[0;32m  OK  [0m] Stopped Setup Virtual Console.
+         Stopping Load/Save Random Seed...
+[[0;32m  OK  [0m] Stopped target Swap.
+         Stopping Update UTMP about System Boot/Shutdown...
 [[0;32m  OK  [0m] Stopped Load/Save Random Seed.
-[[0;1;31m*[0m[0;31m*    [0m] A stop job is running for Network T...Synchronization (11s / 1min 35s)
-[K[[0m[0;31m*     [0m] A stop job is running for Network T...Synchronization (11s / 1min 35s)
-[K[[0;1;31m*[0m[0;31m*    [0m] A stop job is running for Network T...Synchronization (12s / 1min 35s)
-[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A stop job is running for Network T...Synchronization (12s / 1min 35s)
-[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A stop job is running for Network T...Synchronization (13s / 1min 35s)
-[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A stop job is running for Network T...Synchronization (13s / 1min 35s)
-[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A stop job is running for Network T...Synchronization (14s / 1min 35s)
-[K[    [0;31m*[0;1;31m*[0m] A stop job is running for Network T...Synchronization (14s / 1min 35s)
-[K[     [0;31m*[0m] A stop job is running for Network T...Synchronization (15s / 1min 35s)
-[K[    [0;31m*[0;1;31m*[0m] A stop job is running for Network T...Synchronization (15s / 1min 35s)
-[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A stop job is running for Network T...Synchronization (16s / 1min 35s)
-[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A stop job is running for Network T...Synchronization (16s / 1min 35s)
-[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A stop job is running for Network T...Synchronization (17s / 1min 35s)
-[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A stop job is running for Network T...Synchronization (17s / 1min 35s)
-[K[[0;1;31m*[0m[0;31m*    [0m] A stop job is running for Network T...Synchronization (18s / 1min 35s)
+[ 2454.962088] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2454.971534] in_atomic(): 1, irqs_disabled(): 0, pid: 1939, name: systemd-cgroups
+[ 2454.979394] 2 locks held by systemd-cgroups/1939:
+[ 2454.984384]  #0: [ 2454.986230]  (
+&sb->s_type->i_mutex_key[ 2454.990179] ){++++++}
+, at: [ 2454.993196] [<c02c9944>] path_openat+0x850/0x11ac
+[ 2454.998154]  #1: [ 2454.999989]  (
+((&glue->timer))[ 2455.003252] ){+.-...}
+, at: [ 2455.006212] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2455.011086] CPU: 0 PID: 1939 Comm: systemd-cgroups Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2455.020507] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2455.026943] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2455.035104] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2455.042713] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2455.050873] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2455.059668] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2455.069210] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2455.078171] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2455.086408] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2455.095016] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2455.103528] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2455.111220] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2455.119464] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2455.127788] [<c091d8b0>] (__irq_svc) from [<c02a1fac>] (kmem_cache_alloc+0x290/0x434)
+[ 2455.136042] [<c02a1fac>] (kmem_cache_alloc) from [<c032d928>] (proc_alloc_inode+0x14/0x4c)
+[ 2455.144750] [<c032d928>] (proc_alloc_inode) from [<c02d8cd0>] (alloc_inode+0x1c/0xa0)
+[ 2455.152986] [<c02d8cd0>] (alloc_inode) from [<c02dace4>] (new_inode_pseudo+0x8/0x40)
+[ 2455.161126] [<c02dace4>] (new_inode_pseudo) from [<c02dad28>] (new_inode+0xc/0x20)
+[ 2455.169092] [<c02dad28>] (new_inode) from [<c0331b44>] (proc_pid_make_inode+0x10/0x250)
+[ 2455.177510] [<c0331b44>] (proc_pid_make_inode) from [<c0331e68>] (proc_pident_instantiate+0x18/0xa0)
+[ 2455.187115] [<c0331e68>] (proc_pident_instantiate) from [<c0331f80>] (proc_pident_lookup+0x90/0xe8)
+[ 2455.196637] [<c0331f80>] (proc_pident_lookup) from [<c02ca0dc>] (path_openat+0xfe8/0x11ac)
+[ 2455.205335] [<c02ca0dc>] (path_openat) from [<c02cb58c>] (do_filp_open+0x60/0xc4)
+[ 2455.213223] [<c02cb58c>] (do_filp_open) from [<c02b8f88>] (do_sys_open+0x108/0x1d0)
+[ 2455.221297] [<c02b8f88>] (do_sys_open) from [<c0108708>] (__sys_trace_return+0x0/0x10)
+[[0;32m  OK  [0m] Stopped Update UTMP about System Boot/Shutdown.
+[ 2457.282041] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2457.291537] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2457.298516] 1 lock held by swapper/0/0:
+[ 2457.302568]  #0: [ 2457.304433]  (
+((&glue->timer))[ 2457.307699] ){+.-...}
+, at: [ 2457.310724] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2457.315627] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2457.324243] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2457.330724] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2457.338911] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2457.346563] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2457.354765] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2457.363629] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2457.373220] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2457.382225] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2457.390495] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2457.399140] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2457.407687] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2457.415427] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2457.423716] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2457.432097] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2457.439924] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2457.448660] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
+[ 2459.362066] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2459.371556] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2459.378537] 1 lock held by swapper/0/0:
+[ 2459.382587]  #0: [ 2459.384452]  (
+((&glue->timer))[ 2459.387716] ){+.-...}
+, at: [ 2459.390740] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2459.395642] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2459.404257] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2459.410740] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2459.418927] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2459.426579] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2459.434780] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2459.443643] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2459.453235] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2459.462241] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2459.470510] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2459.479155] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2459.487703] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2459.495442] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2459.503730] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2459.512111] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2459.519937] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2459.528672] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
+[    [0;31m*[0;1;31m*[0m] A stop job is running for Network T...Synchronization (30s / 1min 54s)
+[K[     [0;31m*[0m] A stop job is running for Network T...Synchronization (31s / 1min 54s)
+[K[    [0;31m*[0;1;31m*[0m] A stop job is running for Network T...Synchronization (31s / 1min 54s)[ 2461.441976] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2461.451471] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2461.458451] 1 lock held by swapper/0/0:
+[ 2461.462501]  #0: [ 2461.464366]  (
+((&glue->timer))[ 2461.467629] ){+.-...}
+, at: [ 2461.470653] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2461.475557] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2461.484172] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2461.490650] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2461.498837] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2461.506488] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2461.514689] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2461.523550] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2461.533144] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2461.542148] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2461.550417] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2461.559060] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2461.567606] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2461.575346] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2461.583634] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2461.592015] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2461.599840] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2461.608574] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A stop job is running for Network T...Synchronization (32s / 1min 54s)
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A stop job is running for Network T...Synchronization (32s / 1min 54s)
 [K[[0;32m  OK  [0m] Stopped Network Time Synchronization.
 [[0;32m  OK  [0m] Stopped Create Volatile Files and Directories.
 [[0;32m  OK  [0m] Stopped target Local File Systems.
-         Unmounting POSIX Message Queue File System...
-         Unmounting Temporary Directory...
-         Unmounting /run/user/0...
+         Unmounting /run/media/mmcblk0p3...
          Unmounting /run/media/mmcblk0p2...
+         Unmounting /sys/kernel/debug/tracing...
+         Unmounting Temporary Directory...
+[ 2463.522066] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2463.531508] in_atomic(): 1, irqs_disabled(): 0, pid: 1946, name: (umount)
+[ 2463.538722] 3 locks held by (umount)/1946:
+[ 2463.543067]  #0: [ 2463.544912]  (
+&mm->mmap_sem[ 2463.547861] ){++++++}
+, at: [ 2463.550833] [<c091e2d0>] do_page_fault+0xf8/0x434
+[ 2463.555819]  #1: [ 2463.557654]  (
+rcu_read_lock[ 2463.560601] ){......}
+, at: [ 2463.563609] [<c024dd98>] filemap_map_pages+0x0/0x574
+[ 2463.568819]  #2: [ 2463.570656]  (
+((&glue->timer))[ 2463.573925] ){+.-...}
+, at: [ 2463.576882] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2463.581744] CPU: 0 PID: 1946 Comm: (umount) Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2463.590518] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2463.596937] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2463.605080] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2463.612681] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2463.620828] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2463.629624] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2463.639150] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2463.648110] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2463.656335] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2463.664934] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2463.673438] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2463.681134] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2463.689365] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2463.697688] [<c091d8b0>] (__irq_svc) from [<c024e2d4>] (filemap_map_pages+0x53c/0x574)
+[ 2463.706024] [<c024e2d4>] (filemap_map_pages) from [<c0289410>] (handle_mm_fault+0x878/0xeac)
+[ 2463.714901] [<c0289410>] (handle_mm_fault) from [<c091e534>] (do_page_fault+0x35c/0x434)
+[ 2463.723407] [<c091e534>] (do_page_fault) from [<c0101468>] (do_PrefetchAbort+0x34/0x98)
+[ 2463.731810] [<c0101468>] (do_PrefetchAbort) from [<c091df54>] (ret_from_exception+0x0/0x2c)
+[ 2463.740577] Exception stack(0xc5d41fb0 to 0xc5d41ff8)
+[ 2463.745885] 1fa0:                                     7f759fa0 00000000 00000568 3efc1a00
+[ 2463.754483] 1fc0: b6f2ace0 7f70cd60 7f7bf978 7f715818 00000000 00000000 00000000 be9143fc
+[ 2463.763068] 1fe0: 7f759f08 be914370 7f669d34 b6f105c0 20010030 ffffffff
          Unmounting /var/volatile...
+         Unmounting /run/media/mmcblk0p1...
+         Unmounting /run/user/0...
          Unmounting /media/ram...
          Unmounting /run/media/sda1...
-         Unmounting /run/media/mmcblk0p3...
-         Unmounting /run/media/mmcblk0p1...
-[[0;32m  OK  [0m] Unmounted POSIX Message Queue File System.
-[[0;32m  OK  [0m] Unmounted Temporary Directory.
-[[0;32m  OK  [0m] Unmounted /run/user/0.
+[[0;32m  OK  [0m] Unmounted /run/media/mmcblk0p3.
 [[0;32m  OK  [0m] Unmounted /run/media/mmcblk0p2.
+[[0;32m  OK  [0m] Unmounted /sys/kernel/debug/tracing.
 [[0;32m  OK  [0m] Unmounted /var/volatile.
-[[0;32m  OK  [0m] Unmounted /run/media/sda1.
-[[0;1;31mFAILED[0m] Failed unmounting /media/ram.
-[[0;1;31mFAILED[0m] Failed unmounting /run/media/mmcblk0p3.
 [[0;32m  OK  [0m] Unmounted /run/media/mmcblk0p1.
+[[0;32m  OK  [0m] Unmounted /run/user/0.
+[[0;1;31mFAILED[0m] Failed unmounting Temporary Directory.
+[ 2465.842091] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2465.851532] in_atomic(): 1, irqs_disabled(): 0, pid: 1964, name: umount
+[ 2465.858576] 3 locks held by umount/1964:
+[ 2465.862733]  #0: [ 2465.864577]  (
+&mm->mmap_sem[ 2465.867524] ){++++++}
+, at: [ 2465.870497] [<c091e2d0>] do_page_fault+0xf8/0x434
+[ 2465.875479]  #1: [ 2465.877317]  (
+&(&mm->page_table_lock)->rlock[ 2465.881852] ){+.+...}
+, at: [ 2465.884823] [<c02892b0>] handle_mm_fault+0x718/0xeac
+[ 2465.890040]  #2: [ 2465.891919]  (
+((&glue->timer))[ 2465.895144] ){+.-...}
+, at: [ 2465.898105] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2465.903002] CPU: 0 PID: 1964 Comm: umount Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2465.911589] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2465.918015] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2465.926156] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2465.933753] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2465.941907] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2465.950704] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2465.960231] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2465.969193] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2465.977424] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2465.986022] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2465.994529] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2466.002221] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2466.010452] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2466.018770] [<c091d8b0>] (__irq_svc) from [<c019e1dc>] (lock_acquire+0xf8/0x294)
+[ 2466.026541] [<c019e1dc>] (lock_acquire) from [<c091cc58>] (_raw_spin_lock+0x40/0x50)
+[ 2466.034674] [<c091cc58>] (_raw_spin_lock) from [<c02892b0>] (handle_mm_fault+0x718/0xeac)
+[ 2466.043265] [<c02892b0>] (handle_mm_fault) from [<c091e534>] (do_page_fault+0x35c/0x434)
+[ 2466.051758] [<c091e534>] (do_page_fault) from [<c01013b4>] (do_DataAbort+0x34/0xb4)
+[ 2466.059794] [<c01013b4>] (do_DataAbort) from [<c091dc48>] (__dabt_usr+0x48/0x60)
+[ 2466.067566] Exception stack(0xca65bfb0 to 0xca65bff8)
+[ 2466.072869] bfa0:                                     000b87d0 b6f2b2f0 00000004 00000036
+[ 2466.081466] bfc0: 00011f00 00000014 000b87d0 be92ea58 00000000 00000c20 000137ec b6f54958
+[ 2466.090058] bfe0: 000b87d4 be92ea48 b6f347dd b6f3e6d0 80070010 ffffffff
+[[0;32m  OK  [0m] Unmounted /media/ram.
+[[0;32m  OK  [0m] Unmounted /run/media/sda1.
+[[0;32m  OK  [0m] Reached target Unmount All Filesystems.
 [[0;32m  OK  [0m] Stopped target Local File Systems (Pre).
 [[0;32m  OK  [0m] Stopped Remount Root and Kernel File Systems.
 [[0;32m  OK  [0m] Stopped Create Static Device Nodes in /dev.
 [[0;32m  OK  [0m] Reached target Shutdown.
-[14489.254608] systemd-shutdown[1]: Sending SIGTERM to remaining processes...
-[14489.286581] systemd-journald[98]: Received SIGTERM from PID 1 (systemd-shutdow).
-[14499.312714] systemd-shutdown[1]: Sending SIGKILL to remaining processes...
-[14499.360071] systemd-shutdown[1]: Sending SIGKILL to PID 714 (rngd).
-[14499.385461] systemd-shutdown[1]: Unmounting file systems.
-[14499.395888] systemd-shutdown[1]: Remounting '/' read-only with options 'vers=3,rsize=4096,wsize=4096,namlen=255,hard,nolock,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.1,mountvers=3,mountproto=tcp,local_lock=all,addr=192.168.0.1'.
-[14499.548315] systemd-shutdown[1]: Remounting '/' read-only with options 'vers=3,rsize=4096,wsize=4096,namlen=255,hard,nolock,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.1,mountvers=3,mountproto=tcp,local_lock=all,addr=192.168.0.1'.
-[14499.573702] systemd-shutdown[1]: All filesystems unmounted.
-[14499.579373] systemd-shutdown[1]: Deactivating swaps.
-[14499.585416] systemd-shutdown[1]: All swaps deactivated.
-[14499.590748] systemd-shutdown[1]: Detaching loop devices.
-[14499.620217] systemd-shutdown[1]: All loop devices detached.
-[14499.626114] systemd-shutdown[1]: Detaching DM devices.
-[14499.633250] systemd-shutdown[1]: All DM devices detached.
-[14499.647055] systemd-shutdown[1]: Powering off.
-[14499.651796] musb-hdrc musb-hdrc.1.auto: remove, state 1
-[14499.657348] usb usb1: USB disconnect, device number 1
-[14499.662510] usb 1-1: USB disconnect, device number 2
-[14499.695188] musb-hdrc musb-hdrc.1.auto: USB bus 1 deregistered
-[14499.708454] reboot: Power down
-[14499.711638] System will go to power_off state in approx. 1 second
-- 13:16:10 [INFO] Disconnected serial from beaglebone
-- 13:16:15 [INFO] Connected to beaglebone via serial 
-- 13:16:15 [INFO] Host: 
-- 13:16:16 [INFO] Target: 
+[ 2467.738461] systemd-shutdow: 20 output lines suppressed due to ratelimiting
+[ 2467.879251] systemd-shutdown[1]: Sending SIGTERM to remaining processes...
+[ 2468.119745] systemd-journald[93]: Received SIGTERM from PID 1 (systemd-shutdow).
+[ 2468.162278] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2468.162293] in_atomic(): 1, irqs_disabled(): 0, pid: 3, name: ksoftirqd/0
+[ 2468.162301] 1 lock held by ksoftirqd/0/3:
+[ 2468.162315]  #0: 
+[ 2468.162322]  (
+[ 2468.162327] ((&glue->timer))
+[ 2468.162332] ){+.-...}
+[ 2468.162364] , at: 
+[ 2468.162365] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2468.162385] CPU: 0 PID: 3 Comm: ksoftirqd/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2468.162392] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2468.162434] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2468.162455] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2468.162485] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2468.162517] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2468.162562] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2468.162603] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2468.162620] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2468.162634] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2468.162657] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2468.162673] [<c01434bc>] (__do_softirq) from [<c0143990>] (run_ksoftirqd+0x30/0x74)
+[ 2468.162689] [<c0143990>] (run_ksoftirqd) from [<c016595c>] (smpboot_thread_fn+0x140/0x24c)
+[ 2468.162713] [<c016595c>] (smpboot_thread_fn) from [<c0161308>] (kthread+0xdc/0x100)
+[ 2468.162739] [<c0161308>] (kthread) from [<c0108630>] (ret_from_fork+0x14/0x24)
+[ 2470.242045] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2470.251538] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2470.258517] 1 lock held by swapper/0/0:
+[ 2470.262568]  #0: [ 2470.264432]  (
+((&glue->timer))[ 2470.267696] ){+.-...}
+, at: [ 2470.270718] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2470.275622] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2470.284238] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2470.290718] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2470.298902] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2470.306551] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2470.314749] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2470.323610] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2470.333202] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2470.342205] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2470.350473] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2470.359118] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2470.367664] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2470.375404] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2470.383690] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2470.392072] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2470.399898] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2470.408633] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
+[ 2472.321971] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2472.331459] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2472.338438] 1 lock held by swapper/0/0:
+[ 2472.342487]  #0: [ 2472.344351]  (
+((&glue->timer))[ 2472.347613] ){+.-...}
+, at: [ 2472.350634] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2472.355536] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2472.364150] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2472.370627] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2472.378812] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2472.386460] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2472.394659] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2472.403520] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2472.413113] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2472.422118] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2472.430386] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2472.439029] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2472.447573] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2472.455311] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2472.463596] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2472.471974] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2472.479798] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2472.488531] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
+[ 2474.402051] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2474.411539] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2474.418518] 1 lock held by swapper/0/0:
+[ 2474.422567]  #0: [ 2474.424432]  (
+((&glue->timer))[ 2474.427696] ){+.-...}
+, at: [ 2474.430718] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2474.435619] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2474.444234] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2474.450710] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2474.458896] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2474.466544] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2474.474744] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2474.483603] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2474.493192] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2474.502193] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2474.510460] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2474.519104] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2474.527648] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2474.535385] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2474.543671] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2474.552050] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2474.559873] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2474.568607] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
+[ 2476.481977] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2476.491468] in_atomic(): 1, irqs_disabled(): 0, pid: 0, name: swapper/0
+[ 2476.498447] 1 lock held by swapper/0/0:
+[ 2476.502496]  #0: [ 2476.504359]  (
+((&glue->timer))[ 2476.507624] ){+.-...}
+, at: [ 2476.510645] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2476.515546] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2476.524159] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2476.530637] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2476.538822] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2476.546470] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2476.554669] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2476.563530] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2476.573120] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2476.582122] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2476.590390] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2476.599032] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2476.607578] [<c01434bc>] (__do_softirq) from [<c0143cf8>] (irq_exit+0xe4/0x160)
+[ 2476.615314] [<c0143cf8>] (irq_exit) from [<c01ac230>] (__handle_domain_irq+0x6c/0xe0)
+[ 2476.623601] [<c01ac230>] (__handle_domain_irq) from [<c091d8b0>] (__irq_svc+0x70/0x98)
+[ 2476.631979] [<c091d8b0>] (__irq_svc) from [<c01090cc>] (arch_cpu_idle+0x20/0x3c)
+[ 2476.639802] [<c01090cc>] (arch_cpu_idle) from [<c018fe54>] (cpu_startup_entry+0x180/0x224)
+[ 2476.648538] [<c018fe54>] (cpu_startup_entry) from [<c0e00c6c>] (start_kernel+0x364/0x3d8)
+[ 2478.139493] systemd-shutdown[1]: Sending SIGKILL to remaining processes...
+[ 2478.450633] systemd-shutdown[1]: Sending SIGKILL to PID 703 (rngd).
+[ 2478.521677] systemd-shutdown[1]: Unmounting file systems.
+[ 2478.538747] systemd-shutdown[1]: Remounting '/' read-only with options 'vers=3,rsize=4096,wsize=4096,namlen=255,hard,nolock,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.1,mountvers=3,mountproto=tcp,local_lock=all,addr=192.168.0.1'.
+[ 2478.562956] BUG: sleeping function called from invalid context at drivers/base/power/runtime.c:955
+[ 2478.562969] in_atomic(): 1, irqs_disabled(): 0, pid: 3, name: ksoftirqd/0
+[ 2478.562978] 1 lock held by ksoftirqd/0/3:
+[ 2478.562991]  #0: 
+[ 2478.562998]  (
+[ 2478.563003] ((&glue->timer))
+[ 2478.563008] ){+.-...}
+[ 2478.563037] , at: 
+[ 2478.563038] [<c01c8264>] call_timer_fn+0x0/0x3f8
+[ 2478.563057] CPU: 0 PID: 3 Comm: ksoftirqd/0 Tainted: G        W       4.9.0-rc5-gee2bd21 #2
+[ 2478.563063] Hardware name: Generic AM33XX (Flattened Device Tree)
+[ 2478.563105] [<c0111cf8>] (unwind_backtrace) from [<c010d004>] (show_stack+0x10/0x14)
+[ 2478.563125] [<c010d004>] (show_stack) from [<c04c68a4>] (dump_stack+0xac/0xe0)
+[ 2478.563155] [<c04c68a4>] (dump_stack) from [<c0169e80>] (___might_sleep+0x17c/0x298)
+[ 2478.563187] [<c0169e80>] (___might_sleep) from [<c061087c>] (__pm_runtime_resume+0x84/0x90)
+[ 2478.563232] [<c061087c>] (__pm_runtime_resume) from [<bf111da8>] (otg_timer+0x2c/0x230 [musb_dsps])
+[ 2478.563269] [<bf111da8>] (otg_timer [musb_dsps]) from [<c01c8314>] (call_timer_fn+0xb0/0x3f8)
+[ 2478.563287] [<c01c8314>] (call_timer_fn) from [<c01c8754>] (expire_timers+0xf8/0x254)
+[ 2478.563301] [<c01c8754>] (expire_timers) from [<c01c8944>] (run_timer_softirq+0x94/0x19c)
+[ 2478.563323] [<c01c8944>] (run_timer_softirq) from [<c01434bc>] (__do_softirq+0xcc/0x570)
+[ 2478.563339] [<c01434bc>] (__do_softirq) from [<c0143990>] (run_ksoftirqd+0x30/0x74)
+[ 2478.563354] [<c0143990>] (run_ksoftirqd) from [<c016595c>] (smpboot_thread_fn+0x140/0x24c)
+[ 2478.563378] [<c016595c>] (smpboot_thread_fn) from [<c0161308>] (kthread+0xdc/0x100)
+[ 2478.563405] [<c0161308>] (kthread) from [<c0108630>] (ret_from_fork+0x14/0x24)
+[ 2479.077936] systemd-shutdown[1]: Remounting '/' read-only with options 'vers=3,rsize=4096,wsize=4096,namlen=255,hard,nolock,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=192.168.0.1,mountvers=3,mountproto=tcp,local_lock=all,addr=192.168.0.1'.
+[ 2479.132506] systemd-shutdown[1]: All filesystems unmounted.
+[ 2479.138495] systemd-shutdown[1]: Deactivating swaps.
+[ 2479.164431] systemd-shutdown[1]: All swaps deactivated.
+[ 2479.170037] systemd-shutdown[1]: Detaching loop devices.
+[ 2479.353106] systemd-shutdown[1]: All loop devices detached.
+[ 2479.444921] reboot: System halted
+- 01:23:26 [INFO] Disconnected serial from beaglebone
+- 01:23:31 [INFO] Connected to beaglebone via serial 
+- 01:23:31 [INFO] Host: 
+- 01:23:32 [INFO] Target: 
 U-Boot SPL 2016.05-ga32e59ef6b (Nov 07 2016 - 00:12:46)
 Trying to boot from MMC1
 reading args
@@ -181,34 +867,31 @@ Address in environment is  78:c5:e5:d9:d6:07
 Press SPACE to abort autoboot in 2 seconds
 =>  
 =>  
-=>  
-=>  
-- 13:16:16 [INFO] Host: 
-- 13:16:17 [INFO] Target: 
-=>  
-- 13:16:17 [INFO] Host: version
-- 13:16:17 [INFO] Target: 
+- 01:23:32 [INFO] Host: 
+- 01:23:32 [INFO] Target: 
+- 01:23:32 [INFO] Host: version
+- 01:23:32 [INFO] Target: 
 version
 U-Boot 2016.05-ga32e59ef6b (Nov 07 2016 - 00:12:46 -0500)
 arm-linux-gnueabihf-gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
 GNU ld (GNU Binutils) 2.25.0 Linaro 2015_10
-- 13:16:17 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait '
-- 13:16:17 [INFO] Target: 
+- 01:23:32 [INFO] Host: setenv bootargs 'console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait '
+- 01:23:33 [INFO] Target: 
 setenv bootargs 'console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait '
-- 13:16:17 [INFO] Host: setenv bootcmd  ''
-- 13:16:17 [INFO] Target: 
+- 01:23:33 [INFO] Host: setenv bootcmd  ''
+- 01:23:33 [INFO] Target: 
 setenv bootcmd  ''
-- 13:16:17 [INFO] Host: setenv autoload 'no'
-- 13:16:17 [INFO] Target: 
+- 01:23:33 [INFO] Host: setenv autoload 'no'
+- 01:23:33 [INFO] Target: 
 setenv autoload 'no'
-- 13:16:17 [INFO] Host: setenv serverip '192.168.0.1'
-- 13:16:17 [INFO] Target: 
+- 01:23:33 [INFO] Host: setenv serverip '192.168.0.1'
+- 01:23:33 [INFO] Target: 
 setenv serverip '192.168.0.1'
-- 13:16:17 [INFO] Host: setenv _initramfs -
-- 13:16:17 [INFO] Target: 
+- 01:23:33 [INFO] Host: setenv _initramfs -
+- 01:23:33 [INFO] Target: 
 setenv _initramfs -
-- 13:16:17 [INFO] Host: printenv
-- 13:16:18 [INFO] Target: 
+- 01:23:33 [INFO] Host: printenv
+- 01:23:34 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -327,8 +1010,8 @@ usbnet_devaddr=de:ad:be:ef:00:01
 vendor=ti
 ver=U-Boot 2016.05-ga32e59ef6b (Nov 07 2016 - 00:12:46 -0500)
 Environment size: 8572/131068 bytes
-- 13:16:18 [INFO] Host: printenv
-- 13:16:19 [INFO] Target: 
+- 01:23:34 [INFO] Host: printenv
+- 01:23:35 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -447,53 +1130,53 @@ usbnet_devaddr=de:ad:be:ef:00:01
 vendor=ti
 ver=U-Boot 2016.05-ga32e59ef6b (Nov 07 2016 - 00:12:46 -0500)
 Environment size: 8572/131068 bytes
-- 13:16:19 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
-- 13:16:19 [INFO] Target: 
+- 01:23:35 [INFO] Host: setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
+- 01:23:35 [INFO] Target: 
 setenv bootargs ''${bootargs}' ip=:::::eth0:dhcp '
-- 13:16:19 [INFO] Host: setenv serverip '192.168.0.1'
-- 13:16:19 [INFO] Target: 
+- 01:23:35 [INFO] Host: setenv serverip '192.168.0.1'
+- 01:23:35 [INFO] Target: 
 setenv serverip '192.168.0.1'
-- 13:16:19 [INFO] Host: setenv autoload 'no'
-- 13:16:19 [INFO] Target: 
+- 01:23:35 [INFO] Host: setenv autoload 'no'
+- 01:23:35 [INFO] Target: 
 setenv autoload 'no'
-- 13:16:19 [INFO] Host: dhcp
-- 13:16:20 [INFO] Target: 
+- 01:23:35 [INFO] Host: dhcp
+- 01:23:36 [INFO] Target: 
 dhcp
 link up on port 0, speed 100, full duplex
 BOOTP broadcast 1
 BOOTP broadcast 2
 BOOTP broadcast 3
-DHCP client bound to address 192.168.0.181 (1068 ms)
-- 13:16:20 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_bbw1/25e9b55394178902e8c8f3bba872abfa
-- 13:16:22 [INFO] Target: 
-tftp ${loadaddr} 192.168.0.1:vatf_bbw1/25e9b55394178902e8c8f3bba872abfa
+DHCP client bound to address 192.168.0.217 (1087 ms)
+- 01:23:36 [INFO] Host: tftp ${loadaddr} 192.168.0.1:vatf_bbw1/444d22617cbfc64e8e81fde26ae76023
+- 01:23:38 [INFO] Target: 
+tftp ${loadaddr} 192.168.0.1:vatf_bbw1/444d22617cbfc64e8e81fde26ae76023
 link up on port 0, speed 100, full duplex
 Using ethernet@4a100000 device
-TFTP from server 192.168.0.1; our IP address is 192.168.0.181
-Filename 'vatf_bbw1/25e9b55394178902e8c8f3bba872abfa'.
+TFTP from server 192.168.0.1; our IP address is 192.168.0.217
+Filename 'vatf_bbw1/444d22617cbfc64e8e81fde26ae76023'.
 Load address: 0x82000000
 Loading: *#################################################################
 	 #################################################################
 	 #################################################################
 	 #################################################################
 	 ####
-	 2.7 MiB/s
+	 2.8 MiB/s
 done
-Bytes transferred = 3865744 (3afc90 hex)
-- 13:16:22 [INFO] Host: tftp ${fdt_addr_r} 192.168.0.1:vatf_bbw1/2f96b5e93b9e885a59351bd8525f7b90
-- 13:16:22 [INFO] Target: 
+Bytes transferred = 3867120 (3b01f0 hex)
+- 01:23:38 [INFO] Host: tftp ${fdt_addr_r} 192.168.0.1:vatf_bbw1/2f96b5e93b9e885a59351bd8525f7b90
+- 01:23:38 [INFO] Target: 
 tftp ${fdt_addr_r} 192.168.0.1:vatf_bbw1/2f96b5e93b9e885a59351bd8525f7b90
 link up on port 0, speed 100, full duplex
 Using ethernet@4a100000 device
-TFTP from server 192.168.0.1; our IP address is 192.168.0.181
+TFTP from server 192.168.0.1; our IP address is 192.168.0.217
 Filename 'vatf_bbw1/2f96b5e93b9e885a59351bd8525f7b90'.
 Load address: 0x88000000
 Loading: *###
-	 2.4 MiB/s
+	 2 MiB/s
 done
 Bytes transferred = 32732 (7fdc hex)
-- 13:16:22 [INFO] Host: ls mmc 0:1
-- 13:16:22 [INFO] Target: 
+- 01:23:38 [INFO] Host: ls mmc 0:1
+- 01:23:38 [INFO] Target: 
 ls mmc 0:1
     79204   mlo 
    644064   u-boot.img 
@@ -502,8 +1185,8 @@ ls mmc 0:1
         0   pointercal 
    131072   uboot.env 
 6 file(s), 0 dir(s)
-- 13:16:22 [INFO] Host: ls mmc 0:2
-- 13:16:22 [INFO] Target: 
+- 01:23:38 [INFO] Host: ls mmc 0:2
+- 01:23:38 [INFO] Target: 
 ls mmc 0:2
 <DIR>       4096 .
 <DIR>       4096 ..
@@ -527,12 +1210,12 @@ ls mmc 0:2
 <DIR>       4096 run
 <DIR>       4096 lib
 <DIR>       4096 test
-- 13:16:22 [INFO] Host: part uuid mmc 0:2
-- 13:16:22 [INFO] Target: 
+- 01:23:38 [INFO] Host: part uuid mmc 0:2
+- 01:23:38 [INFO] Target: 
 part uuid mmc 0:2
 00000000-02
-- 13:16:22 [INFO] Host: printenv
-- 13:16:23 [INFO] Target: 
+- 01:23:38 [INFO] Host: printenv
+- 01:23:39 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -598,7 +1281,7 @@ fit_loadaddr=0x88000000
 gatewayip=192.168.0.1
 importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
 init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
-ipaddr=192.168.0.181
+ipaddr=192.168.0.217
 kernel_addr_r=0x82000000
 load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
 loadaddr=0x82000000
@@ -659,11 +1342,11 @@ usbnet_devaddr=de:ad:be:ef:00:01
 vendor=ti
 ver=U-Boot 2016.05-ga32e59ef6b (Nov 07 2016 - 00:12:46 -0500)
 Environment size: 8762/131068 bytes
-- 13:16:23 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
-- 13:16:23 [INFO] Target: 
+- 01:23:39 [INFO] Host: setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
+- 01:23:39 [INFO] Target: 
 setenv bootargs ''${bootargs}' root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait '
-- 13:16:23 [INFO] Host: printenv
-- 13:16:24 [INFO] Target: 
+- 01:23:39 [INFO] Host: printenv
+- 01:23:40 [INFO] Target: 
 printenv
 _initramfs=-
 arch=arm
@@ -729,7 +1412,7 @@ fit_loadaddr=0x88000000
 gatewayip=192.168.0.1
 importbootenv=echo Importing environment from mmc${mmcdev} ...; env import -t ${loadaddr} ${filesize}
 init_console=if test $board_name = A335_ICE; then setenv console ttyO3,115200n8;else setenv console ttyO0,115200n8;fi;
-ipaddr=192.168.0.181
+ipaddr=192.168.0.217
 kernel_addr_r=0x82000000
 load_efi_dtb=load ${devtype} ${devnum}:${distro_bootpart} ${fdt_addr_r} ${prefix}${efi_fdtfile}
 loadaddr=0x82000000
@@ -790,17 +1473,17 @@ usbnet_devaddr=de:ad:be:ef:00:01
 vendor=ti
 ver=U-Boot 2016.05-ga32e59ef6b (Nov 07 2016 - 00:12:46 -0500)
 Environment size: 8817/131068 bytes
-- 13:16:24 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
-- 13:16:24 [INFO] Target: 
+- 01:23:40 [INFO] Host: setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
+- 01:23:40 [INFO] Target: 
 setenv bootcmd ''${bootcmd}' if iminfo ${loadaddr}; then bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; else bootz ${loadaddr} ${_initramfs} ${fdt_addr_r}; bootm ${loadaddr} ${_initramfs} ${fdt_addr_r}; fi'
-- 13:16:24 [INFO] Host: version
-- 13:16:24 [INFO] Target: 
+- 01:23:40 [INFO] Host: version
+- 01:23:40 [INFO] Target: 
 version
 U-Boot 2016.05-ga32e59ef6b (Nov 07 2016 - 00:12:46 -0500)
 arm-linux-gnueabihf-gcc (Linaro GCC 5.3-2016.02) 5.3.1 20160113
 GNU ld (GNU Binutils) 2.25.0 Linaro 2015_10
-- 13:16:24 [INFO] Host: bdinfo
-- 13:16:24 [INFO] Target: 
+- 01:23:40 [INFO] Host: bdinfo
+- 01:23:40 [INFO] Target: 
 bdinfo
 arch_number = 0x00000E05
 boot_params = 0x80000100
@@ -813,26 +1496,26 @@ relocaddr   = 0x8FF52000
 reloc off   = 0x0F752000
 irq_sp      = 0x8EF297A0
 sp start    = 0x8EF29790
-- 13:16:24 [INFO] Host: mmc rescan; echo $?
-- 13:16:24 [INFO] Target: 
+- 01:23:40 [INFO] Host: mmc rescan; echo $?
+- 01:23:40 [INFO] Target: 
 mmc rescan; echo $?
-- 13:16:24 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
-- 13:16:24 [INFO] Target: 
+- 01:23:40 [INFO] Host: fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
+- 01:23:40 [INFO] Target: 
 fatwrite mmc ${mmcdev}:1 ${loadaddr} ws-calibrate.rules 4
 writing ws-calibrate.rules
 4 bytes written
-- 13:16:24 [INFO] Host: boot
-- 13:16:57 [INFO] Target: 
+- 01:23:40 [INFO] Host: boot
+- 01:24:14 [INFO] Target: 
 boot
 ## Checking Image at 82000000 ...
 Unknown image format!
-Kernel image @ 0x82000000 [ 0x000000 - 0x3afc90 ]
+Kernel image @ 0x82000000 [ 0x000000 - 0x3b01f0 ]
 ## Flattened Device Tree blob at 88000000
    Booting using the fdt blob at 0x88000000
    Loading Device Tree to 8ef1d000, end 8ef27fdb ... OK
 Starting kernel ...
 [    0.000000] Booting Linux on physical CPU 0x0
-[    0.000000] Linux version 4.9.0-rc5-next-20161114-00002-gb6b3e3577b42 (nmenon@horus) (gcc version 4.9.3 20150413 (prerelease) (Linaro GCC 4.9-2015.05) ) #3 SMP Mon Nov 14 12:13:10 CST 2016
+[    0.000000] Linux version 4.9.0-rc5-next-20161115-00002-g7fbcfcfcdce9 (nmenon@horus) (gcc version 4.9.3 20150413 (prerelease) (Linaro GCC 4.9-2015.05) ) #3 SMP Tue Nov 15 00:20:06 CST 2016
 [    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
 [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
 [    0.000000] OF: fdt:Machine model: TI AM335x BeagleBone
@@ -867,157 +1550,157 @@ Starting kernel ...
 [    0.000000] NR_IRQS:16 nr_irqs:16 16
 [    0.000000] IRQ: Found an INTC at 0xfa200000 (revision 5.0) with 128 interrupts
 [    0.000000] OMAP clockevent source: timer2 at 24000000 Hz
-[    0.000020] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
-[    0.000049] clocksource: timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
-[    0.000111] OMAP clocksource: timer1 at 24000000 Hz
-[    0.000741] clocksource_probe: no matching clocksources found
-[    0.001928] Console: colour dummy device 80x30
-[    0.002008] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
-[    0.002021] ... MAX_LOCKDEP_SUBCLASSES:  8
-[    0.002032] ... MAX_LOCK_DEPTH:          48
-[    0.002043] ... MAX_LOCKDEP_KEYS:        8191
-[    0.002053] ... CLASSHASH_SIZE:          4096
-[    0.002064] ... MAX_LOCKDEP_ENTRIES:     32768
-[    0.002074] ... MAX_LOCKDEP_CHAINS:      65536
-[    0.002085] ... CHAINHASH_SIZE:          32768
-[    0.002095]  memory used by lock dependency info: 5167 kB
-[    0.002107]  per task-struct memory footprint: 1536 bytes
-[    0.002146] Calibrating delay loop... 715.16 BogoMIPS (lpj=3575808)
-[    0.098164] pid_max: default: 32768 minimum: 301
-[    0.098744] Security Framework initialized
-[    0.098900] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.098918] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
-[    0.103513] CPU: Testing write buffer coherency: ok
-[    0.105544] CPU0: thread -1, cpu 0, socket -1, mpidr 0
-[    0.107119] Setting up static identity map for 0x80100000 - 0x80100070
-[    0.110637] smp: Bringing up secondary CPUs ...
-[    0.110665] smp: Brought up 1 node, 1 CPU
-[    0.110682] SMP: Total of 1 processors activated (715.16 BogoMIPS).
-[    0.110696] CPU: All CPU(s) started in SVC mode.
-[    0.115867] devtmpfs: initialized
-[    0.156671] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
-[    0.157782] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
-[    0.159983] pinctrl core: initialized pinctrl subsystem
-[    0.166389] NET: Registered protocol family 16
-[    0.174877] DMA: preallocated 256 KiB pool for atomic coherent allocations
-[    0.236579] omap_hwmod: debugss: _wait_target_disable failed
-[    0.294988] cpuidle: using governor menu
-[    0.316903] OMAP GPIO hardware version 0.1
-[    0.363462] No ATAGs?
-[    0.363498] hw-breakpoint: debug architecture 0x4 unsupported.
-[    0.363792] omap4_sram_init:Unable to allocate sram needed to handle errata I688
-[    0.363815] omap4_sram_init:Unable to get sram pool needed to handle errata I688
-[    0.419399] edma 49000000.edma: TI EDMA DMA engine driver
-[    0.425306] SCSI subsystem initialized
-[    0.427521] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins, deferring probe
-[    0.427669] omap_i2c 4819c000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c2_pins, deferring probe
-[    0.427995] pps_core: LinuxPPS API ver. 1 registered
-[    0.428013] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
-[    0.428076] PTP clock support registered
-[    0.433774] clocksource: Switched to clocksource timer1
-[    0.579046] VFS: Disk quotas dquot_6.6.0
-[    0.579320] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
-[    0.618854] NET: Registered protocol family 2
-[    0.621401] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
-[    0.621491] TCP bind hash table entries: 2048 (order: 4, 73728 bytes)
-[    0.622319] TCP: Hash tables configured (established 2048 bind 2048)
-[    0.622610] UDP hash table entries: 256 (order: 2, 20480 bytes)
-[    0.622848] UDP-Lite hash table entries: 256 (order: 2, 20480 bytes)
-[    0.624125] NET: Registered protocol family 1
-[    0.626953] RPC: Registered named UNIX socket transport module.
-[    0.626988] RPC: Registered udp transport module.
-[    0.627003] RPC: Registered tcp transport module.
-[    0.627017] RPC: Registered tcp NFSv4.1 backchannel transport module.
-[    0.630558] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
-[    0.636489] futex hash table entries: 256 (order: 2, 16384 bytes)
-[    0.636706] audit: initializing netlink subsys (disabled)
-[    0.637018] audit: type=2000 audit(0.630:1): initialized
-[    0.642078] workingset: timestamp_bits=14 max_order=16 bucket_order=2
-[    0.646084] NFS: Registering the id_resolver key type
-[    0.646558] Key type id_resolver registered
-[    0.646579] Key type id_legacy registered
-[    0.646785] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
-[    0.656224] io scheduler noop registered
-[    0.656263] io scheduler deadline registered
-[    0.656416] io scheduler cfq registered (default)
-[    0.659475] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568
-[    0.664098] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
-[    0.671464] omap_uart 44e09000.serial: no wakeirq for uart0
-[    0.672259] 44e09000.serial: ttyO0 at MMIO 0x44e09000 (irq = 158, base_baud = 3000000) is a OMAP UART0
-[    1.388641] console [ttyO0] enabled
-[    1.443424] brd: module loaded
-[    1.476642] loop: module loaded
-[    1.483007] mtdoops: mtd device (mtddev=name/number) must be supplied
-[    1.493250] libphy: Fixed MDIO Bus: probed
-[    1.573845] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6
-[    1.580284] davinci_mdio 4a101000.mdio: detected phy mask fffffffe
-[    1.591953] libphy: 4a101000.mdio: probed
-[    1.596415] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver SMSC LAN8710/LAN8720
-[    1.607883] cpsw 4a100000.ethernet: Detected MACID = 78:c5:e5:d9:d6:06
-[    1.623176] mousedev: PS/2 mouse device common for all mice
-[    1.629250] i2c /dev entries driver
-[    1.636442] omap_hsmmc 48060000.mmc: Got CD GPIO
-[    1.645396] ledtrig-cpu: registered to indicate activity on CPUs
-[    1.652987] oprofile: using arm/armv7
-[    1.658036] Initializing XFRM netlink socket
-[    1.663001] NET: Registered protocol family 10
-[    1.723781] IPv6: Attempt to unregister permanent protocol 6
-[    1.729771] IPv6: Attempt to unregister permanent protocol 136
-[    1.735974] IPv6: Attempt to unregister permanent protocol 17
-[    2.013842] NET: Unregistered protocol family 10
-[    2.018915] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
-[    2.027662] NET: Registered protocol family 17
-[    2.032455] NET: Registered protocol family 15
-[    2.037746] Key type dns_resolver registered
-[    2.042530] omap_voltage_late_init: Voltage driver support not added
-[    2.049332] sr_dev_init: No voltage domain specified for smartreflex0. Cannot initialize
-[    2.057903] sr_dev_init: No voltage domain specified for smartreflex1. Cannot initialize
-[    2.067348] ThumbEE CPU extension supported.
-[    2.071888] Registering SWP/SWPB emulation handler
-[    2.077026] SmartReflex Class3 initialized
-[    2.156710] random: fast init done
-[    2.179257] tps65217 0-0024: TPS65217 ID 0xf version 1.2
-[    2.185730] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
-[    2.196950] omap_i2c 4819c000.i2c: bus 2 rev0.11 at 100 kHz
-[    2.204598] omap_hsmmc 48060000.mmc: Got CD GPIO
-[    2.277567] hctosys: unable to open rtc device (rtc0)
-[    2.282918] sr_init: No PMIC hook to init smartreflex
-[    2.288715] sr_init: platform driver register failed for SR
-[    2.312841] net eth0: initializing cpsw version 1.12 (0)
-[    2.414550] SMSC LAN8710/LAN8720 4a101000.mdio:00: attached PHY driver [SMSC LAN8710/LAN8720] (mii_bus:phy_addr=4a101000.mdio:00, irq=-1)
-[    2.446721] mmc0: host does not support reading read-only switch, assuming write-enable
-[    2.458491] mmc0: new high speed SDHC card at address e624
-[    2.469198] mmcblk0: mmc0:e624 SU08G 7.40 GiB 
-[    2.479699]  mmcblk0: p1 p2 p3
-[    4.484522] cpsw 4a100000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
-[    4.533764] Sending DHCP requests ., OK
-[    4.574263] IP-Config: Got DHCP answer from 192.168.0.1, my address is 192.168.0.181
-[    4.582428] IP-Config: Complete:
-[    4.585912]      device=eth0, hwaddr=78:c5:e5:d9:d6:06, ipaddr=192.168.0.181, mask=255.255.255.0, gw=192.168.0.1
-[    4.596706]      host=192.168.0.181, domain=ti.com, nis-domain=(none)
-[    4.603484]      bootserver=0.0.0.0, rootserver=0.0.0.0, rootpath=     nameserver0=192.0.2.2, nameserver1=192.0.2.3
-[    4.615735] vmmcsd_fixed: disabling
-[    4.659309] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
-[    4.668309] VFS: Mounted root (ext4 filesystem) on device 179:2.
-[    4.687711] devtmpfs: mounted
-[    4.694247] Freeing unused kernel memory: 1024K
+[    0.000022] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000052] clocksource: timer1: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.000107] OMAP clocksource: timer1 at 24000000 Hz
+[    0.000728] clocksource_probe: no matching clocksources found
+[    0.001919] Console: colour dummy device 80x30
+[    0.001998] Lock dependency validator: Copyright (c) 2006 Red Hat, Inc., Ingo Molnar
+[    0.002011] ... MAX_LOCKDEP_SUBCLASSES:  8
+[    0.002022] ... MAX_LOCK_DEPTH:          48
+[    0.002033] ... MAX_LOCKDEP_KEYS:        8191
+[    0.002044] ... CLASSHASH_SIZE:          4096
+[    0.002055] ... MAX_LOCKDEP_ENTRIES:     32768
+[    0.002065] ... MAX_LOCKDEP_CHAINS:      65536
+[    0.002076] ... CHAINHASH_SIZE:          32768
+[    0.002087]  memory used by lock dependency info: 5167 kB
+[    0.002099]  per task-struct memory footprint: 1536 bytes
+[    0.002137] Calibrating delay loop... 715.16 BogoMIPS (lpj=3575808)
+[    0.108166] pid_max: default: 32768 minimum: 301
+[    0.108754] Security Framework initialized
+[    0.108917] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.108936] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.113545] CPU: Testing write buffer coherency: ok
+[    0.115566] CPU0: thread -1, cpu 0, socket -1, mpidr 0
+[    0.117144] Setting up static identity map for 0x80100000 - 0x80100070
+[    0.120672] smp: Bringing up secondary CPUs ...
+[    0.120701] smp: Brought up 1 node, 1 CPU
+[    0.120716] SMP: Total of 1 processors activated (715.16 BogoMIPS).
+[    0.120730] CPU: All CPU(s) started in SVC mode.
+[    0.125884] devtmpfs: initialized
+[    0.166480] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.167603] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.169818] pinctrl core: initialized pinctrl subsystem
+[    0.176299] NET: Registered protocol family 16
+[    0.184607] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.247297] omap_hwmod: debugss: _wait_target_disable failed
+[    0.305760] cpuidle: using governor menu
+[    0.328500] OMAP GPIO hardware version 0.1
+[    0.375861] No ATAGs?
+[    0.375897] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.376187] omap4_sram_init:Unable to allocate sram needed to handle errata I688
+[    0.376207] omap4_sram_init:Unable to get sram pool needed to handle errata I688
+[    0.432978] edma 49000000.edma: TI EDMA DMA engine driver
+[    0.439109] SCSI subsystem initialized
+[    0.441330] omap_i2c 44e0b000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c0_pins, deferring probe
+[    0.441478] omap_i2c 4819c000.i2c: could not find pctldev for node /ocp/l4_wkup@44c00000/scm@210000/pinmux@800/pinmux_i2c2_pins, deferring probe
+[    0.441802] pps_core: LinuxPPS API ver. 1 registered
+[    0.441817] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.441879] PTP clock support registered
+[    0.447346] clocksource: Switched to clocksource timer1
+[    0.592740] VFS: Disk quotas dquot_6.6.0
+[    0.593014] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.633632] NET: Registered protocol family 2
+[    0.636183] TCP established hash table entries: 2048 (order: 1, 8192 bytes)
+[    0.636273] TCP bind hash table entries: 2048 (order: 4, 73728 bytes)
+[    0.637099] TCP: Hash tables configured (established 2048 bind 2048)
+[    0.637607] UDP hash table entries: 256 (order: 2, 20480 bytes)
+[    0.637850] UDP-Lite hash table entries: 256 (order: 2, 20480 bytes)
+[    0.638964] NET: Registered protocol family 1
+[    0.641770] RPC: Registered named UNIX socket transport module.
+[    0.641805] RPC: Registered udp transport module.
+[    0.641820] RPC: Registered tcp transport module.
+[    0.641834] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.645387] hw perfevents: enabled with armv7_cortex_a8 PMU driver, 5 counters available
+[    0.651407] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.651624] audit: initializing netlink subsys (disabled)
+[    0.651938] audit: type=2000 audit(0.640:1): initialized
+[    0.657105] workingset: timestamp_bits=14 max_order=16 bucket_order=2
+[    0.660950] NFS: Registering the id_resolver key type
+[    0.661422] Key type id_resolver registered
+[    0.661443] Key type id_legacy registered
+[    0.661655] jffs2: version 2.2. (NAND) (SUMMARY)   2001-2006 Red Hat, Inc.
+[    0.671034] io scheduler noop registered
+[    0.671071] io scheduler deadline registered
+[    0.671223] io scheduler cfq registered (default)
+[    0.674311] pinctrl-single 44e10800.pinmux: 142 pins at pa f9e10800 size 568
+[    0.679106] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.686547] omap_uart 44e09000.serial: no wakeirq for uart0
+[    0.687807] 44e09000.serial: ttyO0 at MMIO 0x44e09000 (irq = 158, base_baud = 3000000) is a OMAP UART0
+[    1.404366] console [ttyO0] enabled
+[    1.459777] brd: module loaded
+[    1.493214] loop: module loaded
+[    1.499863] mtdoops: mtd device (mtddev=name/number) must be supplied
+[    1.510219] libphy: Fixed MDIO Bus: probed
+[    1.587410] davinci_mdio 4a101000.mdio: davinci mdio revision 1.6
+[    1.593848] davinci_mdio 4a101000.mdio: detected phy mask fffffffe
+[    1.605616] libphy: 4a101000.mdio: probed
+[    1.610076] davinci_mdio 4a101000.mdio: phy[0]: device 4a101000.mdio:00, driver SMSC LAN8710/LAN8720
+[    1.621539] cpsw 4a100000.ethernet: Detected MACID = 78:c5:e5:d9:d6:06
+[    1.636862] mousedev: PS/2 mouse device common for all mice
+[    1.642943] i2c /dev entries driver
+[    1.650175] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    1.659148] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.666736] oprofile: using arm/armv7
+[    1.671770] Initializing XFRM netlink socket
+[    1.676743] NET: Registered protocol family 10
+[    1.737351] IPv6: Attempt to unregister permanent protocol 6
+[    1.743343] IPv6: Attempt to unregister permanent protocol 136
+[    1.749545] IPv6: Attempt to unregister permanent protocol 17
+[    2.027407] NET: Unregistered protocol family 10
+[    2.032483] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    2.041278] NET: Registered protocol family 17
+[    2.046079] NET: Registered protocol family 15
+[    2.051356] Key type dns_resolver registered
+[    2.056141] omap_voltage_late_init: Voltage driver support not added
+[    2.062942] sr_dev_init: No voltage domain specified for smartreflex0. Cannot initialize
+[    2.071507] sr_dev_init: No voltage domain specified for smartreflex1. Cannot initialize
+[    2.080950] ThumbEE CPU extension supported.
+[    2.085494] Registering SWP/SWPB emulation handler
+[    2.090697] SmartReflex Class3 initialized
+[    2.169614] random: fast init done
+[    2.193191] tps65217 0-0024: TPS65217 ID 0xf version 1.2
+[    2.199716] omap_i2c 44e0b000.i2c: bus 0 rev0.11 at 400 kHz
+[    2.211034] omap_i2c 4819c000.i2c: bus 2 rev0.11 at 100 kHz
+[    2.218693] omap_hsmmc 48060000.mmc: Got CD GPIO
+[    2.291147] hctosys: unable to open rtc device (rtc0)
+[    2.296495] sr_init: No PMIC hook to init smartreflex
+[    2.302278] sr_init: platform driver register failed for SR
+[    2.326324] net eth0: initializing cpsw version 1.12 (0)
+[    2.428078] SMSC LAN8710/LAN8720 4a101000.mdio:00: attached PHY driver [SMSC LAN8710/LAN8720] (mii_bus:phy_addr=4a101000.mdio:00, irq=-1)
+[    2.460254] mmc0: host does not support reading read-only switch, assuming write-enable
+[    2.472053] mmc0: new high speed SDHC card at address e624
+[    2.482828] mmcblk0: mmc0:e624 SU08G 7.40 GiB 
+[    2.493296]  mmcblk0: p1 p2 p3
+[    4.568111] cpsw 4a100000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+[    4.607330] Sending DHCP requests ., OK
+[    4.647842] IP-Config: Got DHCP answer from 192.168.0.1, my address is 192.168.0.217
+[    4.655984] IP-Config: Complete:
+[    4.659466]      device=eth0, hwaddr=78:c5:e5:d9:d6:06, ipaddr=192.168.0.217, mask=255.255.255.0, gw=192.168.0.1
+[    4.670191]      host=192.168.0.217, domain=ti.com, nis-domain=(none)
+[    4.676953]      bootserver=0.0.0.0, rootserver=0.0.0.0, rootpath=     nameserver0=192.0.2.2, nameserver1=192.0.2.3
+[    4.689198] vmmcsd_fixed: disabling
+[    4.730580] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+[    4.739542] VFS: Mounted root (ext4 filesystem) on device 179:2.
+[    4.758984] devtmpfs: mounted
+[    4.765340] Freeing unused kernel memory: 1024K
 INIT: version 2.88 booting
 Error opening /dev/fb0: No such file or directory
 Starting udev
-[    5.848243] udevd[103]: starting version 182
-[   14.154184] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
-depmod: ERROR: could not open directory /lib/modules/4.9.0-rc5-next-20161114-00002-gb6b3e3577b42: No such file or directory
+[    5.926586] udevd[103]: starting version 182
+[   14.490270] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+depmod: ERROR: could not open directory /lib/modules/4.9.0-rc5-next-20161115-00002-g7fbcfcfcdce9: No such file or directory
 depmod: WARNING: -e needs -E or -F
-depmod: ERROR: could not open directory /lib/modules/4.9.0-rc5-next-20161114-00002-gb6b3e3577b42: No such file or directory
+depmod: ERROR: could not open directory /lib/modules/4.9.0-rc5-next-20161115-00002-g7fbcfcfcdce9: No such file or directory
 depmod: FATAL: could not search modules: No such file or directory
-[   15.130342] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
+[   15.454229] EXT4-fs (mmcblk0p2): re-mounted. Opts: data=ordered
 Starting Bootlog daemon: bootlogd: cannot allocate pseudo tty: No such file or directory
 bootlogd.
 Populating dev cache
 ALSA: Restoring mixer settings...
 /usr/sbin/alsactl: load_state:1729: No soundcards found...
 hwclock: can't open '/dev/misc/rtc': No such file or directory
-Tue Jun 21 01:45:00 UTC 2016
+Tue Jun 21 08:17:00 UTC 2016
 hwclock: can't open '/dev/misc/rtc': No such file or directory
 INIT: Entering runlevel: 5
 Configuring network interfaces... udhcpc (v1.22.1) started
@@ -1040,7 +1723,7 @@ hwclock: can't open '/dev/misc/rtc': No such file or directory
 Starting syslogd/klogd: done
 Starting thttpd.
 Starting Lighttpd Web Server: lighttpd.
-2016-06-21 01:45:07: (/home/jenkins/tisdk-build/build-CORTEX_1/arago-tmp-external-linaro-toolchain/work/cortexa8t2hf-vfp-neon-linux-gnueabi/lighttpd/1.4.33-r1/lighttpd-1.4.33/src/log.c.166) server started 
+2016-06-21 08:17:06: (/home/jenkins/tisdk-build/build-CORTEX_1/arago-tmp-external-linaro-toolchain/work/cortexa8t2hf-vfp-neon-linux-gnueabi/lighttpd/1.4.33-r1/lighttpd-1.4.33/src/log.c.166) server started 
 Starting Matrix GUI application.
 Enabling thermal zones...
 /etc/rc5.d/S98thermal-zone-init: line 7: /sys/class/thermal/thermal_zone*/mode: No such file or directory
@@ -1080,35 +1763,35 @@ Stopping Bootlog daemon: bootlogd.
 Arago Project http://arago-project.org am335x-evm /dev/ttyO0
 Arago 2015.03 am335x-evm /dev/ttyO0
 am335x-evm login: 
-- 13:16:57 [INFO] Host: root
-- 13:16:57 [INFO] Target: 
+- 01:24:14 [INFO] Host: root
+- 01:24:15 [INFO] Target: 
 root
 root@am335x-evm:~# 
-- 13:16:57 [INFO] Sleeping 15 secs to allow systemd to finish starting processes...
-- 13:17:12 [INFO] Disconnected serial from beaglebone
-- 13:17:12 [INFO] Connected to beaglebone via serial 
-- 13:17:12 [INFO] Host: uname -a
-- 13:17:12 [INFO] Target: 
+- 01:24:15 [INFO] Sleeping 15 secs to allow systemd to finish starting processes...
+- 01:24:30 [INFO] Disconnected serial from beaglebone
+- 01:24:30 [INFO] Connected to beaglebone via serial 
+- 01:24:30 [INFO] Host: uname -a
+- 01:24:30 [INFO] Target: 
 uname -a
-Linux am335x-evm 4.9.0-rc5-next-20161114-00002-gb6b3e3577b42 #3 SMP Mon Nov 14 12:13:10 CST 2016 armv7l GNU/Linux
+Linux am335x-evm 4.9.0-rc5-next-20161115-00002-g7fbcfcfcdce9 #3 SMP Tue Nov 15 00:20:06 CST 2016 armv7l GNU/Linux
 root@am335x-evm:~# 
-- 13:17:12 [INFO] Host: cat /proc/cmdline
-- 13:17:12 [INFO] Target: 
+- 01:24:30 [INFO] Host: cat /proc/cmdline
+- 01:24:30 [INFO] Target: 
 cat /proc/cmdline
 console=ttyO0,115200n8 earlyprintk=serial,ttyO0,115200n8 rootwait  ip=:::::eth0:dhcp  root=PARTUUID=00000000-02 rw rootfstype=ext4 rootwait 
 root@am335x-evm:~# 
-- 13:17:12 [INFO] Host: uname -a
-- 13:17:12 [INFO] Target: 
+- 01:24:30 [INFO] Host: uname -a
+- 01:24:30 [INFO] Target: 
 uname -a
-Linux am335x-evm 4.9.0-rc5-next-20161114-00002-gb6b3e3577b42 #3 SMP Mon Nov 14 12:13:10 CST 2016 armv7l GNU/Linux
+Linux am335x-evm 4.9.0-rc5-next-20161115-00002-g7fbcfcfcdce9 #3 SMP Tue Nov 15 00:20:06 CST 2016 armv7l GNU/Linux
 root@am335x-evm:~# 
-- 13:17:12 [INFO] Host: cat /proc/mtd
-- 13:17:12 [INFO] Target: 
+- 01:24:30 [INFO] Host: cat /proc/mtd
+- 01:24:30 [INFO] Target: 
 cat /proc/mtd
 dev:    size   erasesize  name
 root@am335x-evm:~# 
-- 13:17:12 [INFO] Host: cat /proc/diskstats
-- 13:17:12 [INFO] Target: 
+- 01:24:30 [INFO] Host: cat /proc/diskstats
+- 01:24:30 [INFO] Target: 
 cat /proc/diskstats
    1       0 ram0 0 0 0 0 0 0 0 0 0 0 0
    1       1 ram1 0 0 0 0 0 0 0 0 0 0 0
@@ -1134,18 +1817,18 @@ cat /proc/diskstats
    7       5 loop5 0 0 0 0 0 0 0 0 0 0 0
    7       6 loop6 0 0 0 0 0 0 0 0 0 0 0
    7       7 loop7 0 0 0 0 0 0 0 0 0 0 0
- 179       0 mmcblk0 1964 615 84848 7980 37 32 805 740 0 4910 8700
- 179       1 mmcblk0p1 100 0 1399 900 4 0 4 140 0 890 1040
- 179       2 mmcblk0p2 1787 608 82444 6130 32 32 800 600 0 4420 6710
- 179       3 mmcblk0p3 60 7 869 890 1 0 1 0 0 810 890
+ 179       0 mmcblk0 1962 615 84840 8490 38 29 789 4170 0 5930 12630
+ 179       1 mmcblk0p1 100 0 1399 600 4 0 4 780 0 1280 1380
+ 179       2 mmcblk0p2 1785 608 82436 7300 33 29 784 3390 0 5520 10660
+ 179       3 mmcblk0p3 60 7 869 470 1 0 1 0 0 370 470
 root@am335x-evm:~# 
-- 13:17:12 [INFO] Host: cat /proc/interrupts
-- 13:17:13 [INFO] Target: 
+- 01:24:30 [INFO] Host: cat /proc/interrupts
+- 01:24:30 [INFO] Target: 
 cat /proc/interrupts
            CPU0       
- 16:       2796      INTC  68 Level     gp_timer
+ 16:       2854      INTC  68 Level     gp_timer
  20:       2029      INTC  12 Level     49000000.edma_ccint
- 22:         19      INTC  14 Level     49000000.edma_ccerrint
+ 22:         21      INTC  14 Level     49000000.edma_ccerrint
  26:          0      INTC  96 Level     44e07000.gpio
  33:          0  44e07000.gpio   6 Edge      48060000.mmc cd
  59:          0      INTC  98 Level     4804c000.gpio
@@ -1154,9 +1837,9 @@ cat /proc/interrupts
 158:        710      INTC  72 Level     OMAP UART0
 159:        160      INTC  70 Level     44e0b000.i2c
 160:          0      INTC  30 Level     4819c000.i2c
-161:       6066      INTC  64 Level     mmc0
-172:         16      INTC  41 Level     4a100000.ethernet
-173:          5      INTC  42 Level     4a100000.ethernet
+161:       6065      INTC  64 Level     mmc0
+172:          8      INTC  41 Level     4a100000.ethernet
+173:          7      INTC  42 Level     4a100000.ethernet
 178:          0      INTC   7 Level     tps65217-irq
 IPI0:          0  CPU wakeup interrupts
 IPI1:          0  Timer broadcast interrupts
@@ -1167,197 +1850,197 @@ IPI5:          0  IRQ work interrupts
 IPI6:          0  completion interrupts
 Err:          0
 root@am335x-evm:~# 
-- 13:17:13 [INFO] Host: cat /proc/softirqs
-- 13:17:13 [INFO] Target: 
+- 01:24:30 [INFO] Host: cat /proc/softirqs
+- 01:24:31 [INFO] Target: 
 cat /proc/softirqs
                     CPU0       
           HI:          0
-       TIMER:       2765
+       TIMER:       2822
       NET_TX:          9
-      NET_RX:         31
+      NET_RX:         24
        BLOCK:          0
     IRQ_POLL:          0
-     TASKLET:       2009
+     TASKLET:       2008
        SCHED:          0
      HRTIMER:          0
-         RCU:       6270
+         RCU:       6313
 root@am335x-evm:~# 
-- 13:17:18 [INFO] Host: export IPERFHOST=192.168.0.1
-- 13:17:18 [INFO] Target: 
+- 01:24:36 [INFO] Host: export IPERFHOST=192.168.0.1
+- 01:24:36 [INFO] Target: 
 export IPERFHOST=192.168.0.1
 root@am335x-evm:~# 
-- 13:17:18 [INFO] Host: export NFS_SERVER=192.168.0.1
-- 13:17:18 [INFO] Target: 
-export NFS_SERVER=192.168.0.1
+- 01:24:36 [INFO] Host: export NFS_SERVER=192.168.0.1
+- 01:24:36 [INFO] Target: 
+export NFS_SERVER=192.1[   52.823025] random: crng init done
+68.0.1
 root@am335x-evm:~# 
-- 13:17:18 [INFO] Host: export NFS_ROOT_PATH=/home/tigtfarm03/NFS_exports/bbw1/
-- 13:17:18 [INFO] Target: 
-[   50.807803] random: crng init done
+- 01:24:36 [INFO] Host: export NFS_ROOT_PATH=/home/tigtfarm03/NFS_exports/bbw1/
+- 01:24:36 [INFO] Target: 
 export NFS_ROOT_PATH=/home/tigtfarm03/NFS_exports/bbw1/
 root@am335x-evm:~# 
-- 13:17:18 [INFO] Host: export AP_SSID=
-- 13:17:18 [INFO] Target: 
+- 01:24:36 [INFO] Host: export AP_SSID=
+- 01:24:36 [INFO] Target: 
 export AP_SSID=
 root@am335x-evm:~# 
-- 13:17:18 [INFO] Host: mkdir -p -m 777 /test
-- 13:17:19 [INFO] Target: 
+- 01:24:36 [INFO] Host: mkdir -p -m 777 /test
+- 01:24:36 [INFO] Target: 
 mkdir -p -m 777 /test
 root@am335x-evm:~# 
-- 13:17:19 [INFO] Host: cd /test
-- 13:17:19 [INFO] Target: 
+- 01:24:36 [INFO] Host: cd /test
+- 01:24:37 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-- 13:17:19 [INFO] Host: cat > test.sh << EOF
-- 13:17:19 [INFO] Target: 
+- 01:24:37 [INFO] Host: cat > test.sh << EOF
+- 01:24:37 [INFO] Target: 
 cat > test.sh << EOF
-- 13:17:19 [INFO] Host: failtest() {
-- 13:17:19 [INFO] Target: 
+- 01:24:37 [INFO] Host: failtest() {
+- 01:24:37 [INFO] Target: 
 failtest() {
-- 13:17:19 [INFO] Host:   echo 1 >&3
-- 13:17:19 [INFO] Target: 
+- 01:24:37 [INFO] Host:   echo 1 >&3
+- 01:24:37 [INFO] Target: 
   echo 1 >&3
-- 13:17:19 [INFO] Host: }
-- 13:17:19 [INFO] Target: 
-- 13:17:19 [INFO] Host: timeout=600
-- 13:17:19 [INFO] Target: 
+- 01:24:37 [INFO] Host: }
+- 01:24:37 [INFO] Target: 
+- 01:24:37 [INFO] Host: timeout=600
+- 01:24:37 [INFO] Target: 
 timeout=600
-- 13:17:19 [INFO] Host: 
-- 13:17:19 [INFO] Target: 
-- 13:17:19 [INFO] Host: # Start of user's script logic
-- 13:17:19 [INFO] Target: 
+- 01:24:37 [INFO] Host: 
+- 01:24:37 [INFO] Target: 
+- 01:24:37 [INFO] Host: # Start of user's script logic
+- 01:24:37 [INFO] Target: 
 # Start of user's script logic
-- 13:17:19 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
-- 13:17:19 [INFO] Target: 
+- 01:24:37 [INFO] Host: mount -t proc proc /proc 2>/dev/null;
+- 01:24:37 [INFO] Target: 
 mount -t proc proc /proc 2>/dev/null;
-- 13:17:19 [INFO] Host: 
-- 13:17:20 [INFO] Target: 
-- 13:17:20 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
-- 13:17:20 [INFO] Target: 
+- 01:24:37 [INFO] Host: 
+- 01:24:37 [INFO] Target: 
+- 01:24:37 [INFO] Host: mount -t sysfs sys /sys 2>/dev/null;
+- 01:24:38 [INFO] Target: 
 mount -t sysfs sys /sys 2>/dev/null;
-- 13:17:20 [INFO] Host: 
-- 13:17:20 [INFO] Target: 
-- 13:17:20 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
-- 13:17:20 [INFO] Target: 
+- 01:24:38 [INFO] Host: 
+- 01:24:38 [INFO] Target: 
+- 01:24:38 [INFO] Host: mount -t debugfs none /sys/kernel/debug 2>/dev/null;
+- 01:24:38 [INFO] Target: 
 mount -t debugfs none /sys/kernel/debug 2>/dev/null;
-- 13:17:20 [INFO] Host: 
-- 13:17:20 [INFO] Target: 
-- 13:17:20 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
-- 13:17:20 [INFO] Target: 
+- 01:24:38 [INFO] Host: 
+- 01:24:38 [INFO] Target: 
+- 01:24:38 [INFO] Host: echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
+- 01:24:38 [INFO] Target: 
 echo 'cpuinfo:';cat /proc/cpuinfo; echo '=======';
-- 13:17:20 [INFO] Host: 
-- 13:17:20 [INFO] Target: 
-- 13:17:20 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
-- 13:17:20 [INFO] Target: 
+- 01:24:38 [INFO] Host: 
+- 01:24:38 [INFO] Target: 
+- 01:24:38 [INFO] Host: echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
+- 01:24:38 [INFO] Target: 
 echo 'soc info:';head /sys/devices/soc0/* 2>/dev/null; echo '=======';
-- 13:17:20 [INFO] Host: 
-- 13:17:20 [INFO] Target: 
-- 13:17:20 [INFO] Host: echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /proc/device-tree/compatible 2>/dev/null;echo; echo '=======';
-- 13:17:20 [INFO] Target: 
+- 01:24:38 [INFO] Host: 
+- 01:24:38 [INFO] Target: 
+- 01:24:38 [INFO] Host: echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /proc/device-tree/compatible 2>/dev/null;echo; echo '=======';
+- 01:24:38 [INFO] Target: 
 echo 'DT Model info'; head /proc/device-tree/name /proc/device-tree/model /pro 
 c/device-tree/compatible 2>/dev/null;echo; echo '=======';
-- 13:17:20 [INFO] Host: 
-- 13:17:21 [INFO] Target: 
-- 13:17:21 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
-- 13:17:21 [INFO] Target: 
+- 01:24:38 [INFO] Host: 
+- 01:24:38 [INFO] Target: 
+- 01:24:38 [INFO] Host: echo 'interrupts:';cat /proc/interrupts; echo '=======';
+- 01:24:39 [INFO] Target: 
 echo 'interrupts:';cat /proc/interrupts; echo '=======';
-- 13:17:21 [INFO] Host: 
-- 13:17:21 [INFO] Target: 
-- 13:17:21 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
-- 13:17:21 [INFO] Target: 
+- 01:24:39 [INFO] Host: 
+- 01:24:39 [INFO] Target: 
+- 01:24:39 [INFO] Host: echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
+- 01:24:39 [INFO] Target: 
 echo 'Clk_summary:';cat /sys/kernel/debug/clk/clk_summary; echo '=======';
-- 13:17:21 [INFO] Host: 
-- 13:17:21 [INFO] Target: 
-- 13:17:21 [INFO] Host: echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies 2>/dev/null;echo '=======';
-- 13:17:21 [INFO] Target: 
+- 01:24:39 [INFO] Host: 
+- 01:24:39 [INFO] Target: 
+- 01:24:39 [INFO] Host: echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies 2>/dev/null;echo '=======';
+- 01:24:39 [INFO] Target: 
 echo "Available frequencies"; cat /sys/devices/system/cpu/cpu0/cpufreq/scaling 
 _available_frequencies 2>/dev/null;echo '=======';
-- 13:17:21 [INFO] Host: 
-- 13:17:21 [INFO] Target: 
-- 13:17:21 [INFO] Host: TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
-- 13:17:21 [INFO] Target: 
+- 01:24:39 [INFO] Host: 
+- 01:24:39 [INFO] Target: 
+- 01:24:39 [INFO] Host: TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
+- 01:24:39 [INFO] Target: 
 TMPF=/tmp/a.\$\$; TMPF2=/tmp/b.\$\$; STR=""
-- 13:17:21 [INFO] Host: 
-- 13:17:21 [INFO] Target: 
-- 13:17:21 [INFO] Host: cp /dev/kmsg \$TMPF &
-- 13:17:21 [INFO] Target: 
+- 01:24:39 [INFO] Host: 
+- 01:24:39 [INFO] Target: 
+- 01:24:39 [INFO] Host: cp /dev/kmsg \$TMPF &
+- 01:24:39 [INFO] Target: 
 cp /dev/kmsg \$TMPF &
-- 13:17:21 [INFO] Host: 
-- 13:17:22 [INFO] Target: 
-- 13:17:22 [INFO] Host: PID=\$! ; sleep 5; kill -9 \$PID
-- 13:17:22 [INFO] Target: 
+- 01:24:39 [INFO] Host: 
+- 01:24:39 [INFO] Target: 
+- 01:24:39 [INFO] Host: PID=\$! ; sleep 5; kill -9 \$PID
+- 01:24:40 [INFO] Target: 
 PID=\$! ; sleep 5; kill -9 \$PID
-- 13:17:22 [INFO] Host: 
-- 13:17:22 [INFO] Target: 
-- 13:17:22 [INFO] Host: 
-- 13:17:22 [INFO] Target: 
-- 13:17:22 [INFO] Host: 
-- 13:17:22 [INFO] Target: 
-- 13:17:22 [INFO] Host: cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 13:17:22 [INFO] Target: 
+- 01:24:40 [INFO] Host: 
+- 01:24:40 [INFO] Target: 
+- 01:24:40 [INFO] Host: 
+- 01:24:40 [INFO] Target: 
+- 01:24:40 [INFO] Host: 
+- 01:24:40 [INFO] Target: 
+- 01:24:40 [INFO] Host: cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 01:24:40 [INFO] Target: 
 cat \$TMPF|grep "^0">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR emerg=\$N";echo "===== EMERGE++";cat \$TMPF2|cut -d ';' -f2;echo "= 
 ===="; fi
-- 13:17:22 [INFO] Host: 
-- 13:17:22 [INFO] Target: 
-- 13:17:22 [INFO] Host: cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 13:17:22 [INFO] Target: 
+- 01:24:40 [INFO] Host: 
+- 01:24:40 [INFO] Target: 
+- 01:24:40 [INFO] Host: cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 01:24:40 [INFO] Target: 
 cat \$TMPF|grep "^1">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR alert=\$N";echo "===== ALERT ==";cat \$TMPF2|cut -d ';' -f2;echo "= 
 ===="; fi
-- 13:17:22 [INFO] Host: 
-- 13:17:22 [INFO] Target: 
-- 13:17:22 [INFO] Host: cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
-- 13:17:22 [INFO] Target: 
+- 01:24:40 [INFO] Host: 
+- 01:24:40 [INFO] Target: 
+- 01:24:40 [INFO] Host: cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "====="; fi
+- 01:24:40 [INFO] Target: 
 cat \$TMPF|grep "^2">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR crit=\$N";echo "===== CRIT ==";cat \$TMPF2|cut -d ';' -f2;echo "=== 
 =="; fi
-- 13:17:22 [INFO] Host: 
-- 13:17:23 [INFO] Target: 
-- 13:17:23 [INFO] Host: cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
-- 13:17:23 [INFO] Target: 
+- 01:24:40 [INFO] Host: 
+- 01:24:40 [INFO] Target: 
+- 01:24:40 [INFO] Host: cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
+- 01:24:41 [INFO] Target: 
 cat \$TMPF|grep "^3">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR err=\$N";echo "===== ERR ==";cat \$TMPF2|cut -d ';' -f2;echo "===== 
 " ;fi
-- 13:17:23 [INFO] Host: 
-- 13:17:23 [INFO] Target: 
-- 13:17:23 [INFO] Host: cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
-- 13:17:23 [INFO] Target: 
+- 01:24:41 [INFO] Host: 
+- 01:24:41 [INFO] Target: 
+- 01:24:41 [INFO] Host: cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; then STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=====" ;fi
+- 01:24:41 [INFO] Target: 
 cat \$TMPF|grep "^4">\$TMPF2; N=\`cat \$TMPF2|wc -l\`; if [ "\$N" -ne 0 ]; the 
 n STR="\$STR warn=\$N";echo "===== WARN ==";cat \$TMPF2|cut -d ';' -f2;echo "=== 
 ==" ;fi
-- 13:17:23 [INFO] Host: 
-- 13:17:23 [INFO] Target: 
-- 13:17:23 [INFO] Host: rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oard' "Booted" "Boot Log has::::\$STR:"
-- 13:17:23 [INFO] Target: 
+- 01:24:41 [INFO] Host: 
+- 01:24:41 [INFO] Target: 
+- 01:24:41 [INFO] Host: rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oard' "Booted" "Boot Log has::::\$STR:"
+- 01:24:41 [INFO] Target: 
 rm \$TMPF \$TMPF2; echo "SUM""MARY RESULT: BOOT:" 'PASS: H''ello World' 'B''oa 
 rd' "Booted" "Boot Log has::::\$STR:"
-- 13:17:23 [INFO] Host: 
-- 13:17:23 [INFO] Target: 
-- 13:17:23 [INFO] Host: EOF
-- 13:17:23 [INFO] Target: 
+- 01:24:41 [INFO] Host: 
+- 01:24:41 [INFO] Target: 
+- 01:24:41 [INFO] Host: EOF
+- 01:24:41 [INFO] Target: 
 root@am335x-evm:/test# 
-- 13:17:23 [INFO] Host: cd /test
-- 13:17:23 [INFO] Target: 
+- 01:24:41 [INFO] Host: cd /test
+- 01:24:41 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-- 13:17:23 [INFO] Host: chmod +x test.sh
-- 13:17:23 [INFO] Target: 
+- 01:24:41 [INFO] Host: chmod +x test.sh
+- 01:24:41 [INFO] Target: 
 chmod +x test.sh
 root@am335x-evm:/test# 
-- 13:17:23 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
-- 13:17:29 [INFO] Target: 
+- 01:24:41 [INFO] Host: ./test.sh 2> stderr.log > stdout.log 3> result.log
+- 01:24:47 [INFO] Target: 
 ./test.sh 2> stderr.log > stdout.log 3> result.log
 root@am335x-evm:/test# 
-- 13:17:29 [INFO] Host: echo $?
-- 13:17:29 [INFO] Target: 
+- 01:24:47 [INFO] Host: echo $?
+- 01:24:47 [INFO] Target: 
 echo $?
 root@am335x-evm:/test# 
-- 13:17:29 [INFO] Host: cd /test
-- 13:17:29 [INFO] Target: 
+- 01:24:47 [INFO] Host: cd /test
+- 01:24:47 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-- 13:17:29 [INFO] Host: cat stdout.log
-- 13:17:30 [INFO] Target: 
+- 01:24:47 [INFO] Host: cat stdout.log
+- 01:24:48 [INFO] Target: 
 cat stdout.log
 cpuinfo:
 processor	: 0
@@ -1374,6 +2057,7 @@ Revision	: 0000
 Serial		: 0000000000000000
 =======
 soc info:
+==> /sys/devices/soc0/deferred_probe <==
 ==> /sys/devices/soc0/family <==
 AM33xx
 ==> /sys/devices/soc0/machine <==
@@ -1394,20 +2078,20 @@ ti,am335x-boneti,am33xx
 =======
 interrupts:
            CPU0       
- 16:       2960      INTC  68 Level     gp_timer
- 20:       2034      INTC  12 Level     49000000.edma_ccint
- 22:         19      INTC  14 Level     49000000.edma_ccerrint
+ 16:       3023      INTC  68 Level     gp_timer
+ 20:       2035      INTC  12 Level     49000000.edma_ccint
+ 22:         21      INTC  14 Level     49000000.edma_ccerrint
  26:          0      INTC  96 Level     44e07000.gpio
  33:          0  44e07000.gpio   6 Edge      48060000.mmc cd
  59:          0      INTC  98 Level     4804c000.gpio
  92:          0      INTC  32 Level     481ac000.gpio
 125:          0      INTC  62 Level     481ae000.gpio
-158:       8138      INTC  72 Level     OMAP UART0
+158:       8176      INTC  72 Level     OMAP UART0
 159:        160      INTC  70 Level     44e0b000.i2c
 160:          0      INTC  30 Level     4819c000.i2c
-161:       6083      INTC  64 Level     mmc0
-172:         16      INTC  41 Level     4a100000.ethernet
-173:          5      INTC  42 Level     4a100000.ethernet
+161:       6085      INTC  64 Level     mmc0
+172:          8      INTC  41 Level     4a100000.ethernet
+173:          7      INTC  42 Level     4a100000.ethernet
 178:          0      INTC   7 Level     tps65217-irq
 IPI0:          0  CPU wakeup interrupts
 IPI1:          0  Timer broadcast interrupts
@@ -1539,18 +2223,18 @@ FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt.
 =====
 SUMMARY RESULT: BOOT: PASS: Hello World Board Booted Boot Log has:::: crit=1 err=9 warn=16:
 root@am335x-evm:/test# 
-- 13:17:30 [INFO] Host: cat stderr.log
-- 13:17:31 [INFO] Target: 
+- 01:24:48 [INFO] Host: cat stderr.log
+- 01:24:49 [INFO] Target: 
 cat stderr.log
-./test.sh: line 33:   748 Killed                  cp /dev/kmsg $TMPF
+./test.sh: line 33:   760 Killed                  cp /dev/kmsg $TMPF
 root@am335x-evm:/test# 
-- 13:17:31 [INFO] Host: cat result.log
-- 13:17:33 [ERROR] On command: cat result.log waiting for cat result.log.+?(?m-ix:^1[\0\n\r]+) >>> error: execution expired
-- 13:17:33 [INFO] Target: 
+- 01:24:49 [INFO] Host: cat result.log
+- 01:24:51 [ERROR] On command: cat result.log waiting for cat result.log.+?(?m-ix:^1[\0\n\r]+) >>> error: execution expired
+- 01:24:51 [INFO] Target: 
 cat result.log
 root@am335x-evm:/test# 
-- 13:17:33 [INFO] Host: cd /test
-- 13:17:33 [INFO] Target: 
+- 01:24:51 [INFO] Host: cd /test
+- 01:24:51 [INFO] Target: 
 cd /test
 root@am335x-evm:/test# 
-URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm03/tigtfarm03_vatf@bbw1/tigtfarm0311_14_2016_13_15_34/files/session_iteration_1/test_1
+URL:gtsystest.telogy.design.ti.com/vatf/tigtfarm03/tigtfarm03_vatf@bbw1/tigtfarm0311_15_2016_01_22_30/files/session_iteration_1/test_1
