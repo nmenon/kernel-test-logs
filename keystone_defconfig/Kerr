@@ -1,12 +1,52 @@
 ++Distclean++
-Wed Nov 23 07:36:14 CST 2016: Build result = 2
 ++build defconfig keystone_defconfig++
-gcc: error: scripts/kconfig/zconf.tab.c: No such file or directory
-gcc: fatal error: no input files
+++build kernel ++
+In file included from ./include/asm-generic/preempt.h:4:0,
+                 from ./arch/arm/include/generated/asm/preempt.h:1,
+                 from ./include/linux/preempt.h:59,
+                 from ./include/linux/spinlock.h:50,
+                 from ./include/linux/mmzone.h:7,
+                 from ./include/linux/gfp.h:5,
+                 from ./include/linux/slab.h:14,
+                 from ./include/linux/crypto.h:24,
+                 from ./include/crypto/algapi.h:15,
+                 from ./include/crypto/internal/rng.h:17,
+                 from crypto/ansi_cprng.c:16:
+./include/linux/thread_info.h:12:33: fatal error: linux/restart_block.h: No such file or directory
+ #include <linux/restart_block.h>
+                                 ^
 compilation terminated.
-make[1]: *** [scripts/kconfig/zconf.tab.o] Error 4
+make[1]: *** [crypto/ansi_cprng.o] Error 1
+make: *** [crypto] Error 2
+make: *** Waiting for unfinished jobs....
+In file included from ./include/asm-generic/current.h:4:0,
+                 from ./arch/arm/include/generated/asm/current.h:1,
+                 from ./include/linux/mutex.h:13,
+                 from ./include/linux/notifier.h:13,
+                 from ./include/linux/mtd/mtd.h:25,
+                 from fs/jffs2/gc.c:16:
+./include/linux/thread_info.h:12:33: fatal error: linux/restart_block.h: No such file or directory
+ #include <linux/restart_block.h>
+                                 ^
+compilation terminated.
+make[2]: *** [fs/jffs2/gc.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+In file included from ./include/asm-generic/preempt.h:4:0,
+                 from ./arch/arm/include/generated/asm/preempt.h:1,
+                 from ./include/linux/preempt.h:59,
+                 from ./include/linux/spinlock.h:50,
+                 from ./include/linux/wait.h:8,
+                 from ./include/linux/fs.h:5,
+                 from fs/kernfs/mount.c:11:
+./include/linux/thread_info.h:12:33: fatal error: linux/restart_block.h: No such file or directory
+ #include <linux/restart_block.h>
+                                 ^
+compilation terminated.
+make[2]: *** [fs/kernfs/mount.o] Error 1
+make[1]: *** [fs/kernfs] Error 2
 make[1]: *** Waiting for unfinished jobs....
-/bin/sh: 1: scripts/basic/fixdep: not found
-make[1]: *** [scripts/kconfig/conf.o] Error 127
-make: *** [keystone_defconfig] Error 2
-Wed Nov 23 07:36:20 CST 2016: Build result = 2
+fixdep: error opening config file: include/linux/restart_block.h: No such file or directory
+make[2]: *** [fs/jffs2/scan.o] Error 2
+make[1]: *** [fs/jffs2] Error 2
+make: *** [fs] Error 2
+Thu Nov 24 06:00:17 CST 2016: Build result = 1
