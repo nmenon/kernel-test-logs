@@ -1,10 +1,11 @@
 Automated logs for TAG=next-20161207
-Wed Dec  7 16:27:26 CST 2016
+Wed Dec  7 16:27:42 CST 2016
 ====defconfig=keystone_defconfig===
 keystone_defconfig
  1:             k2e-evm: BOOT: FAIL: k2e-evm.txt
  2:            k2hk-evm: BOOT: FAIL: k2hk-evm.txt
-TOTAL = 2 boards, Booted Boards = 0, No Boot boards = 2
+ 3:             k2l-evm: BOOT: FAIL: k2l-evm.txt
+TOTAL = 3 boards, Booted Boards = 0, No Boot boards = 3
 ====defconfig=multi_lpae_defconfig===
 multi_lpae_defconfig
 TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
