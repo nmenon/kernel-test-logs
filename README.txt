@@ -1,5 +1,5 @@
-Automated logs for TAG=next-20161222
-Thu Dec 22 11:34:15 CST 2016
+Automated logs for TAG=next-20161223
+Fri Dec 23 12:07:40 CST 2016
 ====defconfig=keystone_defconfig===
 keystone_defconfig
 TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
@@ -8,14 +8,14 @@ multi_lpae_defconfig
 TOTAL = 0 boards, Booted Boards = 0, No Boot boards = 0
 ====defconfig=multi_v7_defconfig===
 multi_v7_defconfig
- 1:          am335x-evm: BOOT: PASS: crit=1 err=9 warn=21: am335x-evm.txt
- 2:           am335x-sk: BOOT: PASS: crit=2 err=16 warn=20: am335x-sk.txt
+ 1:          am335x-evm: BOOT: FAIL: am335x-evm.txt
+ 2:           am335x-sk: BOOT: PASS: crit=2 err=16 warn=21: am335x-sk.txt
  3:           am37x-evm: BOOT: PASS: err=1023 warn=29: am37x-evm.txt
- 4:           am437x-sk: BOOT: PASS: err=6 warn=19: am437x-sk.txt
- 5:        am43xx-gpevm: BOOT: PASS: err=6 warn=22: am43xx-gpevm.txt
- 6:     BeagleBoard-X15: BOOT: PASS: err=8 warn=20: am57xx-evm.txt
+ 4:           am437x-sk: BOOT: PASS: crit=1 err=17 warn=20: am437x-sk.txt
+ 5:        am43xx-gpevm: BOOT: PASS: err=6 warn=21: am43xx-gpevm.txt
+ 6:     BeagleBoard-X15: BOOT: PASS: err=8 warn=21: am57xx-evm.txt
  7:      BeagleBoard-XM: BOOT: PASS: err=11 warn=20: beagleboard.txt
- 8: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
+ 8: beagleboard-vanilla: BOOT: PASS: err=11 warn=22: beagleboard-vanilla.txt
  9:          beaglebone: BOOT: PASS: crit=1 err=6 warn=17: beaglebone.txt
 10:          craneboard: BOOT: PASS: crit=3 err=15 warn=60: craneboard.txt
 11:          dra72x-evm: BOOT: FAIL: dra72x-evm.txt
@@ -31,15 +31,15 @@ multi_v7_defconfig
 TOTAL = 20 boards, Booted Boards = 16, No Boot boards = 4
 ====defconfig=omap2plus_defconfig===
 omap2plus_defconfig
- 1:          am335x-evm: BOOT: PASS: crit=1 err=9 warn=22: am335x-evm.txt
+ 1:          am335x-evm: BOOT: PASS: crit=1 err=9 warn=21: am335x-evm.txt
  2:           am335x-sk: BOOT: PASS: crit=2 err=16 warn=21: am335x-sk.txt
  3:           am37x-evm: BOOT: PASS: err=1023 warn=29: am37x-evm.txt
- 4:           am437x-sk: BOOT: PASS: crit=1 err=16 warn=20: am437x-sk.txt
- 5:        am43xx-gpevm: BOOT: PASS: err=6 warn=21: am43xx-gpevm.txt
- 6:     BeagleBoard-X15: BOOT: PASS: crit=8 err=16 warn=23: am57xx-evm.txt
+ 4:           am437x-sk: BOOT: PASS: err=6 warn=18: am437x-sk.txt
+ 5:        am43xx-gpevm: BOOT: PASS: err=6 warn=23: am43xx-gpevm.txt
+ 6:     BeagleBoard-X15: BOOT: PASS: err=8 warn=21: am57xx-evm.txt
  7:      BeagleBoard-XM: BOOT: PASS: err=11 warn=20: beagleboard.txt
- 8: beagleboard-vanilla: BOOT: PASS: err=11 warn=22: beagleboard-vanilla.txt
- 9:    beaglebone-black: BOOT: PASS: crit=1 err=6 warn=16: beaglebone-black.txt
+ 8: beagleboard-vanilla: BOOT: FAIL: beagleboard-vanilla.txt
+ 9:    beaglebone-black: BOOT: PASS: crit=2 err=16 warn=20: beaglebone-black.txt
 10:          beaglebone: BOOT: PASS: crit=1 err=6 warn=16: beaglebone.txt
 11:          craneboard: BOOT: PASS: crit=3 err=15 warn=60: craneboard.txt
 12:          dra72x-evm: BOOT: FAIL: dra72x-evm.txt
@@ -52,4 +52,4 @@ omap2plus_defconfig
 19:             sdp2430: BOOT: PASS: err=4 warn=16: sdp2430.txt
 20:             sdp3430: BOOT: PASS: err=25 warn=26: sdp3430.txt
 21:             sdp4430: BOOT: PASS: crit=10 err=18 warn=30: sdp4430.txt
-TOTAL = 21 boards, Booted Boards = 18, No Boot boards = 3
+TOTAL = 21 boards, Booted Boards = 17, No Boot boards = 4
