@@ -1,5 +1,5 @@
 Automated logs for TAG=v4.10-rc2
-Mon Jan  2 13:01:25 CST 2017
+Mon Jan  2 13:01:51 CST 2017
 ====defconfig=keystone_defconfig===
 keystone_defconfig
  1:             k2l-evm: BOOT: FAIL: k2l-evm.txt
